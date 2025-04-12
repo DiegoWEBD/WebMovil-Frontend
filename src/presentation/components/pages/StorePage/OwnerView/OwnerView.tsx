@@ -1,8 +1,9 @@
 import './OwnerView.css'
 import { useQuery } from '@tanstack/react-query'
-import useAppState from '../../../global_states/appState'
+
 import StoreCard from '../StoreCard/StoreCard'
-import Store from '../../../../domain/Store/Store'
+import Store from '../../../../../domain/Store/Store'
+import useAppState from '../../../../global_states/appState'
 
 const OwnerView = () => {
 	const { userEmail, storeService } = useAppState()

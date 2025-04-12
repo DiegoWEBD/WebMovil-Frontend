@@ -1,18 +1,25 @@
 import { TokenResponse, useGoogleLogin } from '@react-oauth/google'
-import { validateAccessToken } from '../../../auth/auth'
-import LoginButton from './LoginButton/LoginButton'
-import './LoginForm.css'
-import useAppState from '../../../global_states/appState'
 
-const LoginForm = () => {
+import '../LoginForm/LoginForm.css'
+import RegisterButton from './RegisterButton/RegisterButton'
+import { registerUser } from '../../../../auth/auth'
+import useAppState from '../../../../global_states/appState'
+
+const RegisterForm = () => {
 	const { setUserEmail } = useAppState()
 
 	const handleSuccess = (
 		response: Omit<TokenResponse, 'err' | 'error_description' | 'error_uri'>
 	) => {
 		const accessToken = response.access_token
-		localStorage.setItem('access_token', accessToken)
-		validateAccessToken().then(setUserEmail)
+
+		registerUser(
+			accessToken,
+			'Diego Maldonado',
+			'+56924587154',
+			'diego.png',
+			'owner'
+		).then(setUserEmail)
 	}
 
 	const handleError = (
@@ -29,9 +36,9 @@ const LoginForm = () => {
 
 	return (
 		<div className='login-form'>
-			<LoginButton onClick={googleLogin}>Iniciar Sesión</LoginButton>
+			<RegisterButton onClick={googleLogin}>Registrar Locatario</RegisterButton>
 		</div>
 	)
 }
 
-export default LoginForm
+export default RegisterForm
