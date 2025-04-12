@@ -1,0 +1,30 @@
+.store-card {
+	background: #f8fafc;
+	max-width: 25rem;
+	padding: 1.5rem;
+	margin: 1rem auto;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	text-align: center;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.store-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.store-card h2 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #1e293b; /* azul oscuro */
+	margin-bottom: 0.5rem;
+}
+
+.store-card p {
+	font-size: 1rem;
+	color: #334155;
+	margin: 0.4rem 0;
+	line-height: 1.4;
+}
