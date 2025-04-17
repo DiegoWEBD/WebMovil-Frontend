@@ -3,16 +3,21 @@ import { TokenResponse, useGoogleLogin } from '@react-oauth/google'
 import LoginButton from './LoginButton/LoginButton'
 import { validateAccessToken } from '../../../../auth/auth'
 import useAppState from '../../../../global_states/appState'
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
 	const { setUserEmail } = useAppState()
+	const navigate = useNavigate()
 
 	const handleSuccess = (
 		response: Omit<TokenResponse, 'err' | 'error_description' | 'error_uri'>
 	) => {
 		const accessToken = response.access_token
 		localStorage.setItem('access_token', accessToken)
-		validateAccessToken().then(setUserEmail)
+		validateAccessToken().then(userEmail => {
+			setUserEmail(userEmail)
+			navigate('/tiendas')
+		})
 	}
 
 	const handleError = (

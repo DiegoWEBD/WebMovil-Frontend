@@ -4,6 +4,7 @@ import LoginForm from './presentation/components/pages/AuthPage/LoginForm/LoginF
 import RegisterForm from './presentation/components/pages/AuthPage/RegisterForm/RegisterForm'
 import HomePage from './presentation/components/pages/HomePage/HomePage'
 import Root from './presentation/components/pages/Root/Root'
+import StorePage from './presentation/components/pages/StorePage/StorePage'
 
 const router = createBrowserRouter([
 	{
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'tiendas',
-				element: <h1>Tiendas</h1>,
+				element: <StorePage />,
 			},
 			{
 				path: 'perfil',

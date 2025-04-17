@@ -4,9 +4,11 @@ import '../LoginForm/LoginForm.css'
 import RegisterButton from './RegisterButton/RegisterButton'
 import { registerUser } from '../../../../auth/auth'
 import useAppState from '../../../../global_states/appState'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterForm = () => {
 	const { setUserEmail } = useAppState()
+	const navigate = useNavigate()
 
 	const handleSuccess = (
 		response: Omit<TokenResponse, 'err' | 'error_description' | 'error_uri'>
@@ -19,7 +21,10 @@ const RegisterForm = () => {
 			'+56924587154',
 			'diego.png',
 			'owner'
-		).then(setUserEmail)
+		).then(email => {
+			setUserEmail(email)
+			navigate('/tiendas')
+		})
 	}
 
 	const handleError = (

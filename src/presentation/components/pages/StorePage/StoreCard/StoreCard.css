@@ -1,13 +1,12 @@
 .store-card {
 	background: #f8fafc;
 	max-width: 25rem;
-	padding: 1.5rem;
-	margin: 1rem auto;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	border-radius: 1rem;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	text-align: center;
+	border-radius: 0.6rem;
+	cursor: pointer;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	font-size: 0.9rem;
+	color: var(--color-primary);
 }
 
 .store-card:hover {
@@ -15,16 +14,75 @@
 	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.store-card h2 {
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: #1e293b; /* azul oscuro */
-	margin-bottom: 0.5rem;
+.store-card img {
+	height: 10rem;
+	width: 100%;
+	border-radius: 0.6rem 0.6rem 0 0;
 }
 
-.store-card p {
-	font-size: 1rem;
-	color: #334155;
-	margin: 0.4rem 0;
-	line-height: 1.4;
+.store-info-container {
+	padding: 0 1rem 1rem 1rem;
+}
+
+.store-info-container.extra {
+	padding-top: 1rem;
+	border-top: 1px solid #cbd5e1;
+	display: flex;
+	justify-content: space-between;
+	font-weight: 500;
+}
+
+.store-info-container.resume {
+	height: 5rem;
+}
+
+.store-name {
+	margin: 0;
+	color: var(--color-primary-strong);
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.store-direction-container {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.direction-logo {
+	width: 1.1rem;
+	height: 1.1rem;
+}
+
+.store-direction {
+	margin: 0;
+}
+
+.store-description {
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.store-products-count {
+	margin: 0;
+}
+
+.store-rating {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+.star {
+	width: 0.9rem;
+	height: 0.9rem;
+	color: #eab308;
+}
+
+.store-rating p {
+	margin: 0;
 }

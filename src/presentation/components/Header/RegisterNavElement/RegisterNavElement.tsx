@@ -5,12 +5,17 @@ import './RegisterNavElement.css'
 type RegisterNavElementProps = {
 	to: string
 	children: ReactNode
+	onClick?: () => void
 }
 
-const RegisterNavElement = ({ to, children }: RegisterNavElementProps) => {
+const RegisterNavElement = ({
+	to,
+	children,
+	onClick,
+}: RegisterNavElementProps) => {
 	return (
 		<li>
-			<Link to={to} className='register-link'>
+			<Link to={to} className='register-link' onClick={onClick}>
 				{children}
 			</Link>
 		</li>

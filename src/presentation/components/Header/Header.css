@@ -3,31 +3,58 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-inline: 2rem;
+	padding-inline: 1rem;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
 }
 
-header nav {
-	display: flex;
-}
-
-header nav ul {
+.nav-menu ul {
 	list-style: none;
 	display: flex;
 	gap: 1rem;
 }
 
-.logo-container {
+.nav-menu {
 	display: flex;
-	align-items: center;
-	gap: 0.5rem;
 }
 
-.logo {
-	width: 2rem;
-	height: 2rem;
+.nav-menu-divider {
+	display: none;
 }
 
-.logo-container h1 {
-	font-size: 1.5rem;
+@media (max-width: 768px) {
+	header {
+		justify-content: start;
+		gap: 0.5rem;
+	}
+
+	.nav-menu {
+		position: relative;
+		flex-direction: column;
+		align-items: start;
+		text-align: left;
+		position: fixed;
+		top: 0;
+		left: -100%;
+		width: 240px;
+		height: 100%;
+		background-color: white;
+		padding: 1rem 2rem 2rem 0rem;
+		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+		transition: left 0.3s ease-in-out;
+		z-index: 1000;
+	}
+
+	.nav-menu.open {
+		left: 0%;
+	}
+
+	.nav-menu ul {
+		flex-direction: column;
+		gap: 2rem;
+		margin-bottom: 2rem;
+		width: 100%;
+	}
 }

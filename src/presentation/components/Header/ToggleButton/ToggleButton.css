@@ -1,0 +1,38 @@
+.menu-toggle {
+	display: none;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+	color: var(--color-primary);
+	transition: all 0.2s ease-in-out;
+}
+
+.menu-toggle:hover {
+	background: #f1f5f9;
+}
+
+.menu-toggle:focus {
+	outline: none;
+}
+
+@media (max-width: 768px) {
+	.menu-toggle {
+		display: block;
+	}
+
+	.menu-toggle-button {
+		height: 1rem;
+		width: 1rem;
+	}
+
+	.menu-toggle.open-case.open {
+		position: absolute;
+		right: 0.5rem;
+		top: 0.5rem;
+	}
+
+	.menu-toggle.open-case.closed {
+		display: none;
+	}
+}

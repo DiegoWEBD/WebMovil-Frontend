@@ -1,29 +1,61 @@
 import './Header.css'
 
-import { FaStore } from 'react-icons/fa'
-import NavElement from './NavElement/NavElement'
+import { useState } from 'react'
+import PageLogo from '../PageLogo/PageLogo'
 import LoginNavElement from './LoginNavElement/LoginNavElement'
+import NavElement from './NavElement/NavElement'
 import RegisterNavElement from './RegisterNavElement/RegisterNavElement'
+import ToggleButton from './ToggleButton/ToggleButton'
+import UserProtectedComponent from '../protected_components/UserProtectedComponent'
+import UserReverseProtectedComponent from '../protected_components/UserReverseProtectedComponent'
 
 const Header = () => {
+	const [menuOpen, setMenuOpen] = useState(false)
+
 	return (
 		<header>
-			<div className='logo-container'>
-				<FaStore className='logo' />
-				<h1>MiBarrio</h1>
-			</div>
+			<ToggleButton
+				className='menu-toggle closed-case'
+				menuOpen={menuOpen}
+				setMenuOpen={setMenuOpen}
+			/>
+			<PageLogo />
 
-			<nav>
+			<nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
+				<ToggleButton
+					className='menu-toggle open-case'
+					menuOpen={menuOpen}
+					setMenuOpen={setMenuOpen}
+				/>
+				<PageLogo className='small-screen' />
 				<ul>
-					<NavElement to='/'>Inicio</NavElement>
-					<NavElement to='/tiendas'>Tiendas</NavElement>
-					<NavElement to='/perfil'>Perfil</NavElement>
+					<NavElement to='/' onClick={() => setMenuOpen(false)}>
+						Inicio
+					</NavElement>
+					<UserProtectedComponent>
+						<NavElement to='/tiendas' onClick={() => setMenuOpen(false)}>
+							Tiendas
+						</NavElement>
+
+						<NavElement to='/perfil' onClick={() => setMenuOpen(false)}>
+							Perfil
+						</NavElement>
+					</UserProtectedComponent>
 				</ul>
 
-				<ul>
-					<LoginNavElement to='/login'>Iniciar Sesión</LoginNavElement>
-					<RegisterNavElement to='/register'>Registrarse</RegisterNavElement>
-				</ul>
+				<UserReverseProtectedComponent>
+					<ul>
+						<LoginNavElement to='/login' onClick={() => setMenuOpen(false)}>
+							Iniciar Sesión
+						</LoginNavElement>
+						<RegisterNavElement
+							to='/register'
+							onClick={() => setMenuOpen(false)}
+						>
+							Registrarse
+						</RegisterNavElement>
+					</ul>
+				</UserReverseProtectedComponent>
 			</nav>
 		</header>
 	)
