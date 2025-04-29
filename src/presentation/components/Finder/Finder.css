@@ -1,0 +1,13 @@
+.finder-input {
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	transition: border-color 0.2s;
+
+	&:focus {
+		border-color: #007bff;
+		outline: none;
+	}
+}

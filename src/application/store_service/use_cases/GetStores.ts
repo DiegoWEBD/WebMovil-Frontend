@@ -12,6 +12,7 @@ export interface GetStoresResponse {
 
 export default class GetStores {
 	async execute(
+		nameFilter: string,
 		page: number | undefined = 1,
 		limit: number | undefined
 	): Promise<GetStoresResponse> {
@@ -20,7 +21,7 @@ export default class GetStores {
 		}
 
 		const { data } = await axios.get(
-			`${CONSTANTS.API_URL}/stores?page=${page}&limit=${limit}`,
+			`${CONSTANTS.API_URL}/stores?name=${nameFilter}&page=${page}&limit=${limit}`,
 			{ headers }
 		)
 

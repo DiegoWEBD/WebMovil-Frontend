@@ -1,8 +1,9 @@
 import './StoreCard.css'
 
-import Store from '../../../../../domain/Store/Store'
-import { TiLocationOutline } from 'react-icons/ti'
 import { FaStar } from 'react-icons/fa'
+import { TiLocationOutline } from 'react-icons/ti'
+import { Link } from 'react-router-dom'
+import Store from '../../../../../domain/Store/Store'
 
 type StoreCardProps = {
 	store: Store
@@ -10,8 +11,16 @@ type StoreCardProps = {
 
 const StoreCard = ({ store }: StoreCardProps) => {
 	return (
-		<div className='store-card'>
-			<img src='http://localhost:3000/stores_portraits/generic_store_portrait.png' />
+		<Link
+			to={`/tiendas/${encodeURIComponent(store.getName())}`}
+			className='store-card'
+			state={{
+				storeId: store.getId(),
+			}}
+		>
+			<div className='store-image-container'>
+				<img src='http://localhost:3000/stores_portraits/generic_store_portrait.png' />
+			</div>
 
 			<div className='store-info-container resume'>
 				<h2 className='store-name'>{store.getName()}</h2>
@@ -30,7 +39,7 @@ const StoreCard = ({ store }: StoreCardProps) => {
 					<p>4.5</p>
 				</div>
 			</div>
-		</div>
+		</Link>
 	)
 }
 

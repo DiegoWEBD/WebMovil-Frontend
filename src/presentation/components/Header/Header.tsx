@@ -13,7 +13,7 @@ const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
 
 	return (
-		<header>
+		<header className='page-header'>
 			<ToggleButton
 				className='menu-toggle closed-case'
 				menuOpen={menuOpen}

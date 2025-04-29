@@ -1,7 +1,15 @@
 .logo-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 0.5rem;
+	text-decoration: none;
+	color: inherit;
+}
+
+.logo-container.secondary {
+	pointer-events: none;
+	color: var(--color-primary-weak);
 }
 
 .logo {
@@ -11,6 +19,11 @@
 
 .logo-container h1 {
 	font-size: 1.5rem;
+}
+
+.logo-container.secondary h1 {
+	font-size: 1.5rem;
+	font-weight: 500;
 }
 
 .logo-container.small-screen {

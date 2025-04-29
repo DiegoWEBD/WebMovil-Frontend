@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './PageLogo.css'
 import { FaStore } from 'react-icons/fa'
 
@@ -7,10 +8,10 @@ type PageLogoProps = {
 
 const PageLogo = ({ className }: PageLogoProps) => {
 	return (
-		<div className={`logo-container ${className}`}>
+		<Link to='/' className={`logo-container ${className}`}>
 			<FaStore className='logo' />
-			<h1>MiBarrio</h1>
-		</div>
+			<h1 className={className}>MiBarrio</h1>
+		</Link>
 	)
 }
 

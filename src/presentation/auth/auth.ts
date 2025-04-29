@@ -12,8 +12,7 @@ export const validateAccessToken = async (): Promise<string | null> => {
 				Authorization: `Bearer ${accessToken}`,
 			},
 		})
-		console.log('access_token validado:', accessToken)
-		console.log(data)
+
 		return data.user_email
 	} catch (error) {
 		if (axios.isAxiosError(error)) {

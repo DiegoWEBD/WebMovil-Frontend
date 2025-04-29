@@ -1,0 +1,32 @@
+.method {
+	margin: 0;
+	font-weight: bold;
+	background-color: var(--color-primary-lightest);
+	padding-inline: 0.7rem;
+	border-radius: 15px;
+	border: 1px solid var(--color-primary-light);
+	font-size: 0.9rem;
+}
+
+.methods-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+}
+
+.delivery-methods {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+@media (max-width: 350px) {
+	.delivery-methods {
+		align-items: start;
+	}
+
+	.methods-container {
+		align-items: start;
+	}
+}

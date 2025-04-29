@@ -1,12 +1,12 @@
 .store-card {
 	background: #f8fafc;
-	max-width: 25rem;
+	width: 22rem;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	border-radius: 0.6rem;
-	cursor: pointer;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
 	font-size: 0.9rem;
 	color: var(--color-primary);
+	text-decoration: none;
 }
 
 .store-card:hover {
@@ -14,9 +14,19 @@
 	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.store-card img {
-	height: 10rem;
+.store-img-container {
+	aspect-ratio: 16/9;
 	width: 100%;
+	overflow: hidden;
+	position: relative;
+	border-radius: 0.6rem 0.6rem 0 0;
+}
+
+.store-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
 	border-radius: 0.6rem 0.6rem 0 0;
 }
 
@@ -85,4 +95,10 @@
 
 .store-rating p {
 	margin: 0;
+}
+
+@media (max-width: 530px) {
+	.store-card {
+		width: 100%;
+	}
 }

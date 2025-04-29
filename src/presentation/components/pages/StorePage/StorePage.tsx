@@ -1,16 +1,58 @@
 import './StorePage.css'
 
-import StoresContainer from './StoresContainer/StoresContainer'
+import { useQuery } from '@tanstack/react-query'
+import { FaArrowLeft } from 'react-icons/fa6'
+import { Link, useLocation, useParams } from 'react-router-dom'
+import Store from '../../../../domain/Store/Store'
+import { CONSTANTS } from '../../../../utils/constants'
+import useAppState from '../../../global_states/appState'
+import Skeleton from '../../Skeleton/Skeleton'
+import StoreContactInformation from './StoreContactInformation/StoreContactInformation'
+import StoreProducts from './StoreProducts/StoreProducts'
+import ContentChanger from './ContentChanger/ContentChanger'
+import { useState } from 'react'
 
 const StorePage = () => {
+	const { name } = useParams()
+	const { storeService } = useAppState()
+	const location = useLocation()
+	const [content, setContent] = useState<string>('products')
+
+	const { data, isLoading } = useQuery<Store | undefined>({
+		queryKey: ['storeData', name],
+		queryFn: async () => {
+			if (!name) return undefined
+
+			return await storeService.getStoreByName(name)
+		},
+	})
+
 	return (
-		<>
-			<div className='page-title-container'>
-				<h1 className='page-title'>Tiendas</h1>
-				<p className='page-subtitle'>Descubre las tiendas de tu vecindario</p>
+		<div className='store-page'>
+			<Link to='/tiendas' className='back-link'>
+				<FaArrowLeft className='back-icon' />
+				<p>Volver a tiendas</p>
+			</Link>
+			<div className='info-plus-contact'>
+				<div className='info'>
+					<img
+						src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.png`}
+						className='store-img'
+					/>
+					<h1 className='store-name'>{name}</h1>
+					{isLoading ? (
+						<Skeleton />
+					) : (
+						<p className='store-description'>{data?.getDescription()}</p>
+					)}
+
+					<ContentChanger content={content} setContent={setContent} />
+					<StoreProducts storeId={location.state.storeId} />
+				</div>
+
+				<StoreContactInformation store={data} />
 			</div>
-			<StoresContainer />
-		</>
+		</div>
 	)
 }
 

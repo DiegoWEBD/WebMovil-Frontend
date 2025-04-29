@@ -1,9 +1,10 @@
-import './LoginForm.css'
 import { TokenResponse, useGoogleLogin } from '@react-oauth/google'
-import LoginButton from './LoginButton/LoginButton'
+import { Link, useNavigate } from 'react-router-dom'
 import { validateAccessToken } from '../../../../auth/auth'
 import useAppState from '../../../../global_states/appState'
-import { useNavigate } from 'react-router-dom'
+import PageLogo from '../../../PageLogo/PageLogo'
+import LoginButton from './LoginButton/LoginButton'
+import './LoginForm.css'
 
 const LoginForm = () => {
 	const { setUserEmail } = useAppState()
@@ -34,7 +35,22 @@ const LoginForm = () => {
 
 	return (
 		<div className='login-form'>
-			<LoginButton onClick={googleLogin}>Iniciar Sesión</LoginButton>
+			<header className='register-form-header'>
+				<PageLogo className='secondary' />
+				<h2 className='form-title'>Iniciar sesión</h2>
+				<p className='form-subtitle'>
+					Ingresa a tu cuenta para acceder a todas las funciones
+				</p>
+			</header>
+			<div className='fields'>
+				<LoginButton onClick={googleLogin}>Iniciar sesión</LoginButton>
+			</div>
+			<footer className='register-form-footer'>
+				<p>¿No tienes una cuenta?</p>
+				<Link to='/register' className='footer-link'>
+					Regístrate
+				</Link>
+			</footer>
 		</div>
 	)
 }

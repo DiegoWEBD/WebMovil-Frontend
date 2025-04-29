@@ -1,0 +1,6 @@
+.product-card.skeleton-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	padding: 1rem;
+}
