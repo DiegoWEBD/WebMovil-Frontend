@@ -8,7 +8,6 @@ type StoresContainerProps = {
 }
 
 const StoresContainer = ({ stores }: StoresContainerProps) => {
-	console.log(stores)
 	return (
 		<div className='store-list'>
 			{stores?.map(store => (

@@ -1,0 +1,38 @@
+.store-about {
+	border: 1px solid var(--color-primary-light);
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.about {
+	margin: 0;
+}
+
+.about-title,
+.store-about h3 {
+	margin: 0.4rem 0;
+	color: var(--color-primary-strong);
+	font-weight: 500;
+	font-size: 1.1rem;
+}
+
+.store-about h2 {
+	margin: 0;
+}
+
+.schedule-container {
+	display: flex;
+	font-size: 0.9rem;
+}
+
+.schedule-time {
+	width: 50%;
+	margin: 0;
+}
+
+.schedule-days {
+	width: 50%;
+	margin: 0;
+	display: flex;
+}

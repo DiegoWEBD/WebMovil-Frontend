@@ -1,0 +1,26 @@
+.time-text {
+	margin: 0;
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+.open-state {
+	margin: 0;
+	color: #22c55e;
+	font-weight: 500;
+}
+
+.open-state.closed {
+	color: #dc2626;
+}
+
+.time-container {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.time-container.loading {
+	gap: 0.3rem;
+}

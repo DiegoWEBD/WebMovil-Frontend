@@ -11,6 +11,7 @@ import StoreContactInformation from './StoreContactInformation/StoreContactInfor
 import StoreProducts from './StoreProducts/StoreProducts'
 import ContentChanger from './ContentChanger/ContentChanger'
 import { useState } from 'react'
+import StoreAbout from './StoreAbout/StoreAbout'
 
 const StorePage = () => {
 	const { name } = useParams()
@@ -47,7 +48,10 @@ const StorePage = () => {
 					)}
 
 					<ContentChanger content={content} setContent={setContent} />
-					<StoreProducts storeId={location.state.storeId} />
+					{content === 'products' && (
+						<StoreProducts storeId={location.state.storeId} />
+					)}
+					{content === 'about' && <StoreAbout store={data} />}
 				</div>
 
 				<StoreContactInformation store={data} />

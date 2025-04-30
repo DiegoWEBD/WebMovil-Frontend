@@ -15,8 +15,8 @@ const ContentChanger = ({ content, setContent }: ContentChangerProps) => {
 				Productos
 			</button>
 			<button
-				className={`button ${content == 'information' ? 'selected' : ''}`}
-				onClick={() => setContent('information')}
+				className={`button ${content == 'about' ? 'selected' : ''}`}
+				onClick={() => setContent('about')}
 			>
 				Información
 			</button>

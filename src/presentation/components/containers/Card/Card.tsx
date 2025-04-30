@@ -2,7 +2,7 @@ import './Card.css'
 import { ReactNode } from 'react'
 
 type CardProps = {
-	children: ReactNode
+	children?: ReactNode
 	className?: string
 }
 

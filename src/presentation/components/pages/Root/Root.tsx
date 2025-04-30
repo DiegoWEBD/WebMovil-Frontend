@@ -1,7 +1,8 @@
+import './Root.css'
+
 import { useEffect } from 'react'
 import useAppState from '../../../global_states/appState'
 import Header from '../../Header/Header'
-
 import { Outlet } from 'react-router-dom'
 import AppContainer from '../../AppContainer/AppContainer'
 
@@ -13,12 +14,12 @@ const App = () => {
 	}, [validateAccessToken])
 
 	return (
-		<>
+		<div className='app'>
 			<Header />
 			<AppContainer>
 				<Outlet />
 			</AppContainer>
-		</>
+		</div>
 	)
 }
 

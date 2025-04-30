@@ -5,6 +5,8 @@ import Store from '../../../../../domain/Store/Store'
 import './StoreContactInformation.css'
 import DeliveryMethods from './DeliveryMethods/DeliveryMethods'
 import Skeleton from '../../../Skeleton/Skeleton'
+import Card from '../../../containers/Card/Card'
+import DailySchedule from './DailySchedule/DailySchedule'
 
 type StoreContactInformationProps = {
 	store: Store | undefined
@@ -12,7 +14,7 @@ type StoreContactInformationProps = {
 
 const StoreContactInformation = ({ store }: StoreContactInformationProps) => {
 	return (
-		<div className='store-contact-information'>
+		<Card className='store-contact-information'>
 			<div className='primary-information'>
 				<h2 className='title'>Información de contacto</h2>
 				<div className='information-item'>
@@ -41,22 +43,11 @@ const StoreContactInformation = ({ store }: StoreContactInformationProps) => {
 				</div>
 				<div className='information-item'>
 					<LuClock className='item-logo' />
-					<div className={`time-container ${!store ? 'loading' : ''}`}>
-						{store ? (
-							<p className='open-time-text'>Abierto ahora</p>
-						) : (
-							<Skeleton width='80%' />
-						)}
-						{store ? (
-							<p className='time-text'>Cierra a las 19:00</p>
-						) : (
-							<Skeleton width='75%' height='0.8rem' />
-						)}
-					</div>
+					<DailySchedule store={store} />
 				</div>
 			</div>
 			<DeliveryMethods />
-		</div>
+		</Card>
 	)
 }
 
