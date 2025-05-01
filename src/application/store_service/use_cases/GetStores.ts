@@ -26,7 +26,7 @@ export default class GetStores {
 		const storeSummaries: StoreSummary[] = response.data.stores.map(
 			(store: StoreSummary) => ({
 				...store,
-				// random number between 1 and 5
+				//random number between 1 and 5 with 1 decimal
 				feedback_rating: (Math.random() * 4 + 1).toFixed(1),
 			})
 		)
