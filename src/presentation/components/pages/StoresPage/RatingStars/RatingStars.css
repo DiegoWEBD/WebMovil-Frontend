@@ -1,0 +1,27 @@
+.rating-average {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	line-height: 1;
+}
+
+.star-icons svg {
+	font-size: 1rem;
+	color: #fbbf24;
+}
+
+.feedback-rating {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+@media (max-width: 320px) {
+	.feedback-rating {
+		display: none;
+	}
+
+	.star-icons svg {
+		font-size: 0.9rem;
+	}
+}

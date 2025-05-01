@@ -89,23 +89,6 @@
 	color: var(--color-primary);
 }
 
-.rating-average {
-	display: flex;
-	align-items: center;
-	gap: 0.4rem;
-	line-height: 1;
-}
-
-.star-icons svg {
-	font-size: 1rem;
-}
-
-.feedback-rating {
-	font-size: 1.1rem;
-	font-weight: 700;
-	color: var(--color-primary);
-}
-
 @media (max-width: 370px) {
 	.store-card {
 		font-size: calc(0.9rem - 0.1rem);
@@ -113,16 +96,7 @@
 }
 
 @media (max-width: 320px) {
-	.feedback-rating {
-		display: none;
-	}
-
-	.star-icons svg {
-		font-size: 0.9rem;
-	}
-
 	.store-products-count {
 		font-size: 1rem;
 	}
 }
-

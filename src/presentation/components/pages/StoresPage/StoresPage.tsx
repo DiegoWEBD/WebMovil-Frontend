@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Finder } from '../../Finder/Finder'
 import StoresViewer from './StoresViewer/StoresViewer'
 
-const StorePage = () => {
+const StoresPage = () => {
 	const [searchInput, setSearchInput] = useState<string>('')
 	const [debouncedInput, setDebouncedInput] = useState<string>('')
 
@@ -29,4 +29,4 @@ const StorePage = () => {
 	)
 }
 
-export default StorePage
+export default StoresPage

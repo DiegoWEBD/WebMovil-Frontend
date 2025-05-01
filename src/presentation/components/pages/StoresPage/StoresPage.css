@@ -1,5 +1,11 @@
 .stores-page {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 1.5rem;
+}
+
+.page-title-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }

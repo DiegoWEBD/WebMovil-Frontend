@@ -34,8 +34,8 @@
 	.logo-container.small-screen {
 		display: flex;
 		width: 100%;
-		padding-left: 2.3rem;
-		margin-bottom: 0.5rem;
+		margin-bottom: 2rem;
+		justify-content: start;
 	}
 
 	.logo {

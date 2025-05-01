@@ -2,8 +2,8 @@ import './StoreAbout.css'
 
 import Store from '../../../../../domain/Store/Store'
 import Card from '../../../containers/Card/Card'
+import RatingStars from '../../StoresPage/RatingStars/RatingStars'
 import useGroupedSchedules, { ScheduleGroup } from './hooks/useGroupedSchedules'
-import { FaStar } from 'react-icons/fa'
 
 type StoreAboutProps = {
 	store: Store | undefined
@@ -34,13 +34,7 @@ const StoreAbout = ({ store }: StoreAboutProps) => {
 
 			<div className='about-section'>
 				<h3>Valoración</h3>
-				<div className='rating-container'>
-					<FaStar className='star' />
-					<div className='rating-points-container'>
-						<p className='rating-points'>4.5 / 5 </p>
-						<p className='rating-detail'>(12 valoraciones)</p>
-					</div>
-				</div>
+				<RatingStars rating={4.2} />
 			</div>
 		</Card>
 	)
