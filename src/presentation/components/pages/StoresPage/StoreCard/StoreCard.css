@@ -74,9 +74,14 @@
 	text-overflow: ellipsis;
 }
 
-.store-products-count {
+.store-products-count-container {
 	display: flex;
 	align-items: center;
+	gap: 0.3rem;
+}
+
+.store-products-count {
+	font-weight: 700;
 }
 
 .rating-average {
@@ -85,31 +90,12 @@
 	gap: 0.5rem;
 }
 
-.rating-average .star-outer {
-	position: relative;
-	font-size: 1.4rem;
-	display: inline-block;
+.star-icons svg {
+	font-size: 1.1rem;
 }
 
-.rating-average .star-outer::before {
-	content: '\2605 \2605 \2605 \2605 \2605';
-	color: #0005;
-}
-
-.rating-average .star-inner {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 0%;
-	overflow: hidden;
-}
-
-.rating-average .star-inner::before {
-	content: '\2605 \2605 \2605 \2605 \2605';
-	color: gold;
-}
-
-@media (max-width: 530px) {
+.feedback-rating {
+	font-weight: 700;
 }
 
 @media (max-width: 370px) {
