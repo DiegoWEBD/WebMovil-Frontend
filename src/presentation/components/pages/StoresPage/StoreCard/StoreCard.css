@@ -87,8 +87,11 @@
 
 .rating-average .star-outer {
 	position: relative;
-	font-size: 1.4rem;
 	display: inline-block;
+	font-size: 1.4rem;
+	background-color: red;
+	line-height: 1;
+	vertical-align: middle;
 }
 
 .rating-average .star-outer::before {
@@ -107,9 +110,6 @@
 .rating-average .star-inner::before {
 	content: '\2605 \2605 \2605 \2605 \2605';
 	color: gold;
-}
-
-@media (max-width: 530px) {
 }
 
 @media (max-width: 370px) {
