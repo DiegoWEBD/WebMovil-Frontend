@@ -34,7 +34,7 @@ const StoreAbout = ({ store }: StoreAboutProps) => {
 
 			<div className='about-section'>
 				<h3>Valoración</h3>
-				<RatingStars rating={4.2} />
+				<RatingStars rating={4.5} />
 			</div>
 		</Card>
 	)
