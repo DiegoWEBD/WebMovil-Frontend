@@ -4,6 +4,7 @@
 	border-radius: 0.6rem;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
 	font-size: 0.9rem;
+	color: #374151;
 }
 
 .store-card-link {
@@ -32,16 +33,15 @@
 	border-radius: 0.6rem 0.6rem 0 0;
 }
 
-.store-info-container {
+.resume {
 	padding: 1rem;
 }
 
-.store-info-container.extra {
-	padding-top: 1rem;
+.extra {
+	padding: 0.5rem 1rem;
 	border-top: 1px solid #cbd5e1;
 	display: flex;
 	justify-content: space-between;
-	font-weight: 500;
 }
 
 .store-card-name {
@@ -56,6 +56,7 @@
 	align-items: center;
 	gap: 0.3rem;
 	margin: 0.5rem 0rem 0.5rem 0rem;
+	color: var(--color-primary);
 }
 
 .direction-logo {
@@ -74,32 +75,43 @@
 	text-overflow: ellipsis;
 }
 
-.store-products-count {
+.store-products-count-container {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
+}
+
+.store-products-count {
+	font-size: 1rem;
+	color: var(--color-primary-strong);
+	font-weight: 700;
+}
+
+.feedback-rating {
+	font-size: 1rem;
+	color: var(--color-primary-strong);
+	font-weight: 700;
 }
 
 .rating-average {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 0.5rem;
 }
 
-.rating-average .star-outer {
+.star-outer {
 	position: relative;
 	display: inline-block;
 	font-size: 1.4rem;
-	background-color: red;
 	line-height: 1;
-	vertical-align: middle;
 }
 
-.rating-average .star-outer::before {
+.star-outer::before {
 	content: '\2605 \2605 \2605 \2605 \2605';
 	color: #0005;
 }
 
-.rating-average .star-inner {
+.star-inner {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -107,7 +119,7 @@
 	overflow: hidden;
 }
 
-.rating-average .star-inner::before {
+.star-inner::before {
 	content: '\2605 \2605 \2605 \2605 \2605';
 	color: gold;
 }

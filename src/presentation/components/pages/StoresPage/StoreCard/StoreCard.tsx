@@ -34,8 +34,8 @@ const StoreCard = ({ store }: StoreCardProps) => {
 				</div>
 
 				<div className='store-info-container extra'>
-					<div className='store-products-count'>
-						<p>{store.products_count}</p>
+					<div className='store-products-count-container'>
+						<p className='store-products-count'>{store.products_count}</p>
 						<p>Productos</p>
 					</div>
 					<div className='rating-average'>
