@@ -1,0 +1,17 @@
+.store-skeleton {
+	padding: 0;
+}
+
+.store-skeleton-info {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.store-skeleton-footer {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	border-top: 1px solid #cbd5e1;
+}

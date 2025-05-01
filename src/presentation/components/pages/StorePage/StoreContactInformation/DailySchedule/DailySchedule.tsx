@@ -14,7 +14,7 @@ const DailySchedule = ({ store }: DailyScheduleProps) => {
 	)
 
 	return (
-		<div className={`time-container ${!store ? 'loading' : ''}`}>
+		<div className={`time-container ${store ? '' : 'loading'}`}>
 			{store ? (
 				<p className={`open-state ${isOpenNow() ? '' : 'closed'}`}>
 					{isOpenNow() ? 'Abierto ahora' : 'Cerrado'}
@@ -25,7 +25,7 @@ const DailySchedule = ({ store }: DailyScheduleProps) => {
 			{store ? (
 				<p className='time-text'>{getStateMessage()}</p>
 			) : (
-				<Skeleton width='75%' height='0.8rem' />
+				<Skeleton width='70%' height='0.8rem' />
 			)}
 		</div>
 	)

@@ -1,17 +1,19 @@
-.store-card {
+.card.store-card {
+	padding: 0;
 	background: #f8fafc;
-	width: 22rem;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	border-radius: 0.6rem;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
 	font-size: 0.9rem;
-	color: var(--color-primary);
+}
+
+.store-card-link {
 	text-decoration: none;
+	color: inherit;
 }
 
 .store-card:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+	transform: translateY(-2px);
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .store-img-container {
@@ -31,7 +33,7 @@
 }
 
 .store-info-container {
-	padding: 0 1rem 1rem 1rem;
+	padding: 1rem;
 }
 
 .store-info-container.extra {
@@ -42,15 +44,11 @@
 	font-weight: 500;
 }
 
-.store-info-container.resume {
-	height: 5rem;
-}
-
-.store-name {
-	margin: 0;
+.store-card-name {
+	margin: 0 0 0.7rem 0;
 	color: var(--color-primary-strong);
-	font-weight: 600;
-	font-size: 1.2rem;
+	font-weight: 700;
+	font-size: 1.4rem;
 }
 
 .store-direction-container {
@@ -77,28 +75,45 @@
 }
 
 .store-products-count {
-	margin: 0;
-}
-
-.store-rating {
-	margin: 0;
 	display: flex;
 	align-items: center;
-	gap: 0.3rem;
 }
 
-.star {
-	width: 0.9rem;
-	height: 0.9rem;
-	color: #eab308;
+.rating-average {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
-.store-rating p {
-	margin: 0;
+.rating-average .star-outer {
+	position: relative;
+	font-size: 1.4rem;
+	display: inline-block;
+}
+
+.rating-average .star-outer::before {
+	content: '\2605 \2605 \2605 \2605 \2605';
+	color: #0005;
+}
+
+.rating-average .star-inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0%;
+	overflow: hidden;
+}
+
+.rating-average .star-inner::before {
+	content: '\2605 \2605 \2605 \2605 \2605';
+	color: gold;
 }
 
 @media (max-width: 530px) {
+}
+
+@media (max-width: 370px) {
 	.store-card {
-		width: 100%;
+		font-size: calc(0.9rem - 0.1rem);
 	}
 }

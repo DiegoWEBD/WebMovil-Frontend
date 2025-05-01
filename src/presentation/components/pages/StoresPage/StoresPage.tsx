@@ -17,7 +17,7 @@ const StorePage = () => {
 	}, [searchInput])
 
 	return (
-		<div className='store-page'>
+		<div className='stores-page'>
 			<div className='page-title-container'>
 				<h1 className='page-title'>Tiendas</h1>
 				<p className='page-subtitle'>Descubre las tiendas de tu vecindario</p>

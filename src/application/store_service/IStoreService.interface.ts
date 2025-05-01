@@ -9,4 +9,5 @@ export default interface IStoreService {
 		limit: number | undefined
 	): Promise<GetStoresResponse>
 	getStoresByOwnerEmail(ownerEmail: string): Promise<Store[]>
+	getStoreById(id: string): Promise<Store | undefined>
 }

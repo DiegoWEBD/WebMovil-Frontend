@@ -10,12 +10,12 @@ const weekDaysMap: Map<number, string> = new Map([
 	[6, 'Sábado'],
 ])
 
-const useDailySchedule = (schedules: Schedule[]) => {
+const useDailySchedule = (schedules: Schedule[] | undefined) => {
 	const now = new Date()
 	const weekDay = now.getDay()
 
 	const isOpenNow = () => {
-		if (schedules.length === 0) return false
+		if (!schedules || schedules.length === 0) return false
 
 		for (const schedule of schedules) {
 			if (weekDaysMap.get(weekDay) === schedule.getDay()) {
@@ -38,9 +38,8 @@ const useDailySchedule = (schedules: Schedule[]) => {
 	}
 
 	const getStateMessage = (): string | null => {
-		if (schedules.length === 0) return null
+		if (!schedules || schedules.length === 0) return null
 
-		// Verificar si está abierto ahora mismo
 		for (const schedule of schedules) {
 			if (weekDaysMap.get(weekDay) === schedule.getDay()) {
 				const open = schedule.getOpen()
@@ -57,11 +56,13 @@ const useDailySchedule = (schedules: Schedule[]) => {
 
 				if (now >= openDate && now <= closeDate) {
 					return `Cierra a las ${close}`
+				} else if (now < openDate) {
+					return `Abre hoy a las ${open}`
 				}
 			}
 		}
 
-		// Sin no está abierto, buscar el siguiente horario
+		// Si no hay horario restante hoy, buscar el próximo horario en los días siguientes
 		for (let i = 1; i <= 7; i++) {
 			const nextDayIndex = (weekDay + i) % 7
 			const nextDayName = weekDaysMap.get(nextDayIndex)

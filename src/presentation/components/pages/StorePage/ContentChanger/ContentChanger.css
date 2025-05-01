@@ -16,6 +16,7 @@
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 0.9rem;
+	font-weight: 600;
 }
 
 .button.selected {

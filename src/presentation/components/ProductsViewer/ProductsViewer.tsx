@@ -11,12 +11,13 @@ type ProductsViewerProps = {
 const ProductsViewer = ({ products }: ProductsViewerProps) => {
 	return (
 		<div className='products-container'>
-			{products?.map((product, index) => (
-				<ProductCard key={index} product={product} />
-			)) ||
-				Array.from({ length: 10 }).map((_, index) => (
-					<ProductSkeletonCard key={index} />
-				))}
+			{products
+				? products.map((product, index) => (
+						<ProductCard key={index} product={product} />
+				  ))
+				: Array.from({ length: 10 }).map((_, index) => (
+						<ProductSkeletonCard key={index} />
+				  ))}
 		</div>
 	)
 }

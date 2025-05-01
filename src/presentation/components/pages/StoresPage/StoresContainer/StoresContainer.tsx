@@ -1,18 +1,21 @@
 import './StoresContainer.css'
 
-import Store from '../../../../../domain/Store/Store'
+import StoreSummary from '../../../../../application/types/StoreSummary.interface'
 import StoreCard from '../StoreCard/StoreCard'
+import StoreSkeletonCard from '../StoreCard/StoreSkeletonCard/StoreSkeletonCard'
 
 type StoresContainerProps = {
-	stores: Store[] | undefined
+	stores: StoreSummary[] | undefined
 }
 
 const StoresContainer = ({ stores }: StoresContainerProps) => {
 	return (
 		<div className='store-list'>
-			{stores?.map(store => (
-				<StoreCard key={store.getId()} store={store} />
-			))}
+			{stores
+				? stores.map(store => <StoreCard key={store.id} store={store} />)
+				: Array.from({ length: 8 }, (_, index) => (
+						<StoreSkeletonCard key={index} />
+				  ))}
 		</div>
 	)
 }

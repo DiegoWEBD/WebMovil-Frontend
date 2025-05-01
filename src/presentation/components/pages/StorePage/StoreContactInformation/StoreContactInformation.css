@@ -67,6 +67,10 @@
 		align-items: start;
 	}
 
+	.information-item {
+		justify-content: start;
+	}
+
 	.primary-information {
 		align-items: start;
 	}

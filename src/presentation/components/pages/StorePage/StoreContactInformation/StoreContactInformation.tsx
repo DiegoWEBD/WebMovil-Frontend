@@ -28,7 +28,7 @@ const StoreContactInformation = ({ store }: StoreContactInformationProps) => {
 				<div className='information-item'>
 					<GrPhone className='item-logo' />
 					{store ? (
-						<p className='item-data'>{store?.getPhone()} </p>
+						<p className='item-data'>{store.getPhone()} </p>
 					) : (
 						<Skeleton width='40%' />
 					)}
@@ -36,7 +36,7 @@ const StoreContactInformation = ({ store }: StoreContactInformationProps) => {
 				<div className='information-item'>
 					<MdMailOutline className='item-logo' />
 					{store ? (
-						<p className='item-data'>tienda@mibarrio.com</p>
+						<p className='item-data'>{store.getEmail()}</p>
 					) : (
 						<Skeleton width='60%' />
 					)}
@@ -46,7 +46,7 @@ const StoreContactInformation = ({ store }: StoreContactInformationProps) => {
 					<DailySchedule store={store} />
 				</div>
 			</div>
-			<DeliveryMethods />
+			<DeliveryMethods isLoading={store === undefined} />
 		</Card>
 	)
 }

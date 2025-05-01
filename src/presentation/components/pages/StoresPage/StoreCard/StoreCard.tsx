@@ -1,45 +1,57 @@
 import './StoreCard.css'
 
-import { FaStar } from 'react-icons/fa'
 import { TiLocationOutline } from 'react-icons/ti'
 import { Link } from 'react-router-dom'
-import Store from '../../../../../domain/Store/Store'
+import StoreSummary from '../../../../../application/types/StoreSummary.interface'
+import Card from '../../../containers/Card/Card'
 
 type StoreCardProps = {
-	store: Store
+	store: StoreSummary
 }
 
 const StoreCard = ({ store }: StoreCardProps) => {
 	return (
-		<Link
-			to={`/tiendas/${encodeURIComponent(store.getName())}`}
-			className='store-card'
-			state={{
-				storeId: store.getId(),
-			}}
-		>
-			<div className='store-image-container'>
-				<img src='http://localhost:3000/stores_portraits/generic_store_portrait.png' />
-			</div>
-
-			<div className='store-info-container resume'>
-				<h2 className='store-name'>{store.getName()}</h2>
-				<div className='store-direction-container'>
-					<TiLocationOutline className='direction-logo' />
-					<p className='store-direction'>{store.getDirection()}</p>
+		<Card className='store-card'>
+			<Link
+				to={`/tiendas/${encodeURIComponent(store.name)}`}
+				className='store-card-link'
+				state={{
+					storeId: store.id,
+				}}
+			>
+				<div className='store-image-container'>
+					<img src='http://localhost:3000/stores_portraits/generic_store_portrait.png' />
 				</div>
 
-				<p className='store-description'>{store.getDescription()}</p>
-			</div>
+				<div className='store-info-container resume'>
+					<p className='store-card-name'>{store.name}</p>
+					<div className='store-direction-container'>
+						<TiLocationOutline className='direction-logo' />
+						<p className='store-direction'>{store.direction}</p>
+					</div>
 
-			<div className='store-info-container extra'>
-				<p className='store-products-count'>6 productos</p>
-				<div className='store-rating'>
-					<FaStar className='star' />
-					<p>4.5</p>
+					<p className='store-description'>{store.description}</p>
 				</div>
-			</div>
-		</Link>
+
+				<div className='store-info-container extra'>
+					<div className='store-products-count'>
+						<p>{store.products_count}</p>
+						<p>Productos</p>
+					</div>
+					<div className='rating-average'>
+						<p className='feedback-rating'>{store.feedback_rating}</p>
+						<div className='star-outer'>
+							<div
+								className='star-inner'
+								style={{
+									width: `${(store.feedback_rating / 5) * 100}%`,
+								}}
+							/>
+						</div>
+					</div>
+				</div>
+			</Link>
+		</Card>
 	)
 }
 

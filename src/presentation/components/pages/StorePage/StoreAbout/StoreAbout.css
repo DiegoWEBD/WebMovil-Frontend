@@ -2,7 +2,7 @@
 	border: 1px solid var(--color-primary-light);
 	display: flex;
 	flex-direction: column;
-	gap: 0.2rem;
+	gap: 1rem;
 }
 
 .about {
@@ -11,14 +11,10 @@
 
 .about-title,
 .store-about h3 {
-	margin: 0.4rem 0;
+	margin: 0;
 	color: var(--color-primary-strong);
 	font-weight: 500;
 	font-size: 1.1rem;
-}
-
-.store-about h2 {
-	margin: 0;
 }
 
 .schedule-container {
@@ -27,12 +23,51 @@
 }
 
 .schedule-time {
-	width: 50%;
+	width: 55%;
 	margin: 0;
 }
 
 .schedule-days {
-	width: 50%;
+	width: 45%;
 	margin: 0;
 	display: flex;
+}
+
+.rating-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-weight: 600;
+}
+
+.rating-points-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.rating-points {
+	margin: 0;
+}
+
+.rating-detail {
+	margin: 0;
+	font-weight: normal;
+	font-size: 0.9rem;
+}
+
+.about-section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+}
+
+@media (max-width: 400px) {
+	.schedule-container {
+		justify-content: space-between;
+	}
+	.schedule-time,
+	.schedule-days {
+		width: fit-content;
+	}
 }

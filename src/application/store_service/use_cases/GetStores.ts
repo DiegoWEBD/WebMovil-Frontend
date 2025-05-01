@@ -1,13 +1,11 @@
 import axios from 'axios'
-import Store from '../../../domain/Store/Store'
-import StoreJSONAdapter from '../../../infrastructure/adapters/StoreJSONAdapter'
-import StoreJSON from '../../../infrastructure/store/StoreJSON.interface'
 import { CONSTANTS } from '../../../utils/constants'
+import StoreSummary from '../../types/StoreSummary.interface'
 import StoresMetadata from '../StoresMetadata'
 
 export interface GetStoresResponse {
 	meta: StoresMetadata
-	stores: Store[]
+	stores: StoreSummary[]
 }
 
 export default class GetStores {
@@ -20,18 +18,21 @@ export default class GetStores {
 			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
 		}
 
-		const { data } = await axios.get(
+		const response = await axios.get(
 			`${CONSTANTS.API_URL}/stores?name=${nameFilter}&page=${page}&limit=${limit}`,
 			{ headers }
 		)
 
-		const stores: Store[] = data.stores.map(
-			(storeJSON: StoreJSON) => new StoreJSONAdapter(storeJSON)
+		const storeSummaries: StoreSummary[] = response.data.stores.map(
+			(store: StoreSummary) => ({
+				...store,
+				feedback_rating: 3.6,
+			})
 		)
 
 		return {
-			meta: data.meta,
-			stores,
+			meta: response.data.meta,
+			stores: storeSummaries,
 		}
 	}
 }

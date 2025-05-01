@@ -12,6 +12,7 @@ import StoreProducts from './StoreProducts/StoreProducts'
 import ContentChanger from './ContentChanger/ContentChanger'
 import { useState } from 'react'
 import StoreAbout from './StoreAbout/StoreAbout'
+import useDailySchedule from './StoreContactInformation/DailySchedule/hooks/useDailySchedule'
 
 const StorePage = () => {
 	const { name } = useParams()
@@ -20,13 +21,12 @@ const StorePage = () => {
 	const [content, setContent] = useState<string>('products')
 
 	const { data, isLoading } = useQuery<Store | undefined>({
-		queryKey: ['storeData', name],
-		queryFn: async () => {
-			if (!name) return undefined
-
-			return await storeService.getStoreByName(name)
-		},
+		queryKey: ['storeData', location.state.storeId],
+		queryFn: async () =>
+			await storeService.getStoreById(location.state.storeId),
 	})
+
+	const { isOpenNow } = useDailySchedule(data?.getSchedules())
 
 	return (
 		<div className='store-page'>
@@ -40,12 +40,21 @@ const StorePage = () => {
 						src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.png`}
 						className='store-img'
 					/>
-					<h1 className='store-name'>{name}</h1>
-					{isLoading ? (
-						<Skeleton />
-					) : (
-						<p className='store-description'>{data?.getDescription()}</p>
-					)}
+					<div className='store-header'>
+						<div>
+							<h1 className='store-name'>{name}</h1>
+							{isLoading ? (
+								<Skeleton />
+							) : (
+								<p className='complete-store-description'>
+									{data?.getDescription()}
+								</p>
+							)}
+						</div>
+						<p className={`store-open-state ${isOpenNow() ? '' : 'closed'}`}>
+							{isOpenNow() ? 'Abierto ahora' : 'Cerrado'}
+						</p>
+					</div>
 
 					<ContentChanger content={content} setContent={setContent} />
 					{content === 'products' && (

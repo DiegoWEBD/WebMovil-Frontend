@@ -21,6 +21,10 @@ const Header = () => {
 			/>
 			<PageLogo />
 
+			{menuOpen && (
+				<div className='nav-overlay' onClick={() => setMenuOpen(false)} />
+			)}
+
 			<nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
 				<ToggleButton
 					className='menu-toggle open-case'

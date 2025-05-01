@@ -3,6 +3,7 @@ import './StoreAbout.css'
 import Store from '../../../../../domain/Store/Store'
 import Card from '../../../containers/Card/Card'
 import useGroupedSchedules, { ScheduleGroup } from './hooks/useGroupedSchedules'
+import { FaStar } from 'react-icons/fa'
 
 type StoreAboutProps = {
 	store: Store | undefined
@@ -14,18 +15,33 @@ const StoreAbout = ({ store }: StoreAboutProps) => {
 
 	return (
 		<Card className='store-about'>
-			<h2 className='about-title'>Sobre nosotros</h2>
-			<p className='about'>{store?.getAbout()}</p>
-			<h3>Horarios</h3>
+			<div className='about-section'>
+				<h3 className='about-title'>Sobre nosotros</h3>
+				<p className='about'>{store?.getAbout()}</p>
+			</div>
 
-			{groupedSchedules.map(schedule => (
-				<div key={schedule.dayRange} className='schedule-container'>
-					<div className='schedule-days'>{schedule.dayRange}</div>
-					<p className='schedule-time'>
-						{schedule.open} - {schedule.close}
-					</p>
+			<div className='about-section'>
+				<h3>Horarios</h3>
+				{groupedSchedules.map(schedule => (
+					<div key={schedule.dayRange} className='schedule-container'>
+						<div className='schedule-days'>{schedule.dayRange}</div>
+						<p className='schedule-time'>
+							{schedule.open} - {schedule.close}
+						</p>
+					</div>
+				))}
+			</div>
+
+			<div className='about-section'>
+				<h3>Valoración</h3>
+				<div className='rating-container'>
+					<FaStar className='star' />
+					<div className='rating-points-container'>
+						<p className='rating-points'>4.5 / 5 </p>
+						<p className='rating-detail'>(12 valoraciones)</p>
+					</div>
 				</div>
-			))}
+			</div>
 		</Card>
 	)
 }

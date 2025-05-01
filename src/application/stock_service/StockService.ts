@@ -3,6 +3,7 @@ import Product from '../../domain/Product/Product'
 import IStockService from './IStockService.interface'
 import { CONSTANTS } from '../../utils/constants'
 import ProductJSON from '../../infrastructure/product/ProductJSON.interface'
+import ProductJSONAdapter from '../../infrastructure/product/adapters/ProductJSONAdapter'
 
 export default class StockService implements IStockService {
 	async getProductsByStoreId(storeId: string): Promise<Product[]> {
@@ -18,13 +19,7 @@ export default class StockService implements IStockService {
 		)
 
 		return response.data.map(
-			(product: ProductJSON) =>
-				new Product(
-					product.code,
-					product.name,
-					product.description,
-					product.price
-				)
+			(product: ProductJSON) => new ProductJSONAdapter(product)
 		)
 	}
 }

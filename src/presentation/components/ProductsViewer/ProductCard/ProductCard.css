@@ -1,5 +1,4 @@
-.card.product-card {
-	max-width: 14rem;
+.product-card {
 	color: var(--color-primary);
 	padding: 0;
 	cursor: pointer;
@@ -45,7 +44,7 @@
 
 .product-img-container {
 	width: 100%;
-	aspect-ratio: 9/10;
+	aspect-ratio: 1;
 	overflow: hidden;
 	position: relative;
 	border-radius: 0.6rem 0.6rem 0 0;

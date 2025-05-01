@@ -20,6 +20,12 @@
 	--color-primary-strongest: #1e3a8a;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 .page-title {
 	color: var(--color-primary-strong);
 	margin-bottom: 0rem;
