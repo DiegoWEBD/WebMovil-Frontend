@@ -66,13 +66,13 @@ const StoreCard = ({ store }: StoreCardProps) => {
 				<div className='store-info-container extra'>
 					<p className='store-products-count-container'>
 						<p className='store-products-count'>{store.products_count}</p>
-						<p>productos</p>
+						<p>Productos</p>
 					</p>
 					<div className='rating-average'>
+						<p className='feedback-rating'>{store.feedback_rating}</p>
 						<div className='star-icons'>
 							{renderStars(store.feedback_rating)}
 						</div>
-						<p className='feedback-rating'>{store.feedback_rating}</p>
 					</div>
 				</div>
 			</Link>
