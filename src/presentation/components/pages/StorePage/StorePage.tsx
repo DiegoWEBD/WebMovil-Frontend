@@ -1,18 +1,18 @@
 import './StorePage.css'
 
 import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import Store from '../../../../domain/Store/Store'
 import { CONSTANTS } from '../../../../utils/constants'
 import useAppState from '../../../global_states/appState'
 import Skeleton from '../../Skeleton/Skeleton'
+import ContentChanger from './ContentChanger/ContentChanger'
+import StoreAbout from './StoreAbout/StoreAbout'
+import DailySchedule from './StoreContactInformation/DailySchedule/DailySchedule'
 import StoreContactInformation from './StoreContactInformation/StoreContactInformation'
 import StoreProducts from './StoreProducts/StoreProducts'
-import ContentChanger from './ContentChanger/ContentChanger'
-import { useState } from 'react'
-import StoreAbout from './StoreAbout/StoreAbout'
-import useDailySchedule from './StoreContactInformation/DailySchedule/hooks/useDailySchedule'
 
 const StorePage = () => {
 	const { name } = useParams()
@@ -25,8 +25,6 @@ const StorePage = () => {
 		queryFn: async () =>
 			await storeService.getStoreById(location.state.storeId),
 	})
-
-	const { isOpenNow } = useDailySchedule(data?.getSchedules())
 
 	return (
 		<div className='store-page'>
@@ -51,9 +49,7 @@ const StorePage = () => {
 								</p>
 							)}
 						</div>
-						<p className={`store-open-state ${isOpenNow() ? '' : 'closed'}`}>
-							{isOpenNow() ? 'Abierto ahora' : 'Cerrado'}
-						</p>
+						<DailySchedule store={data} compact />
 					</div>
 
 					<ContentChanger content={content} setContent={setContent} />

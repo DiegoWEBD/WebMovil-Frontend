@@ -25,7 +25,7 @@
 .store-name {
 	font-size: 1.5rem;
 	font-weight: 700;
-	margin-top: 1rem;
+	margin: 1rem 0 0.5rem 0;
 	color: var(--color-primary-strong);
 }
 

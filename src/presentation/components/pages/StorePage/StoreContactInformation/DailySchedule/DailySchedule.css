@@ -1,3 +1,18 @@
+.time-container {
+	--open-state-color: #22c55e;
+	--open-state-background-color: inherit;
+	--closed-state-color: #dc2626;
+	--closed-state-background-color: #fecaca;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.time-container.compact {
+	align-items: end;
+}
+
 .time-text {
 	margin: 0;
 	font-size: 0.8rem;
@@ -6,23 +21,32 @@
 
 .open-state {
 	margin: 0;
-	color: #22c55e;
+	color: var(--open-state-color);
 	font-weight: 500;
+	padding-inline: 0.8rem;
+	border-radius: 10px;
+	background-color: var(--open-state-background-color);
 }
 
 .open-state.closed {
-	color: #dc2626;
-}
-
-.time-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	color: var(--closed-state-color);
 }
 
 .time-container.loading {
 	gap: 0.3rem;
 	width: 40%;
+}
+
+.compact-main {
+	display: none;
+}
+
+.open-state.compact {
+	--open-state-background-color: #bbf7d0;
+}
+
+.open-state.compact.compact.closed {
+	background-color: var(--closed-state-background-color);
 }
 
 @media (max-width: 350px) {

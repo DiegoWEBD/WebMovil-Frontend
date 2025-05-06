@@ -1,12 +1,12 @@
 .app-container {
-	width: 90%;
+	width: 80%;
 	margin: auto;
-	padding: 1rem 0.5rem 3rem 0.5rem;
+	padding: 1rem 0 3rem 0;
 	box-sizing: border-box;
 }
 
 @media (max-width: 550px) {
 	.app-container {
-		width: 100%;
+		width: 90%;
 	}
 }

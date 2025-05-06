@@ -6,26 +6,37 @@ import useDailySchedule from './hooks/useDailySchedule'
 
 type DailyScheduleProps = {
 	store: Store | undefined
+	compact?: boolean
 }
 
-const DailySchedule = ({ store }: DailyScheduleProps) => {
+const DailySchedule = ({ store, compact = false }: DailyScheduleProps) => {
 	const { isOpenNow, getStateMessage } = useDailySchedule(
 		store?.getSchedules() || []
 	)
 
 	return (
-		<div className={`time-container ${store ? '' : 'loading'}`}>
+		<div
+			className={`time-container ${store ? '' : 'loading'} ${
+				compact ? 'compact' : ''
+			}`}
+		>
 			{store ? (
-				<p className={`open-state ${isOpenNow() ? '' : 'closed'}`}>
-					{isOpenNow() ? 'Abierto ahora' : 'Cerrado'}
+				<p
+					className={`open-state ${isOpenNow() ? '' : 'closed'} ${
+						compact ? 'compact' : ''
+					}`}
+				>
+					{isOpenNow() ? (compact ? 'Abierto' : 'Abierto ahora') : 'Cerrado'}
 				</p>
 			) : (
-				<Skeleton width='80%' />
+				<Skeleton width={compact ? '6rem' : '80%'} />
 			)}
 			{store ? (
-				<p className='time-text'>{getStateMessage()}</p>
+				<p className={`time-text ${compact ? 'compact-main' : ''}`}>
+					{getStateMessage()}
+				</p>
 			) : (
-				<Skeleton width='70%' height='0.8rem' />
+				!compact && <Skeleton width='70%' height='0.8rem' />
 			)}
 		</div>
 	)

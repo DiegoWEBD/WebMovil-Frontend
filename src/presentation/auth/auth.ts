@@ -34,7 +34,7 @@ export const registerUser = async (
 ): Promise<string | null> => {
 	try {
 		const { data } = await axios.post(
-			'http://localhost:3006/register',
+			`${CONSTANTS.API_URL}/auth/register`,
 			{
 				phone,
 				full_name: fullName,
@@ -50,11 +50,7 @@ export const registerUser = async (
 		localStorage.setItem('access_token', accessToken)
 		return data
 	} catch (error) {
-		if (axios.isAxiosError(error)) {
-			console.error('Registro fallido:', error.response?.data?.error || error)
-		} else {
-			console.error('Error inesperado:', error)
-		}
+		console.error('Registro fallido:', error)
 
 		return null
 	}

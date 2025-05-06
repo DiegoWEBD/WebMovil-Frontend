@@ -18,7 +18,8 @@ const StoresViewer = ({ input }: StoresViewerProps) => {
 		queryKey: ['stores', page, input],
 		queryFn: async () => {
 			const response = await storeService.getStores(input, page, 8)
-			setTotalPages(response.meta?.total_pages || 2)
+
+			setTotalPages(response.meta?.total_pages || 1)
 			return response.stores
 		},
 	})

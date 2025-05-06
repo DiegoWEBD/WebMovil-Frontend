@@ -11,7 +11,7 @@ const RatingStars = ({ rating }: RatingStarsProps) => {
 
 	return (
 		<div className='rating-average'>
-			<p className='feedback-rating'>{rating}</p>
+			<p className='feedback-rating'>{rating.toFixed(1)}</p>
 			<div className='stars-container'>
 				<div className='stars-bg'>
 					{[...Array(5)].map((_, i) => (

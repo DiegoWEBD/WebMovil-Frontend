@@ -1,8 +1,11 @@
 .rating-average {
+	--star-size: 1.3rem;
+
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
-	line-height: 1.2rem;
+	line-height: var(--star-size);
+	width: fit-content;
 }
 
 .feedback-rating {
@@ -13,8 +16,8 @@
 
 .stars-container {
 	position: relative;
-	width: 6rem;
-	height: 1.2rem;
+	width: calc(var(--star-size) * 5);
+	height: var(--star-size);
 }
 
 .stars-bg,
@@ -41,23 +44,13 @@
 }
 
 .star {
-	height: 1.2rem;
-	width: 1.2rem;
+	height: var(--star-size);
+	width: var(--star-size);
 }
 
 @media (max-width: 320px) {
-	.star {
-		height: 0.9rem;
-		width: 0.9rem;
-	}
-
-	.stars-container {
-		width: 4.5rem;
-		height: 0.9rem;
-	}
-
 	.rating-average {
-		line-height: 0.9rem;
+		--star-size: 0.9rem;
 	}
 }
 

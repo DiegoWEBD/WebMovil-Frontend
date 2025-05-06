@@ -27,7 +27,7 @@ export default class GetStores {
 			(store: StoreSummary) => ({
 				...store,
 				//random number between 1 and 5 with 1 decimal
-				feedback_rating: (Math.random() * 4 + 1).toFixed(1),
+				feedback_rating: parseFloat((Math.random() * 4 + 1).toFixed(1)),
 			})
 		)
 

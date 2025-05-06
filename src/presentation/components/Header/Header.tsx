@@ -8,9 +8,11 @@ import RegisterNavElement from './RegisterNavElement/RegisterNavElement'
 import ToggleButton from './ToggleButton/ToggleButton'
 import UserProtectedComponent from '../protected_components/UserProtectedComponent'
 import UserReverseProtectedComponent from '../protected_components/UserReverseProtectedComponent'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
+	const navigate = useNavigate()
 
 	return (
 		<header className='page-header'>
@@ -44,6 +46,16 @@ const Header = () => {
 						<NavElement to='/perfil' onClick={() => setMenuOpen(false)}>
 							Perfil
 						</NavElement>
+
+						<button
+							className='logout-button'
+							onClick={() => {
+								localStorage.removeItem('access_token')
+								navigate('/login')
+							}}
+						>
+							Cerrar Sesión
+						</button>
 					</UserProtectedComponent>
 				</ul>
 
