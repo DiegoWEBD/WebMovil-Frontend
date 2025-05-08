@@ -7,7 +7,6 @@ import { registerUser } from '../../../../auth/auth'
 import useAppState from '../../../../global_states/appState'
 import Button from '../../../buttons/Button/Button'
 import Card from '../../../containers/Card/Card'
-import PageLogo from '../../../PageLogo/PageLogo'
 
 const RegisterForm = () => {
 	const { setUserEmail } = useAppState()
@@ -46,8 +45,6 @@ const RegisterForm = () => {
 		<Card className='auth-form-card'>
 			<header className='auth-form-header'>
 				<div className='auth-form-logo-plus-title'>
-					<PageLogo />
-					<p>-</p>
 					<h2 className='auth-form-title'>Crear una cuenta</h2>
 				</div>
 				<p className='auth-form-subtitle'>Únete a la comunidad de MiBarrio</p>

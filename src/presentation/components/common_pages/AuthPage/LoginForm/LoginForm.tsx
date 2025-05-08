@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import useAppState from '../../../../global_states/appState'
 import Button from '../../../buttons/Button/Button'
 import Card from '../../../containers/Card/Card'
-import PageLogo from '../../../PageLogo/PageLogo'
 import '../AuthPage.css'
 
 const LoginForm = () => {
@@ -36,8 +35,6 @@ const LoginForm = () => {
 		<Card className='auth-form-card'>
 			<header className='auth-form-header'>
 				<div className='auth-form-logo-plus-title'>
-					<PageLogo />
-					<p>-</p>
 					<h2 className='auth-form-title'>Iniciar sesión</h2>
 				</div>
 				<p className='auth-form-subtitle'>
