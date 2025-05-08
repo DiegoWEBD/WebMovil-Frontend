@@ -1,15 +1,19 @@
 :root {
-	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-weight: 400;
-
+	color: var(--color-text-secondary);
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	-moz-osx-font-smoothing: slatescale;
 
-	min-height: 100vh;
-	background: linear-gradient(to bottom right, #eff6ff, #eff6ff);
+	min-height: 100vh; /* revisar */
+	background: linear-gradient(
+		to bottom right,
+		var(--color-background-page),
+		var(--color-background-page-light)
+	);
 
 	--color-primary-lightest: #eff6ff;
 	--color-primary-lighter: #dbeafe;
@@ -18,6 +22,23 @@
 	--color-primary: #1d4ed8;
 	--color-primary-strong: #1e40af;
 	--color-primary-strongest: #1e3a8a;
+
+	/* Background colors */
+	--color-background-page: #020617; /* slate-950 */
+	--color-background-page-light: #0f172a; /* slate-900 */
+	--color-background-primary: #0d9488; /* teal-600 */
+	--color-background-primary-light: #14b8a6; /* teal-500 */
+	--color-background-secondary: #1e293b; /* slate-800 */
+	--color-background-secondary-light: #334155; /* slate-700 */
+
+	/* Text colors */
+	--color-text-primary: #2dd4bf; /* teal-400 */
+	--color-text-secondary: #f3f4f6; /* slate-100 */
+	--color-text-tertiary: #9ca3af; /* slate-400 */
+
+	/* Border colors */
+	--color-border: #374151; /* slate-700 */
+	--color-border-light: #64748b; /* slate-500 */
 }
 
 * {
@@ -27,14 +48,13 @@
 }
 
 .page-title {
-	color: var(--color-primary-strong);
-	margin-bottom: 0rem;
+	color: var(--color-text-primary);
 }
 
 .page-subtitle {
-	color: var(--color-primary);
-	margin-top: 0;
 	font-size: 1.1rem;
+	color: var(--color-text-tertiary);
+	margin-top: 0.5rem;
 }
 
 .page-title-container {

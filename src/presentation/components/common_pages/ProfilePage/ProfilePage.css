@@ -1,0 +1,14 @@
+.profile-page {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	font-weight: normal;
+	width: 80%;
+	margin: auto;
+}
+
+@media (max-width: 768px) {
+	.profile-page {
+		width: 100%;
+	}
+}

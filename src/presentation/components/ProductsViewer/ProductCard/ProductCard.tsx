@@ -3,7 +3,7 @@ import './ProductCard.css'
 import Product from '../../../../domain/Product/Product'
 import Card from '../../containers/Card/Card'
 import { CONSTANTS } from '../../../../utils/constants'
-import SecondaryButton from '../../buttons/SecondaryButton/SecondaryButton'
+import Button from '../../buttons/Button/Button'
 import { LuShoppingCart } from 'react-icons/lu'
 
 type ProductCardProps = {
@@ -25,10 +25,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
 				<p className='product-info description'>{product.getDescription()}</p>
 				<p className='product-info price'>${product.getPrice()}</p>
 
-				<SecondaryButton>
+				<Button className='primary'>
 					<LuShoppingCart className='cart-icon' />
 					<p className='button-text'>Agregar</p>
-				</SecondaryButton>
+				</Button>
 			</div>
 		</Card>
 	)

@@ -1,0 +1,31 @@
+.personal-info-card {
+	font-size: 1rem;
+	color: var(--color-text-tertiary);
+}
+
+.personal-info-header {
+	color: var(--color-text-primary);
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.personal-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	padding-top: 0.5rem;
+}
+
+.info-label {
+	font-weight: 600;
+}
+
+.info-value {
+	color: var(--color-text-secondary);
+	font-size: 0.9rem;
+	margin: 0.5rem 0rem 0rem 0rem;
+	background-color: var(--color-background-secondary-light);
+	padding: 0.5rem;
+	border-radius: 5px;
+	border: 1px solid var(--color-border-light);
+}

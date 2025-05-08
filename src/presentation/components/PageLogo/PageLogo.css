@@ -7,9 +7,8 @@
 	color: inherit;
 }
 
-.logo-container.secondary {
+.secondary-logo {
 	pointer-events: none;
-	color: var(--color-primary-weak);
 }
 
 .logo {
@@ -21,7 +20,7 @@
 	font-size: 1.5rem;
 }
 
-.logo-container.secondary h1 {
+.secondary-logo h1 {
 	font-size: 1.5rem;
 	font-weight: 500;
 }

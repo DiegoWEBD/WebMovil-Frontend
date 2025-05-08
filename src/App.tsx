@@ -1,14 +1,14 @@
 import './App.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import LoginForm from './presentation/components/pages/AuthPage/LoginForm/LoginForm'
-import RegisterForm from './presentation/components/pages/AuthPage/RegisterForm/RegisterForm'
-import HomePage from './presentation/components/pages/HomePage/HomePage'
-import Root from './presentation/components/pages/Root/Root'
-import StoresPage from './presentation/components/pages/StoresPage/StoresPage'
+import LoginForm from './presentation/components/common_pages/AuthPage/LoginForm/LoginForm'
+import RegisterForm from './presentation/components/common_pages/AuthPage/RegisterForm/RegisterForm'
+import HomePage from './presentation/components/common_pages/HomePage/HomePage'
+import Root from './presentation/components/common_pages/Root/Root'
+import StoresPage from './presentation/components/common_pages/StoresPage/StoresPage'
 import UserProtectedRoute from './presentation/components/protected_components/UserProtectedRoute'
-import ProfilePage from './presentation/components/pages/ProfilePage/ProfilePage'
-import StorePage from './presentation/components/pages/StorePage/StorePage'
+import ProfilePage from './presentation/components/common_pages/ProfilePage/ProfilePage'
+import StorePage from './presentation/components/common_pages/StorePage/StorePage'
 import UserReverseProtectedRoute from './presentation/components/protected_components/UserReverseProtectedRoute'
 
 const router = createBrowserRouter([

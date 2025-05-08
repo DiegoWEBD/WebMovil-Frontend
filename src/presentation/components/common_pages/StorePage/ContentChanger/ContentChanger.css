@@ -1,0 +1,29 @@
+.content-changer {
+	display: flex;
+	gap: 0.5rem;
+	margin: 1.5rem 0 2rem 0;
+	background-color: var(--color-background-secondary);
+	width: fit-content;
+	padding: 0.3rem;
+	border-radius: 5px;
+}
+
+.button {
+	background-color: transparent;
+	border: none;
+	color: var(--color-text-tertiary);
+	padding: 0.5rem 0.8rem;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 0.9rem;
+	transition: all 0.2s ease;
+}
+
+.button:hover {
+	color: var(--color-text-secondary);
+}
+
+.button.selected {
+	background-color: var(--color-background-page-light);
+	color: var(--color-text-primary);
+}

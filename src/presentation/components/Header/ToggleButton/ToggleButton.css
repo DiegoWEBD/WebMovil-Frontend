@@ -2,14 +2,6 @@
 	display: none;
 }
 
-.menu-toggle:hover {
-	background: #f1f5f9;
-}
-
-.menu-toggle:focus {
-	outline: none;
-}
-
 @media (max-width: 768px) {
 	.menu-toggle {
 		display: block;
@@ -17,10 +9,18 @@
 		border: none;
 		font-size: 1.5rem;
 		cursor: pointer;
-		color: var(--color-primary);
+		color: var(--color-text-primary);
 		transition: all 0.2s ease-in-out;
 		margin-right: 1rem;
-		padding-inline: 0.5rem;
+		border-radius: 5px;
+	}
+
+	.menu-toggle:hover {
+		color: var(--color-background-primary);
+	}
+
+	.menu-toggle:focus {
+		outline: none;
 	}
 
 	.menu-toggle-button {
@@ -33,6 +33,11 @@
 		right: 1rem;
 		top: 0.5rem;
 		margin: 0;
+		padding-inline: 0.5rem;
+	}
+
+	.menu-toggle.open-case.open:hover {
+		background: rgb(255, 255, 255, 0.7);
 	}
 
 	.menu-toggle.open-case.closed {
