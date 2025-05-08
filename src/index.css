@@ -10,9 +10,9 @@
 
 	min-height: 100vh; /* revisar */
 	background: linear-gradient(
-		to bottom right,
+		to right,
 		var(--color-background-page),
-		var(--color-background-page-light)
+		var(--color-background-page)
 	);
 
 	--color-primary-lightest: #eff6ff;

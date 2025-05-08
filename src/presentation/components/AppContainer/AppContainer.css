@@ -1,6 +1,12 @@
 .app-container {
-	width: min(100%, 1600px);
-	margin: auto;
-	padding: 1rem 1.5rem 3rem 1.5rem;
+	width: 100%;
+	min-height: 100vh;
+	padding: 1rem 1.5rem 3rem 17.5rem;
 	box-sizing: border-box;
+}
+
+@media (max-width: 850px) {
+	.app-container {
+		padding: 1rem 1.5rem 3rem 1.5rem;
+	}
 }

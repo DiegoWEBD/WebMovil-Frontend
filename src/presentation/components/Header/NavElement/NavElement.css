@@ -1,10 +1,16 @@
 .link {
-	color: var(--color-text-tertiary);
-	text-decoration: none;
-	font-weight: 500;
-	padding-bottom: 0.3rem;
+	width: 100%;
 	transition: background-color 0.3s, color 0.3s;
-	transition: padding-left 0.3s, color 0.3s;
+	text-decoration: none;
+	color: var(--color-text-tertiary);
+	font-weight: 500;
+	font-size: 1.2rem;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+}
+
+.link li {
+	list-style: none;
 }
 
 .link:hover {
@@ -13,22 +19,9 @@
 
 .active {
 	color: var(--color-text-primary);
-	border-bottom: 2px solid var(--color-text-primary);
+	background-color: var(--color-background-secondary);
 }
 
 .active:hover {
 	color: var(--color-text-primary);
-}
-
-@media (max-width: 768px) {
-	.link {
-		font-size: 1.2rem;
-		padding-left: 0rem;
-	}
-
-	.active {
-		text-decoration: none;
-		border-left: 2px solid black;
-		padding-left: 0.5rem;
-	}
 }

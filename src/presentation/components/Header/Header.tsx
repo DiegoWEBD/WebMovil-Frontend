@@ -8,81 +8,72 @@ import UserProtectedComponent from '../protected_components/UserProtectedCompone
 import UserReverseProtectedComponent from '../protected_components/UserReverseProtectedComponent'
 import NavElement from './NavElement/NavElement'
 import ToggleButton from './ToggleButton/ToggleButton'
+import useAppState from '../../global_states/appState'
 
 const Header = () => {
-	const [menuOpen, setMenuOpen] = useState(false)
+	const { basicUserInfo } = useAppState()
+	const [menuOpen, setMenuOpen] = useState(true)
 	const navigate = useNavigate()
 
 	return (
 		<header className='page-header '>
-			<div className='header-container'>
-				<ToggleButton
-					className='menu-toggle closed-case'
-					menuOpen={menuOpen}
-					setMenuOpen={setMenuOpen}
-				/>
-				<PageLogo />
+			<ToggleButton
+				className='menu-toggle closed-case'
+				menuOpen={menuOpen}
+				setMenuOpen={setMenuOpen}
+			/>
 
-				{menuOpen && (
-					<div className='nav-overlay' onClick={() => setMenuOpen(false)} />
-				)}
+			<PageLogo className='header-padding' />
 
-				<nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
-					<ToggleButton
-						className='menu-toggle open-case'
-						menuOpen={menuOpen}
-						setMenuOpen={setMenuOpen}
-					/>
-					<PageLogo className='small-screen' />
-					<ul className='nav-menu-ul'>
-						<NavElement to='/' onClick={() => setMenuOpen(false)}>
-							Inicio
+			<nav className={`nav-menu ${basicUserInfo ? 'logged-in' : 'logged-out'}`}>
+				<ul className='nav-menu-ul'>
+					<UserProtectedComponent>
+						<NavElement to='/tiendas' onClick={() => setMenuOpen(false)}>
+							Tiendas
 						</NavElement>
-						<UserProtectedComponent>
-							<NavElement to='/tiendas' onClick={() => setMenuOpen(false)}>
-								Tiendas
-							</NavElement>
 
-							<NavElement to='/perfil' onClick={() => setMenuOpen(false)}>
-								Perfil
-							</NavElement>
+						<NavElement to='/perfil' onClick={() => setMenuOpen(false)}>
+							Perfil
+						</NavElement>
+					</UserProtectedComponent>
+				</ul>
 
-							<Button
-								className='header-font secondary'
-								onClick={() => {
-									localStorage.removeItem('access_token')
-									navigate('/login')
-								}}
-							>
-								Cerrar Sesión
-							</Button>
-						</UserProtectedComponent>
-					</ul>
-
+				<ul className='login-nav header-padding'>
 					<UserReverseProtectedComponent>
-						<ul className='login-nav'>
-							<Button
-								className='secondary login-button'
-								onClick={() => {
-									setMenuOpen(false)
-									navigate('/login')
-								}}
-							>
-								Iniciar Sesión
-							</Button>
-							<Button
-								className='primary register-button'
-								onClick={() => {
-									setMenuOpen(false)
-									navigate('/register')
-								}}
-							>
-								Registrarse
-							</Button>
-						</ul>
+						<Button
+							className='secondary login-button'
+							onClick={() => {
+								setMenuOpen(false)
+								navigate('/login')
+							}}
+						>
+							Iniciar Sesión
+						</Button>
 					</UserReverseProtectedComponent>
-				</nav>
-			</div>
+					<UserReverseProtectedComponent>
+						<Button
+							className='primary register-button'
+							onClick={() => {
+								setMenuOpen(false)
+								navigate('/register')
+							}}
+						>
+							Registrarse
+						</Button>
+					</UserReverseProtectedComponent>
+					<UserProtectedComponent>
+						<Button
+							className='header-font secondary'
+							onClick={() => {
+								localStorage.removeItem('access_token')
+								navigate('/login')
+							}}
+						>
+							Cerrar Sesión
+						</Button>
+					</UserProtectedComponent>
+				</ul>
+			</nav>
 		</header>
 	)
 }
