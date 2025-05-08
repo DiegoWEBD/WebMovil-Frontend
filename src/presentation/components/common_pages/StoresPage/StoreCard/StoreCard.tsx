@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import StoreSummary from '../../../../../application/types/StoreSummary.interface'
 import Card from '../../../containers/Card/Card'
 import RatingStars from '../RatingStars/RatingStars'
+import { CONSTANTS } from '../../../../../utils/constants'
 
 type StoreCardProps = {
 	store: StoreSummary
@@ -21,7 +22,9 @@ const StoreCard = ({ store }: StoreCardProps) => {
 				}}
 			>
 				<div className='store-image-container'>
-					<img src='http://localhost:3000/stores_portraits/generic_store_portrait.png' />
+					<img
+						src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.png`}
+					/>
 				</div>
 
 				<div className='store-info-container resume'>
