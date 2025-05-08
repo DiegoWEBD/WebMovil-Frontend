@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { CONSTANTS } from '../../utils/constants'
+import BasicUserInfo from '../user/BasicUserInfo'
 
-export const validateAccessToken = async (): Promise<string | null> => {
+export const validateAccessToken = async (): Promise<BasicUserInfo | null> => {
 	const accessToken = localStorage.getItem('access_token')
 
 	if (!accessToken) return null
@@ -13,7 +14,10 @@ export const validateAccessToken = async (): Promise<string | null> => {
 			},
 		})
 
-		return data.user_email
+		return {
+			email: data.user_email,
+			userType: data.user_type,
+		}
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			console.error('Validación fallida:', error.response?.data?.error || error)
