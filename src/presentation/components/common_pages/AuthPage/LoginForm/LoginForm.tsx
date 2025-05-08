@@ -1,14 +1,13 @@
 import { TokenResponse, useGoogleLogin } from '@react-oauth/google'
 import { Link, useNavigate } from 'react-router-dom'
-import { validateAccessToken } from '../../../../auth/auth'
 import useAppState from '../../../../global_states/appState'
 import Button from '../../../buttons/Button/Button'
 import Card from '../../../containers/Card/Card'
-import '../AuthPage.css'
 import PageLogo from '../../../PageLogo/PageLogo'
+import '../AuthPage.css'
 
 const LoginForm = () => {
-	const { setUserEmail } = useAppState()
+	const { validateAccessToken, basicUserInfo } = useAppState()
 	const navigate = useNavigate()
 
 	const handleSuccess = (
@@ -16,9 +15,8 @@ const LoginForm = () => {
 	) => {
 		const accessToken = response.access_token
 		localStorage.setItem('access_token', accessToken)
-		validateAccessToken().then(userEmail => {
-			setUserEmail(userEmail)
-			navigate('/tiendas')
+		validateAccessToken().then(() => {
+			if (basicUserInfo) navigate('/tiendas')
 		})
 	}
 
