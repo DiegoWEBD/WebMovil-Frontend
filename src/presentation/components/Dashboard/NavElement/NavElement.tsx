@@ -18,7 +18,7 @@ const NavElement = ({ to, children, className, onClick }: NavElementProps) => {
 			}
 			onClick={onClick}
 		>
-			<li>{children}</li>
+			{children}
 		</NavLink>
 	)
 }

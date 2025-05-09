@@ -2,7 +2,7 @@ import './Footer.css'
 
 import { FaHome, FaStore } from 'react-icons/fa'
 import { RxAvatar } from 'react-icons/rx'
-import NavElement from '../Header/NavElement/NavElement'
+import NavElement from '../Dashboard/NavElement/NavElement'
 
 const Footer = () => {
 	return (

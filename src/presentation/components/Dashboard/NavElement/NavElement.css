@@ -5,12 +5,9 @@
 	color: var(--color-text-tertiary);
 	font-weight: 500;
 	font-size: 1.2rem;
-	padding: 0.5rem 1rem;
+	padding-block: 0.7rem;
 	border-radius: 5px;
-}
-
-.link li {
-	list-style: none;
+	line-height: 1.2rem;
 }
 
 .link:hover {

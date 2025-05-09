@@ -10,7 +10,7 @@ const PageLogo = ({ className }: PageLogoProps) => {
 	return (
 		<Link to='/' className={`logo-container ${className}`}>
 			<FaStore className='logo' />
-			<h1 className={className}>MiBarrio</h1>
+			<h1>MiBarrio</h1>
 		</Link>
 	)
 }

@@ -1,10 +1,11 @@
 .logo-container {
 	display: flex;
+	flex-direction: column;
+	width: 100%;
 	align-items: center;
-	justify-content: center;
-	gap: 0.8rem;
 	text-decoration: none;
 	color: inherit;
+	gap: 0.8rem;
 }
 
 .secondary-logo {
@@ -13,8 +14,8 @@
 
 .logo {
 	color: var(--color-text-primary);
-	width: 2rem;
-	height: 2rem;
+	width: 3rem;
+	height: 3rem;
 }
 
 .logo-container h1 {

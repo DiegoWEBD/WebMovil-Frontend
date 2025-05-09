@@ -2,7 +2,7 @@ import './Root.css'
 
 import { useEffect } from 'react'
 import useAppState from '../../../global_states/appState'
-import Header from '../../Header/Header'
+import Dashboard from '../../Dashboard/Dashboard'
 import { Outlet } from 'react-router-dom'
 import AppContainer from '../../AppContainer/AppContainer'
 import Footer from '../../Footer/Footer'
@@ -16,7 +16,7 @@ const App = () => {
 
 	return (
 		<div className='app'>
-			<Header />
+			<Dashboard />
 			<AppContainer>
 				<Outlet />
 			</AppContainer>
