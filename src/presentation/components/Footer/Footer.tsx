@@ -1,21 +1,26 @@
 import './Footer.css'
 
-import { FaHome, FaStore } from 'react-icons/fa'
-import { RxAvatar } from 'react-icons/rx'
+import { FaRegChartBar } from 'react-icons/fa'
+import { LuBox, LuShoppingCart, LuStore } from 'react-icons/lu'
 import NavElement from '../Dashboard/NavElement/NavElement'
 
 const Footer = () => {
 	return (
 		<footer className='page-footer'>
-			<NavElement to='/' className='footer-nav'>
-				<FaHome />
-			</NavElement>
 			<NavElement to='/tiendas' className='footer-nav'>
-				<FaStore />
+				<LuStore />
 			</NavElement>
 
-			<NavElement to='/perfil' className='footer-nav'>
-				<RxAvatar />
+			<NavElement to='/locatario/productos' className='footer-nav'>
+				<LuBox />
+			</NavElement>
+
+			<NavElement to='/' className='footer-nav'>
+				<LuShoppingCart />
+			</NavElement>
+
+			<NavElement to='/' className='footer-nav'>
+				<FaRegChartBar />
 			</NavElement>
 		</footer>
 	)

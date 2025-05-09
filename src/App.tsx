@@ -10,6 +10,8 @@ import UserProtectedRoute from './presentation/components/protected_components/U
 import ProfilePage from './presentation/components/common_pages/ProfilePage/ProfilePage'
 import StorePage from './presentation/components/common_pages/StorePage/StorePage'
 import UserReverseProtectedRoute from './presentation/components/protected_components/UserReverseProtectedRoute'
+import OwnerProtectedComponent from './presentation/components/protected_components/owner/OwnerProtectedComponent'
+import OwnerProductsPage from './presentation/components/views/OwnerView/pages/OwnerProductsPage/OwnerProductsPage'
 
 const router = createBrowserRouter([
 	{
@@ -43,6 +45,16 @@ const router = createBrowserRouter([
 						<UserProtectedRoute>
 							<ProfilePage />
 						</UserProtectedRoute>
+					</h1>
+				),
+			},
+			{
+				path: 'locatario/productos',
+				element: (
+					<h1>
+						<OwnerProtectedComponent>
+							<OwnerProductsPage />
+						</OwnerProtectedComponent>
 					</h1>
 				),
 			},

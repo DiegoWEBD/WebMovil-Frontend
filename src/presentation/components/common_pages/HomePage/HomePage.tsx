@@ -1,10 +1,13 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 const HomePage = () => {
-	return (
-		<div>
-			<h1 className='page-title'>Inicio</h1>
-			<p className='page-subtitle'>Página de inicio!</p>
-		</div>
-	)
+	const navigate = useNavigate()
+	useEffect(() => {
+		navigate('/tiendas')
+	}, [navigate])
+
+	return null
 }
 
 export default HomePage

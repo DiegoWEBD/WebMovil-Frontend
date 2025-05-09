@@ -12,13 +12,13 @@ import UserReverseProtectedComponent from '../protected_components/UserReversePr
 import NavElement from './NavElement/NavElement'
 import ToggleButton from './ToggleButton/ToggleButton'
 
-const Header = () => {
+const Dashboard = () => {
 	const { basicUserInfo } = useAppState()
 	const [menuOpen, setMenuOpen] = useState(true)
 	const navigate = useNavigate()
 
 	return (
-		<header className='page-header '>
+		<div className='page-header '>
 			<ToggleButton
 				className='menu-toggle closed-case'
 				menuOpen={menuOpen}
@@ -86,8 +86,8 @@ const Header = () => {
 					</UserProtectedComponent>
 				</ul>
 			</nav>
-		</header>
+		</div>
 	)
 }
 
-export default Header
+export default Dashboard

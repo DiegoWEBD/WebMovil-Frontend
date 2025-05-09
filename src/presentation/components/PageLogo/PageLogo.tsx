@@ -1,6 +1,6 @@
+import { LuStore } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
 import './PageLogo.css'
-import { FaStore } from 'react-icons/fa'
 
 type PageLogoProps = {
 	className?: string
@@ -9,7 +9,9 @@ type PageLogoProps = {
 const PageLogo = ({ className }: PageLogoProps) => {
 	return (
 		<Link to='/' className={`logo-container ${className}`}>
-			<FaStore className='logo' />
+			<div className='logo-icon-container'>
+				<LuStore className='logo-icon' />
+			</div>
 			<h1>MiBarrio</h1>
 		</Link>
 	)
