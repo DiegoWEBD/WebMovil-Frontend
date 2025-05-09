@@ -8,7 +8,7 @@ type PageLogoProps = {
 
 const PageLogo = ({ className }: PageLogoProps) => {
 	return (
-		<Link to='/' className={`logo-container ${className}`}>
+		<Link to='/tiendas' className={`logo-container ${className}`}>
 			<div className='logo-icon-container'>
 				<LuStore className='logo-icon' />
 			</div>

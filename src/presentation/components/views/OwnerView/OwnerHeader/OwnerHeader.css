@@ -3,9 +3,32 @@
 	top: 0;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	background-color: var(--color-background-page);
 	height: 3.5rem;
 	padding-inline: var(--page-margin);
 	z-index: 2000;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.owner-header-nav-element {
+	background-color: var(--color-background-secondary);
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.owner-header-nav-element:hover {
+	background-color: var(--color-background-page-light);
+}
+
+.owner-header-nav-element.active {
+	background-color: var(--color-background-secondary);
+}
+
+.owner-header-nav-element.active:hover {
+	background-color: var(--color-background-page-light);
 }

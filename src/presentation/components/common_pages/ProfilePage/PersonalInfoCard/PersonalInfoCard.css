@@ -1,5 +1,4 @@
 .personal-info-card {
-	font-size: 1rem;
 	color: var(--color-text-tertiary);
 }
 
@@ -22,7 +21,6 @@
 
 .info-value {
 	color: var(--color-text-secondary);
-	font-size: 0.9rem;
 	margin: 0.5rem 0rem 0rem 0rem;
 	background-color: var(--color-background-secondary-light);
 	padding: 0.5rem;

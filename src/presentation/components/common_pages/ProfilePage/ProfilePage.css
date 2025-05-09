@@ -5,10 +5,17 @@
 	font-weight: normal;
 	width: 80%;
 	margin: auto;
+	font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
 	.profile-page {
 		width: 100%;
+	}
+}
+
+@media (max-width: 550px) {
+	.profile-page {
+		font-size: 0.8rem;
 	}
 }
