@@ -6,7 +6,7 @@ import Card from '../../../containers/Card/Card'
 import '../AuthPage.css'
 
 const LoginForm = () => {
-	const { validateAccessToken, basicUserInfo } = useAppState()
+	const { validateAccessToken } = useAppState()
 	const navigate = useNavigate()
 
 	const handleSuccess = (
@@ -14,9 +14,7 @@ const LoginForm = () => {
 	) => {
 		const accessToken = response.access_token
 		localStorage.setItem('access_token', accessToken)
-		validateAccessToken().then(() => {
-			if (basicUserInfo) navigate('/tiendas')
-		})
+		validateAccessToken().then(() => navigate('/tiendas'))
 	}
 
 	const handleError = (

@@ -9,6 +9,7 @@ import Footer from '../../Footer/Footer'
 import OwnerHeader from '../../views/OwnerView/OwnerHeader/OwnerHeader'
 import PageContentContainer from '../../containers/PageContentContainer/PageContentContainer'
 import ScrollToTop from '../../ScrollToTop/ScrollToTop'
+import UserProtectedComponent from '../../protected_components/UserProtectedComponent'
 
 const App = () => {
 	const { validateAccessToken } = useAppState()
@@ -28,7 +29,9 @@ const App = () => {
 					<Outlet />
 				</PageContentContainer>
 			</AppContainer>
-			<Footer />
+			<UserProtectedComponent>
+				<Footer />
+			</UserProtectedComponent>
 		</div>
 	)
 }
