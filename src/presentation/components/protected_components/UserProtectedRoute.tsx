@@ -7,18 +7,18 @@ type UserProtectedRouteProps = {
 }
 
 const UserProtectedRoute = ({ children }: UserProtectedRouteProps) => {
-	const { userEmail, validateAccessToken } = useAppState()
+	const { basicUserInfo, validateAccessToken } = useAppState()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!userEmail) navigate('/login')
-	}, [userEmail, navigate])
+		if (!basicUserInfo) navigate('/login')
+	}, [basicUserInfo, navigate])
 
 	useEffect(() => {
 		validateAccessToken()
 	}, [validateAccessToken])
 
-	return userEmail ? <>{children}</> : null
+	return basicUserInfo ? <>{children}</> : null
 }
 
 export default UserProtectedRoute

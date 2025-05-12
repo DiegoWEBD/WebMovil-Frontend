@@ -8,9 +8,9 @@ type UserProtectedComponentProps = {
 const UserReverseProtectedComponent = ({
 	children,
 }: UserProtectedComponentProps) => {
-	const { userEmail } = useAppState()
+	const { basicUserInfo } = useAppState()
 
-	return !userEmail ? <>{children}</> : null
+	return !basicUserInfo ? <>{children}</> : null
 }
 
 export default UserReverseProtectedComponent

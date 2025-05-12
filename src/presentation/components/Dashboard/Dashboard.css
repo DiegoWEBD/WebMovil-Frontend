@@ -1,46 +1,51 @@
-.page-header {
-	position: fixed;
-	height: 100vh;
-	width: 16rem;
-	background-color: var(--color-background-page);
-	padding: 1rem 0;
-	border-right: 1px solid var(--color-border);
+.dashboard-v2 {
+	height: fit-content;
+	width: 18rem;
+	z-index: 1000;
+	transition: all 0.3s ease;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
 	gap: 1rem;
-	z-index: 1000;
-	transition: all 0.3s ease-in-out;
 }
 
-.header-padding {
-	padding-inline: 1.2rem;
+.inactive-session .dashboard-v2 {
+	width: 0;
+	visibility: hidden;
+	margin-left: -1.5rem;
 }
 
-.header-nav-element {
+.inactive-session .dashboard-v2-nav-menu {
+	translate: -200%;
+}
+
+.dashboard-v2-nav-element {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+	color: var(--text-color-secondary);
+	padding-inline: 1rem;
 }
 
-.login-button,
-.register-button {
-	font-size: 1rem;
+.dashboard-v2-nav-element.active {
+	background-color: var(--color-background-primary);
 }
 
-.nav-menu {
+.dashboard-v2-nav-menu {
+	position: fixed;
+	left: var(--page-margin);
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	border-top: 1px solid var(--color-border);
+	width: 14rem;
+	height: fit-content;
+	border: 1px solid var(--color-border);
+	padding: 1rem;
+	border-radius: 8px;
+	background-color: var(--color-background-secondary);
+	transition: all 0.3s ease;
 }
 
-.nav-menu.logged-in {
-	justify-content: space-between;
-}
-
-.nav-menu-ul {
+.dashboard-v2-nav-menu-ul {
 	width: 100%;
 	list-style: none;
 	display: flex;
@@ -48,27 +53,29 @@
 	gap: 0.5rem;
 }
 
-.login-nav {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	padding-top: 1rem;
-}
-
 @media (max-width: 1200px) {
-	.page-header {
-		width: 11rem;
+	.dashboard-v2 {
+		width: 4.5rem;
 	}
-}
 
-@media (max-width: 1000px) {
-	.page-header {
-		translate: -11rem 0;
+	.dashboard-v2-nav-menu {
+		width: fit-content;
+		padding: 0.5rem;
+	}
+
+	.nav-element-text {
+		display: none;
 	}
 }
 
 @media (max-width: 850px) {
-	.page-header {
-		display: none;
+	.dashboard-v2 {
+		width: 0;
+		visibility: hidden;
+		margin-left: -1.5rem;
+	}
+
+	.dashboard-v2-nav-menu {
+		translate: -200%;
 	}
 }

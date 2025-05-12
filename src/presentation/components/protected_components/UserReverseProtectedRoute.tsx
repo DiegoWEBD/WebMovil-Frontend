@@ -9,18 +9,18 @@ type UserReverseProtectedRouteProps = {
 const UserReverseProtectedRoute = ({
 	children,
 }: UserReverseProtectedRouteProps) => {
-	const { userEmail, validateAccessToken } = useAppState()
+	const { basicUserInfo, validateAccessToken } = useAppState()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (userEmail) navigate('/tiendas')
-	}, [userEmail, navigate])
+		if (basicUserInfo) navigate('/tiendas')
+	}, [basicUserInfo, navigate])
 
 	useEffect(() => {
 		validateAccessToken()
 	}, [validateAccessToken])
 
-	return !userEmail ? <>{children}</> : null
+	return !basicUserInfo ? <>{children}</> : null
 }
 
 export default UserReverseProtectedRoute
