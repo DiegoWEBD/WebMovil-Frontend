@@ -3,12 +3,14 @@ import axios from 'axios'
 import User from '../../../../domain/User/User'
 import { CONSTANTS } from '../../../../utils/constants'
 import useAppState from '../../../global_states/appState'
+import Button from '../../buttons/Button/Button'
 import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard'
 import ProfileHeader from './ProfileHeader/ProfileHeader'
 import './ProfilePage.css'
 
 const ProfilePage = () => {
-	const { userEmail } = useAppState()
+	const { userEmail, validateAccessToken } = useAppState()
+
 	const { data } = useQuery<User | undefined>({
 		queryKey: ['userData'],
 		queryFn: async () => {
@@ -30,6 +32,15 @@ const ProfilePage = () => {
 		<div className='profile-page'>
 			<ProfileHeader user={data} />
 			<PersonalInfoCard user={data} />
+			<Button
+				className='secondary'
+				onClick={() => {
+					localStorage.removeItem('access_token')
+					validateAccessToken()
+				}}
+			>
+				Cerrar sesión
+			</Button>
 		</div>
 	)
 }
