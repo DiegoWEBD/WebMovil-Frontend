@@ -1,12 +1,10 @@
 import './Dashboard.css'
 
 import { useState } from 'react'
-import { LuBox, LuShoppingCart, LuStore } from 'react-icons/lu'
 import useAppState from '../../global_states/appState'
-import UserProtectedComponent from '../protected_components/UserProtectedComponent'
-import NavElement from './NavElement/NavElement'
+import OwnerProtectedComponent from '../protected_components/owner/OwnerProtectedComponent'
+import OwnerNavMenu from '../views/OwnerView/OwnerNavMenu/OwnerNavMenu'
 import ToggleButton from './ToggleButton/ToggleButton'
-import { FaRegChartBar } from 'react-icons/fa6'
 
 const DashboardV2 = () => {
 	const { basicUserInfo } = useAppState()
@@ -23,7 +21,10 @@ const DashboardV2 = () => {
 					setMenuOpen={setMenuOpen}
 				/>
 				<ul className='dashboard-v2-nav-menu-ul '>
-					<UserProtectedComponent>
+					<OwnerProtectedComponent>
+						<OwnerNavMenu setMenuOpen={setMenuOpen} />
+					</OwnerProtectedComponent>
+					{/*<UserProtectedComponent>
 						<NavElement
 							to='/tiendas'
 							className='dashboard-v2-nav-element '
@@ -32,34 +33,7 @@ const DashboardV2 = () => {
 							<LuStore />
 							<p className='nav-element-text'>Tiendas</p>
 						</NavElement>
-
-						<NavElement
-							to='/locatario/productos'
-							className='dashboard-v2-nav-element'
-							onClick={() => setMenuOpen(false)}
-						>
-							<LuBox />
-							<p className='nav-element-text'>Productos</p>
-						</NavElement>
-
-						<NavElement
-							to='/'
-							className='dashboard-v2-nav-element'
-							onClick={() => setMenuOpen(false)}
-						>
-							<LuShoppingCart />
-							<p className='nav-element-text'>Ventas</p>
-						</NavElement>
-
-						<NavElement
-							to='/'
-							className='dashboard-v2-nav-element'
-							onClick={() => setMenuOpen(false)}
-						>
-							<FaRegChartBar />
-							<p className='nav-element-text'>Estadísticas</p>
-						</NavElement>
-					</UserProtectedComponent>
+					</UserProtectedComponent>*/}
 				</ul>
 			</div>
 		</nav>

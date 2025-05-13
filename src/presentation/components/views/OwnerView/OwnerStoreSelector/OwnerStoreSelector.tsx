@@ -9,7 +9,7 @@ import './OwnerStoreSelector.css'
 
 const OwnerStoreSelector = () => {
 	const { basicUserInfo } = useAppState()
-	const { ownerService, selectedStoreName, setSelectedStoreName } =
+	const { ownerService, selectedOwnerStoreSummary, setSelectedStoreSummary } =
 		useOwnerState()
 	const [openSelector, setOpenSelector] = useState(false)
 	const selectorRef = useRef<HTMLDivElement>(null)
@@ -19,7 +19,11 @@ const OwnerStoreSelector = () => {
 		queryFn: async () => {
 			if (!basicUserInfo?.email) return undefined
 			const stores = await ownerService.getOwnerStores(basicUserInfo.email)
-			setSelectedStoreName(stores.length > 0 ? stores[0].name : undefined)
+			setSelectedStoreSummary(
+				stores.length > 0
+					? { name: stores[0].name, id: stores[0].id, isActive: true }
+					: undefined
+			)
 			return stores
 		},
 	})
@@ -52,7 +56,7 @@ const OwnerStoreSelector = () => {
 					onClick={() => setOpenSelector(!openSelector)}
 				>
 					<LuStore className='selector-icon' />
-					<p>{selectedStoreName}</p>
+					<p>{selectedOwnerStoreSummary?.name}</p>
 					<IoIosArrowDown className='selector-arrow' />
 				</div>
 				{openSelector && (
@@ -62,7 +66,7 @@ const OwnerStoreSelector = () => {
 								key={store.id}
 								className='owner-store-selector-option'
 								onClick={() => {
-									setSelectedStoreName(store.name)
+									setSelectedStoreSummary(store)
 									setOpenSelector(false)
 								}}
 							>

@@ -12,6 +12,7 @@ import UserProtectedRoute from './presentation/components/protected_components/U
 import UserReverseProtectedRoute from './presentation/components/protected_components/UserReverseProtectedRoute'
 import OwnerProtectedRoute from './presentation/components/protected_components/owner/OwnerProtectedRoute'
 import OwnerProductsPage from './presentation/components/views/OwnerView/pages/OwnerProductsPage/OwnerProductsPage'
+import OwnerStoreProfilePage from './presentation/components/views/OwnerView/pages/OwnerStoreProfilePage/OwnerStoreProfilePage'
 
 const router = createBrowserRouter([
 	{
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
 				element: (
 					<OwnerProtectedRoute>
 						<OwnerProductsPage />
+					</OwnerProtectedRoute>
+				),
+			},
+			{
+				path: 'locatario/tienda',
+				element: (
+					<OwnerProtectedRoute>
+						<OwnerStoreProfilePage />
 					</OwnerProtectedRoute>
 				),
 			},

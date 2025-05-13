@@ -1,23 +1,28 @@
 import { create } from 'zustand'
 import IOwnerService from '../../../application/owner_service/IOwnerService.interface'
 import OwnerService from '../../../application/owner_service/OwnerService'
+import OwnerStoreSummary from '../../../application/owner_service/types/OwnerStoreSummary'
 
 type OwnerState = {
 	ownerService: IOwnerService
-	selectedStoreName: string | undefined
+	selectedOwnerStoreSummary: OwnerStoreSummary | undefined
 
-	setSelectedStoreName: (storeName: string | undefined) => void
+	setSelectedStoreSummary: (
+		ownerStoreSummary: OwnerStoreSummary | undefined
+	) => void
 }
 
 const useOwnerState = create<OwnerState>(set => ({
 	// Servicios
 	ownerService: new OwnerService(),
 
-	selectedStoreName: undefined,
+	selectedOwnerStoreSummary: undefined,
 
 	// Setters
-	setSelectedStoreName: (storeName: string | undefined) => {
-		set(() => ({ selectedStoreName: storeName }))
+	setSelectedStoreSummary: (
+		ownerStoreSummary: OwnerStoreSummary | undefined
+	) => {
+		set(() => ({ selectedOwnerStoreSummary: ownerStoreSummary }))
 	},
 }))
 

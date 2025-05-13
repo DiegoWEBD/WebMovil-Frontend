@@ -13,7 +13,7 @@ const LoginForm = () => {
 		const accessToken = credentialResponse.credential
 
 		localStorage.setItem('access_token', accessToken as string)
-		validateAccessToken().then(() => navigate('/tiendas'))
+		validateAccessToken().then(() => navigate('/locatario/tienda'))
 	}
 
 	useGoogleOneTapLogin({
