@@ -4,6 +4,7 @@
 	bottom: 0;
 	background-color: var(--color-background-page);
 	width: 100%;
+	height: fit-content;
 	height: 3.5rem;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
 }
@@ -15,7 +16,7 @@
 .footer-nav {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: start;
 	font-size: 1.2rem;
 }
 
