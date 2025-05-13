@@ -10,7 +10,7 @@ export default defineConfig({
 			manifest: {
 				icons: [
 					{
-						src: '192.png',
+						src: '/icons/192.png',
 						sizes: '192x192',
 						type: 'image/png',
 						purpose: 'any maskable',
