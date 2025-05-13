@@ -4,13 +4,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LoginForm from './presentation/components/common_pages/AuthPage/LoginForm/LoginForm'
 import RegisterForm from './presentation/components/common_pages/AuthPage/RegisterForm/RegisterForm'
 import HomePage from './presentation/components/common_pages/HomePage/HomePage'
+import ProfilePage from './presentation/components/common_pages/ProfilePage/ProfilePage'
 import Root from './presentation/components/common_pages/Root/Root'
+import StorePage from './presentation/components/common_pages/StorePage/StorePage'
 import StoresPage from './presentation/components/common_pages/StoresPage/StoresPage'
 import UserProtectedRoute from './presentation/components/protected_components/UserProtectedRoute'
-import ProfilePage from './presentation/components/common_pages/ProfilePage/ProfilePage'
-import StorePage from './presentation/components/common_pages/StorePage/StorePage'
 import UserReverseProtectedRoute from './presentation/components/protected_components/UserReverseProtectedRoute'
-import OwnerProtectedComponent from './presentation/components/protected_components/owner/OwnerProtectedComponent'
+import OwnerProtectedRoute from './presentation/components/protected_components/owner/OwnerProtectedRoute'
 import OwnerProductsPage from './presentation/components/views/OwnerView/pages/OwnerProductsPage/OwnerProductsPage'
 
 const router = createBrowserRouter([
@@ -51,18 +51,15 @@ const router = createBrowserRouter([
 			{
 				path: 'locatario/productos',
 				element: (
-					<h1>
-						<OwnerProtectedComponent>
-							<OwnerProductsPage />
-						</OwnerProtectedComponent>
-					</h1>
+					<OwnerProtectedRoute>
+						<OwnerProductsPage />
+					</OwnerProtectedRoute>
 				),
 			},
 			{
 				path: 'login',
 				element: (
 					<UserReverseProtectedRoute>
-						{' '}
 						<LoginForm />
 					</UserReverseProtectedRoute>
 				),

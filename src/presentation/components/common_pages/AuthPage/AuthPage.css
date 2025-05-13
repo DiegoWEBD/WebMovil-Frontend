@@ -60,3 +60,9 @@
 .auth-footer-link:hover {
 	color: var(--color-text-secondary);
 }
+
+@media (max-width: 768px) {
+	.auth-form-card {
+		font-size: 0.9rem;
+	}
+}

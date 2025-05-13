@@ -1,6 +1,6 @@
 .store-contact-information {
 	position: sticky;
-	top: 3rem;
+	top: calc(var(--header-height) + var(--page-margin));
 	display: flex;
 	flex-direction: column;
 	align-items: start;
