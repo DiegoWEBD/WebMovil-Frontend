@@ -8,6 +8,13 @@ export default defineConfig({
 		react(),
 		VitePWA({
 			manifest: {
+				name: 'MiBarrio',
+				short_name: 'MiBarrio',
+				start_url: '/',
+				display: 'standalone',
+				description:
+					'Aplicación para registrar tiendas dentro de un vecindario y gestionar sus ventas y entregas a vecinos registrados como clientes.',
+				theme_color: '#ffffff',
 				icons: [
 					{
 						src: '/icons/192.png',
