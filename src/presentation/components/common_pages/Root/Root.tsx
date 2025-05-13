@@ -20,7 +20,7 @@ const App = () => {
 
 	return (
 		<div
-			className={`app ${
+			className={`app-root ${
 				basicUserInfo ? 'active-session ' : 'inactive-session'
 			}`}
 		>

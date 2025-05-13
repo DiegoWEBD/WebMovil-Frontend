@@ -5,7 +5,7 @@
 	align-items: center;
 	justify-content: space-between;
 	background-color: var(--color-background-page);
-	height: 3.5rem;
+	height: var(--header-height);
 	padding-inline: var(--page-margin);
 	z-index: 2000;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

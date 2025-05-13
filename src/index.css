@@ -8,6 +8,8 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: slatescale;
 
+	--header-height: 3.5rem;
+
 	/* Background colors */
 	--color-background-page: #020617; /* slate-950 */
 	--color-background-page-light: #0f172a; /* slate-900 */

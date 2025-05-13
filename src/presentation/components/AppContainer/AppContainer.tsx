@@ -1,4 +1,3 @@
-import useAppState from '../../global_states/appState'
 import './AppContainer.css'
 
 import { ReactNode } from 'react'
@@ -8,16 +7,7 @@ type AppContainerProps = {
 }
 
 const AppContainer = ({ children }: AppContainerProps) => {
-	const { basicUserInfo } = useAppState()
-	return (
-		<div
-			className={`app-container ${
-				basicUserInfo ? 'active-session ' : 'inactive-session'
-			}`}
-		>
-			{children}
-		</div>
-	)
+	return <div className='app-container'>{children}</div>
 }
 
 export default AppContainer
