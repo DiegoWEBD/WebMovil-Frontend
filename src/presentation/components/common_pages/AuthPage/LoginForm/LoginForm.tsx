@@ -1,4 +1,4 @@
-import { TokenResponse, useGoogleLogin } from '@react-oauth/google'
+import { CredentialResponse, useGoogleOneTapLogin } from '@react-oauth/google'
 import { Link, useNavigate } from 'react-router-dom'
 import useAppState from '../../../../global_states/appState'
 import Button from '../../../buttons/Button/Button'
@@ -9,24 +9,18 @@ const LoginForm = () => {
 	const { validateAccessToken } = useAppState()
 	const navigate = useNavigate()
 
-	const handleSuccess = (
-		response: Omit<TokenResponse, 'err' | 'error_description' | 'error_uri'>
-	) => {
-		const accessToken = response.access_token
-		localStorage.setItem('access_token', accessToken)
+	const handleSuccess = (credentialResponse: CredentialResponse) => {
+		const accessToken = credentialResponse.credential
+
+		localStorage.setItem('access_token', accessToken as string)
 		validateAccessToken().then(() => navigate('/tiendas'))
 	}
 
-	const handleError = (
-		error: Pick<TokenResponse, 'error_description' | 'error_uri' | 'error'>
-	) => {
-		console.log(error)
-	}
-
-	const googleLogin = useGoogleLogin({
+	useGoogleOneTapLogin({
 		onSuccess: handleSuccess,
-		onError: error => handleError(error),
-		scope: 'email profile',
+		onError: () => {
+			console.log('Error de autenticación')
+		},
 	})
 
 	return (
@@ -40,9 +34,7 @@ const LoginForm = () => {
 				</p>
 			</header>
 			<div className='auth-fields'>
-				<Button className='primary auth-button' onClick={googleLogin}>
-					Iniciar sesión
-				</Button>
+				<Button className='primary auth-button'>Iniciar sesión</Button>
 			</div>
 			<footer className='auth-form-footer'>
 				<p>¿No tienes una cuenta?</p>

@@ -66,8 +66,8 @@
 }
 
 .installed {
-	--header-height: 5.5rem;
-	--footer-height: 4.5rem;
+	--header-height: 6rem;
+	--footer-height: 4rem;
 }
 
 .page-title {
