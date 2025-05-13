@@ -12,7 +12,6 @@ const PageLogo = ({ className }: PageLogoProps) => {
 			<div className='logo-icon-container'>
 				<LuStore className='logo-icon' />
 			</div>
-			<h1>MiBarrio</h1>
 		</Link>
 	)
 }

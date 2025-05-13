@@ -1,7 +1,6 @@
-import axios from 'axios'
 import Store from '../../../domain/Store/Store'
-import { CONSTANTS } from '../../../utils/constants'
 import StoreJSONAdapter from '../../../infrastructure/adapters/StoreJSONAdapter'
+import apiClient from '../../../utils/axios_client'
 
 export default class GetStoreById {
 	async execute(id: string): Promise<Store | undefined> {
@@ -10,7 +9,7 @@ export default class GetStoreById {
 		}
 
 		try {
-			const { data } = await axios.get(`${CONSTANTS.API_URL}/stores/${id}`, {
+			const { data } = await apiClient.get(`/stores/${id}`, {
 				headers,
 			})
 

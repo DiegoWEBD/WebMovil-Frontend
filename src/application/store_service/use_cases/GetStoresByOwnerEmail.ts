@@ -1,8 +1,7 @@
-import axios from 'axios'
 import Store from '../../../domain/Store/Store'
 import StoreJSONAdapter from '../../../infrastructure/adapters/StoreJSONAdapter'
 import StoreJSON from '../../../infrastructure/store/StoreJSON.interface'
-import { CONSTANTS } from '../../../utils/constants'
+import apiClient from '../../../utils/axios_client'
 
 export default class GetStoresByOwnerEmail {
 	async execute(ownerEmail: string): Promise<Store[]> {
@@ -10,8 +9,8 @@ export default class GetStoresByOwnerEmail {
 			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
 		}
 
-		const { data } = await axios.get(
-			`${CONSTANTS.API_URL}/stores/${encodeURIComponent(ownerEmail)}`,
+		const { data } = await apiClient.get(
+			`/stores/${encodeURIComponent(ownerEmail)}`,
 			{ headers }
 		)
 

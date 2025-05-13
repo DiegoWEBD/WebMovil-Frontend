@@ -1,6 +1,5 @@
-import axios from 'axios'
-import { CONSTANTS } from '../../../utils/constants'
-import StoreSummary from '../../types/StoreSummary.interface'
+import apiClient from '../../../utils/axios_client'
+import StoreSummary from '../types/StoreSummary.interface'
 import StoresMetadata from '../StoresMetadata'
 
 export interface GetStoresResponse {
@@ -18,8 +17,8 @@ export default class GetStores {
 			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
 		}
 
-		const response = await axios.get(
-			`${CONSTANTS.API_URL}/stores?name=${nameFilter}&page=${page}&limit=${limit}`,
+		const response = await apiClient.get(
+			`/stores?name=${nameFilter}&page=${page}&limit=${limit}`,
 			{ headers }
 		)
 

@@ -4,6 +4,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 1rem;
 	background-color: var(--color-background-page);
 	height: var(--header-height);
 	padding-inline: var(--page-margin);
@@ -20,6 +21,7 @@
 	background-color: var(--color-background-secondary);
 	width: 2.5rem;
 	height: 2.5rem;
+	border: 1px solid var(--color-border);
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
@@ -36,4 +38,10 @@
 
 .owner-header-nav-element.active:hover {
 	background-color: var(--color-background-page-light);
+}
+
+@media (max-width: 600px) {
+	.owner-header {
+		font-size: 0.9rem;
+	}
 }

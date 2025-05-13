@@ -1,6 +1,6 @@
 import './StoresContainer.css'
 
-import StoreSummary from '../../../../../application/types/StoreSummary.interface'
+import StoreSummary from '../../../../../application/store_service/types/StoreSummary.interface'
 import StoreCard from '../StoreCard/StoreCard'
 import StoreSkeletonCard from '../StoreCard/StoreSkeletonCard/StoreSkeletonCard'
 

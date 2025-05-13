@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import StoreSummary from '../../../../../application/types/StoreSummary.interface'
+import StoreSummary from '../../../../../application/store_service/types/StoreSummary.interface'
 import useAppState from '../../../../global_states/appState'
 import PageChanger from '../StoresContainer/PageChanger/PageChanger'
 import StoresContainer from '../StoresContainer/StoresContainer'
