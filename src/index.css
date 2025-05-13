@@ -64,6 +64,10 @@
 	--color-skeleton-light: #9ca3af; /* gray-400 */
 }
 
+.installed {
+	--header-height: 5rem;
+}
+
 .page-title {
 	font-size: 1.5rem;
 }

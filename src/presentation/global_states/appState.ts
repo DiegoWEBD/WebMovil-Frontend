@@ -14,6 +14,7 @@ type AppState = {
 	setUserEmail: (email: string | null) => void
 	setBasicUserInfo: (userInfo: BasicUserInfo | null) => void
 	validateAccessToken: () => Promise<void>
+	isAppInstalled: () => boolean
 }
 
 const useAppState = create<AppState>(set => ({
@@ -27,11 +28,17 @@ const useAppState = create<AppState>(set => ({
 
 	// Funciones globales
 	setUserEmail: (email: string | null) => set({ userEmail: email }),
+
 	setBasicUserInfo: (userInfo: BasicUserInfo | null) =>
 		set({ basicUserInfo: userInfo }),
+
 	validateAccessToken: async () => {
 		const basicUser = await validateAccessToken()
 		set({ userEmail: basicUser?.email, basicUserInfo: basicUser })
+	},
+
+	isAppInstalled: (): boolean => {
+		return window.matchMedia('(display-mode: standalone)').matches
 	},
 }))
 

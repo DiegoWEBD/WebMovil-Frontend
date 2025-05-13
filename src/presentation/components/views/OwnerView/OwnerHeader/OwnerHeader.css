@@ -11,6 +11,11 @@
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.installed .owner-header {
+	align-items: end;
+	padding-bottom: 0.5rem;
+}
+
 .owner-header-nav-element {
 	background-color: var(--color-background-secondary);
 	width: 2.5rem;
