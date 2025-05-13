@@ -14,7 +14,7 @@ export default defineConfig({
 				display: 'standalone',
 				description:
 					'Aplicación para registrar tiendas dentro de un vecindario y gestionar sus ventas y entregas a vecinos registrados como clientes.',
-				theme_color: '#171823',
+				background_color: '#171823',
 				icons: [
 					{
 						src: '/icons/192.png',
