@@ -66,17 +66,17 @@
 	/* Background colors */
 	--color-background-page: #191919; /* ChatGPT main background */
 	--color-background-page-light: #212121; /* ChatGPT chat/message bubble bg */
-	--color-background-primary: #ab68ff; /* Brand accent (purple) */
-	--color-background-primary-light: #c299ff; /* Lighter purple (hover/accent) */
-	--color-background-primary-strong: #7e44cc; /* Darker purple */
+	--color-background-primary: #0d9488; /* Brand accent (purple) */
+	--color-background-primary-light: #14b8a6; /* Lighter purple (hover/accent) */
+	--color-background-primary-strong: #0f766e; /* Darker purple */
 	--color-background-secondary: #212121; /* Matches light page bg */
 	--color-background-secondary-light: #2a2a2a; /* Slightly lighter gray */
 
 	/* Text colors */
-	--color-text-primary: #dddddd; /* Main chat text */
+	--color-text-primary: #f3f4f6; /* Main chat text */
 	--color-text-secondary: #aaaaaa; /* Secondary text (timestamps, labels) */
 	--color-text-tertiary: #666666; /* Placeholder or less prominent text */
-	--color-text-highlight: #ab68ff; /* Highlighted text (e.g., selected) */
+	--color-text-highlight: #0d9488; /* Highlighted text (e.g., selected) */
 
 	/* Border colors */
 	--color-border: #383838; /* Border around components */
@@ -131,7 +131,7 @@ html {
 }
 
 .page-title {
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	font-weight: bold;
 	margin-bottom: 1rem;
 }
