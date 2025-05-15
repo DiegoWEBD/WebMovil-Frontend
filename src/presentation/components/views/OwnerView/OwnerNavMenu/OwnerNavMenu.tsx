@@ -1,18 +1,21 @@
 import { FaRegChartBar } from 'react-icons/fa'
-import { LuStore, LuBox, LuShoppingCart } from 'react-icons/lu'
+import { LuStore, LuBox, LuShoppingCart, LuUser } from 'react-icons/lu'
 import NavElement from '../../../Dashboard/NavElement/NavElement'
 
 type OwnerNavMenuProps = {
-	setMenuOpen: (menuOpen: boolean) => void
+	className?: string
+	setMenuOpen?: (menuOpen: boolean) => void
 }
 
-const OwnerNavMenu = ({ setMenuOpen }: OwnerNavMenuProps) => {
+const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 	return (
 		<>
 			<NavElement
 				to='/locatario/tienda'
-				className='dashboard-v2-nav-element '
-				onClick={() => setMenuOpen(false)}
+				className={`dashboard-v2-nav-element ${className}`}
+				onClick={() => {
+					if (setMenuOpen) setMenuOpen(false)
+				}}
 			>
 				<LuStore />
 				<p className='nav-element-text'>Perfil de Tienda</p>
@@ -20,8 +23,10 @@ const OwnerNavMenu = ({ setMenuOpen }: OwnerNavMenuProps) => {
 
 			<NavElement
 				to='/locatario/productos'
-				className='dashboard-v2-nav-element'
-				onClick={() => setMenuOpen(false)}
+				className={`dashboard-v2-nav-element ${className}`}
+				onClick={() => {
+					if (setMenuOpen) setMenuOpen(false)
+				}}
 			>
 				<LuBox />
 				<p className='nav-element-text'>Productos</p>
@@ -29,8 +34,10 @@ const OwnerNavMenu = ({ setMenuOpen }: OwnerNavMenuProps) => {
 
 			<NavElement
 				to='/'
-				className='dashboard-v2-nav-element'
-				onClick={() => setMenuOpen(false)}
+				className={`dashboard-v2-nav-element ${className}`}
+				onClick={() => {
+					if (setMenuOpen) setMenuOpen(false)
+				}}
 			>
 				<LuShoppingCart />
 				<p className='nav-element-text'>Ventas</p>
@@ -38,11 +45,24 @@ const OwnerNavMenu = ({ setMenuOpen }: OwnerNavMenuProps) => {
 
 			<NavElement
 				to='/'
-				className='dashboard-v2-nav-element'
-				onClick={() => setMenuOpen(false)}
+				className={`dashboard-v2-nav-element ${className}`}
+				onClick={() => {
+					if (setMenuOpen) setMenuOpen(false)
+				}}
 			>
 				<FaRegChartBar />
 				<p className='nav-element-text'>Estadísticas</p>
+			</NavElement>
+
+			<NavElement
+				to='/perfil'
+				className={`dashboard-v2-nav-element ${className}`}
+				onClick={() => {
+					if (setMenuOpen) setMenuOpen(false)
+				}}
+			>
+				<LuUser />
+				<p className='nav-element-text'>Cuenta</p>
 			</NavElement>
 		</>
 	)

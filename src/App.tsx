@@ -42,11 +42,9 @@ const router = createBrowserRouter([
 			{
 				path: 'perfil',
 				element: (
-					<h1>
-						<UserProtectedRoute>
-							<ProfilePage />
-						</UserProtectedRoute>
-					</h1>
+					<UserProtectedRoute>
+						<ProfilePage />
+					</UserProtectedRoute>
 				),
 			},
 			{

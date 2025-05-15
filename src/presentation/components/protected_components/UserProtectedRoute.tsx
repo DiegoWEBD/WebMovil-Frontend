@@ -1,24 +1,19 @@
 import { ReactNode, useEffect } from 'react'
-import useAppState from '../../global_states/appState'
 import { useNavigate } from 'react-router-dom'
+import UserProtectedComponent from './UserProtectedComponent'
 
 type UserProtectedRouteProps = {
 	children: ReactNode
 }
 
 const UserProtectedRoute = ({ children }: UserProtectedRouteProps) => {
-	const { basicUserInfo, validateAccessToken } = useAppState()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!basicUserInfo) navigate('/login')
-	}, [basicUserInfo, navigate])
+		if (!localStorage.getItem('access_token')) navigate('/login')
+	}, [navigate])
 
-	useEffect(() => {
-		validateAccessToken()
-	}, [validateAccessToken])
-
-	return basicUserInfo ? <>{children}</> : null
+	return <UserProtectedComponent>{children}</UserProtectedComponent>
 }
 
 export default UserProtectedRoute

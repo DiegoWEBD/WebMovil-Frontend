@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import useAppState from '../../global_states/appState'
 
 type UserProtectedComponentProps = {
 	children: ReactNode
@@ -8,9 +7,7 @@ type UserProtectedComponentProps = {
 const UserReverseProtectedComponent = ({
 	children,
 }: UserProtectedComponentProps) => {
-	const { basicUserInfo } = useAppState()
-
-	return !basicUserInfo ? <>{children}</> : null
+	return !localStorage.getItem('access_token') ? <>{children}</> : null
 }
 
 export default UserReverseProtectedComponent

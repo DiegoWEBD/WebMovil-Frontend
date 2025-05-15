@@ -7,16 +7,18 @@ import Button from '../../buttons/Button/Button'
 import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard'
 import ProfileHeader from './ProfileHeader/ProfileHeader'
 import './ProfilePage.css'
+import { useNavigate } from 'react-router-dom'
 
 const ProfilePage = () => {
-	const { userEmail, validateAccessToken } = useAppState()
+	const { basicUserInfo } = useAppState()
+	const navigate = useNavigate()
 
 	const { data } = useQuery<User | undefined>({
-		queryKey: ['userData'],
+		queryKey: ['userData', basicUserInfo],
 		queryFn: async () => {
-			if (!userEmail) return undefined
+			if (!basicUserInfo) return undefined
 			const { data } = await axios.get(
-				`${CONSTANTS.API_URL}/users/${encodeURIComponent(userEmail)}`
+				`${CONSTANTS.API_URL}/users/${encodeURIComponent(basicUserInfo.email)}`
 			)
 
 			return new User(
@@ -36,7 +38,7 @@ const ProfilePage = () => {
 				className='secondary'
 				onClick={() => {
 					localStorage.removeItem('access_token')
-					validateAccessToken()
+					navigate('/login')
 				}}
 			>
 				Cerrar sesión

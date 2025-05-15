@@ -7,16 +7,12 @@ type OwnerProtectedRouteProps = {
 }
 
 const OwnerProtectedRoute = ({ children }: OwnerProtectedRouteProps) => {
-	const { basicUserInfo, validateAccessToken } = useAppState()
+	const { basicUserInfo } = useAppState()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!basicUserInfo) navigate('/login')
+		if (basicUserInfo?.userType !== 'owner') navigate('/login')
 	}, [basicUserInfo, navigate])
-
-	useEffect(() => {
-		validateAccessToken()
-	}, [validateAccessToken])
 
 	return basicUserInfo ? <>{children}</> : null
 }

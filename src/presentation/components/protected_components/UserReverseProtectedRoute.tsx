@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useAppState from '../../global_states/appState'
+import UserReverseProtectedComponent from './UserReverseProtectedComponent'
 
 type UserReverseProtectedRouteProps = {
 	children: ReactNode
@@ -9,18 +9,15 @@ type UserReverseProtectedRouteProps = {
 const UserReverseProtectedRoute = ({
 	children,
 }: UserReverseProtectedRouteProps) => {
-	const { basicUserInfo, validateAccessToken } = useAppState()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (basicUserInfo) navigate('/tiendas')
-	}, [basicUserInfo, navigate])
+		if (localStorage.getItem('access_token')) navigate('/tiendas')
+	}, [navigate])
 
-	useEffect(() => {
-		validateAccessToken()
-	}, [validateAccessToken])
-
-	return !basicUserInfo ? <>{children}</> : null
+	return (
+		<UserReverseProtectedComponent>{children}</UserReverseProtectedComponent>
+	)
 }
 
 export default UserReverseProtectedRoute

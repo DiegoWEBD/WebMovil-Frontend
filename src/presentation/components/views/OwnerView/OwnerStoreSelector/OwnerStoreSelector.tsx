@@ -1,3 +1,5 @@
+import './OwnerStoreSelector.css'
+
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useRef, useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
@@ -5,7 +7,6 @@ import { LuStore } from 'react-icons/lu'
 import OwnerStoreSummary from '../../../../../application/owner_service/types/OwnerStoreSummary'
 import useAppState from '../../../../global_states/appState'
 import useOwnerState from '../../../../global_states/owner/ownerState'
-import './OwnerStoreSelector.css'
 
 const OwnerStoreSelector = () => {
 	const { basicUserInfo } = useAppState()

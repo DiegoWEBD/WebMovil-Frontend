@@ -12,20 +12,20 @@
 	border-radius: 0;
 }
 
-.footer-nav {
+.page-footer .dashboard-v2-nav-element {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 1.3rem;
 }
 
-.installed .footer-nav {
+.installed .page-footer .dashboard-v2-nav-element {
 	align-items: start;
 }
 
-.footer-nav.active {
+.page-footer .dashboard-v2-nav-element.active {
 	background-color: var(--color-background-page-light);
-	color: var(--color-text-primary);
+	color: var(--color-text-highlight);
 }
 
 @media (max-width: 850px) {

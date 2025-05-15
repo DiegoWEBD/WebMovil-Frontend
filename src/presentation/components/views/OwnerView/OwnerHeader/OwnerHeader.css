@@ -6,10 +6,10 @@
 	justify-content: space-between;
 	gap: 1rem;
 	background-color: var(--color-background-page);
-	height: var(--header-height);
-	padding-inline: var(--page-margin);
+	padding: 0.7rem var(--page-margin);
 	z-index: 2000;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	transition: all 0.3s ease;
 }
 
 .installed .owner-header {
@@ -40,8 +40,8 @@
 	background-color: var(--color-background-page-light);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
 	.owner-header {
-		font-size: 0.9rem;
+		justify-content: start;
 	}
 }
