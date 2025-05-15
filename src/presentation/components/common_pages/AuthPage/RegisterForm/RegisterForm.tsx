@@ -9,7 +9,7 @@ import Button from '../../../buttons/Button/Button'
 import Card from '../../../containers/Card/Card'
 
 const RegisterForm = () => {
-	const { setUserEmail } = useAppState()
+	const { setBasicUserInfo } = useAppState()
 	const navigate = useNavigate()
 
 	const handleSuccess = (
@@ -24,7 +24,7 @@ const RegisterForm = () => {
 			'diego.png',
 			'owner'
 		).then(email => {
-			setUserEmail(email)
+			setBasicUserInfo({ email: email as string, userType: 'owner' })
 			navigate('/tiendas')
 		})
 	}
