@@ -1,8 +1,12 @@
+import './OwnerStoreProfilePage.css'
+
 import { useQuery } from '@tanstack/react-query'
+import { FiEdit } from 'react-icons/fi'
 import Store from '../../../../../../domain/Store/Store'
-import OwnerStoreGeneralCard from './OwnerStoreGeneralCard/OwnerStoreGeneralCard'
-import useOwnerState from '../../../../../global_states/owner/ownerState'
 import useAppState from '../../../../../global_states/appState'
+import useOwnerState from '../../../../../global_states/owner/ownerState'
+import Button from '../../../../buttons/Button/Button'
+import OwnerStoreGeneralCard from './OwnerStoreGeneralCard/OwnerStoreGeneralCard'
 
 const OwnerStoreProfilePage = () => {
 	const { storeService } = useAppState()
@@ -17,7 +21,13 @@ const OwnerStoreProfilePage = () => {
 
 	return (
 		<div>
-			<p className='page-title'>Perfil de Tienda</p>
+			<div className='owner-store-profile-header'>
+				<p className='page-title'>Perfil de Tienda</p>
+				<Button className='primary'>
+					<FiEdit className='button-icon' />
+					<p>Guardar Cambios</p>
+				</Button>
+			</div>
 			<OwnerStoreGeneralCard store={data} />
 		</div>
 	)

@@ -28,7 +28,8 @@
 }
 
 .dashboard-v2-nav-element.active {
-	background-color: var(--color-background-primary);
+	color: var(--color-text-highlight);
+	background-color: var(--color-background-secondary-light);
 }
 
 .dashboard-v2-nav-menu {

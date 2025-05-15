@@ -17,7 +17,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 					if (setMenuOpen) setMenuOpen(false)
 				}}
 			>
-				<LuStore />
+				<LuStore className='nav-element-icon' />
 				<p className='nav-element-text'>Perfil de Tienda</p>
 			</NavElement>
 
@@ -28,7 +28,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 					if (setMenuOpen) setMenuOpen(false)
 				}}
 			>
-				<LuBox />
+				<LuBox className='nav-element-icon' />
 				<p className='nav-element-text'>Productos</p>
 			</NavElement>
 
@@ -39,7 +39,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 					if (setMenuOpen) setMenuOpen(false)
 				}}
 			>
-				<LuShoppingCart />
+				<LuShoppingCart className='nav-element-icon' />
 				<p className='nav-element-text'>Ventas</p>
 			</NavElement>
 
@@ -50,7 +50,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 					if (setMenuOpen) setMenuOpen(false)
 				}}
 			>
-				<FaRegChartBar />
+				<FaRegChartBar className='nav-element-icon' />
 				<p className='nav-element-text'>Estadísticas</p>
 			</NavElement>
 
@@ -61,7 +61,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 					if (setMenuOpen) setMenuOpen(false)
 				}}
 			>
-				<LuUser />
+				<LuUser className='nav-element-icon' />
 				<p className='nav-element-text'>Cuenta</p>
 			</NavElement>
 		</>
