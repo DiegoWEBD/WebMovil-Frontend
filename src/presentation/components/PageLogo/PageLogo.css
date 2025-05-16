@@ -20,7 +20,7 @@
 }
 
 @media (max-width: 500px) {
-	.logo-container {
+	.active-session .logo-container {
 		display: none;
 	}
 }

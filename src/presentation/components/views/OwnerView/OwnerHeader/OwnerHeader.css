@@ -5,7 +5,6 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	background-color: var(--color-background-page);
 	padding: 0.7rem var(--page-margin);
 	height: var(--header-height);
 	z-index: 2000;
@@ -38,10 +37,4 @@
 
 .owner-header-nav-element.active:hover {
 	background-color: var(--color-background-page-light);
-}
-
-@media (max-width: 500px) {
-	.owner-header {
-		justify-content: start;
-	}
 }

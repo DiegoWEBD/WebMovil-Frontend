@@ -12,7 +12,7 @@ import ScrollToTop from '../../ScrollToTop/ScrollToTop'
 import UserProtectedComponent from '../../protected_components/UserProtectedComponent'
 
 const App = () => {
-	const { validateAccessToken, basicUserInfo, isAppInstalled } = useAppState()
+	const { validateAccessToken, isAppInstalled } = useAppState()
 
 	useEffect(() => {
 		validateAccessToken()
@@ -21,8 +21,12 @@ const App = () => {
 	return (
 		<div
 			className={`app-root 
-				${basicUserInfo ? 'active-session ' : 'inactive-session'} 
-				${isAppInstalled() ? 'installed' : ''}`}
+				${
+					localStorage.getItem('access_token')
+						? 'active-session '
+						: 'inactive-session'
+				} 
+				${isAppInstalled() ? 'installed' : 'not-installed'}`}
 		>
 			<ScrollToTop />
 			<OwnerHeader />

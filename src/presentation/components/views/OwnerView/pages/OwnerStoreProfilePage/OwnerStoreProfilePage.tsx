@@ -13,10 +13,9 @@ const OwnerStoreProfilePage = () => {
 	const { selectedOwnerStoreSummary } = useOwnerState()
 	const { data } = useQuery<Store | undefined>({
 		queryKey: ['ownerStoreData', selectedOwnerStoreSummary],
-		queryFn: async () => {
-			if (!selectedOwnerStoreSummary) return undefined
-			return await storeService.getStoreById(selectedOwnerStoreSummary.id)
-		},
+		queryFn: async () =>
+			await storeService.getStoreById(selectedOwnerStoreSummary!.id),
+		enabled: !!selectedOwnerStoreSummary,
 	})
 
 	return (
@@ -25,7 +24,7 @@ const OwnerStoreProfilePage = () => {
 				<p className='page-title'>Perfil de Tienda</p>
 				<Button className='primary'>
 					<FiEdit className='button-icon' />
-					<p>Guardar Cambios</p>
+					<p>Guardar</p>
 				</Button>
 			</div>
 			<OwnerStoreGeneralCard store={data} />

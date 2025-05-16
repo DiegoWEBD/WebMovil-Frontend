@@ -3,3 +3,9 @@
 	justify-content: space-between;
 	margin-bottom: 1rem;
 }
+
+@media (max-width: 300px) {
+	.owner-store-profile-header {
+		flex-direction: column;
+	}
+}

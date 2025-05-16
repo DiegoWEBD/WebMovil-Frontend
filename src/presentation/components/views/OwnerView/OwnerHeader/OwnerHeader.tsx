@@ -1,10 +1,11 @@
 import './OwnerHeader.css'
 
-import PageLogo from '../../../PageLogo/PageLogo'
-import OwnerProtectedComponent from '../../../protected_components/owner/OwnerProtectedComponent'
-import OwnerStoreSelector from '../OwnerStoreSelector/OwnerStoreSelector'
 import { LuBell } from 'react-icons/lu'
 import Button from '../../../buttons/Button/Button'
+import PageLogo from '../../../PageLogo/PageLogo'
+import OwnerProtectedComponent from '../../../protected_components/owner/OwnerProtectedComponent'
+import UserProtectedComponent from '../../../protected_components/UserProtectedComponent'
+import OwnerStoreSelector from '../OwnerStoreSelector/OwnerStoreSelector'
 
 const OwnerHeader = () => {
 	return (
@@ -13,9 +14,11 @@ const OwnerHeader = () => {
 			<OwnerProtectedComponent>
 				<OwnerStoreSelector />
 			</OwnerProtectedComponent>
-			<Button>
-				<LuBell className='button-icon' />
-			</Button>
+			<UserProtectedComponent>
+				<Button>
+					<LuBell className='button-icon' />
+				</Button>
+			</UserProtectedComponent>
 		</header>
 	)
 }
