@@ -1,5 +1,10 @@
-import { FaRegChartBar } from 'react-icons/fa'
-import { LuStore, LuBox, LuShoppingCart, LuUser } from 'react-icons/lu'
+import {
+	LuBox,
+	LuSearch,
+	LuShoppingCart,
+	LuStore,
+	LuUser,
+} from 'react-icons/lu'
 import NavElement from '../../../Dashboard/NavElement/NavElement'
 
 type OwnerNavMenuProps = {
@@ -18,7 +23,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 				}}
 			>
 				<LuStore className='nav-element-icon' />
-				<p className='nav-element-text'>Perfil de Tienda</p>
+				<p className='nav-element-text'>Mi Tienda</p>
 			</NavElement>
 
 			<NavElement
@@ -33,6 +38,17 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 			</NavElement>
 
 			<NavElement
+				to='/tiendas'
+				className={`dashboard-v2-nav-element ${className}`}
+				onClick={() => {
+					if (setMenuOpen) setMenuOpen(false)
+				}}
+			>
+				<LuSearch className='nav-element-icon' />
+				<p className='nav-element-text'>Explorar</p>
+			</NavElement>
+
+			<NavElement
 				to='/'
 				className={`dashboard-v2-nav-element ${className}`}
 				onClick={() => {
@@ -43,7 +59,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 				<p className='nav-element-text'>Ventas</p>
 			</NavElement>
 
-			<NavElement
+			{/*<NavElement
 				to='/'
 				className={`dashboard-v2-nav-element ${className}`}
 				onClick={() => {
@@ -52,7 +68,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 			>
 				<FaRegChartBar className='nav-element-icon' />
 				<p className='nav-element-text'>Estadísticas</p>
-			</NavElement>
+			</NavElement>*/}
 
 			<NavElement
 				to='/perfil'

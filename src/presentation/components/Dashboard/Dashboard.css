@@ -80,4 +80,26 @@
 	.dashboard-v2-nav-menu {
 		translate: -200%;
 	}
+
+	.dashboard-v2-nav-element {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.nav-element-text {
+		display: block;
+		font-size: 0.8rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.nav-element-text {
+		font-size: 0.6rem;
+	}
+}
+
+@media (max-width: 370px) {
+	.nav-element-text {
+		display: none;
+	}
 }

@@ -10,7 +10,7 @@
 
 	--font-size: 1rem;
 	--header-height: 4.2rem;
-	--footer-height: 4rem;
+	--footer-height: 5rem;
 
 	/* Background colors */
 	--color-background-page: #181818; /* Main dark background */
@@ -117,7 +117,7 @@
 
 body,
 html {
-	overscroll-behavior: none;
+	/*overscroll-behavior: none;*/
 	background-color: var(--color-background-page);
 	color: var(--color-text-primary);
 }
@@ -130,8 +130,8 @@ html {
 }
 
 .installed {
-	--header-height: 6.5rem;
-	--footer-height: 4.5rem;
+	--header-height: 6rem;
+	--footer-height: 7rem;
 }
 
 .page-title {
@@ -153,5 +153,15 @@ html {
 @media (max-width: 500px) {
 	:root {
 		--font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 370px) {
+	:root {
+		--footer-height: 4rem;
+	}
+
+	:root .installed {
+		--footer-height: 5rem;
 	}
 }

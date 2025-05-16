@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { CONSTANTS } from '../../utils/constants'
 import BasicUserInfo from '../user/BasicUserInfo'
+import { clearLocalStorage } from '../../utils/clear_local_storage'
 
 export const validateAccessToken = async (): Promise<BasicUserInfo | null> => {
 	const accessToken = localStorage.getItem('access_token')
@@ -27,12 +28,7 @@ export const validateAccessToken = async (): Promise<BasicUserInfo | null> => {
 		} else {
 			console.error('Error inesperado:', error)
 		}
-		localStorage.removeItem('access_token')
-		localStorage.removeItem('user_type')
-		localStorage.removeItem('user_email')
-		localStorage.removeItem('owner_selected_store_id')
-		localStorage.removeItem('owner_selected_store_name')
-		localStorage.removeItem('owner_selected_store_is_active')
+		clearLocalStorage()
 
 		return null
 	}
