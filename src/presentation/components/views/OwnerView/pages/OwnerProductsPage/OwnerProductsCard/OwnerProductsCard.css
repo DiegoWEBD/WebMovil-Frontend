@@ -7,7 +7,7 @@
 .table-row {
 	display: flex;
 	padding: 0.8rem 1rem;
-	border-bottom: 1px solid var(--color-border);
+
 	text-align: center;
 	align-items: center;
 }
@@ -19,22 +19,27 @@
 .table-row {
 	font-weight: 600;
 	line-height: 1rem;
+	border-top: 1px solid var(--color-border);
 }
 
 .store-product-code {
 	width: 15%;
+	padding-inline: 0.3rem;
 }
 
 .store-product-name {
 	width: 25%;
+	padding-inline: 0.3rem;
 }
 
 .store-product-category {
 	width: 25%;
+	padding-inline: 0.3rem;
 }
 
 .store-product-price {
 	width: 10%;
+	padding-inline: 0.3rem;
 }
 
 .table-row .store-product-price {
@@ -43,10 +48,12 @@
 
 .store-product-stock {
 	width: 10%;
+	padding-inline: 0.3rem;
 }
 
 .store-product-actions {
 	width: 15%;
+	padding-inline: 0.3rem;
 }
 
 .table-row .store-product-actions {

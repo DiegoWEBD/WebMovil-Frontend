@@ -3,10 +3,10 @@ import './Root.css'
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import useAppState from '../../../global_states/appState'
-import AppContainer from '../../AppContainer/AppContainer'
+import AppContainer from '../../containers/AppContainer/AppContainer'
 import DashboardV2 from '../../Dashboard/Dashboard'
 import Footer from '../../Footer/Footer'
-import OwnerHeader from '../../views/OwnerView/OwnerHeader/OwnerHeader'
+import Header from '../../Header/Header'
 import PageContentContainer from '../../containers/PageContentContainer/PageContentContainer'
 import ScrollToTop from '../../ScrollToTop/ScrollToTop'
 import UserProtectedComponent from '../../protected_components/UserProtectedComponent'
@@ -29,7 +29,7 @@ const App = () => {
 				${isAppInstalled() ? 'installed' : 'not-installed'}`}
 		>
 			<ScrollToTop />
-			<OwnerHeader />
+			<Header />
 
 			<AppContainer>
 				<DashboardV2 />
