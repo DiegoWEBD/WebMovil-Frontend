@@ -13,7 +13,7 @@ const OwnerStoreSelector = () => {
 	const { basicUserInfo } = useAppState()
 	const { ownerService, selectedOwnerStoreSummary, setSelectedStoreSummary } =
 		useOwnerState()
-	const [openSelector, setOpenSelector] = useState(true)
+	const [openSelector, setOpenSelector] = useState(false)
 	const selectorRef = useRef<HTMLDivElement>(null)
 
 	const { data } = useQuery<OwnerStoreSummary[] | undefined>({
