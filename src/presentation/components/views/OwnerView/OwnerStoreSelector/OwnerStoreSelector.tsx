@@ -7,12 +7,13 @@ import { LuStore } from 'react-icons/lu'
 import OwnerStoreSummary from '../../../../../application/owner_service/types/OwnerStoreSummary'
 import useAppState from '../../../../global_states/appState'
 import useOwnerState from '../../../../global_states/owner/ownerState'
+import Modal from '../../../Modal/Modal'
 
 const OwnerStoreSelector = () => {
 	const { basicUserInfo } = useAppState()
 	const { ownerService, selectedOwnerStoreSummary, setSelectedStoreSummary } =
 		useOwnerState()
-	const [openSelector, setOpenSelector] = useState(false)
+	const [openSelector, setOpenSelector] = useState(true)
 	const selectorRef = useRef<HTMLDivElement>(null)
 
 	const { data } = useQuery<OwnerStoreSummary[] | undefined>({
@@ -69,41 +70,37 @@ const OwnerStoreSelector = () => {
 	}
 
 	return (
-		<>
-			{openSelector && (
-				<div className='overlay' onClick={() => setOpenSelector(false)} />
-			)}
-			<div ref={selectorRef} className='owner-store-selector'>
-				<div
-					className='owner-store-header'
-					onClick={() => setOpenSelector(!openSelector)}
-				>
-					<LuStore className='selector-icon' />
-					<p>{selectedOwnerStoreSummary?.name}</p>
-					<IoIosArrowDown className='selector-arrow' />
-				</div>
-				{openSelector && (
-					<div className='owner-store-selector-options'>
-						{data?.map(store => (
-							<div
-								key={store.id}
-								className='owner-store-selector-option'
-								onClick={() => selectOwnerStoreSummary(store)}
-							>
-								<p>{store.name}</p>
-								<p
-									className={`owner-store-state ${
-										store.isActive ? 'active-owner-store' : ''
-									}`}
-								>
-									{store.isActive ? 'Activa' : 'Inactiva'}
-								</p>
-							</div>
-						))}
-					</div>
-				)}
+		<div ref={selectorRef} className='owner-store-selector'>
+			<div
+				className='owner-store-header'
+				onClick={() => setOpenSelector(!openSelector)}
+			>
+				<LuStore className='selector-icon' />
+				<p>{selectedOwnerStoreSummary?.name}</p>
+				<IoIosArrowDown className='selector-arrow' />
 			</div>
-		</>
+			{openSelector && (
+				<Modal show={openSelector} onClose={() => setOpenSelector(false)}>
+					<h3>Mis Tiendas</h3>
+					{data?.map(store => (
+						<div
+							key={store.id}
+							className='owner-store-selector-option'
+							onClick={() => selectOwnerStoreSummary(store)}
+						>
+							<p>{store.name}</p>
+							<p
+								className={`owner-store-state ${
+									store.isActive ? 'active-owner-store' : ''
+								}`}
+							>
+								{store.isActive ? 'Activa' : 'Inactiva'}
+							</p>
+						</div>
+					))}
+				</Modal>
+			)}
+		</div>
 	)
 }
 export default OwnerStoreSelector

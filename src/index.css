@@ -124,18 +124,14 @@
 
 body,
 html {
+	overscroll-behavior: none;
 	background-color: var(--color-background-page);
 	color: var(--color-text-primary);
 }
 
-body .installed,
-html .installed {
-	overscroll-behavior: none;
-}
-
 .installed {
 	--header-height: 6rem;
-	--footer-height: 7rem;
+	--footer-height: 6rem;
 }
 
 .page-title {

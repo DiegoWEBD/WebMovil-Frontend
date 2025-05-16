@@ -1,13 +1,3 @@
-.overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.4); /* oscurecer fondo */
-	z-index: 9;
-}
-
 .owner-store-selector {
 	position: relative;
 	background-color: var(--color-background-secondary);
@@ -19,6 +9,17 @@
 	border-radius: 6px;
 	cursor: pointer;
 	z-index: 100;
+}
+
+.owner-store-selector .modal-content {
+	padding-inline: 0;
+	padding-bottom: 0;
+}
+
+.owner-store-selector h3 {
+	padding-inline: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--color-border);
 }
 
 .owner-store-header {
@@ -49,14 +50,7 @@
 }
 
 .owner-store-selector-options {
-	position: absolute;
-	top: 3.5rem;
-	border-radius: 6px;
-	border: 1px solid var(--color-border);
 	background-color: var(--color-background-secondary);
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	padding: 0.3rem;
-	width: min(15rem, calc(100vw - var(--page-margin)));
 }
 
 .owner-store-selector-option {
@@ -64,10 +58,11 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 0.5rem;
+	padding: 0.5rem 1rem;
 	border-radius: 6px;
 	transition: all 0.15s ease;
 	font-size: 0.9rem;
+	cursor: pointer;
 }
 
 .owner-store-selector-option:hover {
