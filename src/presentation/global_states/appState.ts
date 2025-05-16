@@ -15,29 +15,42 @@ type AppState = {
 	isAppInstalled: () => boolean
 }
 
-const useAppState = create<AppState>((set, get) => ({
-	// Servicios
-	storeService: new StoreService(),
-	stockService: new StockService(),
+const loadInitialBasicUserInfo = (): BasicUserInfo | null => {
+	return !localStorage.getItem('user_email')
+		? null
+		: {
+				email: localStorage.getItem('user_email') as string,
+				userType: localStorage.getItem('type') as string,
+		  }
+}
 
-	// Estados globales
-	basicUserInfo: null,
+const useAppState = create<AppState>((set, get) => {
+	const initialBasicUserInfo = loadInitialBasicUserInfo()
 
-	// Funciones globales
+	return {
+		// Servicios
+		storeService: new StoreService(),
+		stockService: new StockService(),
 
-	setBasicUserInfo: (userInfo: BasicUserInfo | null) =>
-		set({ basicUserInfo: userInfo }),
+		// Estados globales
+		basicUserInfo: initialBasicUserInfo,
 
-	validateAccessToken: async () => {
-		const basicUser = await validateAccessToken()
-		if (get().basicUserInfo?.email === basicUser?.email) return
+		// Funciones globales
 
-		set({ basicUserInfo: basicUser })
-	},
+		setBasicUserInfo: (userInfo: BasicUserInfo | null) =>
+			set({ basicUserInfo: userInfo }),
 
-	isAppInstalled: (): boolean => {
-		return window.matchMedia('(display-mode: standalone)').matches
-	},
-}))
+		validateAccessToken: async () => {
+			const basicUser = await validateAccessToken()
+			if (get().basicUserInfo?.email === basicUser?.email) return
+
+			set({ basicUserInfo: basicUser })
+		},
+
+		isAppInstalled: (): boolean => {
+			return window.matchMedia('(display-mode: standalone)').matches
+		},
+	}
+})
 
 export default useAppState

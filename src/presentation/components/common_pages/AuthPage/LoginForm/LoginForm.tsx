@@ -11,9 +11,14 @@ const LoginForm = () => {
 
 	const handleSuccess = (credentialResponse: CredentialResponse) => {
 		const accessToken = credentialResponse.credential
+		if (!accessToken) return
 
-		localStorage.setItem('access_token', accessToken as string)
-		validateAccessToken().then(() => navigate('/locatario/tienda'))
+		localStorage.setItem('access_token', accessToken)
+		validateAccessToken().then(() => {
+			if (localStorage.getItem('user_type') === 'owner')
+				navigate('/locatario/tienda')
+			else navigate('/tiendas')
+		})
 	}
 
 	useGoogleOneTapLogin({

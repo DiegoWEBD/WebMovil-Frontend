@@ -14,6 +14,9 @@ export const validateAccessToken = async (): Promise<BasicUserInfo | null> => {
 			},
 		})
 
+		localStorage.setItem('user_type', data.user_type)
+		localStorage.setItem('user_email', data.user_email)
+
 		return {
 			email: data.user_email,
 			userType: data.user_type,
@@ -25,6 +28,12 @@ export const validateAccessToken = async (): Promise<BasicUserInfo | null> => {
 			console.error('Error inesperado:', error)
 		}
 		localStorage.removeItem('access_token')
+		localStorage.removeItem('user_type')
+		localStorage.removeItem('user_email')
+		localStorage.removeItem('owner_selected_store_id')
+		localStorage.removeItem('owner_selected_store_name')
+		localStorage.removeItem('owner_selected_store_is_active')
+
 		return null
 	}
 }

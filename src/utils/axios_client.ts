@@ -24,7 +24,12 @@ apiClient.interceptors.response.use(
 	async error => {
 		if (error.response.status === 401 || error.response.status === 403) {
 			localStorage.removeItem('access_token')
-			window.location.href = '/login'
+			localStorage.removeItem('user_type')
+			localStorage.removeItem('user_email')
+			localStorage.removeItem('owner_selected_store_id')
+			localStorage.removeItem('owner_selected_store_name')
+			localStorage.removeItem('owner_selected_store_is_active')
+			window.location.reload()
 		}
 
 		return Promise.reject(error)

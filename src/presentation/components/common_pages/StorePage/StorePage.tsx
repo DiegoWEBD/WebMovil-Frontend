@@ -24,6 +24,7 @@ const StorePage = () => {
 		queryKey: ['storeData', location.state.storeId],
 		queryFn: async () =>
 			await storeService.getStoreById(location.state.storeId),
+		enabled: !!location.state.storeId,
 	})
 
 	return (

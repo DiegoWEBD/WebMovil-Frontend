@@ -16,17 +16,28 @@ const OwnerStoreSelector = () => {
 	const selectorRef = useRef<HTMLDivElement>(null)
 
 	const { data } = useQuery<OwnerStoreSummary[] | undefined>({
-		queryKey: ['ownerStores', basicUserInfo?.email],
+		queryKey: ['ownerStores', basicUserInfo],
 		queryFn: async () => {
-			if (!basicUserInfo?.email) return undefined
-			const stores = await ownerService.getOwnerStores(basicUserInfo.email)
-			setSelectedStoreSummary(
-				stores.length > 0
-					? { name: stores[0].name, id: stores[0].id, isActive: true }
-					: undefined
-			)
+			const stores = await ownerService.getOwnerStores(basicUserInfo!.email)
+			if (!stores) setSelectedStoreSummary(undefined)
+
+			if (!localStorage.getItem('owner_selected_store_id')) {
+				localStorage.setItem('owner_selected_store_id', stores[0].id)
+				localStorage.setItem('owner_selected_store_name', stores[0].name)
+				localStorage.setItem(
+					'owner_selected_store_is_active',
+					String(stores[0].isActive)
+				)
+				setSelectedStoreSummary(
+					stores.length > 0
+						? { name: stores[0].name, id: stores[0].id, isActive: true }
+						: undefined
+				)
+			}
+
 			return stores
 		},
+		enabled: !!basicUserInfo,
 	})
 
 	useEffect(() => {
@@ -45,6 +56,17 @@ const OwnerStoreSelector = () => {
 			document.removeEventListener('mousedown', handleClickOutside)
 		}
 	}, [openSelector])
+
+	const selectOwnerStoreSummary = (ownerStoreSummary: OwnerStoreSummary) => {
+		setSelectedStoreSummary(ownerStoreSummary)
+		setOpenSelector(false)
+		localStorage.setItem('owner_selected_store_id', ownerStoreSummary.id)
+		localStorage.setItem('owner_selected_store_name', ownerStoreSummary.name)
+		localStorage.setItem(
+			'owner_selected_store_is_active',
+			String(ownerStoreSummary.isActive)
+		)
+	}
 
 	return (
 		<>
@@ -66,10 +88,7 @@ const OwnerStoreSelector = () => {
 							<div
 								key={store.id}
 								className='owner-store-selector-option'
-								onClick={() => {
-									setSelectedStoreSummary(store)
-									setOpenSelector(false)
-								}}
+								onClick={() => selectOwnerStoreSummary(store)}
 							>
 								<p>{store.name}</p>
 								<p

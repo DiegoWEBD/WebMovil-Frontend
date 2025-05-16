@@ -13,13 +13,13 @@ const OwnerProductsCard = () => {
 	const { selectedOwnerStoreSummary } = useOwnerState()
 
 	const { data } = useQuery<Product[] | undefined>({
-		queryKey: ['ownerStoreProducts', selectedOwnerStoreSummary?.id],
+		queryKey: ['ownerStoreProducts', selectedOwnerStoreSummary],
 		queryFn: async () => {
-			if (!selectedOwnerStoreSummary) return undefined
 			return await stockService.getProductsByStoreId(
-				selectedOwnerStoreSummary.id
+				selectedOwnerStoreSummary!.id
 			)
 		},
+		enabled: !!selectedOwnerStoreSummary,
 	})
 
 	return (

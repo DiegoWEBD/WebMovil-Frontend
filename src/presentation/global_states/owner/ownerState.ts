@@ -12,18 +12,36 @@ type OwnerState = {
 	) => void
 }
 
-const useOwnerState = create<OwnerState>(set => ({
-	// Servicios
-	ownerService: new OwnerService(),
+const loadInitialSelectedOwnerStoreSummary = ():
+	| OwnerStoreSummary
+	| undefined => {
+	return !localStorage.getItem('owner_selected_store_id')
+		? undefined
+		: {
+				id: localStorage.getItem('owner_selected_store_id') as string,
+				name: localStorage.getItem('owner_selected_store_name') as string,
+				isActive:
+					localStorage.getItem('owner_selected_store_is_active') === 'true',
+		  }
+}
 
-	selectedOwnerStoreSummary: undefined,
+const useOwnerState = create<OwnerState>(set => {
+	const initialSelectedOwnerStoreSummary =
+		loadInitialSelectedOwnerStoreSummary()
 
-	// Setters
-	setSelectedStoreSummary: (
-		ownerStoreSummary: OwnerStoreSummary | undefined
-	) => {
-		set(() => ({ selectedOwnerStoreSummary: ownerStoreSummary }))
-	},
-}))
+	return {
+		// Servicios
+		ownerService: new OwnerService(),
+
+		selectedOwnerStoreSummary: initialSelectedOwnerStoreSummary,
+
+		// Setters
+		setSelectedStoreSummary: (
+			ownerStoreSummary: OwnerStoreSummary | undefined
+		) => {
+			set(() => ({ selectedOwnerStoreSummary: ownerStoreSummary }))
+		},
+	}
+})
 
 export default useOwnerState

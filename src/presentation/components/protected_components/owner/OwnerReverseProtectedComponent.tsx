@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import useAppState from '../../../global_states/appState'
 
 type OwnerProtectedComponentProps = {
 	children: ReactNode
@@ -8,9 +7,7 @@ type OwnerProtectedComponentProps = {
 const OwnerReverseProtectedComponent = ({
 	children,
 }: OwnerProtectedComponentProps) => {
-	const { basicUserInfo } = useAppState()
-
-	return basicUserInfo?.userType !== 'owner' ? <>{children}</> : null
+	return localStorage.getItem('user_type') !== 'owner' ? <>{children}</> : null
 }
 
 export default OwnerReverseProtectedComponent

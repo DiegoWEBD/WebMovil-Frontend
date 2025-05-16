@@ -10,7 +10,7 @@
 
 	--font-size: 1rem;
 	--header-height: 4.2rem;
-	--footer-height: 3.5rem;
+	--footer-height: 4rem;
 
 	/* Background colors */
 	--color-background-page: #181818; /* Main dark background */
@@ -131,7 +131,7 @@ html {
 
 .installed {
 	--header-height: 6.5rem;
-	--footer-height: 4rem;
+	--footer-height: 4.5rem;
 }
 
 .page-title {

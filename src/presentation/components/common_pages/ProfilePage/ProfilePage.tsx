@@ -7,18 +7,16 @@ import Button from '../../buttons/Button/Button'
 import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard'
 import ProfileHeader from './ProfileHeader/ProfileHeader'
 import './ProfilePage.css'
-import { useNavigate } from 'react-router-dom'
+import { clearLocalStorage } from '../../../../utils/clear_local_storage'
 
 const ProfilePage = () => {
 	const { basicUserInfo } = useAppState()
-	const navigate = useNavigate()
 
 	const { data } = useQuery<User | undefined>({
 		queryKey: ['userData', basicUserInfo],
 		queryFn: async () => {
-			if (!basicUserInfo) return undefined
 			const { data } = await axios.get(
-				`${CONSTANTS.API_URL}/users/${encodeURIComponent(basicUserInfo.email)}`
+				`${CONSTANTS.API_URL}/users/${encodeURIComponent(basicUserInfo!.email)}`
 			)
 
 			return new User(
@@ -28,6 +26,7 @@ const ProfilePage = () => {
 				data.profile_picture
 			)
 		},
+		enabled: !!basicUserInfo,
 	})
 
 	return (
@@ -37,8 +36,8 @@ const ProfilePage = () => {
 			<Button
 				className='secondary'
 				onClick={() => {
-					localStorage.removeItem('access_token')
-					navigate('/login')
+					clearLocalStorage()
+					window.location.reload()
 				}}
 			>
 				Cerrar sesión

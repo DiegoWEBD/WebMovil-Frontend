@@ -10,6 +10,7 @@
 	z-index: 2000;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	transition: all 0.3s ease;
+	background-color: var(--color-background-page);
 }
 
 .installed .owner-header {
