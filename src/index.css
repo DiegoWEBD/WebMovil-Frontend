@@ -115,18 +115,22 @@
 	--color-skeleton-light: #f3f4f6;
 }
 
-body,
-html {
-	/*overscroll-behavior: none;*/
-	background-color: var(--color-background-page);
-	color: var(--color-text-primary);
-}
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	word-break: break-word;
+}
+
+body,
+html {
+	background-color: var(--color-background-page);
+	color: var(--color-text-primary);
+}
+
+body .installed,
+html .installed {
+	overscroll-behavior: none;
 }
 
 .installed {
