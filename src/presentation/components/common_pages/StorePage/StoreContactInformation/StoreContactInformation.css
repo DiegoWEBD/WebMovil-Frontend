@@ -61,6 +61,14 @@
 	}
 }
 
+@media (max-width: 850px) {
+	.store-contact-information {
+		padding: 0;
+		padding-inline: var(--page-margin);
+		border: none;
+	}
+}
+
 @media (max-width: 330px) {
 	.store-contact-information {
 		font-size: 0.9rem;

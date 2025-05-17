@@ -15,6 +15,7 @@
 
 @media (max-width: 850px) {
 	.app-container {
+		padding: 0;
 		padding-bottom: calc(var(--footer-height) + var(--page-margin));
 	}
 }

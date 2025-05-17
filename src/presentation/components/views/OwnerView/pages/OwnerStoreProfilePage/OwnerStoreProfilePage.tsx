@@ -19,7 +19,7 @@ const OwnerStoreProfilePage = () => {
 	})
 
 	return (
-		<div>
+		<div className='page-padding'>
 			<div className='owner-store-profile-header'>
 				<p className='page-title'>Perfil de Tienda</p>
 				<Button className='primary'>

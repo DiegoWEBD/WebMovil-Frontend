@@ -3,3 +3,6 @@
 	overscroll-behavior: auto;
 	margin-top: var(--header-height);
 }
+
+@media (max-width: 850px) {
+}

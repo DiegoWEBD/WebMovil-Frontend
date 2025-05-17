@@ -39,32 +39,35 @@
 	--page-margin: 1.5rem;
 }
 
-[data-theme='light-dark'] {
-	--color-background-page: #171823; /* custom */
-	--color-background-page-light: #1f2937; /* gray-800 */
+[data-theme='slate'] {
+	--color-background-page: #090f21; /* gray-900 */
+	--color-background-page-light: #1e293b; /* gray-800 */
 	--color-background-primary: #0d9488; /* teal-600 */
 	--color-background-primary-light: #14b8a6; /* teal-500 */
 	--color-background-primary-strong: #0f766e; /* teal-700 */
-	--color-background-secondary: #374151; /* gray-700 */
+	--color-background-secondary: #0f172a; /* gray-800 */
 	--color-background-secondary-light: #4b5563; /* gray-600 */
 
 	/* Text colors */
-	--color-text-primary: #2dd4bf; /* teal-400 */
-	--color-text-secondary: #f3f4f6; /* gray-100 */
+	--color-text-primary: #f8fafc; /* teal-400 */
+	--color-text-secondary: #cbd5e1; /* gray-100 */
 	--color-text-tertiary: #9ca3af; /* gray-400 */
-	--color-text-highlight: #ab68ff; /* Highlighted text (e.g., selected) */
+	--color-text-highlight: #14b8a6; /* Highlighted text (e.g., selected) */
+
+	--color-highlight: #0d9488; /* blue-600 */
+	--color-highlight-light: #14b8a6; /* blue-400 */
 
 	/* Border colors */
-	--color-border: #4b5563; /* gray-600 */
-	--color-border-light: #9ca3af; /* gray-400 */
-	--color-border-strong: #374151; /* gray-700 */
+	--color-border: #334155; /* gray-600 */
+	--color-border-light: #475569; /* gray-400 */
+	--color-border-strong: #1e293b; /* gray-700 */
 
 	/* Skeleton colors */
 	--color-skeleton: #6b7280; /* gray-500 */
 	--color-skeleton-light: #9ca3af; /* gray-400 */
 }
 
-[data-theme='chatgpt-dark'] {
+[data-theme='dark'] {
 	/* Background colors */
 	--color-background-page: #191919; /* ChatGPT main background */
 	--color-background-page-light: #212121; /* ChatGPT chat/message bubble bg */
@@ -79,6 +82,9 @@
 	--color-text-secondary: #aaaaaa; /* Secondary text (timestamps, labels) */
 	--color-text-tertiary: #666666; /* Placeholder or less prominent text */
 	--color-text-highlight: #0d9488; /* Highlighted text (e.g., selected) */
+
+	--color-highlight: #0d9488; /* blue-600 */
+	--color-highlight-light: #14b8a6; /* blue-400 */
 
 	/* Border colors */
 	--color-border: #383838; /* Border around components */
@@ -97,13 +103,16 @@
 	--color-background-primary: #0d9488; /* Teal (kept as accent) */
 	--color-background-primary-light: #14b8a6; /* Lighter teal */
 	--color-background-primary-strong: #0f766e; /* Darker teal */
-	--color-background-secondary: #e5e7eb; /* Gray-200 */
-	--color-background-secondary-light: #d1d5db; /* Gray-300 */
+	--color-background-secondary: #ffffff; /* Gray-200 */
+	--color-background-secondary-light: #f3f4f6; /* Gray-300 */
 
 	/* Text colors */
 	--color-text-primary: #111827; /* Gray-900 */
 	--color-text-secondary: #374151; /* Gray-700 */
 	--color-text-tertiary: #6b7280; /* Gray-500 */
+	--color-text-highlight: #2563eb; /* blue-600 */
+	--color-highlight: #2563eb; /* blue-600 */
+	--color-highlight-light: #60a5fa; /* blue-400 */
 
 	/* Border colors */
 	--color-border: #d1d5db; /* Gray-300 */
@@ -143,9 +152,27 @@ html {
 	color: var(--color-text-secondary);
 }
 
+.text-highlight {
+	color: var(--color-text-highlight);
+}
+
+.page-padding {
+	padding: 0;
+}
+
 @media (max-width: 1000px) {
 	:root {
 		--page-margin: 1rem;
+	}
+}
+
+@media (max-width: 850px) {
+	:root {
+		--page-margin: 1rem;
+	}
+	.page-padding {
+		padding: var(--page-margin);
+		padding-bottom: 0;
 	}
 }
 
