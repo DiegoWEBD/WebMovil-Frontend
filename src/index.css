@@ -38,17 +38,20 @@
 	--color-skeleton: #e5e7eb; /* Gray-200 */
 	--color-skeleton-light: #f3f4f6;
 
+	--red-variant: red;
+	--color-success: #0d9488; /* teal-600 */
+
 	--page-margin: 1.5rem;
 }
 
 [data-theme='slate'] {
 	--color-background-page: #090f21; /* gray-900 */
-	--color-background-page-light: #1e293b; /* gray-800 */
+	--color-background-page-light: #0f172a; /* gray-800 */
 	--color-background-primary: #0d9488; /* teal-600 */
 	--color-background-primary-light: #14b8a6; /* teal-500 */
 	--color-background-primary-strong: #0f766e; /* teal-700 */
 	--color-background-secondary: #0f172a; /* gray-800 */
-	--color-background-secondary-light: #4b5563; /* gray-600 */
+	--color-background-secondary-light: #1e293b; /* gray-600 */
 
 	/* Text colors */
 	--color-text-primary: white; /* teal-400 */
@@ -67,9 +70,12 @@
 	/* Skeleton colors */
 	--color-skeleton: #6b7280; /* gray-500 */
 	--color-skeleton-light: #9ca3af; /* gray-400 */
+
+	--red-variant: red;
+	--color-success: #0d9488; /* teal-600 */
 }
 
-[data-theme='dark'] {
+[data-theme='darks'] {
 	/* Background colors */
 	--color-background-page: #191919; /* ChatGPT main background */
 	--color-background-page-light: #212121; /* ChatGPT chat/message bubble bg */
@@ -96,6 +102,41 @@
 	/* Skeleton colors */
 	--color-skeleton: #3a3a3a; /* Loading skeleton base */
 	--color-skeleton-light: #555555; /* Lighter variation */
+
+	--red-variant: red;
+	--color-success: #0d9488; /* teal-600 */
+}
+
+[data-theme='dark'] {
+	/* Background colors */
+	--color-background-page: #191919; /* gray-900 */
+	--color-background-page-light: #212121; /* gray-800 */
+	--color-background-primary: #0d9488; /* teal-600 */
+	--color-background-primary-light: #14b8a6; /* teal-500 */
+	--color-background-primary-strong: #0f766e; /* teal-700 */
+	--color-background-secondary: #191919; /* gray-800 */
+	--color-background-secondary-light: #212121; /* gray-600 */
+
+	/* Text colors */
+	--color-text-primary: white; /* teal-400 */
+	--color-text-secondary: #e2e8f0; /* gray-100 */
+	--color-text-tertiary: #9ca3af; /* gray-400 */
+	--color-text-highlight: #14b8a6; /* Highlighted text (e.g., selected) */
+
+	--color-highlight: #0d9488; /* blue-600 */
+	--color-highlight-light: #14b8a6; /* blue-400 */
+
+	/* Border colors */
+	--color-border: #1e293b; /* gray-600 */
+	--color-border-light: #334155; /* gray-400 */
+	--color-border-strong: #1e293b; /* gray-700 */
+
+	/* Skeleton colors */
+	--color-skeleton: #6b7280; /* gray-500 */
+	--color-skeleton-light: #9ca3af; /* gray-400 */
+
+	--red-variant: red;
+	--color-success: #0d9488; /* teal-600 */
 }
 
 * {
@@ -120,10 +161,7 @@ html {
 	font-size: 1.2rem;
 	font-weight: bold;
 	margin-bottom: 1rem;
-}
-
-.page-subtitle {
-	color: var(--color-text-secondary);
+	color: var(--color-text-primary);
 }
 
 .text-highlight {

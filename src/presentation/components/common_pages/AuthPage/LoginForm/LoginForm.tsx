@@ -29,25 +29,27 @@ const LoginForm = () => {
 	})
 
 	return (
-		<Card className='auth-form-card'>
-			<header className='auth-form-header'>
-				<div className='auth-form-logo-plus-title'>
-					<h2 className='auth-form-title'>Iniciar sesión</h2>
+		<div className='page-padding'>
+			<Card className='auth-form-card'>
+				<header className='auth-form-header'>
+					<div className='auth-form-logo-plus-title'>
+						<h2 className='auth-form-title'>Iniciar sesión</h2>
+					</div>
+					<p className='auth-form-subtitle'>
+						Ingresa a tu cuenta para acceder a todas las funciones
+					</p>
+				</header>
+				<div className='auth-fields'>
+					<Button className='primary auth-button'>Iniciar sesión</Button>
 				</div>
-				<p className='auth-form-subtitle'>
-					Ingresa a tu cuenta para acceder a todas las funciones
-				</p>
-			</header>
-			<div className='auth-fields'>
-				<Button className='primary auth-button'>Iniciar sesión</Button>
-			</div>
-			<footer className='auth-form-footer'>
-				<p>¿No tienes una cuenta?</p>
-				<Link to='/register' className='auth-footer-link'>
-					Regístrate
-				</Link>
-			</footer>
-		</Card>
+				<footer className='auth-form-footer'>
+					<p>¿No tienes una cuenta?</p>
+					<Link to='/register' className='auth-footer-link'>
+						Regístrate
+					</Link>
+				</footer>
+			</Card>
+		</div>
 	)
 }
 

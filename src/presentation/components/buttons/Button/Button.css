@@ -20,11 +20,12 @@
 }
 
 .button-icon {
-	width: 1rem;
-	height: 1rem;
+	width: 1.1rem;
+	height: 1.1rem;
 }
 
 .primary {
+	font-size: 1rem;
 	background-color: var(--color-highlight);
 	color: white;
 }
@@ -46,8 +47,16 @@
 }
 
 @media (max-width: 850px) {
-	.secondary,
 	.custom-button {
 		background-color: var(--color-background-page);
+		padding: 0.5rem 0.7rem;
+	}
+
+	.secondary {
+		background-color: var(--color-background-page);
+	}
+
+	.primary {
+		background-color: var(--color-highlight);
 	}
 }

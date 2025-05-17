@@ -10,9 +10,19 @@
 	padding: 0.7rem var(--page-margin);
 	height: var(--header-height);
 	z-index: 2000;
-	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	border-bottom: 1px solid var(--color-border);
 	transition: all 0.3s ease;
 	background-color: var(--color-background-page);
+	line-height: 1;
+}
+
+.owner-header .custom-button {
+	padding: 0;
+}
+
+.owner-header .custom-button .button-icon {
+	width: 1.5rem;
+	height: 1.5rem;
 }
 
 .installed .owner-header {
@@ -40,4 +50,11 @@
 
 .owner-header-nav-element.active:hover {
 	background-color: var(--color-background-page-light);
+}
+
+@media (max-width: 850px) {
+	.owner-header .custom-button .button-icon {
+		width: 1.3rem;
+		height: 1.3rem;
+	}
 }

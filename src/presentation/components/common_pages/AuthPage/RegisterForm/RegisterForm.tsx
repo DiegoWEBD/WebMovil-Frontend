@@ -42,53 +42,55 @@ const RegisterForm = () => {
 	})
 
 	return (
-		<Card className='auth-form-card'>
-			<header className='auth-form-header'>
-				<div className='auth-form-logo-plus-title'>
-					<h2 className='auth-form-title'>Crear una cuenta</h2>
-				</div>
-				<p className='auth-form-subtitle'>Únete a la comunidad de MiBarrio</p>
-			</header>
-			<div className='auth-fields'>
-				<div className='register-fields'>
-					<div className='register-fullname-section'>
-						<div className='register-field'>
-							<label>Nombre(s)</label>
-							<input
-								className='register-input'
-								type='text'
-								placeholder='Juan'
-							/>
+		<div className='page-padding'>
+			<Card className='auth-form-card'>
+				<header className='auth-form-header'>
+					<div className='auth-form-logo-plus-title'>
+						<h2 className='auth-form-title'>Crear una cuenta</h2>
+					</div>
+					<p className='auth-form-subtitle'>Únete a la comunidad de MiBarrio</p>
+				</header>
+				<div className='auth-fields'>
+					<div className='register-fields'>
+						<div className='register-fullname-section'>
+							<div className='register-field'>
+								<label>Nombre(s)</label>
+								<input
+									className='register-input'
+									type='text'
+									placeholder='Juan'
+								/>
+							</div>
+							<div className='register-field'>
+								<label>Apellido(s)</label>
+								<input
+									className='register-input'
+									type='text'
+									placeholder='Pérez Contreras'
+								/>
+							</div>
 						</div>
 						<div className='register-field'>
-							<label>Apellido(s)</label>
+							<label>Teléfono</label>
 							<input
 								className='register-input'
-								type='text'
-								placeholder='Pérez Contreras'
+								type='number'
+								placeholder='81549768'
 							/>
 						</div>
 					</div>
-					<div className='register-field'>
-						<label>Teléfono</label>
-						<input
-							className='register-input'
-							type='number'
-							placeholder='81549768'
-						/>
-					</div>
+					<Button className='primary auth-button' onClick={googleLogin}>
+						Crear cuenta
+					</Button>
 				</div>
-				<Button className='primary auth-button' onClick={googleLogin}>
-					Crear cuenta
-				</Button>
-			</div>
-			<footer className='auth-form-footer'>
-				<p>¿Ya tienes una cuenta?</p>
-				<Link to='/login' className='auth-footer-link'>
-					Inicia sesión
-				</Link>
-			</footer>
-		</Card>
+				<footer className='auth-form-footer'>
+					<p>¿Ya tienes una cuenta?</p>
+					<Link to='/login' className='auth-footer-link'>
+						Inicia sesión
+					</Link>
+				</footer>
+			</Card>
+		</div>
 	)
 }
 
