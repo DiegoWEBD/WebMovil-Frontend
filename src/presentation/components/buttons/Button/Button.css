@@ -1,5 +1,6 @@
 .custom-button {
-	background-color: var(--color-background-secondary-light);
+	background-color: var(--color-background-secondary);
+	color: var(--color-text-primary);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -33,6 +34,7 @@
 }
 
 .secondary {
+	background-color: var(--color-background-secondary);
 	color: var(--color-highlight);
 	border: 1px solid var(--color-highlight);
 }
@@ -41,4 +43,11 @@
 	color: var(--color-highlight-light);
 	border: 1px solid var(--color-highlight-light);
 	background-color: var(--color-background-secondary);
+}
+
+@media (max-width: 850px) {
+	.secondary,
+	.custom-button {
+		background-color: var(--color-background-page);
+	}
 }

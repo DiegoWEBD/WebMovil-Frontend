@@ -13,7 +13,7 @@
 
 .store-contact-information .title {
 	font-size: 1.2rem;
-	font-weight: 600;
+	font-weight: bold;
 	color: var(--color-text-primary);
 	margin: 0rem 0rem 0.5rem 0rem;
 }
@@ -63,8 +63,7 @@
 
 @media (max-width: 850px) {
 	.store-contact-information {
-		padding: 0;
-		padding-inline: var(--page-margin);
+		padding: var(--page-margin) var(--page-margin) 0 var(--page-margin);
 		border: none;
 	}
 }

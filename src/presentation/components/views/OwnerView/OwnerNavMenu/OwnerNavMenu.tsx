@@ -49,7 +49,7 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 			</NavElement>
 
 			<NavElement
-				to='/'
+				to='/locatario/ventas'
 				className={`dashboard-v2-nav-element ${className}`}
 				onClick={() => {
 					if (setMenuOpen) setMenuOpen(false)

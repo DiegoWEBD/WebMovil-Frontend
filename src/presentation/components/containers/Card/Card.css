@@ -9,5 +9,7 @@
 @media (max-width: 850px) {
 	.card {
 		background-color: var(--color-background-page);
+		padding: var(--page-margin) 0;
+		border: none;
 	}
 }

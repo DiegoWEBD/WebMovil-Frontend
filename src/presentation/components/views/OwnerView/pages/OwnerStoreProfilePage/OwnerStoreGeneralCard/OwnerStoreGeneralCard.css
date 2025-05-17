@@ -49,3 +49,10 @@
 		grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
 	}
 }
+
+@media (max-width: 850px) {
+	.owner-store-general-card {
+		padding: 0;
+		border: none;
+	}
+}

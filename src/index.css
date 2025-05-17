@@ -13,28 +13,30 @@
 	--footer-height: 5rem;
 
 	/* Background colors */
-	--color-background-page: #181818; /* Main dark background */
-	--color-background-page-light: #212121; /* Slightly lighter background */
-	--color-background-primary: #0d9488; /* teal-600 */
-	--color-background-primary-light: #14b8a6; /* teal-500 */
-	--color-background-primary-strong: #0f766e; /* teal-700 */
-	--color-background-secondary: #212121; /* Matching secondary bg */
-	--color-background-secondary-light: #374151; /* Slightly lighter gray */
+	--color-background-page: #ffffff; /* Main background: white */
+	--color-background-page-light: #f3f4f6; /* Light gray background */
+	--color-background-primary: #0d9488; /* Teal (kept as accent) */
+	--color-background-primary-light: #14b8a6; /* Lighter teal */
+	--color-background-primary-strong: #0f766e; /* Darker teal */
+	--color-background-secondary: #ffffff; /* Gray-200 */
+	--color-background-secondary-light: #f3f4f6; /* Gray-300 */
 
 	/* Text colors */
-	--color-text-primary: #2dd4bf; /* Main text color */
-	--color-text-secondary: #f3f4f6; /* gray-100 */
-	--color-text-tertiary: #9ca3af; /* gray-400 */
-	--color-text-highlight: #ab68ff; /* Highlighted text (e.g., selected) */
+	--color-text-primary: black; /* Gray-900 */
+	--color-text-secondary: black; /* Gray-700 */
+	--color-text-tertiary: #1f2937; /* Gray-500 */
+	--color-text-highlight: #2563eb; /* blue-600 */
+	--color-highlight: #2563eb; /* blue-600 */
+	--color-highlight-light: #60a5fa; /* blue-400 */
 
 	/* Border colors */
-	--color-border: #383838; /* Subtle gray border */
-	--color-border-light: #606060; /* Light gray */
-	--color-border-strong: #303030; /* Darker border */
+	--color-border: #d1d5db; /* Gray-300 */
+	--color-border-light: #e5e7eb; /* Gray-200 */
+	--color-border-strong: #9ca3af; /* Gray-400 */
 
 	/* Skeleton colors */
-	--color-skeleton: #3d3d3d; /* Typical loading placeholder */
-	--color-skeleton-light: #606060; /* Lighter version for variation */
+	--color-skeleton: #e5e7eb; /* Gray-200 */
+	--color-skeleton-light: #f3f4f6;
 
 	--page-margin: 1.5rem;
 }
@@ -49,8 +51,8 @@
 	--color-background-secondary-light: #4b5563; /* gray-600 */
 
 	/* Text colors */
-	--color-text-primary: #f8fafc; /* teal-400 */
-	--color-text-secondary: #cbd5e1; /* gray-100 */
+	--color-text-primary: white; /* teal-400 */
+	--color-text-secondary: #e2e8f0; /* gray-100 */
 	--color-text-tertiary: #9ca3af; /* gray-400 */
 	--color-text-highlight: #14b8a6; /* Highlighted text (e.g., selected) */
 
@@ -58,8 +60,8 @@
 	--color-highlight-light: #14b8a6; /* blue-400 */
 
 	/* Border colors */
-	--color-border: #334155; /* gray-600 */
-	--color-border-light: #475569; /* gray-400 */
+	--color-border: #1e293b; /* gray-600 */
+	--color-border-light: #334155; /* gray-400 */
 	--color-border-strong: #1e293b; /* gray-700 */
 
 	/* Skeleton colors */
@@ -96,34 +98,6 @@
 	--color-skeleton-light: #555555; /* Lighter variation */
 }
 
-[data-theme='light'] {
-	/* Background colors */
-	--color-background-page: #ffffff; /* Main background: white */
-	--color-background-page-light: #f3f4f6; /* Light gray background */
-	--color-background-primary: #0d9488; /* Teal (kept as accent) */
-	--color-background-primary-light: #14b8a6; /* Lighter teal */
-	--color-background-primary-strong: #0f766e; /* Darker teal */
-	--color-background-secondary: #ffffff; /* Gray-200 */
-	--color-background-secondary-light: #f3f4f6; /* Gray-300 */
-
-	/* Text colors */
-	--color-text-primary: #111827; /* Gray-900 */
-	--color-text-secondary: #374151; /* Gray-700 */
-	--color-text-tertiary: #6b7280; /* Gray-500 */
-	--color-text-highlight: #2563eb; /* blue-600 */
-	--color-highlight: #2563eb; /* blue-600 */
-	--color-highlight-light: #60a5fa; /* blue-400 */
-
-	/* Border colors */
-	--color-border: #d1d5db; /* Gray-300 */
-	--color-border-light: #e5e7eb; /* Gray-200 */
-	--color-border-strong: #9ca3af; /* Gray-400 */
-
-	/* Skeleton colors */
-	--color-skeleton: #e5e7eb; /* Gray-200 */
-	--color-skeleton-light: #f3f4f6;
-}
-
 * {
 	margin: 0;
 	padding: 0;
@@ -134,7 +108,7 @@
 body,
 html {
 	background-color: var(--color-background-page);
-	color: var(--color-text-primary);
+	color: var(--color-text-secondary);
 }
 
 .installed {

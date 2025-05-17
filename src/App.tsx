@@ -13,6 +13,7 @@ import UserReverseProtectedRoute from './presentation/components/protected_compo
 import OwnerProtectedRoute from './presentation/components/protected_components/owner/OwnerProtectedRoute'
 import OwnerProductsPage from './presentation/components/views/OwnerView/pages/OwnerProductsPage/OwnerProductsPage'
 import OwnerStoreProfilePage from './presentation/components/views/OwnerView/pages/OwnerStoreProfilePage/OwnerStoreProfilePage'
+import OwnerSalesPage from './presentation/components/views/OwnerView/pages/OwnerSalesPage/OwnerSalesPage'
 
 const router = createBrowserRouter([
 	{
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
 				element: (
 					<OwnerProtectedRoute>
 						<OwnerStoreProfilePage />
+					</OwnerProtectedRoute>
+				),
+			},
+			{
+				path: 'locatario/ventas',
+				element: (
+					<OwnerProtectedRoute>
+						<OwnerSalesPage />
 					</OwnerProtectedRoute>
 				),
 			},

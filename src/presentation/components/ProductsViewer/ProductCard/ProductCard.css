@@ -61,10 +61,10 @@
 	}
 
 	.product-card {
-		background-color: var(--color-background-page);
 		display: flex;
 		flex-direction: row-reverse;
 		justify-content: space-between;
+		gap: 1rem;
 		align-items: center;
 		border: none;
 		border-radius: 0;

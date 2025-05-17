@@ -83,6 +83,13 @@
 	background-color: var(--color-background-primary);
 }
 
+@media (max-width: 850px) {
+	.owner-store-selector {
+		background-color: var(--color-background-page);
+		border-color: var(--color-border-strong);
+	}
+}
+
 @media (max-width: 500px) {
 	.owner-store-header {
 		font-size: 1.3rem;

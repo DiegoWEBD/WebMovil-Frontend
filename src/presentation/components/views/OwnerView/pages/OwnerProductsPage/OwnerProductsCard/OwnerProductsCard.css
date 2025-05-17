@@ -7,7 +7,6 @@
 .table-row {
 	display: flex;
 	padding: 0.8rem 1rem;
-
 	text-align: center;
 	align-items: center;
 }
@@ -77,6 +76,12 @@
 
 .delete-product-button {
 	color: #dc2626;
+}
+
+@media (max-width: 850px) {
+	.products-table {
+		border: none;
+	}
 }
 
 @media (max-width: 500px) {
