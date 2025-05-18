@@ -1,91 +1,170 @@
 import './App.css'
-
+import { Suspense, lazy } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import LoginForm from './presentation/components/common_pages/AuthPage/LoginForm/LoginForm'
-import RegisterForm from './presentation/components/common_pages/AuthPage/RegisterForm/RegisterForm'
-import HomePage from './presentation/components/common_pages/HomePage/HomePage'
-import ProfilePage from './presentation/components/common_pages/ProfilePage/ProfilePage'
-import Root from './presentation/components/common_pages/Root/Root'
-import StorePage from './presentation/components/common_pages/StorePage/StorePage'
-import StoresPage from './presentation/components/common_pages/StoresPage/StoresPage'
-import UserProtectedRoute from './presentation/components/protected_components/UserProtectedRoute'
-import UserReverseProtectedRoute from './presentation/components/protected_components/UserReverseProtectedRoute'
-import OwnerProtectedRoute from './presentation/components/protected_components/owner/OwnerProtectedRoute'
-import OwnerProductsPage from './presentation/components/views/OwnerView/pages/OwnerProductsPage/OwnerProductsPage'
-import OwnerStoreProfilePage from './presentation/components/views/OwnerView/pages/OwnerStoreProfilePage/OwnerStoreProfilePage'
-import OwnerSalesPage from './presentation/components/views/OwnerView/pages/OwnerSalesPage/OwnerSalesPage'
+
+// Lazy imports for pages
+const LoginForm = lazy(
+	() =>
+		import(
+			'./presentation/components/common_pages/AuthPage/LoginForm/LoginForm'
+		)
+)
+const RegisterForm = lazy(
+	() =>
+		import(
+			'./presentation/components/common_pages/AuthPage/RegisterForm/RegisterForm'
+		)
+)
+const HomePage = lazy(
+	() => import('./presentation/components/common_pages/HomePage/HomePage')
+)
+const ProfilePage = lazy(
+	() => import('./presentation/components/common_pages/ProfilePage/ProfilePage')
+)
+const Root = lazy(
+	() => import('./presentation/components/common_pages/Root/Root')
+)
+const StorePage = lazy(
+	() => import('./presentation/components/common_pages/StorePage/StorePage')
+)
+const StoresPage = lazy(
+	() => import('./presentation/components/common_pages/StoresPage/StoresPage')
+)
+
+const OwnerProductsPage = lazy(
+	() =>
+		import(
+			'./presentation/components/views/OwnerView/pages/OwnerProductsPage/OwnerProductsPage'
+		)
+)
+const OwnerStoreProfilePage = lazy(
+	() =>
+		import(
+			'./presentation/components/views/OwnerView/pages/OwnerStoreProfilePage/OwnerStoreProfilePage'
+		)
+)
+const OwnerSalesPage = lazy(
+	() =>
+		import(
+			'./presentation/components/views/OwnerView/pages/OwnerSalesPage/OwnerSalesPage'
+		)
+)
+
+const UserProtectedRoute = lazy(
+	() =>
+		import('./presentation/components/protected_components/UserProtectedRoute')
+)
+const UserReverseProtectedRoute = lazy(
+	() =>
+		import(
+			'./presentation/components/protected_components/UserReverseProtectedRoute'
+		)
+)
+const OwnerProtectedRoute = lazy(
+	() =>
+		import(
+			'./presentation/components/protected_components/owner/OwnerProtectedRoute'
+		)
+)
+
+// Fallback component while loading
+const Loading = () => <div>Cargando...</div>
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Root />,
+		element: (
+			<Suspense fallback={<Loading />}>
+				<Root />
+			</Suspense>
+		),
 		children: [
 			{
 				path: '/',
-				element: <HomePage />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<HomePage />
+					</Suspense>
+				),
 			},
 			{
 				path: 'tiendas',
 				element: (
-					<UserProtectedRoute>
-						<StoresPage />
-					</UserProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<UserProtectedRoute>
+							<StoresPage />
+						</UserProtectedRoute>
+					</Suspense>
 				),
 			},
 			{
 				path: 'tiendas/:name',
 				element: (
-					<UserProtectedRoute>
-						<StorePage />
-					</UserProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<UserProtectedRoute>
+							<StorePage />
+						</UserProtectedRoute>
+					</Suspense>
 				),
 			},
 			{
 				path: 'perfil',
 				element: (
-					<UserProtectedRoute>
-						<ProfilePage />
-					</UserProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<UserProtectedRoute>
+							<ProfilePage />
+						</UserProtectedRoute>
+					</Suspense>
 				),
 			},
 			{
 				path: 'locatario/productos',
 				element: (
-					<OwnerProtectedRoute>
-						<OwnerProductsPage />
-					</OwnerProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<OwnerProtectedRoute>
+							<OwnerProductsPage />
+						</OwnerProtectedRoute>
+					</Suspense>
 				),
 			},
 			{
 				path: 'locatario/tienda',
 				element: (
-					<OwnerProtectedRoute>
-						<OwnerStoreProfilePage />
-					</OwnerProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<OwnerProtectedRoute>
+							<OwnerStoreProfilePage />
+						</OwnerProtectedRoute>
+					</Suspense>
 				),
 			},
 			{
 				path: 'locatario/ventas',
 				element: (
-					<OwnerProtectedRoute>
-						<OwnerSalesPage />
-					</OwnerProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<OwnerProtectedRoute>
+							<OwnerSalesPage />
+						</OwnerProtectedRoute>
+					</Suspense>
 				),
 			},
 			{
 				path: 'login',
 				element: (
-					<UserReverseProtectedRoute>
-						<LoginForm />
-					</UserReverseProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<UserReverseProtectedRoute>
+							<LoginForm />
+						</UserReverseProtectedRoute>
+					</Suspense>
 				),
 			},
 			{
 				path: 'register',
 				element: (
-					<UserReverseProtectedRoute>
-						<RegisterForm />
-					</UserReverseProtectedRoute>
+					<Suspense fallback={<Loading />}>
+						<UserReverseProtectedRoute>
+							<RegisterForm />
+						</UserReverseProtectedRoute>
+					</Suspense>
 				),
 			},
 		],
