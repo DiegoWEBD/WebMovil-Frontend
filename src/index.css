@@ -1,7 +1,7 @@
 :root {
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-weight: 400;
+	font-weight: normal;
 	font-size: var(--font-size);
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -19,6 +19,7 @@
 	--color-background-primary-light: #14b8a6; /* Lighter teal */
 	--color-background-primary-strong: #0f766e; /* Darker teal */
 	--color-background-secondary: #ffffff; /* Gray-200 */
+	--color-background-secondary-50: rgba(30, 41, 59, 0.5);
 	--color-background-secondary-light: #f3f4f6; /* Gray-300 */
 
 	/* Text colors */
@@ -38,84 +39,62 @@
 	--color-skeleton: #e5e7eb; /* Gray-200 */
 	--color-skeleton-light: #f3f4f6;
 
-	--red-variant: red;
-	--color-success: #0d9488; /* teal-600 */
+	--color-error: red;
+	--color-background-success: #0d9488; /* teal-600 */
 
 	--page-margin: 1.5rem;
 }
 
 [data-theme='slate'] {
-	--color-background-page: #090f21; /* gray-900 */
-	--color-background-page-light: #0f172a; /* gray-800 */
-	--color-background-primary: #0d9488; /* teal-600 */
+	--color-background-page: rgba(2, 6, 23, 0.94); /* slate-950 */
+	--color-background-page-light: rgba(2, 6, 23, 0.92); /* slate-900 */
+	--color-background-primary: #e2e8f0; /* teal-600 */
 	--color-background-primary-light: #14b8a6; /* teal-500 */
 	--color-background-primary-strong: #0f766e; /* teal-700 */
-	--color-background-secondary: #0f172a; /* gray-800 */
-	--color-background-secondary-light: #1e293b; /* gray-600 */
+	--color-background-secondary: rgba(30, 41, 59, 0.7); /* slate-800 */
+	--color-background-secondary-50: rgba(30, 41, 59, 0.7);
+	--color-background-secondary-light: rgba(51, 65, 85, 0.6); /* slate-600 */
 
 	/* Text colors */
 	--color-text-primary: white; /* teal-400 */
-	--color-text-secondary: #e2e8f0; /* gray-100 */
-	--color-text-tertiary: #9ca3af; /* gray-400 */
-	--color-text-highlight: #14b8a6; /* Highlighted text (e.g., selected) */
+	--color-text-secondary: #e2e8f0; /* slate-100 */
+	--color-text-tertiary: #94a3b8; /* slate-400 */
+	--color-text-highlight: #34d399; /* Highlighted text (e.g., selected) */
+	--color-text-success: #34d399;
 
-	--color-highlight: #0d9488; /* blue-600 */
-	--color-highlight-light: #14b8a6; /* blue-400 */
+	--color-highlight: rgba(16, 185, 129, 0.4); /* blue-600 */
+	--color-highlight-light: rgba(16, 185, 129, 0.6); /* blue-400 */
 
-	/* Border colors */
-	--color-border: #1e293b; /* gray-600 */
-	--color-border-light: #334155; /* gray-400 */
-	--color-border-strong: #1e293b; /* gray-700 */
+	--color-background-highlight: rgba(16, 185, 129, 0.5); /* blue-600 */
+	--color-border-highlight: rgba(16, 185, 129, 0.7); /* blue-400 */
 
-	/* Skeleton colors */
-	--color-skeleton: #6b7280; /* gray-500 */
-	--color-skeleton-light: #9ca3af; /* gray-400 */
-
-	--red-variant: red;
-	--color-success: #0d9488; /* teal-600 */
-}
-
-[data-theme='darks'] {
-	/* Background colors */
-	--color-background-page: #191919; /* ChatGPT main background */
-	--color-background-page-light: #212121; /* ChatGPT chat/message bubble bg */
-	--color-background-primary: #0d9488; /* Brand accent (purple) */
-	--color-background-primary-light: #14b8a6; /* Lighter purple (hover/accent) */
-	--color-background-primary-strong: #0f766e; /* Darker purple */
-	--color-background-secondary: #212121; /* Matches light page bg */
-	--color-background-secondary-light: #2a2a2a; /* Slightly lighter gray */
-
-	/* Text colors */
-	--color-text-primary: #f3f4f6; /* Main chat text */
-	--color-text-secondary: #aaaaaa; /* Secondary text (timestamps, labels) */
-	--color-text-tertiary: #666666; /* Placeholder or less prominent text */
-	--color-text-highlight: #0d9488; /* Highlighted text (e.g., selected) */
-
-	--color-highlight: #0d9488; /* blue-600 */
-	--color-highlight-light: #14b8a6; /* blue-400 */
+	--color-background-highlight-hover: rgba(16, 185, 129, 0.6); /* blue-600 */
+	--color-border-highlight-hover: rgba(16, 185, 129, 0.8); /* blue-400 */
 
 	/* Border colors */
-	--color-border: #383838; /* Border around components */
-	--color-border-light: #555555; /* Slightly lighter border */
-	--color-border-strong: #2a2a2a; /* Darker border */
+	--color-border: #475569; /* slate-600 */
+	--color-border-light: #475569; /* slate-400 */
+	--color-border-strong: #334155; /* slate-700 */
+	--color-border-success: rgba(16, 185, 129, 0.3); /* slate-700 */
 
 	/* Skeleton colors */
-	--color-skeleton: #3a3a3a; /* Loading skeleton base */
-	--color-skeleton-light: #555555; /* Lighter variation */
+	--color-skeleton: #6b7280; /* slate-500 */
+	--color-skeleton-light: #9ca3af; /* slate-400 */
 
-	--red-variant: red;
-	--color-success: #0d9488; /* teal-600 */
+	--color-error: #dc2626;
+	--color-background-success: rgba(16, 185, 129, 0.2); /* teal-600 */
 }
 
 [data-theme='dark'] {
 	/* Background colors */
-	--color-background-page: #191919; /* gray-900 */
-	--color-background-page-light: #212121; /* gray-800 */
+	--color-background-page: #18181b; /* gray-900 */
+	--color-background-page-light: #27272a; /* gray-800 */
 	--color-background-primary: #0d9488; /* teal-600 */
 	--color-background-primary-light: #14b8a6; /* teal-500 */
 	--color-background-primary-strong: #0f766e; /* teal-700 */
-	--color-background-secondary: #191919; /* gray-800 */
-	--color-background-secondary-light: #212121; /* gray-600 */
+	--color-background-secondary: #27272a; /* gray-800 */
+	--color-background-secondary-50: rgba(30, 41, 59, 0.5);
+	--color-background-secondary-light: #3f3f46; /* gray-600 */
 
 	/* Text colors */
 	--color-text-primary: white; /* teal-400 */
@@ -127,16 +106,16 @@
 	--color-highlight-light: #14b8a6; /* blue-400 */
 
 	/* Border colors */
-	--color-border: #1e293b; /* gray-600 */
-	--color-border-light: #334155; /* gray-400 */
-	--color-border-strong: #1e293b; /* gray-700 */
+	--color-border: #3f3f46; /* gray-600 */
+	--color-border-light: #52525b; /* gray-400 */
+	--color-border-strong: #27272a; /* gray-700 */
 
 	/* Skeleton colors */
 	--color-skeleton: #6b7280; /* gray-500 */
 	--color-skeleton-light: #9ca3af; /* gray-400 */
 
-	--red-variant: red;
-	--color-success: #0d9488; /* teal-600 */
+	--color-error: red;
+	--color-background-success: #0d9488; /* teal-600 */
 }
 
 * {
@@ -148,8 +127,14 @@
 
 body,
 html {
-	background-color: var(--color-background-page);
+	background: linear-gradient(
+		to bottom,
+		var(--color-background-page),
+		var(--color-background-page-light)
+	);
 	color: var(--color-text-secondary);
+	overflow: hidden;
+	height: 100%;
 }
 
 .installed {
@@ -158,10 +143,17 @@ html {
 }
 
 .page-title {
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 	margin-bottom: 1rem;
 	color: var(--color-text-primary);
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+}
+
+.page-title-icon {
+	color: var(--color-text-highlight);
 }
 
 .text-highlight {
@@ -169,7 +161,7 @@ html {
 }
 
 .page-padding {
-	padding: 0;
+	padding: var(--page-margin);
 }
 
 @media (max-width: 1000px) {
@@ -181,10 +173,6 @@ html {
 @media (max-width: 850px) {
 	:root {
 		--page-margin: 1rem;
-	}
-	.page-padding {
-		padding: var(--page-margin);
-		padding-bottom: 0;
 	}
 }
 

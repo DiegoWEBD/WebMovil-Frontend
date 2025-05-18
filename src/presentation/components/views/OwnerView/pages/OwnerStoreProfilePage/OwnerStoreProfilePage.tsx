@@ -22,7 +22,7 @@ const OwnerStoreProfilePage = () => {
 		<div className='page-padding'>
 			<div className='owner-store-profile-header'>
 				<p className='page-title'>Perfil de Tienda</p>
-				<Button className='primary'>
+				<Button className='secondary'>
 					<FiEdit className='button-icon' />
 					<p>Guardar</p>
 				</Button>

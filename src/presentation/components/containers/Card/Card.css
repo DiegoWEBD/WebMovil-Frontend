@@ -1,5 +1,5 @@
 .card {
-	background: var(--color-background-secondary);
+	background: var(--color-background-secondary-50);
 	border: 1px solid var(--color-border);
 	border-radius: 0.6rem;
 	transition: all 0.2s ease;
@@ -8,8 +8,9 @@
 
 @media (max-width: 850px) {
 	.card {
-		background-color: var(--color-background-page);
-		padding: var(--page-margin) 0;
 		border: none;
+		background-color: inherit;
+		padding: 0;
+		border-radius: 0;
 	}
 }

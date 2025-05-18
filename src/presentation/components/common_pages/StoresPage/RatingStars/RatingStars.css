@@ -10,7 +10,7 @@
 
 .feedback-rating {
 	font-size: var(--star-size);
-	font-weight: 700;
+	font-weight: bold;
 	color: var(--color-text-primary);
 }
 
@@ -31,7 +31,7 @@
 }
 
 .stars-bg .star {
-	color: #facc15;
+	color: var(--color-text-highlight);
 	opacity: 0.35;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .star.filled {
-	color: #facc15;
+	color: var(--color-text-highlight);
 }
 
 .star {

@@ -5,9 +5,10 @@ import { useEffect, useRef, useState, ReactNode } from 'react'
 type LazyRenderProps = {
 	children: ReactNode | (() => ReactNode)
 	root?: Element | null
+	className?: string
 }
 
-const LazyRender = ({ children, root = null }: LazyRenderProps) => {
+const LazyRender = ({ children, root = null, className }: LazyRenderProps) => {
 	const ref = useRef<HTMLDivElement>(null)
 	const [isVisible, setIsVisible] = useState(false)
 
@@ -34,7 +35,7 @@ const LazyRender = ({ children, root = null }: LazyRenderProps) => {
 	}, [root])
 
 	return (
-		<div ref={ref} className='lazy-render'>
+		<div ref={ref} className={`lazy-render ${className}`}>
 			{isVisible
 				? typeof children === 'function'
 					? children()

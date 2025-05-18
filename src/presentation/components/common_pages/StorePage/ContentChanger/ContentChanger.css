@@ -27,9 +27,3 @@
 	background-color: var(--color-background-page-light);
 	color: var(--color-text-primary);
 }
-
-@media (max-width: 850px) {
-	.content-changer {
-		margin-inline: var(--page-margin);
-	}
-}

@@ -28,7 +28,7 @@ const StorePage = () => {
 	})
 
 	return (
-		<div className='store-page'>
+		<div className='store-page page-padding'>
 			<Link to='/tiendas' className='back-link'>
 				<FaArrowLeft className='back-icon' />
 				<p>Volver a tiendas</p>
@@ -36,7 +36,7 @@ const StorePage = () => {
 			<div className='info-plus-contact'>
 				<div className='info'>
 					<img
-						src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.png`}
+						src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.webp`}
 						className='store-img'
 					/>
 					<div className='store-header'>

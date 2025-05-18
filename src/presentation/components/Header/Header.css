@@ -10,10 +10,14 @@
 	padding: 0.7rem var(--page-margin);
 	height: var(--header-height);
 	z-index: 2000;
-	border-bottom: 1px solid var(--color-border);
+	border-bottom: 1px solid var(--color-border-strong);
 	transition: all 0.3s ease;
-	background-color: var(--color-background-page);
 	line-height: 1;
+}
+
+.header-space {
+	background-color: blue;
+	height: var(--header-height);
 }
 
 .owner-header .custom-button {

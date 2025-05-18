@@ -1,3 +1,17 @@
 .lazy-render {
+	min-height: 20rem;
+}
+
+.lazy-render.lazy-store-card {
 	min-height: 24rem;
+}
+
+.lazy-render.lazy-store-sale {
+	min-height: 6rem;
+}
+
+@media (max-width: 850px) {
+	.lazy-render.lazy-product-card {
+		min-height: 6rem;
+	}
 }

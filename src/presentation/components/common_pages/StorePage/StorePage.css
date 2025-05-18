@@ -87,22 +87,8 @@
 }
 
 @media (max-width: 850px) {
-	.back-link {
-		padding: var(--page-margin);
-		padding-bottom: 0;
-	}
-
-	.store-img {
-		width: calc(100% - 2 * var(--page-margin));
-		margin-inline: var(--page-margin);
-	}
-
-	.store-header {
-		margin-inline: var(--page-margin);
-	}
-
 	.info-plus-contact {
-		gap: 0;
+		gap: 1rem;
 	}
 }
 

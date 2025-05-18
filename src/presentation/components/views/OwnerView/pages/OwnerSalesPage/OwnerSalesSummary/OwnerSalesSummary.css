@@ -1,0 +1,31 @@
+.owner-sales-summary {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.owner-sales-summary h3 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--color-text-primary);
+}
+
+.owner-sales-summary p {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--color-text-tertiary);
+}
+
+.owner-sales-summary .total-sales-summary {
+	color: var(--color-text-highlight);
+}
+
+@media (max-width: 850px) {
+	.owner-sales-summary .card {
+		text-align: center;
+		padding: 1rem;
+		border: 1px solid var(--color-border-strong);
+		border-radius: 0.6rem;
+	}
+}

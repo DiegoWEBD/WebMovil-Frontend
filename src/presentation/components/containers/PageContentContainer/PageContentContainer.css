@@ -1,8 +1,3 @@
 .page-content {
 	width: 100%;
-	overscroll-behavior: auto;
-	margin-top: var(--header-height);
-}
-
-@media (max-width: 850px) {
 }

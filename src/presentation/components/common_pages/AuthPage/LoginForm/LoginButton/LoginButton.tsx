@@ -1,3 +1,4 @@
+import Button from '../../../../buttons/Button/Button'
 import './LoginButton.css'
 
 type LoginButtonProps = {
@@ -7,7 +8,7 @@ type LoginButtonProps = {
 
 const LoginButton = ({ onClick, children }: LoginButtonProps) => {
 	return (
-		<button onClick={onClick} className='login-button'>
+		<Button onClick={onClick} className='primary'>
 			<div>
 				<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
 					<path
@@ -29,7 +30,7 @@ const LoginButton = ({ onClick, children }: LoginButtonProps) => {
 				</svg>
 			</div>
 			<div>{children}</div>
-		</button>
+		</Button>
 	)
 }
 

@@ -1,6 +1,6 @@
 .store-contact-information {
 	position: sticky;
-	top: calc(var(--header-height) + var(--page-margin));
+	top: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
@@ -58,13 +58,6 @@
 	.store-contact-information {
 		width: 100%;
 		font-size: 1rem;
-	}
-}
-
-@media (max-width: 850px) {
-	.store-contact-information {
-		padding: var(--page-margin) var(--page-margin) 0 var(--page-margin);
-		border: none;
 	}
 }
 

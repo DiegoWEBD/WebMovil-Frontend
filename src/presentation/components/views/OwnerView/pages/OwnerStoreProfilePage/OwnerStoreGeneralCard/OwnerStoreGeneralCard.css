@@ -54,5 +54,6 @@
 	.owner-store-general-card {
 		padding: 0;
 		border: none;
+		background-color: inherit;
 	}
 }

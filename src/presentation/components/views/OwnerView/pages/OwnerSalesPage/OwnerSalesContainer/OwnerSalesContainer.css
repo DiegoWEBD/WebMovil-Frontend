@@ -1,0 +1,113 @@
+.sales-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+.store-sale-card {
+	padding: 1rem;
+	min-height: 6rem;
+	cursor: pointer;
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+}
+
+.left-side,
+.right-side {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+}
+
+.left-side {
+	width: 60%;
+}
+
+.right-side {
+	justify-content: space-between;
+	align-items: end;
+}
+
+.store-sale-card-date-time {
+	display: flex;
+	gap: 0.7rem;
+	font-size: 0.8rem;
+}
+
+.store-sale-card-date,
+.store-sale-card-time {
+	background-color: var(--color-background-secondary-light);
+	padding: 0.1rem 0.7rem;
+	border-radius: 10px;
+	border: 1px solid var(--color-border-light);
+}
+
+.store-sale-card .store-sale-card-code {
+	color: var(--color-text-tertiary);
+	font-size: 0.9rem;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.store-sale-card:hover {
+	background-color: var(--color-background-secondary-light);
+}
+
+.store-sale-card .store-sale-card-user {
+	font-weight: bold;
+}
+
+.store-sale-card .store-sale-card-total {
+	color: var(--color-text-highlight);
+	font-weight: 700;
+	font-size: 1.3rem;
+}
+
+.store-sale-card-status {
+	font-size: 0.8rem;
+}
+
+.store-sale-card-status.completed {
+	background-color: var(--color-background-success);
+	color: var(--color-text-success);
+	padding: 0.1rem 0.6rem;
+	border-radius: 10px;
+	border: 1px solid var(--color-border-success);
+	width: fit-content;
+	font-weight: 500;
+}
+
+@media (max-width: 850px) {
+	.sales-container {
+		gap: 0;
+	}
+
+	.store-sale-card {
+		padding-inline: 0;
+	}
+}
+
+@media (max-width: 350px) {
+	.left-side {
+		width: 50%;
+	}
+
+	.store-sale-card-code {
+		max-width: 6rem;
+	}
+
+	.store-sale-card-date-time {
+		flex-direction: column;
+		gap: 0.4rem;
+
+		width: fit-content;
+	}
+
+	.store-sale-card-date,
+	.store-sale-card-time {
+		width: fit-content;
+	}
+}

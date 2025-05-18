@@ -14,13 +14,13 @@ const StoresContainer = ({ stores }: StoresContainerProps) => {
 		<div className='store-list'>
 			{!stores &&
 				Array.from({ length: 30 }).map((_, index) => (
-					<LazyRender key={index}>
+					<LazyRender key={index} className='lazy-store-card'>
 						{() => <StoreSkeletonCard key={index} />}
 					</LazyRender>
 				))}
 			{stores &&
 				stores.map(store => (
-					<LazyRender key={store.id}>
+					<LazyRender key={store.id} className='lazy-store-card'>
 						{() => <StoreCard store={store} />}
 					</LazyRender>
 				))}

@@ -13,7 +13,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 		<Card className='product-card'>
 			<div className='product-img-container'>
 				<img
-					src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.png`}
+					src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait_small.webp`}
 					className='product-img'
 				/>
 			</div>
