@@ -1,36 +1,17 @@
 import './StoreCard.css'
 
-import { useState, useEffect } from 'react'
 import { TiLocationOutline } from 'react-icons/ti'
 import { Link } from 'react-router-dom'
 import StoreSummary from '../../../../../application/store_service/types/StoreSummary.interface'
 import { CONSTANTS } from '../../../../../utils/constants'
 import Card from '../../../containers/Card/Card'
 import RatingStars from '../RatingStars/RatingStars'
-import StoreSkeletonCard from './StoreSkeletonCard/StoreSkeletonCard'
 
 type StoreCardProps = {
 	store: StoreSummary
 }
 
 const StoreCard = ({ store }: StoreCardProps) => {
-	const [imageLoaded, setImageLoaded] = useState<boolean>(false)
-	const [imageError, setImageError] = useState<boolean>(false)
-
-	const imageSrc = `${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.png`
-
-	useEffect(() => {
-		// In case image is cached, it might not trigger onLoad
-		const img = new Image()
-		img.src = imageSrc
-		img.onload = () => setImageLoaded(true)
-		img.onerror = () => setImageError(true)
-	}, [imageSrc])
-
-	if (!imageLoaded || imageError) {
-		return <StoreSkeletonCard />
-	}
-
 	return (
 		<Card className='store-card'>
 			<Link
@@ -42,10 +23,13 @@ const StoreCard = ({ store }: StoreCardProps) => {
 			>
 				<div className='store-image-container'>
 					<img
-						src={imageSrc}
+						src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.webp`}
 						alt='Store'
-						onLoad={() => setImageLoaded(true)}
-						onError={() => setImageError(true)}
+						loading='lazy'
+						fetchPriority='high'
+						width={300}
+						height={200}
+						onLoad={() => console.log('Image loaded for', store.name)}
 					/>
 				</div>
 
