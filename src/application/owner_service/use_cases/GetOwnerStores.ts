@@ -4,14 +4,9 @@ import OwnerStoreSummary from '../types/OwnerStoreSummary'
 
 export default class GetOwnerStores {
 	async execute(ownerEmail: string): Promise<OwnerStoreSummary[]> {
-		const headers = {
-			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-		}
-
 		try {
 			const { data } = await apiClient.get(
-				`/stores/owner/${encodeURIComponent(ownerEmail)}`,
-				{ headers }
+				`/stores/owner/${encodeURIComponent(ownerEmail)}`
 			)
 
 			return data.stores.map((store: StoreJSON) => ({

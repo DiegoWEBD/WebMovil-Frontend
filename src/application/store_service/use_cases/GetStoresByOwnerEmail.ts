@@ -5,13 +5,8 @@ import apiClient from '../../../utils/axios_client'
 
 export default class GetStoresByOwnerEmail {
 	async execute(ownerEmail: string): Promise<Store[]> {
-		const headers = {
-			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-		}
-
 		const { data } = await apiClient.get(
-			`/stores/${encodeURIComponent(ownerEmail)}`,
-			{ headers }
+			`/stores/${encodeURIComponent(ownerEmail)}`
 		)
 
 		return data.stores.map(

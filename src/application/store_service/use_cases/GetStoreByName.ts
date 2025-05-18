@@ -4,14 +4,8 @@ import apiClient from '../../../utils/axios_client'
 
 export default class GetStoreByName {
 	async execute(name: string): Promise<Store | undefined> {
-		const headers = {
-			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-		}
 		const response = await apiClient.get(
-			`/stores?name=${encodeURIComponent(name)}`,
-			{
-				headers,
-			}
+			`/stores?name=${encodeURIComponent(name)}`
 		)
 
 		return response.data.stores.length > 0

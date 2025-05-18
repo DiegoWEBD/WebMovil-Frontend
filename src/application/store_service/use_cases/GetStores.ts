@@ -13,13 +13,8 @@ export default class GetStores {
 		page: number | undefined = 1,
 		limit: number | undefined
 	): Promise<GetStoresResponse> {
-		const headers = {
-			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-		}
-
 		const response = await apiClient.get(
-			`/stores?name=${nameFilter}&page=${page}&limit=${limit}`,
-			{ headers }
+			`/stores?name=${nameFilter}&page=${page}&limit=${limit}`
 		)
 
 		const storeSummaries: StoreSummary[] = response.data.stores.map(

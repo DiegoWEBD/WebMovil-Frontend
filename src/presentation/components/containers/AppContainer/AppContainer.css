@@ -1,13 +1,16 @@
 .app-container {
 	width: 100%;
+	min-height: calc(100vh - var(--header-height));
 	margin-top: var(--header-height);
-	height: calc(100dvh - var(--header-height));
 	display: flex;
-
 	gap: 1rem;
 	transition: all 0.3s ease-in-out;
 	justify-content: space-between;
-	overflow-y: auto;
+}
+
+.inactive-session .app-container {
+	min-height: 100vh;
+	margin-block: 0;
 }
 
 .inactive-session .app-container {
@@ -16,7 +19,7 @@
 
 @media (max-width: 850px) {
 	.app-container {
-		padding-bottom: calc(var(--footer-height) + var(--page-margin));
-		height: calc(100dvh - var(--header-height) - var(--footer-height));
+		min-height: calc(100vh - var(--header-height) - var(--footer-height));
+		margin-bottom: var(--footer-height);
 	}
 }

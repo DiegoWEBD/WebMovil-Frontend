@@ -6,13 +6,7 @@ import IStockService from './IStockService.interface'
 
 export default class StockService implements IStockService {
 	async getProductsByStoreId(storeId: string): Promise<Product[]> {
-		const headers = {
-			Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-		}
-
-		const response = await apiClient.get(`/stock?store_id=${storeId}`, {
-			headers,
-		})
+		const response = await apiClient.get(`/stock?store_id=${storeId}`)
 
 		return response.data.map(
 			(product: ProductJSON) => new ProductJSONAdapter(product)

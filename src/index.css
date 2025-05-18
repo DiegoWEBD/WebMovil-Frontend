@@ -46,8 +46,8 @@
 }
 
 [data-theme='slate'] {
-	--color-background-page: rgba(2, 6, 23, 0.94); /* slate-950 */
-	--color-background-page-light: rgba(2, 6, 23, 0.92); /* slate-900 */
+	--color-background-page: rgba(2, 6, 23, 1); /* slate-950 */
+	--color-background-page-light: rgba(2, 6, 23, 1); /* slate-900 */
 	--color-background-primary: #e2e8f0; /* teal-600 */
 	--color-background-primary-light: #14b8a6; /* teal-500 */
 	--color-background-primary-strong: #0f766e; /* teal-700 */
@@ -72,7 +72,7 @@
 	--color-border-highlight-hover: rgba(16, 185, 129, 0.8); /* blue-400 */
 
 	/* Border colors */
-	--color-border: #475569; /* slate-600 */
+	--color-border: #334155; /* slate-600 */
 	--color-border-light: #475569; /* slate-400 */
 	--color-border-strong: #334155; /* slate-700 */
 	--color-border-success: rgba(16, 185, 129, 0.3); /* slate-700 */
@@ -127,14 +127,9 @@
 
 body,
 html {
-	background: linear-gradient(
-		to bottom,
-		var(--color-background-page),
-		var(--color-background-page-light)
-	);
+	background-color: var(--color-background-page);
 	color: var(--color-text-secondary);
-	overflow: hidden;
-	height: 100%;
+	min-height: 100vh;
 }
 
 .installed {
