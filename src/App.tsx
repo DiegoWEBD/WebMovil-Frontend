@@ -1,6 +1,6 @@
-import './App.css'
-import { Suspense, lazy } from 'react'
+import { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './App.css'
 
 // Lazy imports for pages
 const LoginForm = lazy(
@@ -171,6 +171,8 @@ const router = createBrowserRouter([
 	},
 ])
 
-const App = () => <RouterProvider router={router} />
+const App = () => {
+	return <RouterProvider router={router} />
+}
 
 export default App
