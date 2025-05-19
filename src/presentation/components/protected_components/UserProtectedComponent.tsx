@@ -5,7 +5,7 @@ type UserProtectedComponentProps = {
 }
 
 const UserProtectedComponent = ({ children }: UserProtectedComponentProps) => {
-	return localStorage.getItem('access_token') ? <>{children}</> : null
+	return localStorage.getItem('access_token') ? children : null
 }
 
 export default UserProtectedComponent

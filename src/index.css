@@ -138,11 +138,14 @@
 	word-break: break-word;
 }
 
-body,
 html {
-	background-color: var(--color-background-page);
 	color: var(--color-text-secondary);
-	min-height: 100vh;
+	overflow: hidden;
+}
+
+body {
+	color: var(--color-text-secondary);
+	background-color: var(--color-background-page);
 }
 
 .installed {

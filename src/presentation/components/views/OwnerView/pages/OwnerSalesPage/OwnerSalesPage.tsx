@@ -12,7 +12,7 @@ const OwnerSalesPage = () => {
 	const { selectedOwnerStoreSummary } = useOwnerState()
 
 	const { data, isLoading } = useQuery<Sale[] | undefined>({
-		queryKey: ['ownerSales', selectedOwnerStoreSummary!.id],
+		queryKey: ['ownerSales', selectedOwnerStoreSummary?.id],
 		queryFn: async () => {
 			const response = await apiClient.get(
 				`/sales?store_id=${selectedOwnerStoreSummary!.id}`
