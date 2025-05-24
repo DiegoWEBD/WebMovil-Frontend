@@ -1,8 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
-import StoreSummary from '../../../../../application/store_service/types/StoreSummary.interface'
+import { useInfiniteQuery } from '@tanstack/react-query'
+import { useEffect, useRef } from 'react'
 import useAppState from '../../../../global_states/appState'
-import PageChanger from '../StoresContainer/PageChanger/PageChanger'
+import StoreSkeletonCard from '../StoreCard/StoreSkeletonCard/StoreSkeletonCard'
 import StoresContainer from '../StoresContainer/StoresContainer'
 
 type StoresViewerProps = {
@@ -11,27 +10,68 @@ type StoresViewerProps = {
 
 const StoresViewer = ({ input }: StoresViewerProps) => {
 	const { storeService } = useAppState()
-	const [page, setPage] = useState<number>(1)
-	const [totalPages, setTotalPages] = useState<number>(1)
 
-	const { data, error } = useQuery<StoreSummary[]>({
-		queryKey: ['stores', page, input],
-		queryFn: async () => {
-			const response = await storeService.getStores(input, page, 8)
+	const {
+		data,
+		error,
 
-			setTotalPages(response.meta?.total_pages || 1)
-			return response.stores
+		fetchNextPage,
+		hasNextPage,
+		isFetchingNextPage,
+		isFetching,
+	} = useInfiniteQuery({
+		queryKey: ['stores', input],
+		queryFn: async ({ pageParam = 1 }) => {
+			const response = await storeService.getStores(input, pageParam, 5)
+			return {
+				stores: response.stores,
+				nextPage: pageParam + 1,
+				totalPages: response.meta?.total_pages || 1,
+			}
+		},
+		initialPageParam: 1,
+		getNextPageParam: lastPage => {
+			return lastPage.nextPage <= lastPage.totalPages
+				? lastPage.nextPage
+				: undefined
 		},
 	})
+
+	const loaderRef = useRef<HTMLDivElement | null>(null)
+
+	useEffect(() => {
+		const target = loaderRef.current
+
+		const observer = new IntersectionObserver(
+			entries => {
+				if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+					fetchNextPage()
+				}
+			},
+			{ threshold: 1.0 }
+		)
+
+		if (target) observer.observe(target)
+
+		return () => {
+			if (target) observer.unobserve(target)
+		}
+	}, [fetchNextPage, hasNextPage, isFetchingNextPage])
 
 	if (error) return <p>Error al cargar las tiendas disponibles</p>
 
 	return (
 		<div>
-			<StoresContainer stores={data} />
-			{data && (
-				<PageChanger page={page} totalPages={totalPages} setPage={setPage} />
-			)}
+			<StoresContainer
+				stores={data?.pages.flatMap(page => page.stores) || []}
+			/>
+
+			<div ref={loaderRef}>
+				{isFetching &&
+					Array.from({ length: 5 }).map((_, index) => (
+						<StoreSkeletonCard key={index} />
+					))}
+			</div>
 		</div>
 	)
 }

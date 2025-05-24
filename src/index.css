@@ -148,11 +148,6 @@ body {
 	background-color: var(--color-background-page);
 }
 
-.installed {
-	--header-height: 6rem;
-	--footer-height: 6rem;
-}
-
 .page-title {
 	font-size: 1.3rem;
 	font-weight: bold;
