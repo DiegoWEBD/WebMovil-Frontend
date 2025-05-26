@@ -1,4 +1,4 @@
-import { CredentialResponse, useGoogleOneTapLogin } from '@react-oauth/google'
+import { useGoogleLogin } from '@react-oauth/google'
 import { Link, useNavigate } from 'react-router-dom'
 import useAppState from '../../../../global_states/appState'
 import Button from '../../../buttons/Button/Button'
@@ -9,10 +9,7 @@ const LoginForm = () => {
 	const { validateAccessToken } = useAppState()
 	const navigate = useNavigate()
 
-	const handleSuccess = (credentialResponse: CredentialResponse) => {
-		const accessToken = credentialResponse.credential
-		if (!accessToken) return
-
+	const handleSuccess = (accessToken: string) => {
 		localStorage.setItem('access_token', accessToken)
 		validateAccessToken().then(() => {
 			if (localStorage.getItem('user_type') === 'owner')
@@ -21,8 +18,8 @@ const LoginForm = () => {
 		})
 	}
 
-	useGoogleOneTapLogin({
-		onSuccess: handleSuccess,
+	const login = useGoogleLogin({
+		onSuccess: response => handleSuccess(response.access_token),
 		onError: () => {
 			console.log('Error de autenticación')
 		},
@@ -40,7 +37,9 @@ const LoginForm = () => {
 					</p>
 				</header>
 				<div className='auth-fields'>
-					<Button className='primary auth-button'>Iniciar sesión</Button>
+					<Button className='primary auth-button' onClick={() => login()}>
+						Iniciar sesión
+					</Button>
 				</div>
 				<footer className='auth-form-footer'>
 					<p>¿No tienes una cuenta?</p>

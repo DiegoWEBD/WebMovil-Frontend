@@ -31,6 +31,9 @@
 }
 
 .auth-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 	padding: 0rem 1.2rem;
 }
 
