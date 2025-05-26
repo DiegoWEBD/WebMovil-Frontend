@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { LuShoppingCart } from 'react-icons/lu'
-import OwnerSalesContainer from './OwnerSalesContainer/OwnerSalesContainer'
-import OwnerSalesSummary from './OwnerSalesSummary/OwnerSalesSummary'
+
 import { useQuery } from '@tanstack/react-query'
+import { LuShoppingCart } from 'react-icons/lu'
 import Sale from '../../../../../../domain/Sale/Sale'
 import SaleDetail from '../../../../../../domain/SaleDetail/SaleDetail'
 import apiClient from '../../../../../../utils/axios_client'
 import useOwnerState from '../../../../../global_states/owner/ownerState'
+import OwnerSalesContainer from './OwnerSalesContainer/OwnerSalesContainer'
+import OwnerSalesSummary from './OwnerSalesSummary/OwnerSalesSummary'
 
 const OwnerSalesPage = () => {
 	const { selectedOwnerStoreSummary } = useOwnerState()

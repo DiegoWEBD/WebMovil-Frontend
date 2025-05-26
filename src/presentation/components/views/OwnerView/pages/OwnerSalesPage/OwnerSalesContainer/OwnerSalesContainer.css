@@ -80,16 +80,6 @@
 	font-weight: 500;
 }
 
-@media (max-width: 850px) {
-	.sales-container {
-		gap: 0;
-	}
-
-	.store-sale-card {
-		padding-inline: 0;
-	}
-}
-
 @media (max-width: 350px) {
 	.left-side {
 		width: 50%;

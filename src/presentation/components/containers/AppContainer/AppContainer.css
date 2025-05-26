@@ -1,6 +1,6 @@
 .app-container {
 	flex: 1;
-	overflow-y: scroll;
+
 	width: 100%;
 	display: flex;
 	gap: 1rem;

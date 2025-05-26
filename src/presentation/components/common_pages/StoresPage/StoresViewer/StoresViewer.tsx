@@ -66,7 +66,7 @@ const StoresViewer = ({ input }: StoresViewerProps) => {
 				stores={data?.pages.flatMap(page => page.stores) || []}
 			/>
 
-			<div ref={loaderRef}>
+			<div ref={loaderRef} className='store-list'>
 				{isFetching &&
 					Array.from({ length: 5 }).map((_, index) => (
 						<StoreSkeletonCard key={index} />

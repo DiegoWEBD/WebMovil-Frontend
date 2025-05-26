@@ -18,14 +18,13 @@
 }
 
 .owner-sales-summary .total-sales-summary {
-	color: var(--color-text-highlight);
+	color: var(--color-text-highlight-2);
 }
 
 @media (max-width: 850px) {
 	.owner-sales-summary .card {
 		text-align: center;
 		padding: 1rem;
-		border: 1px solid var(--color-border-strong);
 		border-radius: 0.6rem;
 	}
 }

@@ -1,8 +1,7 @@
 import './OwnerSalesContainer.css'
 
-import LazyRender from '../../../../../LazyRender/LazyRender'
-import OwnerSalesCardItem from './OwnerSalesCardItem/OwnerSalesCardItem'
 import Sale from '../../../../../../../domain/Sale/Sale'
+import OwnerSalesCardItem from './OwnerSalesCardItem/OwnerSalesCardItem'
 
 type OwnerSalesContainerProps = {
 	sales: Sale[] | undefined
@@ -17,14 +16,10 @@ const OwnerSalesContainer = ({
 		<div className='sales-container'>
 			{isLoading &&
 				Array.from({ length: 10 }).map((_, index) => (
-					<LazyRender key={index} className='lazy-store-sale'>
-						<OwnerSalesCardItem sale={undefined} />
-					</LazyRender>
+					<OwnerSalesCardItem sale={undefined} key={index} />
 				))}
 			{sales?.map(sale => (
-				<LazyRender key={sale.getCode()} className='lazy-store-sale'>
-					<OwnerSalesCardItem sale={sale} />
-				</LazyRender>
+				<OwnerSalesCardItem sale={sale} key={sale.getCode()} />
 			))}
 		</div>
 	)
