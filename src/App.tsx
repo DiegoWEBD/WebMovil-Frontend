@@ -31,22 +31,34 @@ const StoresPage = lazy(
 	() => import('./presentation/components/common_pages/StoresPage/StoresPage')
 )
 
+const OrdersPage = lazy(
+	() =>
+		import('./presentation/components/views/client/pages/OrdersPage/OrdersPage')
+)
+
+const ExplorePage = lazy(
+	() =>
+		import(
+			'./presentation/components/views/client/pages/ExplorePage/ExplorePage'
+		)
+)
+
 const OwnerProductsPage = lazy(
 	() =>
 		import(
-			'./presentation/components/views/OwnerView/pages/OwnerProductsPage/OwnerProductsPage'
+			'./presentation/components/views/owner/pages/OwnerProductsPage/OwnerProductsPage'
 		)
 )
 const OwnerStoreProfilePage = lazy(
 	() =>
 		import(
-			'./presentation/components/views/OwnerView/pages/OwnerStoreProfilePage/OwnerStoreProfilePage'
+			'./presentation/components/views/owner/pages/OwnerStoreProfilePage/OwnerStoreProfilePage'
 		)
 )
 const OwnerSalesPage = lazy(
 	() =>
 		import(
-			'./presentation/components/views/OwnerView/pages/OwnerSalesPage/OwnerSalesPage'
+			'./presentation/components/views/owner/pages/OwnerSalesPage/OwnerSalesPage'
 		)
 )
 
@@ -64,6 +76,13 @@ const OwnerProtectedRoute = lazy(
 	() =>
 		import(
 			'./presentation/components/protected_components/owner/OwnerProtectedRoute'
+		)
+)
+
+const ClientProtectedRoute = lazy(
+	() =>
+		import(
+			'./presentation/components/protected_components/client/ClientProtectedRoute'
 		)
 )
 
@@ -144,6 +163,26 @@ const router = createBrowserRouter([
 						<OwnerProtectedRoute>
 							<OwnerSalesPage />
 						</OwnerProtectedRoute>
+					</Suspense>
+				),
+			},
+			{
+				path: 'pedidos',
+				element: (
+					<Suspense fallback={<Loading />}>
+						<ClientProtectedRoute>
+							<OrdersPage />
+						</ClientProtectedRoute>
+					</Suspense>
+				),
+			},
+			{
+				path: 'explorar',
+				element: (
+					<Suspense fallback={<Loading />}>
+						<ClientProtectedRoute>
+							<ExplorePage />
+						</ClientProtectedRoute>
 					</Suspense>
 				),
 			},

@@ -1,6 +1,6 @@
 import './Footer.css'
 
-import OwnerNavMenu from '../views/OwnerView/OwnerNavMenu/OwnerNavMenu'
+import OwnerNavMenu from '../views/owner/OwnerNavMenu/OwnerNavMenu'
 
 const Footer = () => {
 	return (

@@ -59,17 +59,6 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 				<p className='nav-element-text'>Ventas</p>
 			</NavElement>
 
-			{/*<NavElement
-				to='/'
-				className={`dashboard-v2-nav-element ${className}`}
-				onClick={() => {
-					if (setMenuOpen) setMenuOpen(false)
-				}}
-			>
-				<FaRegChartBar className='nav-element-icon' />
-				<p className='nav-element-text'>Estadísticas</p>
-			</NavElement>*/}
-
 			<NavElement
 				to='/perfil'
 				className={`dashboard-v2-nav-element ${className}`}

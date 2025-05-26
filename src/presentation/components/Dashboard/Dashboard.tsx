@@ -3,8 +3,10 @@ import './Dashboard.css'
 import { useState } from 'react'
 import useAppState from '../../global_states/appState'
 import OwnerProtectedComponent from '../protected_components/owner/OwnerProtectedComponent'
-import OwnerNavMenu from '../views/OwnerView/OwnerNavMenu/OwnerNavMenu'
+import OwnerNavMenu from '../views/owner/OwnerNavMenu/OwnerNavMenu'
 import ToggleButton from './ToggleButton/ToggleButton'
+import ClientProtectedComponent from '../protected_components/client/ClientProtectedComponent'
+import ClientNavMenu from '../views/client/ClientNavMenu/ClientNavMenu'
 
 const DashboardV2 = () => {
 	const { basicUserInfo } = useAppState()
@@ -24,16 +26,10 @@ const DashboardV2 = () => {
 					<OwnerProtectedComponent>
 						<OwnerNavMenu setMenuOpen={setMenuOpen} />
 					</OwnerProtectedComponent>
-					{/*<UserProtectedComponent>
-						<NavElement
-							to='/tiendas'
-							className='dashboard-v2-nav-element '
-							onClick={() => setMenuOpen(false)}
-						>
-							<LuStore />
-							<p className='nav-element-text'>Tiendas</p>
-						</NavElement>
-					</UserProtectedComponent>*/}
+
+					<ClientProtectedComponent>
+						<ClientNavMenu setMenuOpen={setMenuOpen} />
+					</ClientProtectedComponent>
 				</ul>
 			</div>
 		</nav>

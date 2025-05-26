@@ -4,7 +4,7 @@ import { LuBell } from 'react-icons/lu'
 import Button from '../buttons/Button/Button'
 import OwnerProtectedComponent from '../protected_components/owner/OwnerProtectedComponent'
 import UserProtectedComponent from '../protected_components/UserProtectedComponent'
-import OwnerStoreSelector from '../views/OwnerView/OwnerStoreSelector/OwnerStoreSelector'
+import OwnerStoreSelector from '../views/owner/OwnerStoreSelector/OwnerStoreSelector'
 
 const Header = () => {
 	return (

@@ -21,9 +21,10 @@ export const useGoogleRegister = (
 			'+56924587154',
 			'diego.png',
 			userType
-		).then(email => {
-			setBasicUserInfo({ email: email as string, userType })
-			navigate('/tiendas')
+		).then(userInfo => {
+			setBasicUserInfo({ email: userInfo?.email as string, userType })
+			if (userType === 'client') navigate('/explorar')
+			else if (userType === 'owner') navigate('/locatario/tienda')
 		})
 	}
 

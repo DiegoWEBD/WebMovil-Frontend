@@ -40,7 +40,7 @@ export const registerUser = async (
 	phone: string,
 	profilePicture: string,
 	userType: string
-): Promise<string | null> => {
+): Promise<BasicUserInfo | null> => {
 	try {
 		const { data } = await axios.post(
 			`${CONSTANTS.API_URL}/auth/register`,
@@ -56,8 +56,11 @@ export const registerUser = async (
 				},
 			}
 		)
+		console.log(data)
 		localStorage.setItem('access_token', accessToken)
-		return data
+		localStorage.setItem('user_type', data.user_type)
+		localStorage.setItem('user_email', data.email)
+		return { userType: data.user_type, email: data.email }
 	} catch (error) {
 		console.error('Registro fallido:', error)
 

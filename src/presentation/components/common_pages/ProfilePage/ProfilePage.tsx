@@ -11,6 +11,7 @@ import { clearLocalStorage } from '../../../../utils/clear_local_storage'
 
 const ProfilePage = () => {
 	const { basicUserInfo } = useAppState()
+	console.log(basicUserInfo)
 
 	const { data } = useQuery<User | undefined>({
 		queryKey: ['userData', basicUserInfo],
