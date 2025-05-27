@@ -3,10 +3,15 @@ import { useEffect } from 'react'
 
 type FinderProps = {
 	searchInput: string
+	placeholder?: string
 	cbFunction: (query: string) => void
 }
 
-export function Finder({ searchInput, cbFunction }: FinderProps) {
+export function Finder({
+	searchInput,
+	cbFunction,
+	placeholder = 'Buscar en MiBarrio',
+}: FinderProps) {
 	useEffect(() => {
 		if (!searchInput) return
 
@@ -21,7 +26,7 @@ export function Finder({ searchInput, cbFunction }: FinderProps) {
 		<input
 			className='finder-input'
 			type='text'
-			placeholder='Buscar tiendas...'
+			placeholder={placeholder}
 			value={searchInput}
 			onChange={e => cbFunction(e.target.value)}
 		/>

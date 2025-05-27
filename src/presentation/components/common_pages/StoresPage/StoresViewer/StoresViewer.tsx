@@ -14,7 +14,6 @@ const StoresViewer = ({ input }: StoresViewerProps) => {
 	const {
 		data,
 		error,
-
 		fetchNextPage,
 		hasNextPage,
 		isFetchingNextPage,

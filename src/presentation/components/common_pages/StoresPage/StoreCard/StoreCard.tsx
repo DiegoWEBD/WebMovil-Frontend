@@ -9,11 +9,12 @@ import RatingStars from '../RatingStars/RatingStars'
 
 type StoreCardProps = {
 	store: StoreSummary
+	className?: string
 }
 
-const StoreCard = ({ store }: StoreCardProps) => {
+const StoreCard = ({ store, className }: StoreCardProps) => {
 	return (
-		<Card className='store-card'>
+		<Card className={`store-card ${className}`}>
 			<Link
 				to={`/tiendas/${encodeURIComponent(store.name)}`}
 				className='store-card-link'
@@ -33,21 +34,23 @@ const StoreCard = ({ store }: StoreCardProps) => {
 					/>
 				</div>
 
-				<div className='store-info-container resume'>
-					<p className='store-card-name'>{store.name}</p>
-					<div className='store-direction-container'>
-						<TiLocationOutline className='direction-logo' />
-						<p className='store-direction'>{store.direction}</p>
+				<div className='store-complete-info-container'>
+					<div className='store-info-container resume'>
+						<p className='store-card-name'>{store.name}</p>
+						<div className='store-direction-container'>
+							<TiLocationOutline className='direction-logo' />
+							<p className='store-direction'>{store.direction}</p>
+						</div>
+						<p className='store-description'>{store.description}</p>
 					</div>
-					<p className='store-description'>{store.description}</p>
-				</div>
 
-				<div className='store-info-container extra'>
-					<div className='store-products-count-container'>
-						<p className='store-products-count'>{store.products_count}</p>
-						<p>Productos</p>
+					<div className='store-info-container extra'>
+						<div className='store-products-count-container'>
+							<p className='store-products-count'>{store.products_count}</p>
+							<p>Productos</p>
+						</div>
+						<RatingStars rating={store.feedback_rating} />
 					</div>
-					<RatingStars rating={store.feedback_rating} />
 				</div>
 			</Link>
 		</Card>
