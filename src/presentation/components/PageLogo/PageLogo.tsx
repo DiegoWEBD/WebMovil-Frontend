@@ -1,12 +1,13 @@
 import './PageLogo.css'
 
 import { Link } from 'react-router-dom'
-import { PiCurrencyDollarFill } from 'react-icons/pi'
+import { IoStorefrontOutline } from 'react-icons/io5'
 
 const PageLogo = () => {
 	return (
-		<Link to='/tiendas' className='logo-container'>
-			<PiCurrencyDollarFill className='logo-image' />
+		<Link to='/explorar' className='logo-container'>
+			<IoStorefrontOutline className='logo-icon' />
+			<h1>MiBarrio</h1>
 		</Link>
 	)
 }

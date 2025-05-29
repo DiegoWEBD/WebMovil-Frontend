@@ -4,7 +4,6 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import useAppState from '../../../../../global_states/appState'
 import StoreCard from '../../../../common_pages/StoresPage/StoreCard/StoreCard'
-import StoreSkeletonCard from '../../../../common_pages/StoresPage/StoreCard/StoreSkeletonCard/StoreSkeletonCard'
 import GridContainer from '../../../../containers/GridContainer/GridContainer'
 import { Finder } from '../../../../Finder/Finder'
 
@@ -29,7 +28,7 @@ const ExplorePage = () => {
 		isFetchingNextPage,
 		isFetching,
 	} = useInfiniteQuery({
-		queryKey: ['stores', debouncedInput],
+		queryKey: ['explore-stores', debouncedInput],
 		queryFn: async ({ pageParam = 1 }) => {
 			const response = await storeService.getStores(
 				debouncedInput,
@@ -47,7 +46,6 @@ const ExplorePage = () => {
 			lastPage.nextPage <= lastPage.totalPages ? lastPage.nextPage : undefined,
 	})
 
-	// Flatten the stores from all pages
 	const allStores = useMemo(() => {
 		return data?.pages.flatMap(page => page.stores) ?? []
 	}, [data])
@@ -87,17 +85,28 @@ const ExplorePage = () => {
 				placeholder='Nombre de la tienda o producto...'
 			/>
 
-			<GridContainer className='explore-section'>
-				{allStores.map(store => (
-					<StoreCard key={store.id} store={store} className='explore-section' />
-				))}
-			</GridContainer>
-			<GridContainer ref={loaderRef} className='explore-section'>
-				{isFetching &&
-					Array.from({ length: 5 }).map((_, index) => (
-						<StoreSkeletonCard key={index} />
+			<div className='explore-page-content'>
+				<GridContainer className='explore-section'>
+					{allStores.map(store => (
+						<StoreCard
+							key={store.id}
+							store={store}
+							className='explore-section'
+						/>
 					))}
-			</GridContainer>
+				</GridContainer>
+
+				<GridContainer ref={loaderRef} className='explore-section'>
+					{isFetching &&
+						Array.from({ length: 5 }).map((_, index) => (
+							<StoreCard
+								key={index}
+								store={undefined}
+								className='explore-section loading'
+							/>
+						))}
+				</GridContainer>
+			</div>
 		</div>
 	)
 }

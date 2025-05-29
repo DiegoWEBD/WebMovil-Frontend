@@ -1,6 +1,6 @@
 .page-footer {
 	display: none;
-	position: sticky;
+	position: fixed;
 	bottom: 0;
 	background-color: var(--color-background-page);
 	width: 100%;

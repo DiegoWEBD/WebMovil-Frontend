@@ -1,21 +1,21 @@
+.skeleton-wrapper {
+	animation: loading 1.5s infinite;
+}
+
 .skeleton {
 	margin: 0;
 	border-radius: 4px;
-	background: linear-gradient(
-		90deg,
-		var(--color-skeleton) 25%,
-		var(--color-skeleton-light) 50%,
-		var(--color-skeleton) 75%
-	);
-	background-size: 200% 100%;
-	animation: loading 1.5s infinite;
+	background-color: var(--color-skeleton);
 }
 
 @keyframes loading {
 	0% {
-		background-position: 200% 0;
+		transform: translateX(-150%);
+	}
+	50% {
+		transform: translateX(-60%);
 	}
 	100% {
-		background-position: -200% 0;
+		transform: translateX(150%);
 	}
 }

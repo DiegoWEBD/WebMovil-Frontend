@@ -12,7 +12,7 @@ const UserReverseProtectedRoute = ({
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (localStorage.getItem('access_token')) navigate('/tiendas')
+		if (localStorage.getItem('access_token')) navigate('/explorar')
 	}, [navigate])
 
 	return (

@@ -1,26 +1,22 @@
 .logo-container {
 	display: flex;
+	align-items: center;
 	width: fit-content;
 	text-decoration: none;
-	color: var(--color-text-secondary);
+	color: var(--color-text-primary);
 	gap: 0.8rem;
 }
 
-.logo-image {
-	height: 2.8rem;
-	width: 2.8rem;
+.logo-icon {
+	min-height: 2.4rem;
+	min-width: 2.4rem;
 	aspect-ratio: 1;
+	background-color: var(--color-background-highlight);
+	color: var(--color-text-highlight);
+	padding: 0.4rem;
+	border-radius: 6px;
 }
 
-@media (max-width: 600px) {
-	.logo-image {
-		width: 2.3rem;
-		height: 2.3rem;
-	}
-}
-
-@media (max-width: 500px) {
-	.active-session .logo-container {
-		display: none;
-	}
+.logo-container h1 {
+	font-size: 1.6rem;
 }

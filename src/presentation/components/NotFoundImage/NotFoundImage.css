@@ -1,0 +1,10 @@
+.not-found-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #3f3f46;
+}
+
+.not-found-image-icon {
+	font-size: 2rem;
+}

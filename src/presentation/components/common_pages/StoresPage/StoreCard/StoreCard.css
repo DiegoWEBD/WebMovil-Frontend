@@ -20,10 +20,9 @@
 	border-radius: 0.6rem 0.6rem 0 0;
 }
 
-.store-card img {
+.store-image {
 	min-width: 100%;
 	min-height: 100%;
-	display: block;
 }
 
 .store-info-container.resume {

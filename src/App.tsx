@@ -27,9 +27,6 @@ const Root = lazy(
 const StorePage = lazy(
 	() => import('./presentation/components/common_pages/StorePage/StorePage')
 )
-const StoresPage = lazy(
-	() => import('./presentation/components/common_pages/StoresPage/StoresPage')
-)
 
 const OrdersPage = lazy(
 	() =>
@@ -106,16 +103,7 @@ const router = createBrowserRouter([
 					</Suspense>
 				),
 			},
-			{
-				path: 'tiendas',
-				element: (
-					<Suspense fallback={<Loading />}>
-						<UserProtectedRoute>
-							<StoresPage />
-						</UserProtectedRoute>
-					</Suspense>
-				),
-			},
+
 			{
 				path: 'tiendas/:name',
 				element: (

@@ -7,7 +7,7 @@ const HomePage = () => {
 	useEffect(() => {
 		if (localStorage.getItem('user_type') === 'owner')
 			navigate('/locatario/tienda')
-		else navigate('/tiendas')
+		else navigate('/explorar')
 	}, [navigate])
 
 	return null

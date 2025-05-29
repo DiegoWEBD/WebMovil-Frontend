@@ -1,12 +1,12 @@
 .app-container {
 	flex: 1;
-
 	width: 100%;
 	display: flex;
 	gap: 1rem;
 	transition: all 0.3s ease-in-out;
 	justify-content: space-between;
 	background-color: var(--color-background-page);
+	margin-bottom: var(--footer-height);
 }
 
 .inactive-session .app-container {

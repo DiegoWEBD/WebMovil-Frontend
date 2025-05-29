@@ -1,10 +1,4 @@
-import {
-	LuBox,
-	LuSearch,
-	LuShoppingCart,
-	LuStore,
-	LuUser,
-} from 'react-icons/lu'
+import { LuBox, LuShoppingCart, LuStore, LuUser } from 'react-icons/lu'
 import NavElement from '../../../Dashboard/NavElement/NavElement'
 
 type OwnerNavMenuProps = {
@@ -35,17 +29,6 @@ const OwnerNavMenu = ({ className, setMenuOpen }: OwnerNavMenuProps) => {
 			>
 				<LuBox className='nav-element-icon' />
 				<p className='nav-element-text'>Productos</p>
-			</NavElement>
-
-			<NavElement
-				to='/tiendas'
-				className={`dashboard-v2-nav-element ${className}`}
-				onClick={() => {
-					if (setMenuOpen) setMenuOpen(false)
-				}}
-			>
-				<LuSearch className='nav-element-icon' />
-				<p className='nav-element-text'>Explorar</p>
 			</NavElement>
 
 			<NavElement

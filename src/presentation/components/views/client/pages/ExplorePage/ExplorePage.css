@@ -28,9 +28,19 @@
 	gap: 1.5rem;
 }
 
+.explore-page-content {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 .explore-section.card .store-info-container.resume,
 .explore-section.card .store-info-container.extra {
 	padding: 0.1rem 0;
+}
+
+.store-complete-info-container {
+	width: 50%;
 }
 
 .explore-section.card .store-info-container.extra {

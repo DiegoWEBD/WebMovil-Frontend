@@ -5,8 +5,8 @@ import { useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import Store from '../../../../domain/Store/Store'
-import { CONSTANTS } from '../../../../utils/constants'
 import useAppState from '../../../global_states/appState'
+import NotFoundImage from '../../NotFoundImage/NotFoundImage'
 import Skeleton from '../../Skeleton/Skeleton'
 import ContentChanger from './ContentChanger/ContentChanger'
 import StoreAbout from './StoreAbout/StoreAbout'
@@ -29,16 +29,13 @@ const StorePage = () => {
 
 	return (
 		<div className='store-page page-padding'>
-			<Link to='/tiendas' className='back-link'>
+			<Link to='/explorar' className='back-link'>
 				<FaArrowLeft className='back-icon' />
-				<p>Volver a tiendas</p>
+				<p>Volver a explorar</p>
 			</Link>
 			<div className='info-plus-contact'>
 				<div className='info'>
-					<img
-						src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.webp`}
-						className='store-img'
-					/>
+					<NotFoundImage className='store-img' />
 					<div className='store-header'>
 						<div>
 							<h1 className='store-name'>{name}</h1>

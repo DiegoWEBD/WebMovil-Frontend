@@ -35,6 +35,10 @@
 	overflow: hidden;
 }
 
+.store-img .not-found-image-icon {
+	font-size: 4rem;
+}
+
 .info-plus-contact {
 	display: flex;
 	gap: 1.5rem;
