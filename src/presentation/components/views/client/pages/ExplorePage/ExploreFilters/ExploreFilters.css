@@ -1,0 +1,29 @@
+.explore-filters {
+	top: calc(var(--header-height) + var(--page-margin));
+	display: flex;
+	gap: 0.7rem;
+}
+
+.explore-filter-button {
+	cursor: pointer;
+	background-color: var(--color-background-secondary);
+	color: var(--color-text-secondary);
+	padding: 0.4rem 0.6rem;
+	border: 1px solid var(--color-border-light);
+	border-radius: 1rem;
+	transition: all 0.2s ease;
+}
+
+.explore-filter-button:hover {
+	background-color: var(--color-background-secondary-light);
+}
+
+.explore-filter-button.active {
+	background-color: var(--color-background-success);
+	color: var(--color-text-success);
+	border-color: var(--color-border-success);
+}
+
+.explore-filter-button.active:hover {
+	background-color: var(--color-background-success-hover);
+}

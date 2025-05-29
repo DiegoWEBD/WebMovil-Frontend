@@ -12,7 +12,10 @@ const StoreProducts = ({ storeId }: StoreProductsProps) => {
 
 	const { data } = useQuery<Product[]>({
 		queryKey: ['storeProducts', storeId],
-		queryFn: async () => await stockService.getProductsByStoreId(storeId),
+		queryFn: async () => {
+			const response = await stockService.getProducts(storeId)
+			return response.products
+		},
 	})
 
 	return <ProductsViewer products={data} />

@@ -24,9 +24,6 @@ const ProfilePage = lazy(
 const Root = lazy(
 	() => import('./presentation/components/common_pages/Root/Root')
 )
-const StorePage = lazy(
-	() => import('./presentation/components/common_pages/StorePage/StorePage')
-)
 
 const OrdersPage = lazy(
 	() =>
@@ -104,16 +101,6 @@ const router = createBrowserRouter([
 				),
 			},
 
-			{
-				path: 'tiendas/:name',
-				element: (
-					<Suspense fallback={<Loading />}>
-						<UserProtectedRoute>
-							<StorePage />
-						</UserProtectedRoute>
-					</Suspense>
-				),
-			},
 			{
 				path: 'perfil',
 				element: (

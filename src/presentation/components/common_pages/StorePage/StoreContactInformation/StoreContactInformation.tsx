@@ -1,8 +1,9 @@
+import './StoreContactInformation.css'
+
 import { GrLocation, GrPhone } from 'react-icons/gr'
 import { LuClock } from 'react-icons/lu'
 import { MdMailOutline } from 'react-icons/md'
 import Store from '../../../../../domain/Store/Store'
-import './StoreContactInformation.css'
 import DeliveryMethods from './DeliveryMethods/DeliveryMethods'
 import Skeleton from '../../../Skeleton/Skeleton'
 import Card from '../../../containers/Card/Card'

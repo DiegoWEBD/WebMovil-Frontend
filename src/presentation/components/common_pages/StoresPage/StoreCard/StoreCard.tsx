@@ -1,11 +1,14 @@
 import './StoreCard.css'
 
+import { useState } from 'react'
 import { TiLocationOutline } from 'react-icons/ti'
-import { Link } from 'react-router-dom'
 import StoreSummary from '../../../../../application/store_service/types/StoreSummary.interface'
 import Card from '../../../containers/Card/Card'
+import Modal from '../../../Modal/Modal'
 import NotFoundImage from '../../../NotFoundImage/NotFoundImage'
+import Shimmer from '../../../Skeleton/Shimmer/Shimmer'
 import Skeleton from '../../../Skeleton/Skeleton'
+import StorePage from '../../StorePage/StorePage'
 import RatingStars from '../RatingStars/RatingStars'
 
 type StoreCardProps = {
@@ -20,18 +23,13 @@ type StoreCardProps = {
 />*/
 
 const StoreCard = ({ store, className }: StoreCardProps) => {
+	const [showDetailedStore, setShowDetailedStore] = useState(false)
+
 	return (
-		<Card className={`store-card ${className}`}>
-			<Link
-				to={store ? `/tiendas/${encodeURIComponent(store.name)}` : '#'}
-				className='store-card-link'
-				state={
-					store
-						? {
-								storeId: store.id,
-						  }
-						: {}
-				}
+		<>
+			<Card
+				className={`store-card store-card-link skeleton-wrapper ${className}`}
+				onClick={() => setShowDetailedStore(true)}
 			>
 				<div className='store-image-container'>
 					{store ? (
@@ -79,8 +77,22 @@ const StoreCard = ({ store, className }: StoreCardProps) => {
 						<RatingStars rating={store?.feedback_rating} />
 					</div>
 				</div>
-			</Link>
-		</Card>
+
+				{!store && <Shimmer />}
+			</Card>
+
+			{showDetailedStore && store && (
+				<Modal
+					show={showDetailedStore}
+					onClose={() => setShowDetailedStore(false)}
+				>
+					<StorePage
+						storeSummary={store}
+						closePage={() => setShowDetailedStore(false)}
+					/>
+				</Modal>
+			)}
+		</>
 	)
 }
 

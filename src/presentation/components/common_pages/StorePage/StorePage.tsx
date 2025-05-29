@@ -3,7 +3,7 @@ import './StorePage.css'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import StoreSummary from '../../../../application/store_service/types/StoreSummary.interface'
 import Store from '../../../../domain/Store/Store'
 import useAppState from '../../../global_states/appState'
 import NotFoundImage from '../../NotFoundImage/NotFoundImage'
@@ -13,32 +13,35 @@ import StoreAbout from './StoreAbout/StoreAbout'
 import DailySchedule from './StoreContactInformation/DailySchedule/DailySchedule'
 import StoreContactInformation from './StoreContactInformation/StoreContactInformation'
 import StoreProducts from './StoreProducts/StoreProducts'
+import Button from '../../buttons/Button/Button'
 
-const StorePage = () => {
-	const { name } = useParams()
+type StorePageProps = {
+	storeSummary: StoreSummary
+	closePage: () => void
+}
+
+const StorePage = ({ storeSummary, closePage }: StorePageProps) => {
 	const { storeService } = useAppState()
-	const location = useLocation()
 	const [content, setContent] = useState<string>('products')
 
 	const { data, isLoading } = useQuery<Store | undefined>({
-		queryKey: ['storeData', location.state.storeId],
-		queryFn: async () =>
-			await storeService.getStoreById(location.state.storeId),
-		enabled: !!location.state.storeId,
+		queryKey: ['storeData', storeSummary.id],
+		queryFn: async () => await storeService.getStoreById(storeSummary.id),
+		enabled: !!storeSummary.id,
 	})
 
 	return (
-		<div className='store-page page-padding'>
-			<Link to='/explorar' className='back-link'>
+		<div className='store-page'>
+			<Button onClick={closePage} className='back-link'>
 				<FaArrowLeft className='back-icon' />
 				<p>Volver a explorar</p>
-			</Link>
+			</Button>
 			<div className='info-plus-contact'>
 				<div className='info'>
 					<NotFoundImage className='store-img' />
 					<div className='store-header'>
 						<div>
-							<h1 className='store-name'>{name}</h1>
+							<h1 className='store-name'>{storeSummary.name}</h1>
 							{isLoading ? (
 								<Skeleton />
 							) : (
@@ -52,7 +55,7 @@ const StorePage = () => {
 
 					<ContentChanger content={content} setContent={setContent} />
 					{content === 'products' && (
-						<StoreProducts storeId={location.state.storeId} />
+						<StoreProducts storeId={storeSummary.id} />
 					)}
 					{content === 'about' && <StoreAbout store={data} />}
 				</div>
