@@ -1,19 +1,27 @@
 import './DetailedProduct.css'
 
-import Product from '../../../../../domain/Product/Product'
-import NotFoundImage from '../../../NotFoundImage/NotFoundImage'
-import Card from '../../../containers/Card/Card'
 import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
+import Product from '../../../../../domain/Product/Product'
+import { localeNumber } from '../../../../../utils/locale_number'
 import useAppState from '../../../../global_states/appState'
+import useShoppingCartState from '../../../../global_states/customer/shoppingCartState'
+import NotFoundImage from '../../../NotFoundImage/NotFoundImage'
 import Skeleton from '../../../Skeleton/Skeleton'
 import Button from '../../../buttons/Button/Button'
+import Card from '../../../containers/Card/Card'
+import ProductQuantityToOrder from '../../client/ProductQuantityToOrder/ProductQuantityToOrder'
+import { TbPointFilled } from 'react-icons/tb'
 
 type DetailedProductProps = {
 	product: Product
+	close: () => void
 }
 
-const DetailedProduct = ({ product }: DetailedProductProps) => {
+const DetailedProduct = ({ product, close }: DetailedProductProps) => {
 	const { storeService } = useAppState()
+	const { addToCart } = useShoppingCartState()
+	const [quantityToOrder, setQuantityToOrder] = useState(1)
 
 	const { data } = useQuery({
 		queryKey: [
@@ -25,7 +33,7 @@ const DetailedProduct = ({ product }: DetailedProductProps) => {
 	})
 
 	return (
-		<div className='detailed-product-view'>
+		<div className='detailed-product-view scrollbar'>
 			<div className='product-image-container'>
 				<NotFoundImage className='product-image' />
 			</div>
@@ -41,7 +49,9 @@ const DetailedProduct = ({ product }: DetailedProductProps) => {
 				</div>
 
 				<Card className='detailed-product-price-card'>
-					<p className='detailed-product-price'>${product.getPrice()}</p>
+					<p className='detailed-product-price'>
+						${localeNumber(product.getPrice())}
+					</p>
 					<p>Precio por unidad</p>
 				</Card>
 
@@ -62,9 +72,24 @@ const DetailedProduct = ({ product }: DetailedProductProps) => {
 					<label>Stock disponible:</label>
 					<p className='detailed-product-data'>{product.getStock()}</p>
 				</div>
+
+				<ProductQuantityToOrder
+					quantityToOrder={quantityToOrder}
+					setQuantityToOrder={setQuantityToOrder}
+					stock={product.getStock()}
+				/>
+
 				<div className='add-to-cart-button-container'>
-					<Button className='primary add-to-cart-button'>
-						Agregar al carro
+					<Button
+						className='primary add-to-cart-button'
+						onClick={() => {
+							addToCart(product, quantityToOrder, product.getStoreId())
+							close()
+						}}
+					>
+						<p>Agregar {quantityToOrder} al carro</p>
+						<TbPointFilled className='separator' />
+						<p>${localeNumber(quantityToOrder * product.getPrice())}</p>
 					</Button>
 				</div>
 			</div>

@@ -2,11 +2,11 @@ import './Header.css'
 
 import { LuBell } from 'react-icons/lu'
 import Button from '../buttons/Button/Button'
+import PageLogo from '../PageLogo/PageLogo'
+import ClientProtectedComponent from '../protected_components/client/ClientProtectedComponent'
 import OwnerProtectedComponent from '../protected_components/owner/OwnerProtectedComponent'
 import UserProtectedComponent from '../protected_components/UserProtectedComponent'
 import OwnerStoreSelector from '../views/owner/OwnerStoreSelector/OwnerStoreSelector'
-import ClientProtectedComponent from '../protected_components/client/ClientProtectedComponent'
-import PageLogo from '../PageLogo/PageLogo'
 
 const Header = () => {
 	return (
@@ -19,11 +19,13 @@ const Header = () => {
 				<PageLogo />
 			</ClientProtectedComponent>
 
-			<UserProtectedComponent>
-				<Button>
-					<LuBell className='button-icon' />
-				</Button>
-			</UserProtectedComponent>
+			<div className='header-actions'>
+				<UserProtectedComponent>
+					<Button>
+						<LuBell className='button-icon' />
+					</Button>
+				</UserProtectedComponent>
+			</div>
 		</header>
 	)
 }

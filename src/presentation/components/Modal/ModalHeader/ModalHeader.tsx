@@ -1,3 +1,4 @@
+import { IoMdClose } from 'react-icons/io'
 import './ModalHeader.css'
 
 type ModalHeaderProps = {
@@ -7,9 +8,9 @@ type ModalHeaderProps = {
 const ModalHeader = ({ onClose }: ModalHeaderProps) => {
 	return (
 		<header className='modal-header'>
-			<button className='modal-close' onClick={onClose}>
-				&times;
-			</button>
+			<div className='modal-close'>
+				<IoMdClose className='modal-close-icon' onClick={onClose} />
+			</div>
 		</header>
 	)
 }

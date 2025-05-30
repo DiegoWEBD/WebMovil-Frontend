@@ -1,6 +1,8 @@
 .owner-header {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	right: 0;
+	left: 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -12,6 +14,12 @@
 	transition: all 0.3s ease;
 	line-height: 1;
 	background-color: var(--color-background-page);
+}
+
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
 .inactive-session .owner-header {

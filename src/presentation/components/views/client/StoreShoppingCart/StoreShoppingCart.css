@@ -1,0 +1,23 @@
+.shopping-cart {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.order-subtotal {
+	position: fixed;
+	bottom: calc(5rem + var(--page-margin));
+	color: var(--color-text-highlight);
+	font-size: 1.9rem;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	width: calc(100% - var(--page-margin) * 2);
+}
+
+.order-subtotal label {
+	color: var(--color-text-primary);
+	font-size: 1.5rem;
+}

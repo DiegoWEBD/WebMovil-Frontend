@@ -1,5 +1,4 @@
 .app-root {
-	height: 100vh;
-	overflow-y: scroll;
+	height: 100dvh;
 	padding-top: env(safe-area-inset-top);
 }

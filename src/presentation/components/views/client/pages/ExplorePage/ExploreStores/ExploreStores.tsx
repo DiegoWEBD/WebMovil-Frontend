@@ -1,6 +1,5 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { useEffect, useMemo, useRef } from 'react'
 import useAppState from '../../../../../../global_states/appState'
+import useInfiniteScrollQuery from '../../../../../../hooks/useInfiniteScrollQuery'
 import StoreCard from '../../../../../common_pages/StoresPage/StoreCard/StoreCard'
 import GridContainer from '../../../../../containers/GridContainer/GridContainer'
 
@@ -12,58 +11,28 @@ const ExploreStores = ({ searchInput }: ExploreStoresProps) => {
 	const { storeService } = useAppState()
 
 	const {
-		data,
+		items: stores,
 		error,
-		fetchNextPage,
-		hasNextPage,
-		isFetchingNextPage,
 		isFetching,
-	} = useInfiniteQuery({
-		queryKey: ['explore-stores', searchInput],
-		queryFn: async ({ pageParam = 1 }) => {
-			const response = await storeService.getStores(searchInput, pageParam, 5)
+		loaderRef,
+	} = useInfiniteScrollQuery({
+		queryKey: ['explore-stores'],
+		fetchPage: async page => {
+			const response = await storeService.getStores(searchInput, page, 5)
 			return {
-				stores: response.stores,
-				nextPage: pageParam + 1,
+				data: response.stores,
+				nextPage: page + 1,
 				totalPages: response.meta?.total_pages || 1,
 			}
 		},
-		initialPageParam: 1,
-		getNextPageParam: lastPage =>
-			lastPage.nextPage <= lastPage.totalPages ? lastPage.nextPage : undefined,
 	})
-
-	const allStores = useMemo(() => {
-		return data?.pages.flatMap(page => page.stores) ?? []
-	}, [data])
-
-	const loaderRef = useRef<HTMLDivElement | null>(null)
-
-	useEffect(() => {
-		const target = loaderRef.current
-
-		const observer = new IntersectionObserver(
-			entries => {
-				if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
-					fetchNextPage()
-				}
-			},
-			{ threshold: 1.0 }
-		)
-
-		if (target) observer.observe(target)
-
-		return () => {
-			if (target) observer.unobserve(target)
-		}
-	}, [fetchNextPage, hasNextPage, isFetchingNextPage])
 
 	if (error) return <p>Error al cargar las tiendas disponibles</p>
 
 	return (
 		<>
-			<GridContainer className='explore-section'>
-				{allStores.map(store => (
+			<GridContainer className='explore-section explore-stores'>
+				{stores.map(store => (
 					<StoreCard key={store.id} store={store} className='explore-section' />
 				))}
 				{isFetching &&

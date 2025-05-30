@@ -7,7 +7,7 @@ type AppContainerProps = {
 }
 
 const AppContainer = ({ children }: AppContainerProps) => {
-	return <div className='app-container'>{children}</div>
+	return <div className='app-container scrollbar'>{children}</div>
 }
 
 export default AppContainer

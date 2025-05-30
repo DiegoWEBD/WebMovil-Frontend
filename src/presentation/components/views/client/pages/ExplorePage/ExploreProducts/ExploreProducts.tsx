@@ -1,69 +1,38 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { useEffect, useMemo, useRef } from 'react'
 import useAppState from '../../../../../../global_states/appState'
+import useInfiniteScrollQuery from '../../../../../../hooks/useInfiniteScrollQuery'
 import GridContainer from '../../../../../containers/GridContainer/GridContainer'
 import ProductCard from '../../../../../ProductsViewer/ProductCard/ProductCard'
 
 const ExploreProducts = () => {
 	const { stockService } = useAppState()
-	const loaderRef = useRef<HTMLDivElement | null>(null)
-
 	const {
-		data,
+		items: products,
 		error,
-		fetchNextPage,
-		hasNextPage,
-		isFetchingNextPage,
 		isFetching,
-	} = useInfiniteQuery({
+		loaderRef,
+	} = useInfiniteScrollQuery({
 		queryKey: ['explore-products'],
-		queryFn: async ({ pageParam = 1 }) => {
-			const products = await stockService.getProducts(
+		fetchPage: async page => {
+			const result = await stockService.getProducts(
 				undefined,
 				undefined,
-				pageParam,
+				page,
 				10
 			)
 			return {
-				products: products.products,
-				nextPage: pageParam + 1,
-				totalPages: products.meta?.total_pages || 1,
+				data: result.products,
+				nextPage: page + 1,
+				totalPages: result.meta?.total_pages || 1,
 			}
 		},
-		initialPageParam: 1,
-		getNextPageParam: lastPage =>
-			lastPage.nextPage <= lastPage.totalPages ? lastPage.nextPage : undefined,
 	})
-
-	const allProducts = useMemo(() => {
-		return data?.pages.flatMap(page => page.products) ?? []
-	}, [data])
-
-	useEffect(() => {
-		const target = loaderRef.current
-
-		const observer = new IntersectionObserver(
-			entries => {
-				if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
-					fetchNextPage()
-				}
-			},
-			{ threshold: 1.0 }
-		)
-
-		if (target) observer.observe(target)
-
-		return () => {
-			if (target) observer.unobserve(target)
-		}
-	}, [fetchNextPage, hasNextPage, isFetchingNextPage])
 
 	if (error) return <p>Error al cargar los productos disponibles</p>
 
 	return (
 		<>
-			<GridContainer>
-				{allProducts?.map(product => (
+			<GridContainer className='explore-section'>
+				{products.map(product => (
 					<ProductCard key={`explore-${product.getCode()}`} product={product} />
 				))}
 				{isFetching &&

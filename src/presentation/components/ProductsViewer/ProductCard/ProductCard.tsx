@@ -61,7 +61,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
 						setShowDetailedProduct(false)
 					}}
 				>
-					<DetailedProduct product={product} />
+					<DetailedProduct
+						product={product}
+						close={() => {
+							setShowDetailedProduct(false)
+						}}
+					/>
 				</Modal>
 			)}
 		</>

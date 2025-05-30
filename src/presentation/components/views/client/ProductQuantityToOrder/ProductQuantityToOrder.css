@@ -1,0 +1,18 @@
+.quantity-to-order {
+	display: flex;
+	align-items: center;
+	gap: 2.5rem;
+	border: 1px solid var(--color-border);
+	border-radius: 0.6rem;
+	width: fit-content;
+	height: fit-content;
+}
+
+.quantity-to-order-button {
+	color: var(--color-text-secondary);
+	padding: 1.3rem 1.1rem;
+}
+
+.separator {
+	font-size: 0.7rem;
+}

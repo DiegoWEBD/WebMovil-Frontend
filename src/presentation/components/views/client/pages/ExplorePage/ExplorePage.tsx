@@ -9,7 +9,9 @@ import ExploreFilters from './ExploreFilters/ExploreFilters'
 const ExplorePage = () => {
 	const [searchInput, setSearchInput] = useState<string>('')
 	const [debouncedInput, setDebouncedInput] = useState<string>('')
-	const [section, setSection] = useState<'stores' | 'products'>('products')
+	const [section, setSection] = useState<'stores' | 'products' | 'all'>(
+		'stores'
+	)
 
 	useEffect(() => {
 		const timer = setTimeout(() => {

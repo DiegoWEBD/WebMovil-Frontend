@@ -4,9 +4,17 @@
 	gap: 1rem;
 	transition: all 0.3s ease-in-out;
 	justify-content: space-between;
-	margin-bottom: var(--footer-height);
+	margin-top: var(--header-height);
+	height: calc(100% - var(--header-height) - var(--footer-height));
 }
 
 .inactive-session .app-container {
 	align-items: center;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	margin: 50px;
+	column-gap: 20px;
 }

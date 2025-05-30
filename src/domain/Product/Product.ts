@@ -5,7 +5,7 @@ export default class Product {
 	private price: number
 	private store_id: string
 	private picture: string
-	private stock: string
+	private stock: number
 
 	constructor(
 		code: string,
@@ -14,7 +14,7 @@ export default class Product {
 		price: number,
 		store_id: string,
 		picture: string,
-		stock: string
+		stock: number
 	) {
 		this.code = code
 		this.name = name
@@ -49,7 +49,7 @@ export default class Product {
 		return this.picture
 	}
 
-	public getStock(): string {
+	public getStock(): number {
 		return this.stock
 	}
 }

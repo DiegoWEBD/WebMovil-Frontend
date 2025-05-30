@@ -5,5 +5,5 @@ export default interface ProductJSON {
 	price: number
 	store_id: string
 	picture: string
-	stock: string
+	stock: number
 }

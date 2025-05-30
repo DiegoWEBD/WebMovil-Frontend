@@ -15,9 +15,14 @@
 	transition: all 0.2s ease-in-out;
 }
 
-.custom-button:hover {
-	background-color: var(--color-background-secondary-light);
-	color: white;
+.custom-button.disabled {
+	color: var(--color-text-disabled);
+	cursor: auto;
+}
+
+.custom-button.disabled:hover {
+	background-color: inherit;
+	color: var(--color-text-disabled);
 }
 
 .button-icon {
@@ -30,17 +35,22 @@
 	border: 1px solid var(--color-border-highlight);
 }
 
-.secondary:hover {
-	background-color: var(--color-background-secondary-light);
-	color: var(--color-text-highlight);
-}
-
 .primary {
 	background-color: var(--color-background-highlight);
 	border: 1px solid var(--color-border-highlight);
 }
 
-.primary:hover {
-	border-color: var(--color-border-highlight-hover);
-	background-color: var(--color-background-highlight-hover);
+@media (hover: hover) {
+	.custom-button:hover {
+		background-color: var(--color-background-secondary-light);
+		color: white;
+	}
+	.primary:hover {
+		border-color: var(--color-border-highlight-hover);
+		background-color: var(--color-background-highlight-hover);
+	}
+	.secondary:hover {
+		background-color: var(--color-background-secondary-light);
+		color: var(--color-text-highlight);
+	}
 }

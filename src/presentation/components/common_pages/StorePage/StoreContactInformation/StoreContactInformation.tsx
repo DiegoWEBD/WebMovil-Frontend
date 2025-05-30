@@ -11,11 +11,15 @@ import DailySchedule from './DailySchedule/DailySchedule'
 
 type StoreContactInformationProps = {
 	store: Store | undefined
+	className?: string
 }
 
-const StoreContactInformation = ({ store }: StoreContactInformationProps) => {
+const StoreContactInformation = ({
+	store,
+	className,
+}: StoreContactInformationProps) => {
 	return (
-		<Card className='store-contact-information'>
+		<Card className={`store-contact-information ${className}`}>
 			<div className='primary-information'>
 				<h2 className='title'>Información de contacto</h2>
 				<div className='information-item'>

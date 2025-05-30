@@ -1,22 +1,6 @@
 .store-page {
 	padding: var(--page-margin);
-}
-
-.back-link {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	text-decoration: none;
-	font-weight: 500;
-	width: fit-content;
-	color: inherit;
-	margin-bottom: 1rem;
-	transition: all 0.2s ease;
-}
-
-.back-link:hover {
-	text-decoration: underline;
-	color: var(--color-text-secondary);
+	height: 100dvh;
 }
 
 .info {
@@ -82,9 +66,22 @@
 	gap: 1rem;
 }
 
+.shopping-cart-button {
+	position: absolute;
+	z-index: 2000;
+	top: var(--page-margin);
+	right: 4.5rem;
+}
+
+.shopping-cart-button .modal-close-icon {
+	width: 1.3rem;
+	height: 1.3rem;
+}
+
 @media (max-width: 900px) {
 	.store-page {
 		padding: 0;
+		padding-bottom: var(--page-margin);
 	}
 	.info-plus-contact {
 		flex-direction: column;

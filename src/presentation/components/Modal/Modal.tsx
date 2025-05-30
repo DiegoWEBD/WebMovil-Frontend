@@ -12,7 +12,10 @@ type ModalProps = {
 const Modal = ({ show, onClose, children }: ModalProps) => {
 	return (
 		<div className={`modal-overlay ${show ? 'show' : ''}`} onClick={onClose}>
-			<Card className='modal-content' onClick={e => e.stopPropagation()}>
+			<Card
+				className='scrollbar modal-content'
+				onClick={e => e.stopPropagation()}
+			>
 				<ModalHeader onClose={onClose} />
 				{children}
 			</Card>
