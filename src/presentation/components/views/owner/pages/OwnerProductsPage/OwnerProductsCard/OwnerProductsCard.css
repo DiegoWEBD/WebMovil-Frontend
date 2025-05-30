@@ -1,3 +1,7 @@
+.grid-container.owner-products-section {
+	grid-template-columns: 1fr;
+}
+
 .products-table {
 	padding: 0;
 	font-size: 0.9rem;

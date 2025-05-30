@@ -35,7 +35,7 @@ const StorePage = ({ storeSummary }: StorePageProps) => {
 
 	return (
 		<>
-			<div className='store-page scrollbar'>
+			<div className='store-page'>
 				{shoppingCarts.find(cart => cart.storeId === storeSummary.id) && (
 					<div
 						className='modal-close shopping-cart-button'

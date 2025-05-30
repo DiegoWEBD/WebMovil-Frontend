@@ -5,7 +5,7 @@
 	transition: all 0.3s ease-in-out;
 	justify-content: space-between;
 	margin-top: var(--header-height);
-	height: calc(100% - var(--header-height) - var(--footer-height));
+	height: calc(100vh - var(--header-height));
 }
 
 .inactive-session .app-container {
@@ -17,4 +17,10 @@
 	display: flex;
 	margin: 50px;
 	column-gap: 20px;
+}
+
+@media (max-width: 850px) {
+	.app-container {
+		height: calc(100vh - var(--header-height) - var(--footer-height));
+	}
 }

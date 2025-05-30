@@ -3,7 +3,7 @@ import './DetailedProduct.css'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import Product from '../../../../../domain/Product/Product'
-import { localeNumber } from '../../../../../utils/locale_number'
+import { localeNumber, localePrice } from '../../../../../utils/locale_number'
 import useAppState from '../../../../global_states/appState'
 import useShoppingCartState from '../../../../global_states/customer/shoppingCartState'
 import NotFoundImage from '../../../NotFoundImage/NotFoundImage'
@@ -33,7 +33,7 @@ const DetailedProduct = ({ product, close }: DetailedProductProps) => {
 	})
 
 	return (
-		<div className='detailed-product-view scrollbar'>
+		<div className='detailed-product-view'>
 			<div className='product-image-container'>
 				<NotFoundImage className='product-image' />
 			</div>
@@ -50,7 +50,7 @@ const DetailedProduct = ({ product, close }: DetailedProductProps) => {
 
 				<Card className='detailed-product-price-card'>
 					<p className='detailed-product-price'>
-						${localeNumber(product.getPrice())}
+						{localePrice(product.getPrice())}
 					</p>
 					<p>Precio por unidad</p>
 				</Card>

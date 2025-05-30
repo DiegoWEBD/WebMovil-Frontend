@@ -1,44 +1,49 @@
 import './OwnerProductsCard.css'
 
-import { useQuery } from '@tanstack/react-query'
-import Product from '../../../../../../../domain/Product/Product'
 import useAppState from '../../../../../../global_states/appState'
 import useOwnerState from '../../../../../../global_states/owner/ownerState'
-import Card from '../../../../../containers/Card/Card'
+import useInfiniteScrollQuery from '../../../../../../hooks/useInfiniteScrollQuery'
+import GridContainer from '../../../../../containers/GridContainer/GridContainer'
 import OwnerProductsCardItem from './OwnerProductsCardItem/OwnerProductsCardItem'
 
 const OwnerProductsCard = () => {
 	const { stockService } = useAppState()
 	const { selectedOwnerStoreSummary } = useOwnerState()
 
-	const { data, isLoading } = useQuery<Product[] | undefined>({
-		queryKey: ['ownerStoreProducts', selectedOwnerStoreSummary],
-		queryFn: async () => {
-			return await stockService.getProductsByStoreId(
-				selectedOwnerStoreSummary!.id
+	const {
+		items: products,
+
+		isFetching,
+		loaderRef,
+	} = useInfiniteScrollQuery({
+		queryKey: ['owner-store-products', selectedOwnerStoreSummary!.id],
+		fetchPage: async page => {
+			const result = await stockService.getProducts(
+				selectedOwnerStoreSummary!.id,
+				undefined,
+				page,
+				10
 			)
+			return {
+				data: result.products,
+				nextPage: page + 1,
+				totalPages: result.meta?.total_pages || 1,
+			}
 		},
 		enabled: !!selectedOwnerStoreSummary,
 	})
 
 	return (
-		<Card className='products-table'>
-			<div className='table-header'>
-				<div className='store-product-code'>Código</div>
-				<div className='store-product-name'>Nombre</div>
-				<div className='store-product-category'>Descripción</div>
-				<div className='store-product-price'>Precio</div>
-				<div className='store-product-stock'>Stock</div>
-				<div className='store-product-actions'>Acciones</div>
-			</div>
-			{isLoading &&
+		<GridContainer className='owner-products-section'>
+			{products.map(product => (
+				<OwnerProductsCardItem key={product.getCode()} product={product} />
+			))}
+			{isFetching &&
 				Array.from({ length: 10 }).map((_, index) => (
 					<OwnerProductsCardItem key={index} product={undefined} />
 				))}
-			{data?.map(product => (
-				<OwnerProductsCardItem key={product.getCode()} product={product} />
-			))}
-		</Card>
+			<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
+		</GridContainer>
 	)
 }
 

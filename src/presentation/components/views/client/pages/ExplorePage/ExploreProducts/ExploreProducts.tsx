@@ -34,18 +34,16 @@ const ExploreProducts = ({ searchInput }: ExploreProductsProps) => {
 	if (error) return <p>Error al cargar los productos disponibles</p>
 
 	return (
-		<>
-			<GridContainer className='explore-section'>
-				{products.map(product => (
-					<ProductCard key={`explore-${product.getCode()}`} product={product} />
+		<GridContainer className='explore-section'>
+			{products.map(product => (
+				<ProductCard key={`explore-${product.getCode()}`} product={product} />
+			))}
+			{isFetching &&
+				Array.from({ length: 5 }).map((_, index) => (
+					<ProductCard key={index} />
 				))}
-				{isFetching &&
-					Array.from({ length: 5 }).map((_, index) => (
-						<ProductCard key={index} />
-					))}
-				<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
-			</GridContainer>
-		</>
+			<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
+		</GridContainer>
 	)
 }
 

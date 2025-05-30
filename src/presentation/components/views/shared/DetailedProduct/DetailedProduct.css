@@ -72,11 +72,9 @@
 }
 
 .add-to-cart-button-container {
-	position: fixed;
+	position: sticky;
 	bottom: 0;
-	right: 0;
-	left: 0;
-	padding: 0 var(--page-margin);
+
 	background-color: var(--color-background-page);
 	height: 5rem;
 	display: flex;
@@ -85,4 +83,20 @@
 
 .add-to-cart-button {
 	width: 100%;
+}
+
+@media (min-width: 850px) {
+	.detailed-product-view {
+		display: flex;
+		padding: var(--page-margin) 0;
+	}
+
+	.product-image-container {
+		width: 20rem;
+		height: 20rem;
+	}
+
+	.detailed-product-info-container {
+		flex: 1;
+	}
 }
