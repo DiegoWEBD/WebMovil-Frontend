@@ -10,7 +10,7 @@
 
 	--font-size: 1rem;
 	--header-height: 5rem;
-	--footer-height: 5.3rem;
+	--footer-height: 4rem;
 	--page-margin: 1.5rem;
 
 	/* Background colors */
@@ -61,17 +61,18 @@
 	/* Background colors */
 	--color-background-page: #121212; /* slate-950 */
 	--color-background-page-light: #121212; /* slate-900 */
-	--color-background-primary: #e2e8f0; /* teal-600 */
+	--color-background-primary: white; /* teal-600 */
 	--color-background-primary-light: #14b8a6; /* teal-500 */
 	--color-background-primary-strong: #0f766e; /* teal-700 */
-	--color-background-secondary: #1a1a1a; /* slate-800 */
-	--color-background-secondary-50: #1a1a1a;
-	--color-background-secondary-light: rgba(255, 255, 255, 0.1); /* slate-600 */
+	--color-background-secondary: rgba(255, 255, 255, 0.07); /* slate-800 */
+	--color-background-secondary-50: rgba(255, 255, 255, 0.06);
+	--color-background-secondary-light: rgba(255, 255, 255, 0.12); /* slate-600 */
 
 	/* Text colors */
 	--color-text-primary: white; /* teal-400 */
-	--color-text-secondary: #e2e8f0; /* slate-100 */
-	--color-text-tertiary: #94a3b8; /* slate-400 */
+	--color-text-secondary: #e4e4e7; /* slate-100 */
+	--color-text-tertiary: #a1a1aa; /* slate-400 */
+	--color-text-primary-contrast: black; /* For contrast in dark mode */
 	--color-text-highlight: rgba(168, 85, 247, 1);
 	--color-text-highlight-2: white; /* Highlighted text (e.g., selected) */
 	--color-text-success: rgba(16, 185, 129, 1);
@@ -79,10 +80,10 @@
 	--color-highlight: rgba(147, 51, 234, 1); /* blue-600 */
 	--color-highlight-light: rgba(16, 185, 129, 0.6); /* blue-400 */
 
-	--color-background-highlight: rgba(123, 92, 250, 0.2); /* blue-600 */
+	--color-background-highlight: rgba(123, 92, 250, 0.15); /* blue-600 */
 	--color-border-highlight: rgba(147, 51, 234, 0.8); /* blue-400 */
 
-	--color-background-highlight-hover: rgba(147, 51, 234, 0.3); /* blue-600 */
+	--color-background-highlight-hover: rgba(147, 51, 234, 0.25); /* blue-600 */
 	--color-border-highlight-hover: rgba(147, 51, 234, 0.8); /* blue-400 */
 
 	/* Border colors */
@@ -103,52 +104,6 @@
 	--color-overlay-background: rgba(0, 0, 0, 0.3);
 }
 
-[data-theme='dark'] {
-	/* Background colors */
-	--color-background-page: #1a1523; /* slate-950 */
-	--color-background-page-light: #1a1523; /* slate-900 */
-	--color-background-primary: #e2e8f0; /* teal-600 */
-	--color-background-primary-light: #14b8a6; /* teal-500 */
-	--color-background-primary-strong: #0f766e; /* teal-700 */
-	--color-background-secondary: #1e172b; /* slate-800 */
-	--color-background-secondary-50: #1e172b;
-	--color-background-secondary-light: rgba(30, 23, 43, 0.7); /* slate-600 */
-
-	/* Text colors */
-	--color-text-primary: white; /* teal-400 */
-	--color-text-secondary: #e2e8f0; /* slate-100 */
-	--color-text-tertiary: #94a3b8; /* slate-400 */
-	--color-text-highlight: rgba(
-		123,
-		92,
-		250,
-		255
-	); /* Highlighted text (e.g., selected) */
-	--color-text-success: #34d399;
-
-	--color-highlight: rgba(123, 92, 250, 255); /* blue-600 */
-	--color-highlight-light: rgba(16, 185, 129, 0.6); /* blue-400 */
-
-	--color-background-highlight: rgba(16, 185, 129, 0.5); /* blue-600 */
-	--color-border-highlight: rgba(123, 92, 250, 0.7); /* blue-400 */
-
-	--color-background-highlight-hover: rgba(16, 185, 129, 0.6); /* blue-600 */
-	--color-border-highlight-hover: rgba(16, 185, 129, 0.8); /* blue-400 */
-
-	/* Border colors */
-	--color-border: #2a2337; /* slate-600 */
-	--color-border-light: #475569; /* slate-400 */
-	--color-border-strong: #334155; /* slate-700 */
-	--color-border-success: rgba(16, 185, 129, 0.3); /* slate-700 */
-
-	/* Skeleton colors */
-	--color-skeleton: #444; /* slate-500 */
-	--color-skeleton-light: #444; /* slate-400 */
-
-	--color-error: #dc2626;
-	--color-background-success: rgba(16, 185, 129, 0.2); /* teal-600 */
-}
-
 * {
 	margin: 0;
 	padding: 0;
@@ -164,10 +119,6 @@ html {
 body {
 	color: var(--color-text-secondary);
 	background-color: var(--color-background-page);
-}
-
-body.modal-open {
-	overflow: hidden;
 }
 
 .page-title {
@@ -192,6 +143,10 @@ body.modal-open {
 	padding: var(--page-margin);
 }
 
+.installed {
+	--footer-height: 5.3rem;
+}
+
 @media (max-width: 1000px) {
 	:root {
 		--page-margin: 1rem;
@@ -207,11 +162,5 @@ body.modal-open {
 @media (max-width: 500px) {
 	:root {
 		--font-size: 0.9rem;
-	}
-}
-
-@media (max-width: 370px) {
-	:root {
-		--footer-height: 4rem;
 	}
 }

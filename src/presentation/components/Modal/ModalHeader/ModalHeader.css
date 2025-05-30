@@ -1,0 +1,17 @@
+.modal-header {
+	position: fixed;
+	padding: var(--page-margin);
+	z-index: 2000;
+}
+
+.modal-close {
+	color: var(--color-text-primary);
+	background-color: var(--color-background-page);
+	border: none;
+	font-size: 1.4rem;
+	font-weight: bold;
+	cursor: pointer;
+	height: 2.8rem;
+	width: 2.8rem;
+	border-radius: 50%;
+}

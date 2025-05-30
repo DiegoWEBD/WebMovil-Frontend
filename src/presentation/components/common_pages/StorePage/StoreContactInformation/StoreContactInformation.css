@@ -56,7 +56,7 @@
 
 @media (max-width: 900px) {
 	.store-contact-information {
-		width: 100%;
+		width: calc(100% - 2 * var(--page-margin));
 		font-size: 1rem;
 	}
 }

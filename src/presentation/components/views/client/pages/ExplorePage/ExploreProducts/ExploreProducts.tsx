@@ -66,12 +66,11 @@ const ExploreProducts = () => {
 				{allProducts?.map(product => (
 					<ProductCard key={`explore-${product.getCode()}`} product={product} />
 				))}
-			</GridContainer>
-			<GridContainer ref={loaderRef}>
 				{isFetching &&
 					Array.from({ length: 5 }).map((_, index) => (
 						<ProductCard key={index} />
 					))}
+				<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
 			</GridContainer>
 		</>
 	)

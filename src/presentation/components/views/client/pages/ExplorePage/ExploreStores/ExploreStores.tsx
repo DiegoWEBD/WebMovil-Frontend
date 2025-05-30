@@ -66,8 +66,6 @@ const ExploreStores = ({ searchInput }: ExploreStoresProps) => {
 				{allStores.map(store => (
 					<StoreCard key={store.id} store={store} className='explore-section' />
 				))}
-			</GridContainer>
-			<GridContainer ref={loaderRef} className='explore-section'>
 				{isFetching &&
 					Array.from({ length: 5 }).map((_, index) => (
 						<StoreCard
@@ -76,6 +74,7 @@ const ExploreStores = ({ searchInput }: ExploreStoresProps) => {
 							className='explore-section loading'
 						/>
 					))}
+				<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
 			</GridContainer>
 		</>
 	)

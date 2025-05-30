@@ -17,7 +17,7 @@
 }
 
 .card.modal-content {
-	padding: var(--page-margin);
+	padding: 0 0 2rem 0;
 	background-color: var(--color-background-page);
 	border: none;
 	border-radius: 0;
@@ -26,17 +26,6 @@
 	animation: slideDown 0.3s ease;
 	height: 100vh;
 	overflow-y: scroll;
-}
-
-.modal-close {
-	position: absolute;
-	color: var(--color-text-primary);
-	top: 0.5rem;
-	right: 0.8rem;
-	background: none;
-	border: none;
-	font-size: 1.5rem;
-	cursor: pointer;
 }
 
 @keyframes slideDown {

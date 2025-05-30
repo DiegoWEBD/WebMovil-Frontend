@@ -18,6 +18,7 @@
 }
 
 .product-info.title {
+	color: var(--color-text-primary);
 	font-weight: 500;
 	white-space: nowrap;
 	overflow: hidden;

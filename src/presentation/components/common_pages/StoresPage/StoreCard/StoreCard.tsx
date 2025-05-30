@@ -86,10 +86,7 @@ const StoreCard = ({ store, className }: StoreCardProps) => {
 					show={showDetailedStore}
 					onClose={() => setShowDetailedStore(false)}
 				>
-					<StorePage
-						storeSummary={store}
-						closePage={() => setShowDetailedStore(false)}
-					/>
+					<StorePage storeSummary={store} />
 				</Modal>
 			)}
 		</>

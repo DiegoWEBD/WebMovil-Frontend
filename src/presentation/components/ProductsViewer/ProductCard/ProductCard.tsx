@@ -7,6 +7,7 @@ import Modal from '../../Modal/Modal'
 import { useState } from 'react'
 import Skeleton from '../../Skeleton/Skeleton'
 import Shimmer from '../../Skeleton/Shimmer/Shimmer'
+import DetailedProduct from '../../views/shared/DetailedProduct/DetailedProduct'
 
 type ProductCardProps = {
 	product?: Product
@@ -53,15 +54,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
 				</div>
 				{!product && <Shimmer />}
 			</Card>
-			<Modal
-				show={showDetailedProduct}
-				hideCloseButton
-				onClose={() => {
-					setShowDetailedProduct(false)
-				}}
-			>
-				{product ? <h2>{product.getName()}</h2> : <Skeleton />}
-			</Modal>
+			{product && (
+				<Modal
+					show={showDetailedProduct}
+					onClose={() => {
+						setShowDetailedProduct(false)
+					}}
+				>
+					<DetailedProduct product={product} />
+				</Modal>
+			)}
 		</>
 	)
 }

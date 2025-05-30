@@ -18,10 +18,9 @@
 }
 
 .open-state {
-	color: var(--open-state-color);
+	color: var(--color-text-success);
 	font-weight: 500;
 	border-radius: 10px;
-	background-color: var(--open-state-background-color);
 }
 
 .open-state.closed {
@@ -39,8 +38,9 @@
 
 .open-state.compact {
 	--open-state-background-color: rgba(19, 78, 74, 0.5); /* teal-900/50 */
-	border: 1px solid #0f766e; /* teal-700 */
+	border: 1px solid var(--color-border-success); /* teal-700 */
 	padding-inline: 0.7rem;
+	background-color: var(--color-background-success);
 }
 
 .open-state.compact.compact.closed {
