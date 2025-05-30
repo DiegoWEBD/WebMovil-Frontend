@@ -16,7 +16,7 @@ const ExploreStores = ({ searchInput }: ExploreStoresProps) => {
 		isFetching,
 		loaderRef,
 	} = useInfiniteScrollQuery({
-		queryKey: ['explore-stores'],
+		queryKey: ['explore-stores', searchInput],
 		fetchPage: async page => {
 			const response = await storeService.getStores(searchInput, page, 5)
 			return {

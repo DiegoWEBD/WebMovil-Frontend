@@ -3,7 +3,11 @@ import useInfiniteScrollQuery from '../../../../../../hooks/useInfiniteScrollQue
 import GridContainer from '../../../../../containers/GridContainer/GridContainer'
 import ProductCard from '../../../../../ProductsViewer/ProductCard/ProductCard'
 
-const ExploreProducts = () => {
+type ExploreProductsProps = {
+	searchInput: string
+}
+
+const ExploreProducts = ({ searchInput }: ExploreProductsProps) => {
 	const { stockService } = useAppState()
 	const {
 		items: products,
@@ -11,11 +15,11 @@ const ExploreProducts = () => {
 		isFetching,
 		loaderRef,
 	} = useInfiniteScrollQuery({
-		queryKey: ['explore-products'],
+		queryKey: ['explore-products', searchInput],
 		fetchPage: async page => {
 			const result = await stockService.getProducts(
 				undefined,
-				undefined,
+				searchInput,
 				page,
 				10
 			)

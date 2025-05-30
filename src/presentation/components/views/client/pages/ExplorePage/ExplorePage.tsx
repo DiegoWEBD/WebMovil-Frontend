@@ -39,7 +39,9 @@ const ExplorePage = () => {
 
 			<div className='explore-page-content'>
 				{section === 'stores' && <ExploreStores searchInput={debouncedInput} />}
-				{section === 'products' && <ExploreProducts />}
+				{section === 'products' && (
+					<ExploreProducts searchInput={debouncedInput} />
+				)}
 			</div>
 		</div>
 	)
