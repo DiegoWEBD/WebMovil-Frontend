@@ -16,12 +16,6 @@ type StoreCardProps = {
 	className?: string
 }
 
-/*<img
-	src={`${CONSTANTS.API_URL}/stores_portraits/generic_store_portrait.webp`}
-	alt='Store'
-	loading='lazy'
-/>*/
-
 const StoreCard = ({ store, className }: StoreCardProps) => {
 	const [showDetailedStore, setShowDetailedStore] = useState(false)
 
