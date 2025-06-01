@@ -2,10 +2,12 @@ import { create } from 'zustand'
 import IOwnerService from '../../../application/owner_service/IOwnerService.interface'
 import OwnerService from '../../../application/owner_service/OwnerService'
 import OwnerStoreSummary from '../../../application/owner_service/types/OwnerStoreSummary'
+import { io, Socket } from 'socket.io-client'
 
 type OwnerState = {
 	ownerService: IOwnerService
 	selectedOwnerStoreSummary: OwnerStoreSummary | undefined
+	saleServiceSocket: Socket
 
 	setSelectedStoreSummary: (
 		ownerStoreSummary: OwnerStoreSummary | undefined
@@ -29,9 +31,16 @@ const useOwnerState = create<OwnerState>(set => {
 	const initialSelectedOwnerStoreSummary =
 		loadInitialSelectedOwnerStoreSummary()
 
+	const socket = io('http://154.12.252.238:3007')
+
+	socket.on('connect', () => {
+		console.log('Connected to sale-service socket.io')
+	})
+
 	return {
 		// Servicios
 		ownerService: new OwnerService(),
+		saleServiceSocket: socket,
 
 		selectedOwnerStoreSummary: initialSelectedOwnerStoreSummary,
 

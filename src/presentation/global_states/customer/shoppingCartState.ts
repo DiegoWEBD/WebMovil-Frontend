@@ -15,6 +15,7 @@ type CustomerState = {
 	shoppingCarts: ShoppingCart[]
 	addToCart: (product: Product, quantity: number, storeId: string) => void
 	removeFromCart: (productCode: string, storeId: string) => void
+	removeCart: (storeId: string) => void
 }
 
 const useShoppingCartState = create<CustomerState>(set => {
@@ -86,6 +87,12 @@ const useShoppingCartState = create<CustomerState>(set => {
 								),
 						  }
 						: cart
+				),
+			})),
+		removeCart: (storeId: string) =>
+			set(state => ({
+				shoppingCarts: state.shoppingCarts.filter(
+					cart => cart.storeId !== storeId
 				),
 			})),
 	}

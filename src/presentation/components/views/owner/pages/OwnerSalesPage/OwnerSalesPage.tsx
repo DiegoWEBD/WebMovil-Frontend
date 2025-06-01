@@ -10,9 +10,9 @@ import OwnerSalesContainer from './OwnerSalesContainer/OwnerSalesContainer'
 import OwnerSalesSummary from './OwnerSalesSummary/OwnerSalesSummary'
 
 const OwnerSalesPage = () => {
-	const { selectedOwnerStoreSummary } = useOwnerState()
+	const { selectedOwnerStoreSummary, saleServiceSocket } = useOwnerState()
 
-	const { data, isLoading } = useQuery<Sale[] | undefined>({
+	const { data, isLoading, refetch } = useQuery<Sale[] | undefined>({
 		queryKey: ['ownerSales', selectedOwnerStoreSummary?.id],
 		queryFn: async () => {
 			const response = await apiClient.get(
@@ -42,8 +42,13 @@ const OwnerSalesPage = () => {
 		enabled: !!selectedOwnerStoreSummary,
 	})
 
+	saleServiceSocket.on('new-sale', () => {
+		console.log('New sale registered')
+		refetch()
+	})
+
 	return (
-		<div className='owner-sales-page'>
+		<div className='owner-sales-page page-padding'>
 			<OwnerSalesSummary sales={data} />
 			<div className='page-title'>
 				<LuShoppingCart className='page-title-icon' />

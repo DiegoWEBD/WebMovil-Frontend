@@ -7,7 +7,7 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 0 var(--page-margin);
+	padding: var(--page-margin);
 	height: var(--header-height);
 	z-index: 2000;
 	border-bottom: 1px solid var(--color-border);

@@ -34,7 +34,7 @@ const OwnerProductsCard = () => {
 	})
 
 	return (
-		<GridContainer className='owner-products-section'>
+		<GridContainer>
 			{products.map(product => (
 				<OwnerProductsCardItem key={product.getCode()} product={product} />
 			))}

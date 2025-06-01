@@ -5,10 +5,14 @@ import IStoreService from '../../application/store_service/IStoreService.interfa
 import StoreService from '../../application/store_service/StoreService'
 import { validateAccessToken } from '../auth/auth'
 import BasicUserInfo from '../user/BasicUserInfo'
+import ISaleService from '../../application/sale_service/SaleService.interface'
+import SaleService from '../../application/sale_service/SaleService'
 
 type AppState = {
 	storeService: IStoreService
 	stockService: IStockService
+	saleService: ISaleService
+
 	basicUserInfo: BasicUserInfo | null
 	setBasicUserInfo: (userInfo: BasicUserInfo | null) => void
 
@@ -32,6 +36,7 @@ const useAppState = create<AppState>((set, get) => {
 		// Servicios
 		storeService: new StoreService(),
 		stockService: new StockService(),
+		saleService: new SaleService(),
 
 		// Estados globales
 		basicUserInfo: initialBasicUserInfo,
