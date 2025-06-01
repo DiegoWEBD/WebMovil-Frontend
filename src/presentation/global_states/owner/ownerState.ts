@@ -31,7 +31,7 @@ const useOwnerState = create<OwnerState>(set => {
 	const initialSelectedOwnerStoreSummary =
 		loadInitialSelectedOwnerStoreSummary()
 
-	const socket = io('http://154.12.252.238:3007')
+	const socket = io('http://infofarmacos.cl/sale_service')
 
 	socket.on('connect', () => {
 		console.log('Connected to sale-service socket.io')
