@@ -1,4 +1,7 @@
 .app-root {
 	height: 100dvh;
-	padding-top: env(safe-area-inset-top);
+	/*padding-top: env(safe-area-inset-top);*/
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }

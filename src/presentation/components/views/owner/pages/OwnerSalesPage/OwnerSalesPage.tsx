@@ -43,7 +43,7 @@ const OwnerSalesPage = () => {
 	})
 
 	return (
-		<div className='owner-sales-page page-padding'>
+		<div className='owner-sales-page'>
 			<OwnerSalesSummary sales={data} />
 			<div className='page-title'>
 				<LuShoppingCart className='page-title-icon' />

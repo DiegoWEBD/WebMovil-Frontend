@@ -24,6 +24,6 @@
 }
 
 .button.selected {
-	background-color: var(--color-background-page-light);
+	background-color: var(--color-background-secondary-light);
 	color: var(--color-text-primary);
 }

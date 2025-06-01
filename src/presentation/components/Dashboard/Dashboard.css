@@ -1,6 +1,7 @@
 .dashboard-v2 {
+	position: sticky;
+	top: 0;
 	height: fit-content;
-	width: 18rem;
 	z-index: 1000;
 	transition: all 0.2s ease;
 	display: flex;
@@ -33,9 +34,6 @@
 }
 
 .dashboard-v2-nav-menu {
-	position: fixed;
-	left: var(--page-margin);
-	top: calc(var(--page-margin) + var(--header-height));
 	display: flex;
 	flex-direction: column;
 	width: 14rem;
@@ -74,7 +72,6 @@
 	.dashboard-v2 {
 		width: 0;
 		visibility: hidden;
-		margin-left: -1.5rem;
 	}
 
 	.dashboard-v2-nav-menu {

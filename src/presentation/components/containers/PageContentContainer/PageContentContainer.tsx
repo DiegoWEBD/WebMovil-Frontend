@@ -7,7 +7,7 @@ type PageContentContainerProps = {
 }
 
 const PageContentContainer = ({ children }: PageContentContainerProps) => {
-	return <div className='page-content'>{children}</div>
+	return <div className='page-content scrollbar'>{children}</div>
 }
 
 export default PageContentContainer

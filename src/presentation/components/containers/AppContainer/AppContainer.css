@@ -1,26 +1,18 @@
 .app-container {
-	width: 100%;
+	flex: 1;
 	display: flex;
-	gap: 1rem;
 	transition: all 0.3s ease-in-out;
 	justify-content: space-between;
-	margin-top: var(--header-height);
-	height: calc(100vh - var(--header-height));
+	gap: var(--page-margin);
 }
 
 .inactive-session .app-container {
 	align-items: center;
-	margin: 0;
 }
 
-.container {
-	display: flex;
-	margin: 50px;
-	column-gap: 20px;
-}
-
+/* REVISAR Y MODIFICAR */
 @media (max-width: 850px) {
 	.app-container {
-		height: calc(100vh - var(--header-height) - var(--footer-height));
+		gap: 0;
 	}
 }

@@ -26,7 +26,7 @@ const LoginForm = () => {
 	})
 
 	return (
-		<div className='page-padding'>
+		<div>
 			<Card className='auth-form-card'>
 				<header className='auth-form-header'>
 					<div className='auth-form-logo-plus-title'>

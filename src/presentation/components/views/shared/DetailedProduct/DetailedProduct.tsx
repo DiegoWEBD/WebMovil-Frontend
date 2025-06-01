@@ -12,15 +12,16 @@ import Button from '../../../buttons/Button/Button'
 import Card from '../../../containers/Card/Card'
 import ProductQuantityToOrder from '../../client/ProductQuantityToOrder/ProductQuantityToOrder'
 import { TbPointFilled } from 'react-icons/tb'
+import useModalState from '../../../../global_states/modalState'
 
 type DetailedProductProps = {
 	product: Product
-	close: () => void
 }
 
-const DetailedProduct = ({ product, close }: DetailedProductProps) => {
+const DetailedProduct = ({ product }: DetailedProductProps) => {
 	const { storeService } = useAppState()
 	const { addToCart } = useShoppingCartState()
+	const { closeModal } = useModalState()
 	const [quantityToOrder, setQuantityToOrder] = useState(1)
 
 	const { data } = useQuery({
@@ -33,11 +34,11 @@ const DetailedProduct = ({ product, close }: DetailedProductProps) => {
 	})
 
 	return (
-		<div className='detailed-product-view'>
+		<div className='detailed-product-view '>
 			<div className='product-image-container'>
 				<NotFoundImage className='product-image' />
 			</div>
-			<div className='page-padding detailed-product-info-container'>
+			<div className='detailed-product-info-container page-padding'>
 				<div>
 					<h1 className='page-title'>{product.getName()}</h1>
 					{data ? (
@@ -84,7 +85,7 @@ const DetailedProduct = ({ product, close }: DetailedProductProps) => {
 						className='primary add-to-cart-button'
 						onClick={() => {
 							addToCart(product, quantityToOrder, product.getStoreId())
-							close()
+							closeModal()
 						}}
 					>
 						<p>Agregar {quantityToOrder} al carro</p>

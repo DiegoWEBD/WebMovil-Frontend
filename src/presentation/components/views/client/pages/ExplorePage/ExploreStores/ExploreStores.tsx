@@ -18,8 +18,7 @@ const ExploreStores = ({ searchInput }: ExploreStoresProps) => {
 	} = useInfiniteScrollQuery({
 		queryKey: ['explore-stores', searchInput],
 		fetchPage: async page => {
-			await new Promise(resolve => setTimeout(resolve, 5000)) // Simulate a delay
-			const response = await storeService.getStores(searchInput, page, 5)
+			const response = await storeService.getStores(searchInput, page, 10)
 			return {
 				data: response.stores,
 				nextPage: page + 1,

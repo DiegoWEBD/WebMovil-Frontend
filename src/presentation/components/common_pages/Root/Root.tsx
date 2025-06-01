@@ -9,7 +9,7 @@ import DashboardV2 from '../../Dashboard/Dashboard'
 import Footer from '../../Footer/Footer'
 import Header from '../../Header/Header'
 import UserProtectedComponent from '../../protected_components/UserProtectedComponent'
-import ScrollToTop from '../../ScrollToTop/ScrollToTop'
+import ModalContainer from '../../containers/ModalContainer/ModalContainer'
 
 const App = () => {
 	const { validateAccessToken, isAppInstalled } = useAppState()
@@ -28,7 +28,6 @@ const App = () => {
 				} 
 				${isAppInstalled() ? 'installed' : 'not-installed'}`}
 		>
-			<ScrollToTop />
 			<Header />
 
 			<AppContainer>
@@ -40,6 +39,8 @@ const App = () => {
 			<UserProtectedComponent>
 				<Footer />
 			</UserProtectedComponent>
+
+			<ModalContainer />
 		</div>
 	)
 }

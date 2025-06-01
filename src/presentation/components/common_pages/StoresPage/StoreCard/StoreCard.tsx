@@ -1,10 +1,9 @@
 import './StoreCard.css'
 
-import { useState } from 'react'
 import { TiLocationOutline } from 'react-icons/ti'
 import StoreSummary from '../../../../../application/store_service/types/StoreSummary.interface'
+import useModalState from '../../../../global_states/modalState'
 import Card from '../../../containers/Card/Card'
-import Modal from '../../../Modal/Modal'
 import NotFoundImage from '../../../NotFoundImage/NotFoundImage'
 import Shimmer from '../../../Skeleton/Shimmer/Shimmer'
 import Skeleton from '../../../Skeleton/Skeleton'
@@ -17,73 +16,64 @@ type StoreCardProps = {
 }
 
 const StoreCard = ({ store, className }: StoreCardProps) => {
-	const [showDetailedStore, setShowDetailedStore] = useState(false)
+	const { openModal } = useModalState()
 
 	return (
-		<>
-			<Card
-				className={`store-card store-card-link skeleton-wrapper ${className}`}
-				onClick={() => setShowDetailedStore(true)}
-			>
-				<div className='store-image-container'>
+		<Card
+			className={`store-card store-card-link skeleton-wrapper ${className}`}
+			onClick={() => {
+				if (store) openModal(<StorePage storeSummary={store} />)
+			}}
+		>
+			<div className='store-image-container'>
+				{store ? (
+					<NotFoundImage className='store-image' />
+				) : (
+					<Skeleton width='100%' height='100%' />
+				)}
+			</div>
+
+			<div className='store-complete-info-container'>
+				<div className='store-info-container resume'>
 					{store ? (
-						<NotFoundImage className='store-image' />
+						<p className='store-card-name'>{store.name}</p>
 					) : (
-						<Skeleton width='100%' height='100%' />
+						<Skeleton width='50%' height='1.1rem' />
+					)}
+					<div className='store-direction-container'>
+						{store ? (
+							<>
+								<TiLocationOutline className='direction-logo' />
+								<p className='store-direction'>{store.direction}</p>
+							</>
+						) : (
+							<Skeleton width='40%' height='0.9rem' />
+						)}
+					</div>
+					{store ? (
+						<p className='store-description'>{store.description}</p>
+					) : (
+						<Skeleton width='60%' height='0.9rem' />
 					)}
 				</div>
 
-				<div className='store-complete-info-container'>
-					<div className='store-info-container resume'>
+				<div className='store-info-container extra'>
+					<div className='store-products-count-container'>
 						{store ? (
-							<p className='store-card-name'>{store.name}</p>
+							<>
+								<p className='store-products-count'>{store.products_count}</p>
+								<p>Productos</p>
+							</>
 						) : (
-							<Skeleton width='50%' height='1.1rem' />
-						)}
-						<div className='store-direction-container'>
-							{store ? (
-								<>
-									<TiLocationOutline className='direction-logo' />
-									<p className='store-direction'>{store.direction}</p>
-								</>
-							) : (
-								<Skeleton width='40%' height='0.9rem' />
-							)}
-						</div>
-						{store ? (
-							<p className='store-description'>{store.description}</p>
-						) : (
-							<Skeleton width='60%' height='0.9rem' />
+							<Skeleton height='0.9rem' />
 						)}
 					</div>
-
-					<div className='store-info-container extra'>
-						<div className='store-products-count-container'>
-							{store ? (
-								<>
-									<p className='store-products-count'>{store.products_count}</p>
-									<p>Productos</p>
-								</>
-							) : (
-								<Skeleton height='0.9rem' />
-							)}
-						</div>
-						<RatingStars rating={store?.feedback_rating} />
-					</div>
+					<RatingStars rating={store?.feedback_rating} />
 				</div>
+			</div>
 
-				{!store && <Shimmer />}
-			</Card>
-
-			{showDetailedStore && store && (
-				<Modal
-					show={showDetailedStore}
-					onClose={() => setShowDetailedStore(false)}
-				>
-					<StorePage storeSummary={store} />
-				</Modal>
-			)}
-		</>
+			{!store && <Shimmer />}
+		</Card>
 	)
 }
 

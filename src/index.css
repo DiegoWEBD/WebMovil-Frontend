@@ -114,15 +114,11 @@
 	word-break: break-word;
 }
 
-html {
-	color: var(--color-text-secondary);
-	background-color: var(--color-background-page);
-}
-
+html,
 body {
 	color: var(--color-text-secondary);
 	background-color: var(--color-background-page);
-	height: 100vh;
+	height: 100dvh;
 	overflow: hidden;
 }
 
@@ -144,16 +140,12 @@ body {
 	color: var(--color-text-highlight);
 }
 
-.page-padding {
-	padding: var(--page-margin);
-}
-
 .installed {
 	--footer-height: 5.3rem;
 }
 
-.scrollbar {
-	overflow-y: auto;
+.page-padding {
+	padding: var(--page-margin);
 }
 
 .scrollbar::-webkit-scrollbar {

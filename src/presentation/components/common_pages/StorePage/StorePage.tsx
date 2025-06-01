@@ -7,15 +7,15 @@ import StoreSummary from '../../../../application/store_service/types/StoreSumma
 import Store from '../../../../domain/Store/Store'
 import useAppState from '../../../global_states/appState'
 import useShoppingCartState from '../../../global_states/customer/shoppingCartState'
+import useModalState from '../../../global_states/modalState'
 import NotFoundImage from '../../NotFoundImage/NotFoundImage'
 import Skeleton from '../../Skeleton/Skeleton'
+import StoreShoppingCart from '../../views/client/StoreShoppingCart/StoreShoppingCart'
 import ContentChanger from './ContentChanger/ContentChanger'
 import StoreAbout from './StoreAbout/StoreAbout'
 import DailySchedule from './StoreContactInformation/DailySchedule/DailySchedule'
 import StoreContactInformation from './StoreContactInformation/StoreContactInformation'
 import StoreProducts from './StoreProducts/StoreProducts'
-import Modal from '../../Modal/Modal'
-import StoreShoppingCart from '../../views/client/StoreShoppingCart/StoreShoppingCart'
 
 type StorePageProps = {
 	storeSummary: StoreSummary
@@ -24,8 +24,8 @@ type StorePageProps = {
 const StorePage = ({ storeSummary }: StorePageProps) => {
 	const { storeService } = useAppState()
 	const { shoppingCarts } = useShoppingCartState()
+	const { openModal } = useModalState()
 	const [content, setContent] = useState<string>('products')
-	const [showShoppingCart, setShowShoppingCart] = useState(false)
 
 	const { data, isLoading } = useQuery<Store | undefined>({
 		queryKey: ['storeData', storeSummary.id],
@@ -34,21 +34,28 @@ const StorePage = ({ storeSummary }: StorePageProps) => {
 	})
 
 	return (
-		<>
-			<div className='store-page'>
-				{shoppingCarts.find(cart => cart.storeId === storeSummary.id) && (
-					<div
-						className='modal-close shopping-cart-button'
-						onClick={() => setShowShoppingCart(true)}
-					>
-						<LuShoppingCart className='modal-close-icon ' />
-					</div>
-				)}
-				<div className='info-plus-contact'>
-					<div className='info'>
-						<NotFoundImage className='store-img' />
-						<div className='info-container'>
-							<div className='store-header'>
+		<div className='store-page page-padding'>
+			{shoppingCarts.find(cart => cart.storeId === storeSummary.id) && (
+				<div
+					className='modal-close shopping-cart-button'
+					onClick={() =>
+						openModal(
+							<StoreShoppingCart
+								storeId={storeSummary.id}
+								storeName={storeSummary.name}
+							/>
+						)
+					}
+				>
+					<LuShoppingCart className='modal-close-icon ' />
+				</div>
+			)}
+			<div className='info-plus-contact'>
+				<div className='info'>
+					<NotFoundImage className='store-img' />
+					<div className='info-container'>
+						<div className='store-header'>
+							<div className='store-header-left'>
 								<div>
 									<h1 className='store-name'>{storeSummary.name}</h1>
 									{isLoading ? (
@@ -63,31 +70,21 @@ const StorePage = ({ storeSummary }: StorePageProps) => {
 							</div>
 
 							<ContentChanger content={content} setContent={setContent} />
-							{content === 'products' && (
-								<StoreProducts storeId={storeSummary.id} />
-							)}
-							{content === 'about' && <StoreAbout store={data} />}
 						</div>
-					</div>
 
-					<StoreContactInformation
-						store={data}
-						className={content !== 'about' ? 'hide' : ''}
-					/>
+						{content === 'products' && (
+							<StoreProducts storeId={storeSummary.id} />
+						)}
+						{content === 'about' && <StoreAbout store={data} />}
+					</div>
 				</div>
+
+				<StoreContactInformation
+					store={data}
+					className={content !== 'about' ? 'hide' : ''}
+				/>
 			</div>
-			{showShoppingCart && (
-				<Modal
-					show={showShoppingCart}
-					onClose={() => setShowShoppingCart(false)}
-				>
-					<StoreShoppingCart
-						storeId={storeSummary.id}
-						storeName={storeSummary.name}
-					/>
-				</Modal>
-			)}
-		</>
+		</div>
 	)
 }
 

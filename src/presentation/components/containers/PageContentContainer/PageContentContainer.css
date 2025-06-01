@@ -1,3 +1,6 @@
 .page-content {
-	width: 100%;
+	flex: 1;
+	height: 100dvh;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch; /* iOS scroll suave */
 }

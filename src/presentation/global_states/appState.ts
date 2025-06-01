@@ -1,9 +1,9 @@
 import { create } from 'zustand'
-import { validateAccessToken } from '../auth/auth'
-import IStoreService from '../../application/store_service/IStoreService.interface'
-import StoreService from '../../application/store_service/StoreService'
 import IStockService from '../../application/stock_service/IStockService.interface'
 import StockService from '../../application/stock_service/StockService'
+import IStoreService from '../../application/store_service/IStoreService.interface'
+import StoreService from '../../application/store_service/StoreService'
+import { validateAccessToken } from '../auth/auth'
 import BasicUserInfo from '../user/BasicUserInfo'
 
 type AppState = {
@@ -11,6 +11,7 @@ type AppState = {
 	stockService: IStockService
 	basicUserInfo: BasicUserInfo | null
 	setBasicUserInfo: (userInfo: BasicUserInfo | null) => void
+
 	validateAccessToken: () => Promise<void>
 	isAppInstalled: () => boolean
 }

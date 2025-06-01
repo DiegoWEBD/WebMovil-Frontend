@@ -22,12 +22,15 @@ const ExplorePage = () => {
 	}, [searchInput])
 
 	return (
-		<div className=' page-padding'>
-			<p className='page-title'>Explorar</p>
-			<p className='page-subtitle'>
-				Descubre productos o tiendas disponibles en tu vecindario
-			</p>
-			<div className='explore-page-header'>
+		<div className='explore-page'>
+			<div className='page-padding'>
+				<p className='page-title'>Explorar</p>
+				<p className='page-subtitle'>
+					Descubre productos o tiendas disponibles en tu vecindario
+				</p>
+			</div>
+
+			<div className='explore-page-header page-padding'>
 				<Finder
 					searchInput={searchInput}
 					cbFunction={setSearchInput}
@@ -37,7 +40,7 @@ const ExplorePage = () => {
 				<ExploreFilters section={section} setSection={setSection} />
 			</div>
 
-			<div className='explore-page-content'>
+			<div className='explore-page-content page-padding'>
 				{section === 'stores' && <ExploreStores searchInput={debouncedInput} />}
 				{section === 'products' && (
 					<ExploreProducts searchInput={debouncedInput} />

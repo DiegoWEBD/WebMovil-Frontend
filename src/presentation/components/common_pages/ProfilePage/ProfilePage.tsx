@@ -31,7 +31,7 @@ const ProfilePage = () => {
 	})
 
 	return (
-		<div className='profile-page page-padding'>
+		<div className='profile-page'>
 			<ProfileHeader user={data} />
 			<PersonalInfoCard user={data} />
 			<Button

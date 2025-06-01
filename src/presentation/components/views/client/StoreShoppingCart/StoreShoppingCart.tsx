@@ -16,7 +16,7 @@ const StoreShoppingCart = ({ storeId, storeName }: StoreShoppingCartProps) => {
 	const shoppingCart = shoppingCarts.find(cart => cart.storeId === storeId)
 
 	return (
-		<div className='page-padding shopping-cart'>
+		<div className='shopping-cart page-padding'>
 			<h1 className='page-title'>{storeName}</h1>
 			{shoppingCart?.productOrders.map(productOrder => (
 				<ShoppingCartProductCard

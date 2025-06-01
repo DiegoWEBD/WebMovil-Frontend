@@ -11,7 +11,7 @@ const StoreProducts = ({ storeId }: StoreProductsProps) => {
 	const { stockService } = useAppState()
 
 	const { data } = useQuery<Product[]>({
-		queryKey: ['storeProducts', storeId],
+		queryKey: ['store-products', storeId],
 		queryFn: async () => {
 			const response = await stockService.getProducts(storeId)
 			return response.products
