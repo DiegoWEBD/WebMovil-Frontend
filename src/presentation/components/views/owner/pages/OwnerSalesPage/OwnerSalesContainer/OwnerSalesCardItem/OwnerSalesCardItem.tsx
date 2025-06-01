@@ -19,7 +19,7 @@ const OwnerSalesCardItem = ({ sale }: OwnerSalesCardItemProps) => {
 				)}
 
 				{sale ? (
-					<p className='store-sale-card-user'>María González</p>
+					<p className='store-sale-card-user'>{sale.getUserName()}</p>
 				) : (
 					<Skeleton />
 				)}
