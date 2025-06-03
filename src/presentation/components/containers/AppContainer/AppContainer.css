@@ -1,18 +1,22 @@
 .app-container {
-	flex: 1;
 	display: flex;
 	transition: all 0.3s ease-in-out;
 	justify-content: space-between;
-	gap: var(--page-margin);
+	gap: 0;
+	height: 100vh;
+	width: 100%;
+	overflow: auto;
+	margin-left: 0;
+	-webkit-overflow-scrolling: touch; /* iOS scroll suave */
+	transition: all 0.3s ease-in-out;
 }
 
-.inactive-session .app-container {
-	align-items: center;
+.app-container.modal-open {
+	overflow: hidden;
 }
 
-/* REVISAR Y MODIFICAR */
 @media (max-width: 850px) {
 	.app-container {
-		gap: 0;
+		width: calc(100% + 300px);
 	}
 }

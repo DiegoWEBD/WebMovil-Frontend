@@ -1,0 +1,20 @@
+.sale-detail-product-left .product-code {
+	color: var(--color-text-tertiary);
+	font-size: 0.9rem;
+}
+
+.sale-detail-product {
+	display: flex;
+	justify-content: space-between;
+}
+
+.sale-detail-product-left,
+.sale-detail-product-right {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.detail-price {
+	color: var(--color-text-primary);
+}

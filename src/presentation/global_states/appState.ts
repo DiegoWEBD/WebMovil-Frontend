@@ -12,10 +12,10 @@ type AppState = {
 	storeService: IStoreService
 	stockService: IStockService
 	saleService: ISaleService
-
 	basicUserInfo: BasicUserInfo | null
 	setBasicUserInfo: (userInfo: BasicUserInfo | null) => void
-
+	dashboardOpen: boolean
+	setDashboardOpen: (open: boolean) => void
 	validateAccessToken: () => Promise<void>
 	isAppInstalled: () => boolean
 }
@@ -45,6 +45,9 @@ const useAppState = create<AppState>((set, get) => {
 
 		setBasicUserInfo: (userInfo: BasicUserInfo | null) =>
 			set({ basicUserInfo: userInfo }),
+
+		dashboardOpen: window.innerWidth > 850,
+		setDashboardOpen: (open: boolean) => set({ dashboardOpen: open }),
 
 		validateAccessToken: async () => {
 			const basicUser = await validateAccessToken()

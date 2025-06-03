@@ -18,7 +18,7 @@ const OwnerSalesPage = () => {
 			const response = await apiClient.get(
 				`/sales?store_id=${selectedOwnerStoreSummary!.id}`
 			)
-			console.log(response.data)
+
 			return response.data.map(
 				(sale: any) =>
 					new Sale(

@@ -1,7 +1,7 @@
 import './OwnerSalesContainer.css'
 
 import Sale from '../../../../../../../domain/Sale/Sale'
-import OwnerSalesCardItem from './OwnerSalesCardItem/OwnerSalesCardItem'
+import OwnerSaleCard from './OwnerSaleCard/OwnerSaleCard'
 
 type OwnerSalesContainerProps = {
 	sales: Sale[] | undefined
@@ -16,10 +16,10 @@ const OwnerSalesContainer = ({
 		<div className='sales-container'>
 			{isLoading &&
 				Array.from({ length: 10 }).map((_, index) => (
-					<OwnerSalesCardItem sale={undefined} key={index} />
+					<OwnerSaleCard sale={undefined} key={index} />
 				))}
 			{sales?.map(sale => (
-				<OwnerSalesCardItem sale={sale} key={sale.getCode()} />
+				<OwnerSaleCard sale={sale} key={sale.getCode()} />
 			))}
 		</div>
 	)

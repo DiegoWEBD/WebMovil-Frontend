@@ -1,4 +1,4 @@
-.owner-header {
+.header {
 	position: sticky;
 	top: 0;
 	right: 0;
@@ -12,17 +12,18 @@
 	z-index: 2000;
 	border-bottom: 1px solid var(--color-border);
 	transition: all 0.3s ease;
-	line-height: 1;
 	background-color: var(--color-background-page);
 }
 
+.header-left,
 .header-actions {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+	line-height: 1;
 }
 
-.inactive-session .owner-header {
+.inactive-session .header {
 	display: none;
 }
 
@@ -31,16 +32,16 @@
 	height: var(--header-height);
 }
 
-.owner-header .custom-button {
+.header .custom-button {
 	padding: 0;
 }
 
-.owner-header .custom-button .button-icon {
+.header .custom-button .button-icon {
 	width: 1.5rem;
 	height: 1.5rem;
 }
 
-.owner-header-nav-element {
+.header-nav-element {
 	background-color: var(--color-background-secondary);
 	width: 2.5rem;
 	height: 2.5rem;
@@ -51,20 +52,20 @@
 	align-items: center;
 }
 
-.owner-header-nav-element:hover {
+.header-nav-element:hover {
 	background-color: var(--color-background-page-light);
 }
 
-.owner-header-nav-element.active {
+.header-nav-element.active {
 	background-color: var(--color-background-secondary);
 }
 
-.owner-header-nav-element.active:hover {
+.header-nav-element.active:hover {
 	background-color: var(--color-background-page-light);
 }
 
 @media (max-width: 850px) {
-	.owner-header .custom-button .button-icon {
+	.header .custom-button .button-icon {
 		width: 1.3rem;
 		height: 1.3rem;
 	}

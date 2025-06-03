@@ -3,6 +3,7 @@ import './OwnerSalesSummary.css'
 import { useMemo } from 'react'
 import Sale from '../../../../../../../domain/Sale/Sale'
 import Card from '../../../../../containers/Card/Card'
+import { localePrice } from '../../../../../../../utils/locale_number'
 
 type OwnerSalesSummaryProps = {
 	sales: Sale[] | undefined
@@ -23,7 +24,7 @@ const OwnerSalesSummary = ({ sales }: OwnerSalesSummaryProps) => {
 
 			<Card>
 				<p>Total</p>
-				<h3 className='total-sales-summary'>${totalSales}</h3>
+				<h3 className='total-sales-summary'>{localePrice(totalSales)}</h3>
 			</Card>
 		</div>
 	)

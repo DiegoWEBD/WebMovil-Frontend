@@ -3,14 +3,26 @@ import '../OwnerSalesContainer.css'
 import Sale from '../../../../../../../../domain/Sale/Sale'
 import Skeleton from '../../../../../../Skeleton/Skeleton'
 import Card from '../../../../../../containers/Card/Card'
+import useModalState from '../../../../../../../global_states/modalState'
+import SaleDetailView from '../../SaleDetailView/SaleDetailView'
+import { localePrice } from '../../../../../../../../utils/locale_number'
 
-type OwnerSalesCardItemProps = {
+type OwnerSaleCardProps = {
 	sale: Sale | undefined
 }
 
-const OwnerSalesCardItem = ({ sale }: OwnerSalesCardItemProps) => {
+const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
+	const { openModal } = useModalState()
+
 	return (
-		<Card className='store-sale-card'>
+		<Card
+			className='store-sale-card'
+			onClick={() =>
+				sale
+					? openModal(<SaleDetailView saleCode={sale.getCode() || ''} />, true)
+					: undefined
+			}
+		>
 			<div className='left-side'>
 				{sale ? (
 					<p className='store-sale-card-code'>{sale.getCode()}</p>
@@ -47,7 +59,9 @@ const OwnerSalesCardItem = ({ sale }: OwnerSalesCardItemProps) => {
 
 			<div className='right-side'>
 				{sale ? (
-					<p className='store-sale-card-total'>${sale.getTotal()}</p>
+					<p className='store-sale-card-total'>
+						{localePrice(sale.getTotal())}
+					</p>
 				) : (
 					<Skeleton />
 				)}
@@ -62,4 +76,4 @@ const OwnerSalesCardItem = ({ sale }: OwnerSalesCardItemProps) => {
 	)
 }
 
-export default OwnerSalesCardItem
+export default OwnerSaleCard

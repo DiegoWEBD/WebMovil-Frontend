@@ -1,5 +1,4 @@
 .owner-store-selector {
-	position: relative;
 	background-color: var(--color-background-secondary-50);
 	border: 1px solid var(--color-border);
 	display: flex;

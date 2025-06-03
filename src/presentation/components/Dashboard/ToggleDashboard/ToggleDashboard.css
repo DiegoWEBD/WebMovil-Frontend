@@ -1,0 +1,13 @@
+.toggle-dashboard {
+	background: transparent;
+	border: none;
+	font-size: 1.2rem;
+	cursor: pointer;
+	color: var(--color-text-primary);
+	transition: all 0.2s ease-in-out;
+	border-radius: 5px;
+}
+
+.toggle-dashboard:focus {
+	outline: none;
+}

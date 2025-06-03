@@ -1,6 +1,5 @@
 import './ModalContainer.css'
 
-// src/components/ModalContainer.tsx
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import useModalState from '../../../global_states/modalState'
@@ -19,11 +18,16 @@ const ModalContainer = () => {
 	if (modals.length === 0) return null
 
 	return createPortal(
-		<div className='modal-container'>
-			{modals.map((ModalComponent, index) => {
+		<>
+			{modals.map((modalComponent, index) => {
 				const isTopModal = index === modals.length - 1
 				return (
-					<div key={index} className='modal-wrapper scrollbar'>
+					<div
+						key={index}
+						className={`modal-wrapper scrollbar ${
+							modalComponent.headerVisible ? 'header-visible' : ''
+						}`}
+					>
 						<div
 							style={{
 								position: 'relative',
@@ -34,19 +38,14 @@ const ModalContainer = () => {
 						>
 							{/* Botón de cierre solo visible en el último modal */}
 							{isTopModal && (
-								<div className='modal-close'>
-									<IoMdClose
-										className='modal-close-icon'
-										onClick={closeModal}
-									/>
-								</div>
+								<IoMdClose className='modal-close' onClick={closeModal} />
 							)}
-							{ModalComponent}
+							{modalComponent.modal}
 						</div>
 					</div>
 				)
 			})}
-		</div>,
+		</>,
 		document.body
 	)
 }

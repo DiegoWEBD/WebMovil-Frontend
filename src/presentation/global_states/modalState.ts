@@ -1,18 +1,23 @@
 import { ReactNode } from 'react'
 import { create } from 'zustand'
 
+type Modal = {
+	modal: ReactNode
+	headerVisible: boolean
+}
+
 type ModalState = {
-	modals: ReactNode[]
-	openModal: (modal: ReactNode) => void
+	modals: Modal[]
+	openModal: (modal: ReactNode, headerVisible?: boolean) => void
 	closeModal: () => void
 }
 
 const useModalState = create<ModalState>(set => ({
 	modals: [],
 
-	openModal: (modal: ReactNode) => {
+	openModal: (modal: ReactNode, headerVisible: boolean = false) => {
 		set(state => ({
-			modals: [...state.modals, modal],
+			modals: [...state.modals, { modal, headerVisible }],
 		}))
 	},
 

@@ -11,7 +11,7 @@
 	--font-size: 1rem;
 	--header-height: 5rem;
 	--footer-height: 4rem;
-	--page-margin: 1.5rem;
+	--page-margin: 1.2rem;
 
 	/* Background colors */
 	--color-background-page: white; /* slate-950 */
@@ -129,7 +129,6 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 0.7rem;
-	margin-bottom: 1rem;
 }
 
 .page-title-icon {

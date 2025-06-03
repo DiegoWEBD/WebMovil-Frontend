@@ -7,17 +7,41 @@ import ClientProtectedComponent from '../protected_components/client/ClientProte
 import OwnerProtectedComponent from '../protected_components/owner/OwnerProtectedComponent'
 import UserProtectedComponent from '../protected_components/UserProtectedComponent'
 import OwnerStoreSelector from '../views/owner/OwnerStoreSelector/OwnerStoreSelector'
+import ToggleDashboard from '../Dashboard/ToggleDashboard/ToggleDashboard'
+import { useState, useEffect } from 'react'
+import useAppState from '../../global_states/appState'
 
 const Header = () => {
-	return (
-		<header className='owner-header'>
-			<OwnerProtectedComponent>
-				<OwnerStoreSelector />
-			</OwnerProtectedComponent>
+	const { setDashboardOpen } = useAppState()
+	const [isMobile, setIsMobile] = useState(
+		window.matchMedia('(max-width: 768px)').matches
+	)
 
-			<ClientProtectedComponent>
-				<PageLogo />
-			</ClientProtectedComponent>
+	useEffect(() => {
+		const mediaQuery = window.matchMedia('(max-width: 850px)')
+		const handleChange = () => setIsMobile(mediaQuery.matches)
+
+		mediaQuery.addEventListener('change', handleChange)
+
+		return () => mediaQuery.removeEventListener('change', handleChange)
+	}, [])
+
+	useEffect(() => {
+		if (isMobile) setDashboardOpen(false)
+	}, [isMobile, setDashboardOpen])
+
+	return (
+		<header className='header'>
+			<div className='header-left'>
+				{isMobile && <ToggleDashboard />}
+				<OwnerProtectedComponent>
+					<OwnerStoreSelector />
+				</OwnerProtectedComponent>
+
+				<ClientProtectedComponent>
+					<PageLogo />
+				</ClientProtectedComponent>
+			</div>
 
 			<div className='header-actions'>
 				<UserProtectedComponent>

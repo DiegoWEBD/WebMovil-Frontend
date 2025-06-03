@@ -1,0 +1,86 @@
+.sale-detail-view {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.sale-detail-view .card {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.sale-detail-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.sale-detail-info label {
+	color: var(--color-text-tertiary);
+}
+
+.sale-detail-info .sale-code {
+	color: var(--color-text-secondary);
+}
+
+.sale-detail-data {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	line-height: 1.1;
+}
+
+.sale-detail-data.user {
+	align-items: start;
+}
+
+.payment-method div {
+	display: flex;
+	gap: 0.5rem;
+	line-height: 1;
+}
+
+.payment-method h4 {
+	font-size: 1.1rem;
+	color: var(--color-text-tertiary);
+	font-weight: normal;
+}
+
+.sale-detail-info .email {
+	font-size: 0.9rem;
+	color: var(--color-text-secondary);
+}
+
+.page-title-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1.5rem;
+}
+
+.sale-detail-icon {
+	color: var(--color-text-highlight);
+	height: 1.1rem;
+	width: 1.1rem;
+}
+
+.sale-detail-total-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.sale-detail-total-card .sale-detail-data {
+	justify-content: space-between;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.sale-detail-total-card label {
+	color: var(--color-text-primary);
+}
+
+.sale-detail-total {
+	color: var(--color-text-highlight);
+}

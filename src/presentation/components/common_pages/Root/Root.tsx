@@ -4,12 +4,10 @@ import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import useAppState from '../../../global_states/appState'
 import AppContainer from '../../containers/AppContainer/AppContainer'
-import PageContentContainer from '../../containers/PageContentContainer/PageContentContainer'
-import DashboardV2 from '../../Dashboard/Dashboard'
-import Footer from '../../Footer/Footer'
-import Header from '../../Header/Header'
-import UserProtectedComponent from '../../protected_components/UserProtectedComponent'
 import ModalContainer from '../../containers/ModalContainer/ModalContainer'
+import DashboardV2 from '../../Dashboard/Dashboard'
+import Header from '../../Header/Header'
+import PageContentContainer from '../../containers/PageContentContainer/PageContentContainer'
 
 const App = () => {
 	const { validateAccessToken, isAppInstalled } = useAppState()
@@ -36,10 +34,6 @@ const App = () => {
 					<Outlet />
 				</PageContentContainer>
 			</AppContainer>
-			<UserProtectedComponent>
-				<Footer />
-			</UserProtectedComponent>
-
 			<ModalContainer />
 		</div>
 	)
