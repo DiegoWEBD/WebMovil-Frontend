@@ -1,6 +1,6 @@
 const OrdersPage = () => {
 	return (
-		<div>
+		<div className='page-padding'>
 			<p className='page-title'>Mis Pedidos</p>
 		</div>
 	)

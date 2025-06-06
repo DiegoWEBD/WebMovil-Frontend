@@ -1,18 +1,18 @@
 import './OwnerSalesSummary.css'
 
 import { useMemo } from 'react'
-import Sale from '../../../../../../../domain/Sale/Sale'
-import Card from '../../../../../containers/Card/Card'
+import { SaleSummary } from '../../../../../../../application/sale_service/types/SaleSummary'
 import { localePrice } from '../../../../../../../utils/locale_number'
+import Card from '../../../../../containers/Card/Card'
 
 type OwnerSalesSummaryProps = {
-	sales: Sale[] | undefined
+	sales: SaleSummary[] | undefined
 }
 
 const OwnerSalesSummary = ({ sales }: OwnerSalesSummaryProps) => {
 	const totalSales = useMemo(() => {
 		if (!sales) return 0
-		return sales.reduce((acc, sale) => acc + sale.getTotal(), 0)
+		return sales.reduce((acc, sale) => acc + sale.total, 0)
 	}, [sales])
 
 	return (

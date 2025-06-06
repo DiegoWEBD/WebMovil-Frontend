@@ -60,6 +60,7 @@ const StoreShoppingCart = ({ storeId, storeName }: StoreShoppingCartProps) => {
 						mutation.mutate({
 							userEmail: basicUserInfo.email,
 							shoppingCart,
+							dispatchMethod: 'delivery',
 						})
 					}}
 				>

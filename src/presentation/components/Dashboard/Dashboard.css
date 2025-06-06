@@ -2,7 +2,7 @@
 	position: sticky;
 	top: 0;
 	height: 100%;
-	z-index: 1000;
+	z-index: 9000;
 	transition: all 0.5s ease;
 	display: flex;
 	flex-direction: column;
@@ -13,7 +13,9 @@
 }
 
 .inactive-session .dashboard-v2 {
-	width: 0;
+	width: 0px;
+	padding: 0;
+	border: none;
 }
 
 .dashboard-v2-nav-element {

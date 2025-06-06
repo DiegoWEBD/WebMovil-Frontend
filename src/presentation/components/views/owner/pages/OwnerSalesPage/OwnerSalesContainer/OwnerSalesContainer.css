@@ -68,16 +68,23 @@
 
 .store-sale-card-status {
 	font-size: 0.8rem;
+	padding: 0.1rem 0.6rem;
+	border-radius: 10px;
+	border: 1px solid var(--color-border);
+	width: fit-content;
+	font-weight: 500;
 }
 
 .store-sale-card-status.completed {
 	background-color: var(--color-background-success);
 	color: var(--color-text-success);
-	padding: 0.1rem 0.6rem;
-	border-radius: 10px;
-	border: 1px solid var(--color-border-success);
-	width: fit-content;
-	font-weight: 500;
+	border-color: var(--color-border-success);
+}
+
+.store-sale-card-status.pending {
+	background-color: var(--color-background-pending);
+	color: var(--color-text-pending);
+	border-color: var(--color-border-pending);
 }
 
 @media (max-width: 350px) {

@@ -34,7 +34,7 @@ const DetailedProduct = ({ product }: DetailedProductProps) => {
 	})
 
 	return (
-		<div className='detailed-product-view '>
+		<div className='detailed-product-view'>
 			<div className='product-image-container'>
 				<NotFoundImage className='product-image' />
 			</div>

@@ -5,18 +5,14 @@ import NavElement from '../../../Dashboard/NavElement/NavElement'
 
 type ClientNavMenuProps = {
 	className?: string
-	setMenuOpen?: (menuOpen: boolean) => void
 }
 
-const ClientNavMenu = ({ className, setMenuOpen }: ClientNavMenuProps) => {
+const ClientNavMenu = ({ className }: ClientNavMenuProps) => {
 	return (
 		<>
 			<NavElement
 				to='/explorar'
 				className={`dashboard-v2-nav-element ${className}`}
-				onClick={() => {
-					if (setMenuOpen) setMenuOpen(false)
-				}}
 			>
 				<LuSearch className='nav-element-icon' />
 				<p className='nav-element-text'>Explorar</p>
@@ -25,9 +21,6 @@ const ClientNavMenu = ({ className, setMenuOpen }: ClientNavMenuProps) => {
 			<NavElement
 				to='/pedidos'
 				className={`dashboard-v2-nav-element ${className}`}
-				onClick={() => {
-					if (setMenuOpen) setMenuOpen(false)
-				}}
 			>
 				<BsCardChecklist className='nav-element-icon' />
 				<p className='nav-element-text'>Pedidos</p>
@@ -36,9 +29,6 @@ const ClientNavMenu = ({ className, setMenuOpen }: ClientNavMenuProps) => {
 			<NavElement
 				to='/perfil'
 				className={`dashboard-v2-nav-element ${className}`}
-				onClick={() => {
-					if (setMenuOpen) setMenuOpen(false)
-				}}
 			>
 				<LuUser className='nav-element-icon' />
 				<p className='nav-element-text'>Cuenta</p>

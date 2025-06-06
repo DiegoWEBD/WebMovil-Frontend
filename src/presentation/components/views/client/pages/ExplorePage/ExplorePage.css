@@ -10,7 +10,6 @@
 }
 
 .explore-section.card.store-card {
-	padding: 1rem;
 	display: flex;
 	flex-direction: row-reverse;
 	justify-content: space-between;
@@ -20,7 +19,7 @@
 
 .explore-section.card.store-card .store-image-container {
 	aspect-ratio: 1;
-	width: 9rem;
+	width: 8rem;
 	height: fit-content;
 	overflow: hidden;
 	position: relative;
@@ -66,5 +65,9 @@
 	}
 	.explore-section.grid-container {
 		grid-template-columns: 1fr;
+	}
+
+	.explore-page-header {
+		padding: var(--page-margin);
 	}
 }

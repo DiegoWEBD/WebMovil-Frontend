@@ -7,5 +7,6 @@
 @media (max-width: 850px) {
 	.grid-container {
 		grid-template-columns: 1fr;
+		gap: 0;
 	}
 }

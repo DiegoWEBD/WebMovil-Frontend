@@ -1,8 +1,7 @@
-import './ProductsViewer.css'
-
 import Product from '../../../domain/Product/Product'
 import ProductCard from './ProductCard/ProductCard'
 import ProductSkeletonCard from './ProductCard/ProductSkeletonCard/ProductSkeletonCard'
+import GridContainer from '../containers/GridContainer/GridContainer'
 
 type ProductsViewerProps = {
 	products: Product[] | undefined
@@ -10,7 +9,7 @@ type ProductsViewerProps = {
 
 const ProductsViewer = ({ products }: ProductsViewerProps) => {
 	return (
-		<div className='products-container'>
+		<GridContainer>
 			{products
 				? products.map(product => (
 						<ProductCard key={product.getCode()} product={product} />
@@ -18,7 +17,7 @@ const ProductsViewer = ({ products }: ProductsViewerProps) => {
 				: Array.from({ length: 10 }).map((_, index) => (
 						<ProductSkeletonCard key={index} />
 				  ))}
-		</div>
+		</GridContainer>
 	)
 }
 

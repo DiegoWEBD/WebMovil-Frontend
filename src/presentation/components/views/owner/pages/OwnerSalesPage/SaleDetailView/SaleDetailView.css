@@ -4,6 +4,10 @@
 	gap: 1rem;
 }
 
+.sale-detail-view .page-title {
+	margin-bottom: 0;
+}
+
 .sale-detail-view .card {
 	display: flex;
 	flex-direction: column;

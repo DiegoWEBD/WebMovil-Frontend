@@ -94,7 +94,6 @@
 	}
 
 	.info-container {
-		padding: 0 var(--page-margin);
 		width: 100%;
 	}
 
@@ -113,5 +112,8 @@
 	.store-header-left {
 		flex-direction: column;
 		align-items: start;
+	}
+	.store-header {
+		padding: 0 var(--page-margin);
 	}
 }

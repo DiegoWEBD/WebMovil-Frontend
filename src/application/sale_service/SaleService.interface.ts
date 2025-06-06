@@ -4,6 +4,7 @@ import { ShoppingCart } from '../../presentation/global_states/customer/shopping
 export type NewSale = {
 	userEmail: string
 	shoppingCart: ShoppingCart
+	dispatchMethod: 'delivery' | 'pickup'
 }
 
 export default interface ISaleService {

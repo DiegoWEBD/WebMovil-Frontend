@@ -5,6 +5,7 @@
 
 .store-card:hover {
 	border-color: var(--color-border-light);
+	background-color: var(--color-background-secondary);
 }
 
 .store-image-container {

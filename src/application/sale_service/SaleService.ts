@@ -25,7 +25,10 @@ export default class SaleService implements ISaleService {
 			sale.storeId,
 			sale.total,
 			new Date(sale.date),
+			sale.feedbackId,
 			saleDetails,
+			sale.dispatchMethod,
+			undefined,
 			undefined
 		)
 	}
@@ -38,6 +41,7 @@ export default class SaleService implements ISaleService {
 				code: productOrder.product.getCode(),
 				quantity: productOrder.quantity,
 			})),
+			dispatch_method: newSale.dispatchMethod,
 		})
 	}
 }

@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { useQuery } from '@tanstack/react-query'
 import { LuShoppingCart } from 'react-icons/lu'
-import Sale from '../../../../../../domain/Sale/Sale'
-import SaleDetail from '../../../../../../domain/SaleDetail/SaleDetail'
+import { SaleSummary } from '../../../../../../application/sale_service/types/SaleSummary'
 import apiClient from '../../../../../../utils/axios_client'
 import useOwnerState from '../../../../../global_states/owner/ownerState'
 import OwnerSalesContainer from './OwnerSalesContainer/OwnerSalesContainer'
@@ -12,34 +9,17 @@ import OwnerSalesSummary from './OwnerSalesSummary/OwnerSalesSummary'
 const OwnerSalesPage = () => {
 	const { selectedOwnerStoreSummary, saleServiceSocket } = useOwnerState()
 
-	const { data, isLoading, refetch } = useQuery<Sale[] | undefined>({
+	const { data, isLoading, refetch } = useQuery<SaleSummary[] | undefined>({
 		queryKey: ['ownerSales', selectedOwnerStoreSummary?.id],
 		queryFn: async () => {
 			const response = await apiClient.get(
 				`/sales?store_id=${selectedOwnerStoreSummary!.id}`
 			)
 
-			return response.data.map(
-				(sale: any) =>
-					new Sale(
-						sale.code,
-						sale.userEmail,
-						sale.userName,
-						sale.storeId,
-						sale.total,
-						new Date(sale.date),
-						sale.details.map(
-							(detail: any) =>
-								new SaleDetail(
-									detail.productCode,
-									detail.productName,
-									detail.quantity,
-									detail.unitPrice
-								)
-						),
-						sale.feedbackId
-					)
-			)
+			return response.data.map((saleSummary: SaleSummary) => ({
+				...saleSummary,
+				date: new Date(saleSummary.date),
+			}))
 		},
 		enabled: !!selectedOwnerStoreSummary,
 	})

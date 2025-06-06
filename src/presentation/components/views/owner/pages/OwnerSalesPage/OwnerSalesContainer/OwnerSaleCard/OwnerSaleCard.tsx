@@ -1,37 +1,42 @@
 import '../OwnerSalesContainer.css'
 
-import Sale from '../../../../../../../../domain/Sale/Sale'
+import { SaleSummary } from '../../../../../../../../application/sale_service/types/SaleSummary'
+import { localePrice } from '../../../../../../../../utils/locale_number'
+import useModalState from '../../../../../../../global_states/modalState'
 import Skeleton from '../../../../../../Skeleton/Skeleton'
 import Card from '../../../../../../containers/Card/Card'
-import useModalState from '../../../../../../../global_states/modalState'
 import SaleDetailView from '../../SaleDetailView/SaleDetailView'
-import { localePrice } from '../../../../../../../../utils/locale_number'
 
 type OwnerSaleCardProps = {
-	sale: Sale | undefined
+	sale: SaleSummary | undefined
 }
 
 const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 	const { openModal } = useModalState()
+
+	let statusClass = ''
+
+	if (sale?.status === 'Completada') statusClass = 'completed'
+	else if (sale?.status === 'Pendiente') statusClass = 'pending'
 
 	return (
 		<Card
 			className='store-sale-card'
 			onClick={() =>
 				sale
-					? openModal(<SaleDetailView saleCode={sale.getCode() || ''} />, true)
+					? openModal(<SaleDetailView saleCode={sale.code || ''} />, true)
 					: undefined
 			}
 		>
 			<div className='left-side'>
 				{sale ? (
-					<p className='store-sale-card-code'>{sale.getCode()}</p>
+					<p className='store-sale-card-code'>{sale.code}</p>
 				) : (
 					<Skeleton />
 				)}
 
 				{sale ? (
-					<p className='store-sale-card-user'>{sale.getUserName()}</p>
+					<p className='store-sale-card-user'>{sale.userName}</p>
 				) : (
 					<Skeleton />
 				)}
@@ -39,7 +44,7 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 				<div className='store-sale-card-date-time'>
 					{sale ? (
 						<p className='store-sale-card-date'>
-							{sale.getDate().toLocaleDateString('es-CL')}
+							{sale.date.toLocaleDateString('es-CL')}
 						</p>
 					) : (
 						<Skeleton />
@@ -47,7 +52,7 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 
 					{sale ? (
 						<p className='store-sale-card-time'>
-							{sale.getDate().toLocaleTimeString('es-CL', {
+							{sale.date.toLocaleTimeString('es-CL', {
 								hour12: false,
 							})}
 						</p>
@@ -59,15 +64,15 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 
 			<div className='right-side'>
 				{sale ? (
-					<p className='store-sale-card-total'>
-						{localePrice(sale.getTotal())}
-					</p>
+					<p className='store-sale-card-total'>{localePrice(sale.total)}</p>
 				) : (
 					<Skeleton />
 				)}
 
 				{sale ? (
-					<p className='store-sale-card-status completed'>Completada</p>
+					<p className={`store-sale-card-status ${statusClass}`}>
+						{sale.status}
+					</p>
 				) : (
 					<Skeleton />
 				)}
