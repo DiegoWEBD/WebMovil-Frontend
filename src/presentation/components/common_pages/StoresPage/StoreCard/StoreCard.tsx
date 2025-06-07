@@ -58,16 +58,14 @@ const StoreCard = ({ store, className }: StoreCardProps) => {
 				</div>
 
 				<div className='store-info-container extra'>
-					<div className='store-products-count-container'>
-						{store ? (
-							<>
-								<p className='store-products-count'>{store.products_count}</p>
-								<p>Productos</p>
-							</>
-						) : (
-							<Skeleton height='0.9rem' />
-						)}
-					</div>
+					{store ? (
+						<p className='store-products-count'>
+							{store.products_count} Productos
+						</p>
+					) : (
+						<Skeleton height='0.9rem' />
+					)}
+
 					<RatingStars rating={store?.feedback_rating} />
 				</div>
 			</div>

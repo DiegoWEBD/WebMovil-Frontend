@@ -6,19 +6,15 @@
 }
 
 .owner-sales-summary h3 {
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: bold;
 	color: var(--color-text-primary);
 }
 
 .owner-sales-summary p {
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	font-weight: 600;
 	color: var(--color-text-tertiary);
-}
-
-.owner-sales-summary .total-sales-summary {
-	color: var(--color-text-highlight-2);
 }
 
 @media (max-width: 850px) {

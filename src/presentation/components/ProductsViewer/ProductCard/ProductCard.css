@@ -2,8 +2,10 @@
 	cursor: pointer;
 }
 
-.product-card.loaded:hover {
-	border: 1px solid var(--color-border-light);
+@media (hover: hover) {
+	.product-card.loaded:hover {
+		background-color: var(--color-background-secondary);
+	}
 }
 
 .product-info-container {

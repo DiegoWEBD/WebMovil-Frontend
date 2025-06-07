@@ -9,6 +9,7 @@ export default class ProductJSONAdapter extends Product {
 			productJSON.description,
 			productJSON.price,
 			productJSON.store_id,
+			productJSON.store_name,
 			productJSON.picture,
 			productJSON.stock
 		)

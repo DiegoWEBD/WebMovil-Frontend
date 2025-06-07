@@ -18,16 +18,17 @@ const OwnerProductsCard = () => {
 	} = useInfiniteScrollQuery({
 		queryKey: ['owner-store-products', selectedOwnerStoreSummary!.id],
 		fetchPage: async page => {
-			const result = await stockService.getProducts(
+			const response = await stockService.getProducts(
 				selectedOwnerStoreSummary!.id,
 				undefined,
 				page,
 				10
 			)
+
 			return {
-				data: result.products,
+				data: response.products,
 				nextPage: page + 1,
-				totalPages: result.meta?.total_pages || 1,
+				totalPages: response.meta?.total_pages || 1,
 			}
 		},
 		enabled: !!selectedOwnerStoreSummary,

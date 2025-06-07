@@ -49,6 +49,12 @@
 	width: var(--star-size);
 }
 
+@media (max-width: 850px) {
+	.rating-average {
+		--star-size: 1rem;
+	}
+}
+
 @media (max-width: 320px) {
 	.rating-average {
 		--star-size: 0.9rem;

@@ -1,17 +1,12 @@
 .card {
-	background: var(--color-background-secondary);
-	border: 1px solid var(--color-border);
+	background-color: var(--color-background-page);
 	border-radius: 0.6rem;
 	transition: all 0.2s ease;
-	padding: 1rem;
-	overflow: hidden;
 }
 
 @media (max-width: 850px) {
 	.card {
-		padding: var(--page-margin);
 		border-radius: 0;
-		border: none;
-		background-color: var(--color-background-page);
+		padding-inline: var(--page-margin);
 	}
 }

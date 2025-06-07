@@ -19,6 +19,7 @@ const ExploreStores = ({ searchInput }: ExploreStoresProps) => {
 		queryKey: ['explore-stores', searchInput],
 		fetchPage: async page => {
 			const response = await storeService.getStores(searchInput, page, 10)
+
 			return {
 				data: response.stores,
 				nextPage: page + 1,

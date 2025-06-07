@@ -13,6 +13,7 @@ import Card from '../../../containers/Card/Card'
 import ProductQuantityToOrder from '../../client/ProductQuantityToOrder/ProductQuantityToOrder'
 import { TbPointFilled } from 'react-icons/tb'
 import useModalState from '../../../../global_states/modalState'
+import ClientProtectedComponent from '../../../protected_components/client/ClientProtectedComponent'
 
 type DetailedProductProps = {
 	product: Product
@@ -74,25 +75,27 @@ const DetailedProduct = ({ product }: DetailedProductProps) => {
 					<p className='detailed-product-data'>{product.getStock()}</p>
 				</div>
 
-				<ProductQuantityToOrder
-					quantityToOrder={quantityToOrder}
-					setQuantityToOrder={setQuantityToOrder}
-					stock={product.getStock()}
-				/>
+				<ClientProtectedComponent>
+					<ProductQuantityToOrder
+						quantityToOrder={quantityToOrder}
+						setQuantityToOrder={setQuantityToOrder}
+						stock={product.getStock()}
+					/>
 
-				<div className='add-to-cart-button-container'>
-					<Button
-						className='primary add-to-cart-button'
-						onClick={() => {
-							addToCart(product, quantityToOrder, product.getStoreId())
-							closeModal()
-						}}
-					>
-						<p>Agregar {quantityToOrder} al carro</p>
-						<TbPointFilled className='separator' />
-						<p>${localeNumber(quantityToOrder * product.getPrice())}</p>
-					</Button>
-				</div>
+					<div className='add-to-cart-button-container'>
+						<Button
+							className='primary add-to-cart-button'
+							onClick={() => {
+								addToCart(product, quantityToOrder, product.getStoreId())
+								closeModal()
+							}}
+						>
+							<p>Agregar {quantityToOrder} al carro</p>
+							<TbPointFilled className='separator' />
+							<p>${localeNumber(quantityToOrder * product.getPrice())}</p>
+						</Button>
+					</div>
+				</ClientProtectedComponent>
 			</div>
 		</div>
 	)

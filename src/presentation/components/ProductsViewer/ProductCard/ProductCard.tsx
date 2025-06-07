@@ -39,6 +39,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
 				)}
 
 				{product ? (
+					<p className='product-info description'>{product.getStoreName()}</p>
+				) : (
+					<Skeleton />
+				)}
+
+				{product ? (
 					<p className='product-info description'>{product.getDescription()}</p>
 				) : (
 					<Skeleton />

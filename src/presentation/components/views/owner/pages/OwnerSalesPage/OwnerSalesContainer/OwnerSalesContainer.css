@@ -1,11 +1,8 @@
-.sales-container {
-	display: flex;
-	flex-direction: column;
-	gap: 0.8rem;
+.owner-sales-page .grid-container {
+	grid-template-columns: 1fr;
 }
 
 .store-sale-card {
-	padding: 1rem;
 	min-height: 6rem;
 	cursor: pointer;
 	display: flex;

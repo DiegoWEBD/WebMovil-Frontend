@@ -5,10 +5,12 @@ import { localePrice } from '../../../../../../../../utils/locale_number'
 import useModalState from '../../../../../../../global_states/modalState'
 import Skeleton from '../../../../../../Skeleton/Skeleton'
 import Card from '../../../../../../containers/Card/Card'
+import OwnerProtectedComponent from '../../../../../../protected_components/owner/OwnerProtectedComponent'
 import SaleDetailView from '../../SaleDetailView/SaleDetailView'
+import ClientProtectedComponent from '../../../../../../protected_components/client/ClientProtectedComponent'
 
 type OwnerSaleCardProps = {
-	sale: SaleSummary | undefined
+	sale?: SaleSummary
 }
 
 const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
@@ -35,11 +37,21 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 					<Skeleton />
 				)}
 
-				{sale ? (
-					<p className='store-sale-card-user'>{sale.userName}</p>
-				) : (
-					<Skeleton />
-				)}
+				<OwnerProtectedComponent>
+					{sale ? (
+						<p className='store-sale-card-user'>{sale.userName}</p>
+					) : (
+						<Skeleton />
+					)}
+				</OwnerProtectedComponent>
+
+				<ClientProtectedComponent>
+					{sale ? (
+						<p className='store-sale-card-user'>{sale.storeName}</p>
+					) : (
+						<Skeleton />
+					)}
+				</ClientProtectedComponent>
 
 				<div className='store-sale-card-date-time'>
 					{sale ? (

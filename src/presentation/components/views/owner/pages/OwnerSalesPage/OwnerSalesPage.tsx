@@ -9,8 +9,8 @@ import OwnerSalesSummary from './OwnerSalesSummary/OwnerSalesSummary'
 const OwnerSalesPage = () => {
 	const { selectedOwnerStoreSummary, saleServiceSocket } = useOwnerState()
 
-	const { data, isLoading, refetch } = useQuery<SaleSummary[] | undefined>({
-		queryKey: ['ownerSales', selectedOwnerStoreSummary?.id],
+	const { data, isFetching, refetch } = useQuery<SaleSummary[] | undefined>({
+		queryKey: ['ownerSales', selectedOwnerStoreSummary!.id],
 		queryFn: async () => {
 			const response = await apiClient.get(
 				`/sales?store_id=${selectedOwnerStoreSummary!.id}`
@@ -36,7 +36,7 @@ const OwnerSalesPage = () => {
 				<LuShoppingCart className='page-title-icon' />
 				<p>Ventas</p>
 			</div>
-			<OwnerSalesContainer sales={data} isLoading={isLoading} />
+			<OwnerSalesContainer sales={data} isLoading={isFetching} />
 		</div>
 	)
 }

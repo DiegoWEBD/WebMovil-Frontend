@@ -34,6 +34,7 @@ function useInfiniteScrollQuery<T>({
 		queryKey,
 		queryFn: async ({ pageParam = initialPageParam }) => {
 			const pageData = await fetchPage(pageParam)
+
 			return {
 				items: pageData.data,
 				nextPage: pageData.nextPage,
@@ -52,16 +53,14 @@ function useInfiniteScrollQuery<T>({
 
 	useEffect(() => {
 		const target = loaderRef.current
+
 		if (!target) return
 
-		const observer = new IntersectionObserver(
-			entries => {
-				if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
-					fetchNextPage()
-				}
-			},
-			{ threshold: 1.0 }
-		)
+		const observer = new IntersectionObserver(entries => {
+			if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+				fetchNextPage()
+			}
+		})
 
 		observer.observe(target)
 

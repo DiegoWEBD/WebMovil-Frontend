@@ -17,16 +17,17 @@ const ExploreProducts = ({ searchInput }: ExploreProductsProps) => {
 	} = useInfiniteScrollQuery({
 		queryKey: ['explore-products', searchInput],
 		fetchPage: async page => {
-			const result = await stockService.getProducts(
+			const response = await stockService.getProducts(
 				undefined,
 				searchInput,
 				page,
 				10
 			)
+
 			return {
-				data: result.products,
+				data: response.products,
 				nextPage: page + 1,
-				totalPages: result.meta?.total_pages || 1,
+				totalPages: response.meta?.total_pages || 1,
 			}
 		},
 	})
@@ -42,7 +43,7 @@ const ExploreProducts = ({ searchInput }: ExploreProductsProps) => {
 				Array.from({ length: 5 }).map((_, index) => (
 					<ProductCard key={index} />
 				))}
-			<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
+			<div ref={loaderRef} style={{ height: '1px', visibility: 'hidden' }} />
 		</GridContainer>
 	)
 }
