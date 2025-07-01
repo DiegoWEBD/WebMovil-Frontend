@@ -39,7 +39,7 @@ const useOwnerState = create<OwnerState>(set => {
 		reconnection: true,
 	})*/
 
-	const socket = io('http://192.168.1.120:3007')
+	const socket = io('http://localhost:3007')
 
 	socket.on('connect', () => {
 		console.log('Connected to sale-service socket.io')

@@ -12,7 +12,6 @@ const OwnerProductsCard = () => {
 
 	const {
 		items: products,
-
 		isFetching,
 		loaderRef,
 	} = useInfiniteScrollQuery({
@@ -35,16 +34,18 @@ const OwnerProductsCard = () => {
 	})
 
 	return (
-		<GridContainer>
-			{products.map(product => (
-				<OwnerProductsCardItem key={product.getCode()} product={product} />
-			))}
-			{isFetching &&
-				Array.from({ length: 10 }).map((_, index) => (
-					<OwnerProductsCardItem key={index} product={undefined} />
+		<>
+			<GridContainer>
+				{products.map(product => (
+					<OwnerProductsCardItem key={product.getCode()} product={product} />
 				))}
-			<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
-		</GridContainer>
+				{isFetching &&
+					Array.from({ length: 10 }).map((_, index) => (
+						<OwnerProductsCardItem key={index} product={undefined} />
+					))}
+				<div ref={loaderRef} style={{ visibility: 'hidden', height: '1px' }} />
+			</GridContainer>
+		</>
 	)
 }
 

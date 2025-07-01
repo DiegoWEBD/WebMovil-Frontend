@@ -9,7 +9,7 @@ const DeliveryManNavMenu = ({ className }: OwnerNavMenuProps) => {
 	return (
 		<>
 			<NavElement
-				to='/delivery-man/deliveries'
+				to='/repartidor/deliveries'
 				className={`dashboard-v2-nav-element ${className}`}
 			>
 				<LuShoppingCart className='nav-element-icon' />

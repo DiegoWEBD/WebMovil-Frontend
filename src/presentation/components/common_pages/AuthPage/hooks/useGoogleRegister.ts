@@ -25,7 +25,7 @@ export const useGoogleRegister = (
 			setBasicUserInfo({ email: userInfo?.email as string, userType })
 			if (userType === 'client') navigate('/explorar')
 			else if (userType === 'owner') navigate('/locatario/tienda')
-			else if (userType === 'delivery-man') navigate('/delivery-man/deliveries')
+			else if (userType === 'delivery-man') navigate('/repartidor/deliveries')
 		})
 	}
 

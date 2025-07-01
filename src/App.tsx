@@ -175,7 +175,7 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: 'delivery-man/deliveries',
+				path: 'repartidor/deliveries',
 				element: (
 					<Suspense fallback={<Loading />}>
 						<DeliveryManProtectedRoute>

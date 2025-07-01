@@ -17,7 +17,6 @@
 
 @media (max-width: 850px) {
 	.card {
-		border-radius: 0;
 		padding-inline: var(--page-margin);
 	}
 }

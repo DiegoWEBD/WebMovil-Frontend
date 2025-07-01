@@ -7,12 +7,14 @@ export default class DeliveryService implements IDeliveryService {
 		const { data } = await apiClient.get('/sales')
 		console.log(data)
 
-		return data
-			.filter((saleSummary: SaleSummary) => saleSummary.status !== 'Completada')
-			.map((saleSummary: SaleSummary) => ({
-				...saleSummary,
-				date: new Date(saleSummary.date),
-			}))
+		return (
+			data
+				//.filter((saleSummary: SaleSummary) => saleSummary.status !== 'Completada')
+				.map((saleSummary: SaleSummary) => ({
+					...saleSummary,
+					date: new Date(saleSummary.date),
+				}))
+		)
 	}
 
 	async acceptDelivery(saleCode: string): Promise<void> {

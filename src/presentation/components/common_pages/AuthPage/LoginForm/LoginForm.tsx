@@ -14,7 +14,10 @@ const LoginForm = () => {
 		validateAccessToken().then(() => {
 			if (localStorage.getItem('user_type') === 'owner')
 				navigate('/locatario/tienda')
-			else navigate('/explorar')
+			else if (localStorage.getItem('user_type') === 'client')
+				navigate('/explorar')
+			else if (localStorage.getItem('user_type') === 'delivery-man')
+				navigate('/repartidor/deliveries')
 		})
 	}
 

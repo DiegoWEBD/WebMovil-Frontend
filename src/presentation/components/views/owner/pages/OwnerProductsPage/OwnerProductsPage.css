@@ -1,0 +1,28 @@
+.register-product-form-card {
+	margin-bottom: 1.5rem;
+	padding: 1rem;
+}
+
+.register-product-button {
+	margin-top: 1rem;
+}
+
+.register-product-form-card input,
+.register-product-form-card textarea {
+	background-color: transparent;
+	border: 1px solid var(--color-border-light);
+	color: var(--color-text-secondary);
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	flex: 1;
+}
+.register-product-form-card textarea {
+	width: 100%;
+}
+
+.register-product-form-card .form-fields {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-block: 1rem;
+}

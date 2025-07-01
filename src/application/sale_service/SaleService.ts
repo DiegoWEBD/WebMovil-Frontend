@@ -66,8 +66,10 @@ export default class SaleService implements ISaleService {
 				quantity: productOrder.quantity,
 			})),
 			dispatch_method: {
-				type: 'pickup',
-				store_direction: 'Las Palmeras 2750',
+				type: 'delivery',
+				street: 'Río Choapa',
+				number: '1234',
+				customer_instructions: 'Dejar en la puerta',
 			},
 		})
 	}

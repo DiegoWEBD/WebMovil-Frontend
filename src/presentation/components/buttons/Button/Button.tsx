@@ -5,11 +5,18 @@ import { ReactNode } from 'react'
 type ButtonProps = {
 	children: ReactNode
 	className?: string
+	type?: 'button' | 'submit' | 'reset'
 	onClick?: () => void
 	disabled?: boolean
 }
 
-const Button = ({ children, className, onClick, disabled }: ButtonProps) => {
+const Button = ({
+	children,
+	className,
+	onClick,
+	disabled,
+	type = 'button',
+}: ButtonProps) => {
 	return (
 		<button
 			className={`custom-button ${disabled ? 'disabled' : ''} ${
@@ -17,6 +24,7 @@ const Button = ({ children, className, onClick, disabled }: ButtonProps) => {
 			}`}
 			onClick={onClick}
 			disabled={disabled}
+			type={type}
 		>
 			{children}
 		</button>
