@@ -1,0 +1,41 @@
+.delivery-requests-page {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.page-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.page-title-icon {
+	color: var(--color-text-highlight);
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.no-deliveries {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 3rem 1rem;
+	text-align: center;
+	color: var(--color-text-secondary);
+}
+
+.no-deliveries-icon {
+	width: 3rem;
+	height: 3rem;
+	color: var(--color-text-tertiary);
+	margin-bottom: 1rem;
+}
+
+.no-deliveries p {
+	margin: 0;
+	font-size: 1.1rem;
+}

@@ -1,0 +1,105 @@
+.delivery-request-card {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1.5rem;
+	transition: all 0.2s ease;
+}
+
+.delivery-request-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.delivery-code h3 {
+	margin: 0 0 0.5rem 0;
+	color: var(--color-text-primary);
+	font-size: 1.1rem;
+}
+
+.delivery-status {
+	background-color: var(--color-background-highlight);
+	color: white;
+	padding: 0.2rem 0.6rem;
+	border-radius: 4px;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.delivery-total {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: var(--color-text-highlight);
+}
+
+.delivery-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+.info-row {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.8rem;
+}
+
+.info-icon {
+	color: var(--color-text-highlight);
+	width: 1rem;
+	height: 1rem;
+	flex-shrink: 0;
+	margin-top: 0.1rem;
+}
+
+.info-row div {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	flex: 1;
+}
+
+.info-row label {
+	color: var(--color-text-tertiary);
+	font-size: 0.8rem;
+}
+
+.info-row p {
+	margin: 0;
+	color: var(--color-text-primary);
+	font-size: 0.9rem;
+}
+
+.delivery-instructions {
+	color: var(--color-text-secondary) !important;
+	font-size: 0.8rem !important;
+	font-style: italic;
+	margin-top: 0.2rem !important;
+}
+
+.delivery-actions {
+	margin-top: auto;
+}
+
+.accept-button {
+	width: 100%;
+	background-color: var(--color-background-highlight);
+	color: white;
+	border: none;
+	padding: 0.8rem;
+	border-radius: 6px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.accept-button:hover {
+	background-color: var(--color-background-highlight-hover);
+}

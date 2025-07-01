@@ -16,14 +16,28 @@ const App = () => {
 		validateAccessToken()
 	}, [validateAccessToken])
 
+	// Check if user is delivery man
+	const isDeliveryMan = localStorage.getItem('user_type') === 'delivery-man'
+	const hasAccessToken = localStorage.getItem('access_token')
+
+	// If delivery man, render without the main layout (they have their own)
+	if (isDeliveryMan && hasAccessToken) {
+		return (
+			<div
+				className={`app-root active-session ${
+					isAppInstalled() ? 'installed' : 'not-installed'
+				}`}
+			>
+				<Outlet />
+				<ModalContainer />
+			</div>
+		)
+	}
+
 	return (
 		<div
 			className={`app-root 
-				${
-					localStorage.getItem('access_token')
-						? 'active-session '
-						: 'inactive-session'
-				} 
+				${hasAccessToken ? 'active-session ' : 'inactive-session'} 
 				${isAppInstalled() ? 'installed' : 'not-installed'}`}
 		>
 			<Header />

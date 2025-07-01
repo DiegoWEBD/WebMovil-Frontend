@@ -7,4 +7,9 @@ export type SaleSummary = {
 	date: Date
 	dispatchMethod: 'delivery' | 'pickup'
 	status: string
+	deliveryAddress?: {
+		street: string
+		number: string
+		instructions?: string
+	}
 }

@@ -56,6 +56,13 @@ const OwnerSalesPage = lazy(
 		)
 )
 
+const DeliveryRequestsPage = lazy(
+	() =>
+		import(
+			'./presentation/components/views/delivery_man/pages/DeliveryRequestsPage/DeliveryRequestsPage'
+		)
+)
+
 const UserProtectedRoute = lazy(
 	() =>
 		import('./presentation/components/protected_components/UserProtectedRoute')
@@ -70,6 +77,12 @@ const OwnerProtectedRoute = lazy(
 	() =>
 		import(
 			'./presentation/components/protected_components/owner/OwnerProtectedRoute'
+		)
+)
+const DeliveryManProtectedRoute = lazy(
+	() =>
+		import(
+			'./presentation/components/protected_components/delivery_man/DeliveryManProtectedRoute'
 		)
 )
 
@@ -158,6 +171,16 @@ const router = createBrowserRouter([
 						<ClientProtectedRoute>
 							<ExplorePage />
 						</ClientProtectedRoute>
+					</Suspense>
+				),
+			},
+			{
+				path: 'delivery-man/deliveries',
+				element: (
+					<Suspense fallback={<Loading />}>
+						<DeliveryManProtectedRoute>
+							<DeliveryRequestsPage />
+						</DeliveryManProtectedRoute>
 					</Suspense>
 				),
 			},
