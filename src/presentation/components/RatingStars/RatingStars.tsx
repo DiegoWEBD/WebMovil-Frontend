@@ -2,7 +2,7 @@ import './RatingStars.css'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Skeleton from '../../../Skeleton/Skeleton'
+import Skeleton from '../Skeleton/Skeleton'
 
 type RatingStarsProps = {
 	rating?: number

@@ -1,17 +1,15 @@
 export default class DispatchOrder {
-	protected code: string
-	protected issueDate: Date
+	protected id: string | undefined
 
-	constructor(code: string, issueDate: Date) {
-		this.code = code
-		this.issueDate = issueDate
+	constructor(id: string | undefined) {
+		this.id = id
 	}
 
-	getCode(): string {
-		return this.code
+	getId(): string | undefined {
+		return this.id
 	}
 
-	getIssueDate(): Date {
-		return this.issueDate
+	setId(id: string) {
+		this.id = id
 	}
 }

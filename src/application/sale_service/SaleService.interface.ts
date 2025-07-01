@@ -10,4 +10,6 @@ export type NewSale = {
 export default interface ISaleService {
 	getSaleDetail(saleCode: string): Promise<Sale>
 	registerSale(newSale: NewSale): Promise<void>
+	createDispatchOrder(saleCode: string): Promise<void>
+	markAsDelivered(saleCode: string): Promise<void>
 }

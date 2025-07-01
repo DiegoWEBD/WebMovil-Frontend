@@ -1,14 +1,15 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import './SaleDetailView.css'
 
 import { FaRegClock, FaRegCreditCard } from 'react-icons/fa'
 import { FiCalendar, FiUser } from 'react-icons/fi'
 import { HiOutlineDocumentText } from 'react-icons/hi'
+import { localePrice } from '../../../../../../../utils/locale_number'
 import useAppState from '../../../../../../global_states/appState'
 import Skeleton from '../../../../../Skeleton/Skeleton'
+import Button from '../../../../../buttons/Button/Button'
 import Card from '../../../../../containers/Card/Card'
 import SaleProductsView from './SaleProductsView/SaleProductsView'
-import { localePrice } from '../../../../../../../utils/locale_number'
 
 type SaleDetailViewProps = {
 	saleCode: string
@@ -16,10 +17,83 @@ type SaleDetailViewProps = {
 
 const SaleDetailView = ({ saleCode }: SaleDetailViewProps) => {
 	const { saleService } = useAppState()
+	const queryClient = useQueryClient()
+
 	const { data, isFetching } = useQuery({
 		queryKey: ['saleDetail', saleCode],
 		queryFn: async () => await saleService.getSaleDetail(saleCode),
 	})
+
+	const handleCreateDispatchOrder = async () => {
+		try {
+			await saleService.createDispatchOrder(saleCode)
+			// Refetch the sale detail to get updated state
+			await queryClient.invalidateQueries({
+				queryKey: ['saleDetail', saleCode],
+			})
+			// Also refetch the sales list to update the sales list view
+			await queryClient.invalidateQueries({ queryKey: ['ownerSales'] })
+		} catch (error) {
+			console.error('Error creating dispatch order:', error)
+		}
+	}
+
+	const handleMarkAsDelivered = async () => {
+		try {
+			await saleService.markAsDelivered(saleCode)
+			// Refetch the sale detail to get updated state
+			await queryClient.invalidateQueries({
+				queryKey: ['saleDetail', saleCode],
+			})
+			// Also refetch the sales list to update the sales list view
+			await queryClient.invalidateQueries({ queryKey: ['ownerSales'] })
+		} catch (error) {
+			console.error('Error marking as delivered:', error)
+		}
+	}
+
+	// Determine button state based on sale data
+	const getButtonState = () => {
+		if (!data) return null
+
+		const hasDispatchOrder = !!data.getDispatchOrder()
+		const hasDispatch = !!data.getDispatch()
+		const dispatchMethod = data.getDispatchMethod()
+
+		if (!hasDispatchOrder && !hasDispatch) {
+			return {
+				type: 'create' as const,
+				text: 'Crear orden de entrega',
+				onClick: handleCreateDispatchOrder,
+				disabled: false,
+			}
+		}
+
+		if (hasDispatchOrder && !hasDispatch) {
+			if (dispatchMethod === 'delivery') {
+				return {
+					type: 'disabled' as const,
+					text: 'En despacho',
+					onClick: undefined,
+					disabled: true,
+				}
+			} else if (dispatchMethod === 'pickup') {
+				return {
+					type: 'mark-delivered' as const,
+					text: 'Marcar como entregado',
+					onClick: handleMarkAsDelivered,
+					disabled: false,
+				}
+			}
+		}
+
+		// If both dispatch order and dispatch exist, no button needed
+		return null
+	}
+
+	const buttonState = getButtonState()
+
+	console.log(data)
 
 	return (
 		<div className='sale-detail-view page-padding'>
@@ -94,6 +168,14 @@ const SaleDetailView = ({ saleCode }: SaleDetailViewProps) => {
 					</div>
 				</Card>
 			</Card>
+
+			{buttonState && (
+				<Card>
+					<Button onClick={buttonState.onClick} disabled={buttonState.disabled}>
+						{buttonState.text}
+					</Button>
+				</Card>
+			)}
 		</div>
 	)
 }

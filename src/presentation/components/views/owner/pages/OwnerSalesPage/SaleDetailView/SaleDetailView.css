@@ -88,3 +88,10 @@
 .sale-detail-total {
 	color: var(--color-text-highlight);
 }
+
+.sale-status {
+	color: var(--color-text-highlight);
+	font-weight: 600;
+	font-size: 1.1rem;
+	margin: 0;
+}

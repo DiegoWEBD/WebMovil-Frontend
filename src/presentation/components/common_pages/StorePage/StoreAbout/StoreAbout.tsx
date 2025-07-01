@@ -2,8 +2,8 @@ import './StoreAbout.css'
 
 import Store from '../../../../../domain/Store/Store'
 import Card from '../../../containers/Card/Card'
-import RatingStars from '../../StoresPage/RatingStars/RatingStars'
 import useGroupedSchedules, { ScheduleGroup } from './hooks/useGroupedSchedules'
+import RatingStars from '../../../RatingStars/RatingStars'
 
 type StoreAboutProps = {
 	store: Store | undefined

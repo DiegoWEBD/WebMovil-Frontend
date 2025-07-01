@@ -1,7 +1,18 @@
 .card {
-	background-color: var(--color-background-page);
+	background-color: var(--color-background-secondary);
+	padding: 0.5rem;
 	border-radius: 0.6rem;
 	transition: all 0.2s ease;
+}
+
+.card.clickable {
+	cursor: pointer;
+}
+
+@media (hover: hover) {
+	.card.clickable:hover {
+		background-color: var(--color-background-secondary-light);
+	}
 }
 
 @media (max-width: 850px) {

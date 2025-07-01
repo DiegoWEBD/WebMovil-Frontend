@@ -1,17 +1,18 @@
 import './StoreCard.css'
 
-import { TiLocationOutline } from 'react-icons/ti'
-import StoreSummary from '../../../../../application/store_service/types/StoreSummary.interface'
-import useModalState from '../../../../global_states/modalState'
-import Card from '../../../containers/Card/Card'
-import NotFoundImage from '../../../NotFoundImage/NotFoundImage'
-import Shimmer from '../../../Skeleton/Shimmer/Shimmer'
-import Skeleton from '../../../Skeleton/Skeleton'
-import StorePage from '../../StorePage/StorePage'
+import StoreSummary from '../../../application/store_service/types/StoreSummary.interface'
+import useModalState from '../../global_states/modalState'
+import StorePage from '../common_pages/StorePage/StorePage'
+import Card from '../containers/Card/Card'
+import NotFoundImage from '../NotFoundImage/NotFoundImage'
 import RatingStars from '../RatingStars/RatingStars'
+import Shimmer from '../Skeleton/Shimmer/Shimmer'
+import Skeleton from '../Skeleton/Skeleton'
+
+import { TiLocationOutline } from 'react-icons/ti'
 
 type StoreCardProps = {
-	store: StoreSummary | undefined
+	store?: StoreSummary
 	className?: string
 }
 
@@ -20,7 +21,9 @@ const StoreCard = ({ store, className }: StoreCardProps) => {
 
 	return (
 		<Card
-			className={`store-card store-card-link skeleton-wrapper ${className}`}
+			className={`store-card store-card-link skeleton-wrapper ${
+				store ? 'clickable' : ''
+			} ${className}`}
 			onClick={() => {
 				if (store) openModal(<StorePage storeSummary={store} />)
 			}}

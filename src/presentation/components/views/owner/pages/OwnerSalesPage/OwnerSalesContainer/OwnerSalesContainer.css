@@ -1,10 +1,4 @@
-.owner-sales-page .grid-container {
-	grid-template-columns: 1fr;
-}
-
 .store-sale-card {
-	min-height: 6rem;
-	cursor: pointer;
 	display: flex;
 	gap: 1rem;
 	justify-content: space-between;
@@ -18,12 +12,13 @@
 }
 
 .left-side {
-	width: 60%;
+	min-width: 40%;
 }
 
 .right-side {
 	justify-content: space-between;
 	align-items: end;
+	width: 30%;
 }
 
 .store-sale-card-date-time {
@@ -47,10 +42,6 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-.store-sale-card:hover {
-	background-color: var(--color-background-secondary-light);
 }
 
 .store-sale-card .store-sale-card-user {
@@ -84,6 +75,12 @@
 	border-color: var(--color-border-pending);
 }
 
+@media (max-width: 850px) {
+	.left-side {
+		width: 70%;
+	}
+}
+
 @media (max-width: 350px) {
 	.left-side {
 		width: 50%;
@@ -96,8 +93,6 @@
 	.store-sale-card-date-time {
 		flex-direction: column;
 		gap: 0.4rem;
-
-		width: fit-content;
 	}
 
 	.store-sale-card-date,

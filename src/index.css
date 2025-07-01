@@ -187,10 +187,6 @@ body {
 }
 
 @media (max-width: 850px) {
-	.page-padding {
-		padding-inline: 0;
-	}
-
 	.page-title,
 	.page-subtitle {
 		margin-left: var(--page-margin);

@@ -6,11 +6,6 @@
 	font-size: 0.9rem;
 }
 
-.store-card:hover {
-	cursor: pointer;
-	background-color: var(--color-background-secondary);
-}
-
 .store-card .store-image-container {
 	aspect-ratio: 16/10;
 	width: 100%;

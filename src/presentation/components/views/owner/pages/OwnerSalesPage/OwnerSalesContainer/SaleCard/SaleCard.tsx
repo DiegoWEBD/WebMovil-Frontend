@@ -9,11 +9,11 @@ import OwnerProtectedComponent from '../../../../../../protected_components/owne
 import SaleDetailView from '../../SaleDetailView/SaleDetailView'
 import ClientProtectedComponent from '../../../../../../protected_components/client/ClientProtectedComponent'
 
-type OwnerSaleCardProps = {
+type SaleCardProps = {
 	sale?: SaleSummary
 }
 
-const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
+const SaleCard = ({ sale }: SaleCardProps) => {
 	const { openModal } = useModalState()
 
 	let statusClass = ''
@@ -23,7 +23,7 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 
 	return (
 		<Card
-			className='store-sale-card'
+			className={`store-sale-card ${sale ? 'clickable' : ''}`}
 			onClick={() =>
 				sale
 					? openModal(<SaleDetailView saleCode={sale.code || ''} />, true)
@@ -34,14 +34,14 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 				{sale ? (
 					<p className='store-sale-card-code'>{sale.code}</p>
 				) : (
-					<Skeleton />
+					<Skeleton width='60%' />
 				)}
 
 				<OwnerProtectedComponent>
 					{sale ? (
 						<p className='store-sale-card-user'>{sale.userName}</p>
 					) : (
-						<Skeleton />
+						<Skeleton width='80%' />
 					)}
 				</OwnerProtectedComponent>
 
@@ -49,7 +49,7 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 					{sale ? (
 						<p className='store-sale-card-user'>{sale.storeName}</p>
 					) : (
-						<Skeleton />
+						<Skeleton width='80%' />
 					)}
 				</ClientProtectedComponent>
 
@@ -59,7 +59,7 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 							{sale.date.toLocaleDateString('es-CL')}
 						</p>
 					) : (
-						<Skeleton />
+						<Skeleton width='20%' />
 					)}
 
 					{sale ? (
@@ -69,7 +69,7 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 							})}
 						</p>
 					) : (
-						<Skeleton />
+						<Skeleton width='20%' />
 					)}
 				</div>
 			</div>
@@ -78,7 +78,7 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 				{sale ? (
 					<p className='store-sale-card-total'>{localePrice(sale.total)}</p>
 				) : (
-					<Skeleton />
+					<Skeleton width='50%' />
 				)}
 
 				{sale ? (
@@ -86,11 +86,11 @@ const OwnerSaleCard = ({ sale }: OwnerSaleCardProps) => {
 						{sale.status}
 					</p>
 				) : (
-					<Skeleton />
+					<Skeleton width='50%' />
 				)}
 			</div>
 		</Card>
 	)
 }
 
-export default OwnerSaleCard
+export default SaleCard

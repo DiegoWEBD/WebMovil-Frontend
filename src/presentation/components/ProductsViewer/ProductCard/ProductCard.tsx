@@ -17,7 +17,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
 	return (
 		<Card
-			className={`product-card skeleton-wrapper ${product ? 'loaded' : ''}`}
+			className={`product-card skeleton-wrapper ${product ? 'clickable' : ''}`}
 			onClick={
 				product
 					? () => openModal(<DetailedProduct product={product} />)

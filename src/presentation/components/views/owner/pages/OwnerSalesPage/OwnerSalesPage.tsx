@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { LuShoppingCart } from 'react-icons/lu'
 import { SaleSummary } from '../../../../../../application/sale_service/types/SaleSummary'
 import apiClient from '../../../../../../utils/axios_client'
@@ -9,7 +10,7 @@ import OwnerSalesSummary from './OwnerSalesSummary/OwnerSalesSummary'
 const OwnerSalesPage = () => {
 	const { selectedOwnerStoreSummary, saleServiceSocket } = useOwnerState()
 
-	const { data, isFetching, refetch } = useQuery<SaleSummary[] | undefined>({
+	const { data, isLoading, refetch } = useQuery<SaleSummary[] | undefined>({
 		queryKey: ['ownerSales', selectedOwnerStoreSummary!.id],
 		queryFn: async () => {
 			const response = await apiClient.get(
@@ -24,10 +25,23 @@ const OwnerSalesPage = () => {
 		enabled: !!selectedOwnerStoreSummary,
 	})
 
-	saleServiceSocket.on('new-sale', () => {
-		console.log('New sale registered')
-		refetch()
-	})
+	useEffect(() => {
+		const handleNewSale = () => {
+			refetch()
+		}
+
+		const handleSaleUpdated = () => {
+			refetch()
+		}
+
+		saleServiceSocket.on('new-sale', handleNewSale)
+		saleServiceSocket.on('sale-updated', handleSaleUpdated)
+
+		return () => {
+			saleServiceSocket.off('new-sale', handleNewSale)
+			saleServiceSocket.off('sale-updated', handleSaleUpdated)
+		}
+	}, [saleServiceSocket, refetch])
 
 	return (
 		<div className='owner-sales-page page-padding'>
@@ -36,7 +50,7 @@ const OwnerSalesPage = () => {
 				<LuShoppingCart className='page-title-icon' />
 				<p>Ventas</p>
 			</div>
-			<OwnerSalesContainer sales={data} isLoading={isFetching} />
+			<OwnerSalesContainer sales={data} isLoading={isLoading} />
 		</div>
 	)
 }

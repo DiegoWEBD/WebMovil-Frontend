@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Sale from '../../domain/Sale/Sale'
 import SaleDetail from '../../domain/SaleDetail/SaleDetail'
+import DispatchOrder from '../../domain/DispatchOrder/DispatchOrder'
+import Dispatch from '../../domain/Dispatch/Dispatch'
 import apiClient from '../../utils/axios_client'
 import ISaleService, { NewSale } from './SaleService.interface'
+import DeliveryOrder from '../../domain/DispatchOrder/DeliveryOrder'
+import PickupOrder from '../../domain/DispatchOrder/PickupOrder'
 
 export default class SaleService implements ISaleService {
 	async getSaleDetail(saleCode: string): Promise<Sale> {
@@ -18,6 +22,25 @@ export default class SaleService implements ISaleService {
 				)
 		)
 
+		console.log(sale)
+		let dispatchOrder: DispatchOrder | undefined = undefined
+
+		if (sale.dispatchOrder) {
+			if (sale.dispatchOrder.type === 'delivery') {
+				dispatchOrder = new DeliveryOrder(
+					sale.dispatchOrder.id,
+					sale.dispatchOrder.street,
+					sale.dispatchOrder.number,
+					sale.dispatchOrder.customerInstructions
+				)
+			} else {
+				dispatchOrder = new PickupOrder(
+					sale.dispatchOrder.id,
+					sale.dispatchOrder.storeDirection
+				)
+			}
+		}
+
 		return new Sale(
 			sale.code,
 			sale.userEmail,
@@ -28,8 +51,10 @@ export default class SaleService implements ISaleService {
 			sale.feedbackId,
 			saleDetails,
 			sale.dispatchMethod,
-			undefined,
-			undefined
+			dispatchOrder,
+			sale.dispatch
+				? new Dispatch(sale.dispatch.code, new Date(sale.dispatch.date))
+				: undefined
 		)
 	}
 
@@ -41,7 +66,19 @@ export default class SaleService implements ISaleService {
 				code: productOrder.product.getCode(),
 				quantity: productOrder.quantity,
 			})),
-			dispatch_method: newSale.dispatchMethod,
+			dispatch_method: {
+				type: 'delivery',
+				street: 'Río Choapa',
+				number: '284',
+			},
 		})
+	}
+
+	async createDispatchOrder(saleCode: string): Promise<void> {
+		await apiClient.post(`/sales/${saleCode}/dispatch-order`)
+	}
+
+	async markAsDelivered(saleCode: string): Promise<void> {
+		await apiClient.post(`/sales/${saleCode}/mark-delivered`)
 	}
 }

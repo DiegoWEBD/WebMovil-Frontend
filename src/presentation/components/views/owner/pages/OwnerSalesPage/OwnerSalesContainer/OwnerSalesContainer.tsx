@@ -1,7 +1,7 @@
 import './OwnerSalesContainer.css'
 
 import { SaleSummary } from '../../../../../../../application/sale_service/types/SaleSummary'
-import OwnerSaleCard from './OwnerSaleCard/OwnerSaleCard'
+import SaleCard from './SaleCard/SaleCard'
 import GridContainer from '../../../../../containers/GridContainer/GridContainer'
 
 type OwnerSalesContainerProps = {
@@ -14,14 +14,12 @@ const OwnerSalesContainer = ({
 	isLoading,
 }: OwnerSalesContainerProps) => {
 	return (
-		<GridContainer>
-			{isLoading &&
-				Array.from({ length: 10 }).map((_, index) => (
-					<OwnerSaleCard sale={undefined} key={index} />
-				))}
+		<GridContainer className='fr'>
 			{sales?.map(sale => (
-				<OwnerSaleCard sale={sale} key={sale.code} />
+				<SaleCard sale={sale} key={sale.code} />
 			))}
+			{isLoading &&
+				Array.from({ length: 5 }).map((_, index) => <SaleCard key={index} />)}
 		</GridContainer>
 	)
 }

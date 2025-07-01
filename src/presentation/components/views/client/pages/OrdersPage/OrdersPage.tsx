@@ -3,7 +3,7 @@ import { SaleSummary } from '../../../../../../application/sale_service/types/Sa
 import apiClient from '../../../../../../utils/axios_client'
 import useAppState from '../../../../../global_states/appState'
 import GridContainer from '../../../../containers/GridContainer/GridContainer'
-import OwnerSaleCard from '../../../owner/pages/OwnerSalesPage/OwnerSalesContainer/OwnerSaleCard/OwnerSaleCard'
+import OwnerSaleCard from '../../../owner/pages/OwnerSalesPage/OwnerSalesContainer/SaleCard/SaleCard'
 
 const OrdersPage = () => {
 	const { basicUserInfo } = useAppState()

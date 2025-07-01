@@ -1,13 +1,3 @@
-.product-card.loaded {
-	cursor: pointer;
-}
-
-@media (hover: hover) {
-	.product-card.loaded:hover {
-		background-color: var(--color-background-secondary);
-	}
-}
-
 .product-info-container {
 	display: flex;
 	flex-direction: column;
