@@ -1,41 +1,29 @@
-import { useNavigate } from 'react-router-dom'
-import { LuTruck } from 'react-icons/lu'
-import { FiLogOut } from 'react-icons/fi'
-import { clearLocalStorage } from '../../../../../utils/clear_local_storage'
-import './DeliveryManNavMenu.css'
+import { LuShoppingCart, LuUser } from 'react-icons/lu'
+import NavElement from '../../../Dashboard/NavElement/NavElement'
 
-const DeliveryManNavMenu = () => {
-	const navigate = useNavigate()
+type OwnerNavMenuProps = {
+	className?: string
+}
 
-	const handleLogout = () => {
-		clearLocalStorage()
-		navigate('/login')
-	}
-
+const DeliveryManNavMenu = ({ className }: OwnerNavMenuProps) => {
 	return (
-		<nav className='delivery-man-nav-menu'>
-			<div className='nav-header'>
-				<LuTruck className='nav-icon' />
-				<h2>Repartidor</h2>
-			</div>
+		<>
+			<NavElement
+				to='/delivery-man/deliveries'
+				className={`dashboard-v2-nav-element ${className}`}
+			>
+				<LuShoppingCart className='nav-element-icon' />
+				<p className='nav-element-text'>Entregas disponibles</p>
+			</NavElement>
 
-			<div className='nav-links'>
-				<button
-					className='nav-link active'
-					onClick={() => navigate('/delivery-man/deliveries')}
-				>
-					<LuTruck className='nav-link-icon' />
-					Entregas Disponibles
-				</button>
-			</div>
-
-			<div className='nav-footer'>
-				<button className='logout-button' onClick={handleLogout}>
-					<FiLogOut className='logout-icon' />
-					Cerrar Sesión
-				</button>
-			</div>
-		</nav>
+			<NavElement
+				to='/perfil'
+				className={`dashboard-v2-nav-element ${className}`}
+			>
+				<LuUser className='nav-element-icon' />
+				<p className='nav-element-text'>Cuenta</p>
+			</NavElement>
+		</>
 	)
 }
 

@@ -4,12 +4,15 @@ import { SaleSummary } from '../sale_service/types/SaleSummary'
 
 export default class DeliveryService implements IDeliveryService {
 	async getAvailableDeliveries(): Promise<SaleSummary[]> {
-		const { data } = await apiClient.get('/sales/available-for-delivery')
+		const { data } = await apiClient.get('/sales')
+		console.log(data)
 
-		return data.map((saleSummary: SaleSummary) => ({
-			...saleSummary,
-			date: new Date(saleSummary.date),
-		}))
+		return data
+			.filter((saleSummary: SaleSummary) => saleSummary.status !== 'Completada')
+			.map((saleSummary: SaleSummary) => ({
+				...saleSummary,
+				date: new Date(saleSummary.date),
+			}))
 	}
 
 	async acceptDelivery(saleCode: string): Promise<void> {
