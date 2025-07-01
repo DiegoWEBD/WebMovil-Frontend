@@ -23,7 +23,7 @@ const ClientNavMenu = ({ className }: ClientNavMenuProps) => {
 				className={`dashboard-v2-nav-element ${className}`}
 			>
 				<BsCardChecklist className='nav-element-icon' />
-				<p className='nav-element-text'>Pedidos</p>
+				<p className='nav-element-text'>Compras</p>
 			</NavElement>
 
 			<NavElement

@@ -1,0 +1,43 @@
+.sales-filter {
+	margin-bottom: 1.5rem;
+}
+
+.filter-buttons {
+	display: flex;
+	gap: 0.7rem;
+	flex-wrap: wrap;
+}
+
+.filter-button {
+	background-color: var(--color-background-secondary-light);
+	color: var(--color-text-primary);
+	border: none;
+	border-radius: 0.5rem;
+	padding: 0.6rem 0.8rem;
+	font-size: 0.9rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	white-space: nowrap;
+}
+
+.filter-button:hover {
+	background-color: var(--color-background-secondary-light);
+}
+
+.filter-button.active {
+	background-color: var(--color-background-primary);
+	color: var(--color-text-primary-contrast);
+	border-color: var(--color-background-primary);
+}
+
+@media (max-width: 768px) {
+	.filter-buttons {
+		gap: 0.5rem;
+	}
+
+	.filter-button {
+		padding: 0.5rem 0.7rem;
+		font-size: 0.8rem;
+	}
+}
