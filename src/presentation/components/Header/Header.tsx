@@ -10,6 +10,7 @@ import OwnerStoreSelector from '../views/owner/OwnerStoreSelector/OwnerStoreSele
 import ToggleDashboard from '../Dashboard/ToggleDashboard/ToggleDashboard'
 import { useState, useEffect } from 'react'
 import useAppState from '../../global_states/appState'
+import DeliveryManProtectedComponent from '../protected_components/delivery_man/DeliveryManProtectedComponent'
 
 const Header = () => {
 	const { setDashboardOpen } = useAppState()
@@ -41,6 +42,10 @@ const Header = () => {
 				<ClientProtectedComponent>
 					<PageLogo />
 				</ClientProtectedComponent>
+
+				<DeliveryManProtectedComponent>
+					<PageLogo type='delivery-man' />
+				</DeliveryManProtectedComponent>
 			</div>
 
 			<div className='header-actions'>

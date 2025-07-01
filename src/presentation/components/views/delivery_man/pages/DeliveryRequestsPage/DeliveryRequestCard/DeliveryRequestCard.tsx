@@ -1,10 +1,11 @@
-import { FiCalendar, FiUser, FiMapPin, FiNavigation } from 'react-icons/fi'
+import { FiCalendar, FiMapPin, FiNavigation } from 'react-icons/fi'
 import { SaleSummary } from '../../../../../../../application/sale_service/types/SaleSummary'
 import { localePrice } from '../../../../../../../utils/locale_number'
 import Button from '../../../../../buttons/Button/Button'
 import Card from '../../../../../containers/Card/Card'
 import Skeleton from '../../../../../Skeleton/Skeleton'
 import './DeliveryRequestCard.css'
+import DeliveryData from '../../../../../../../domain/DispatchMethod/DeliveryData/DeliveryData'
 
 type DeliveryRequestCardProps = {
 	delivery?: SaleSummary
@@ -22,26 +23,19 @@ const DeliveryRequestCard = ({
 			</Card>
 		)
 	}
+	console.log(delivery)
 
 	return (
 		<Card className='delivery-request-card'>
 			<div className='delivery-header'>
 				<div className='delivery-code'>
-					<h3>Pedido #{delivery.code}</h3>
+					<h3>Pedido {delivery.code}</h3>
 					<span className='delivery-status'>{delivery.status}</span>
 				</div>
 				<div className='delivery-total'>{localePrice(delivery.total)}</div>
 			</div>
 
 			<div className='delivery-info'>
-				<div className='info-row'>
-					<FiUser className='info-icon' />
-					<div>
-						<label>Cliente</label>
-						<p>{delivery.userName}</p>
-					</div>
-				</div>
-
 				<div className='info-row'>
 					<FiMapPin className='info-icon' />
 					<div>
@@ -50,18 +44,22 @@ const DeliveryRequestCard = ({
 					</div>
 				</div>
 
-				{delivery.deliveryAddress && (
+				{delivery.dispatchMethod && (
 					<div className='info-row'>
 						<FiNavigation className='info-icon' />
 						<div>
 							<label>Dirección de Entrega</label>
 							<p>
-								{delivery.deliveryAddress.street}{' '}
-								{delivery.deliveryAddress.number}
+								{(delivery.dispatchMethod as DeliveryData).getStreet()}{' '}
+								{(delivery.dispatchMethod as DeliveryData).getNumber()}
 							</p>
-							{delivery.deliveryAddress.instructions && (
+							{(
+								delivery.dispatchMethod as DeliveryData
+							).getCustomerInstructions() && (
 								<p className='delivery-instructions'>
-									{delivery.deliveryAddress.instructions}
+									{(
+										delivery.dispatchMethod as DeliveryData
+									).getCustomerInstructions()}
 								</p>
 							)}
 						</div>

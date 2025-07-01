@@ -10,6 +10,7 @@ import Skeleton from '../../../../../Skeleton/Skeleton'
 import Button from '../../../../../buttons/Button/Button'
 import Card from '../../../../../containers/Card/Card'
 import SaleProductsView from './SaleProductsView/SaleProductsView'
+import useDeliveryManState from '../../../../../../global_states/delivery_man/deliveryManState'
 
 type SaleDetailViewProps = {
 	saleCode: string
@@ -18,6 +19,7 @@ type SaleDetailViewProps = {
 const SaleDetailView = ({ saleCode }: SaleDetailViewProps) => {
 	const { saleService } = useAppState()
 	const queryClient = useQueryClient()
+	const { deliveryServiceSocket } = useDeliveryManState()
 
 	const { data, isFetching } = useQuery({
 		queryKey: ['saleDetail', saleCode],
@@ -27,6 +29,11 @@ const SaleDetailView = ({ saleCode }: SaleDetailViewProps) => {
 	const handleCreateDispatchOrder = async () => {
 		try {
 			await saleService.createDispatchOrder(saleCode)
+
+			if (data?.getDispatchMethod()?.type === 'delivery') {
+				deliveryServiceSocket.emit('request-shipping', saleCode)
+			}
+
 			// Refetch the sale detail to get updated state
 			await queryClient.invalidateQueries({
 				queryKey: ['saleDetail', saleCode],

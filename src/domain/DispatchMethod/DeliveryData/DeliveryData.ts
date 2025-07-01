@@ -11,7 +11,7 @@ export default class DeliveryData implements DispatchMethod {
 		id: string | undefined,
 		street: string,
 		number: string,
-		customerInstructions?: string
+		customerInstructions: string | undefined
 	) {
 		this.id = id
 		this.type = 'delivery'

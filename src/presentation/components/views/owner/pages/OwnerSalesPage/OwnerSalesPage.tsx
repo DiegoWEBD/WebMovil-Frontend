@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { LuShoppingCart } from 'react-icons/lu'
 import { SaleSummary } from '../../../../../../application/sale_service/types/SaleSummary'
 import { filterSalesByStatus } from '../../../../../../utils/filterSales'
@@ -33,7 +33,10 @@ const OwnerSalesPage = () => {
 	})
 
 	// Filter sales based on selected status
-	const filteredSales = filterSalesByStatus(data, selectedStatus)
+	const filteredSales = useMemo(
+		() => filterSalesByStatus(data, selectedStatus),
+		[data, selectedStatus]
+	)
 
 	useEffect(() => {
 		const handleNewSale = () => {

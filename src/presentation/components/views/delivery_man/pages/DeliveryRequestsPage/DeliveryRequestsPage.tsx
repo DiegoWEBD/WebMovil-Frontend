@@ -5,15 +5,33 @@ import useDeliveryManState from '../../../../../global_states/delivery_man/deliv
 import GridContainer from '../../../../containers/GridContainer/GridContainer'
 import DeliveryRequestCard from './DeliveryRequestCard/DeliveryRequestCard'
 import './DeliveryRequestsPage.css'
+import { useEffect } from 'react'
 
 const DeliveryRequestsPage = () => {
-	const { deliveryService } = useDeliveryManState()
+	const { deliveryService, deliveryServiceSocket } = useDeliveryManState()
 	const queryClient = useQueryClient()
 
-	const { data: deliveries, isLoading } = useQuery<SaleSummary[]>({
+	const {
+		data: deliveries,
+		isLoading,
+		refetch,
+	} = useQuery<SaleSummary[]>({
 		queryKey: ['availableDeliveries'],
 		queryFn: async () => await deliveryService.getAvailableDeliveries(),
 	})
+
+	useEffect(() => {
+		const handleDeliveryRequested = () => {
+			console.log('Delivery requested')
+			refetch()
+		}
+
+		deliveryServiceSocket.on('shipping-requested', handleDeliveryRequested)
+
+		return () => {
+			deliveryServiceSocket.off('shipping-requested', handleDeliveryRequested)
+		}
+	}, [deliveryServiceSocket, refetch])
 
 	const handleAcceptDelivery = async (saleCode: string) => {
 		try {
@@ -39,7 +57,7 @@ const DeliveryRequestsPage = () => {
 				</div>
 			)}
 
-			<GridContainer className='fr'>
+			<GridContainer className='deliveries-container'>
 				{deliveries?.map(delivery => (
 					<DeliveryRequestCard
 						key={delivery.code}

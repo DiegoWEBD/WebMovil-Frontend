@@ -1,3 +1,5 @@
+import DispatchMethod from '../../../domain/DispatchMethod/DispatchMethod'
+
 export type SaleSummary = {
 	code: string
 	userName: string
@@ -5,7 +7,7 @@ export type SaleSummary = {
 	storeName: string
 	total: number
 	date: Date
-	dispatchMethod: 'delivery' | 'pickup'
+	dispatchMethod: DispatchMethod
 	status: string
 	deliveryAddress?: {
 		street: string
