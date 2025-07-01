@@ -40,7 +40,7 @@ const SaleDetailView = ({ saleCode }: SaleDetailViewProps) => {
 
 	const handleMarkAsDelivered = async () => {
 		try {
-			await saleService.markAsDelivered(saleCode)
+			await saleService.dispatch(saleCode)
 			// Refetch the sale detail to get updated state
 			await queryClient.invalidateQueries({
 				queryKey: ['saleDetail', saleCode],
@@ -70,14 +70,14 @@ const SaleDetailView = ({ saleCode }: SaleDetailViewProps) => {
 		}
 
 		if (hasDispatchOrder && !hasDispatch) {
-			if (dispatchMethod === 'delivery') {
+			if (dispatchMethod!.type === 'delivery') {
 				return {
 					type: 'disabled' as const,
 					text: 'En despacho',
 					onClick: undefined,
 					disabled: true,
 				}
-			} else if (dispatchMethod === 'pickup') {
+			} else if (dispatchMethod!.type === 'pickup') {
 				return {
 					type: 'mark-delivered' as const,
 					text: 'Marcar como entregado',

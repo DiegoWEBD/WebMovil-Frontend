@@ -1,4 +1,5 @@
 import Dispatch from '../Dispatch/Dispatch'
+import DispatchMethod from '../DispatchMethod/DispatchMethod'
 import DispatchOrder from '../DispatchOrder/DispatchOrder'
 import SaleDetail from '../SaleDetail/SaleDetail'
 
@@ -7,11 +8,12 @@ export default class Sale {
 	private userEmail: string
 	private userName: string
 	private storeId: string
+	private storeName: string
 	private total: number
 	private date: Date
 	private feedbackId: string | undefined
 	private details: SaleDetail[]
-	private dispatchMethod: 'delivery' | 'pickup'
+	private dispatchMethod: DispatchMethod | undefined
 	private dispatchOrder: DispatchOrder | undefined
 	private dispatch: Dispatch | undefined
 
@@ -20,11 +22,12 @@ export default class Sale {
 		userEmail: string,
 		userName: string,
 		storeId: string,
+		storeName: string,
 		total: number,
 		date: Date,
 		feedbackId: string | undefined,
 		details: SaleDetail[],
-		dispatchMethod: 'delivery' | 'pickup',
+		dispatchMethod: DispatchMethod | undefined,
 		dispatchOrder: DispatchOrder | undefined,
 		dispatch: Dispatch | undefined
 	) {
@@ -32,6 +35,7 @@ export default class Sale {
 		this.userEmail = userEmail
 		this.userName = userName
 		this.storeId = storeId
+		this.storeName = storeName
 		this.total = total
 		this.date = date
 		this.details = details
@@ -61,6 +65,10 @@ export default class Sale {
 		return this.storeId
 	}
 
+	getStoreName(): string {
+		return this.storeName
+	}
+
 	getTotal(): number {
 		return this.total
 	}
@@ -73,8 +81,12 @@ export default class Sale {
 		return this.details
 	}
 
-	getDispatchMethod(): 'delivery' | 'pickup' {
+	getDispatchMethod(): DispatchMethod | undefined {
 		return this.dispatchMethod
+	}
+
+	setDispatchMethod(dispatchMethod: DispatchMethod): void {
+		this.dispatchMethod = dispatchMethod
 	}
 
 	getFeedbackId(): string | undefined {
@@ -85,7 +97,15 @@ export default class Sale {
 		return this.dispatchOrder
 	}
 
+	setDispatchOrder(dispatchOrder: DispatchOrder): void {
+		this.dispatchOrder = dispatchOrder
+	}
+
 	getDispatch(): Dispatch | undefined {
 		return this.dispatch
+	}
+
+	setDispatch(dispatch: Dispatch): void {
+		this.dispatch = dispatch
 	}
 }

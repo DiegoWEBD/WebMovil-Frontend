@@ -46,15 +46,14 @@ export default class SaleService implements ISaleService {
 			sale.userEmail,
 			sale.userName,
 			sale.storeId,
+			sale.storeName,
 			sale.total,
 			new Date(sale.date),
 			sale.feedbackId,
 			saleDetails,
 			sale.dispatchMethod,
 			dispatchOrder,
-			sale.dispatch
-				? new Dispatch(sale.dispatch.code, new Date(sale.dispatch.date))
-				: undefined
+			sale.dispatch ? new Dispatch(new Date(sale.dispatch.date)) : undefined
 		)
 	}
 
@@ -67,9 +66,8 @@ export default class SaleService implements ISaleService {
 				quantity: productOrder.quantity,
 			})),
 			dispatch_method: {
-				type: 'delivery',
-				street: 'Río Choapa',
-				number: '284',
+				type: 'pickup',
+				store_direction: 'Las Palmeras 2750',
 			},
 		})
 	}
@@ -78,7 +76,7 @@ export default class SaleService implements ISaleService {
 		await apiClient.post(`/sales/${saleCode}/dispatch-order`)
 	}
 
-	async markAsDelivered(saleCode: string): Promise<void> {
-		await apiClient.post(`/sales/${saleCode}/mark-delivered`)
+	async dispatch(saleCode: string): Promise<void> {
+		await apiClient.post(`/sales/${saleCode}/dispatch`)
 	}
 }
