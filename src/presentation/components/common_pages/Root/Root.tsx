@@ -10,7 +10,7 @@ import Header from '../../Header/Header'
 import PageContentContainer from '../../containers/PageContentContainer/PageContentContainer'
 
 const App = () => {
-	const { validateAccessToken, isAppInstalled } = useAppState()
+	const { validateAccessToken, isAppInstalled, basicUserInfo } = useAppState()
 
 	useEffect(() => {
 		validateAccessToken()
@@ -19,7 +19,7 @@ const App = () => {
 	return (
 		<div
 			className={`app-root 
-				
+				${basicUserInfo ? 'active-session' : 'inactive-session'}
 				${isAppInstalled() ? 'installed' : 'not-installed'}`}
 		>
 			<Header />

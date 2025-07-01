@@ -16,7 +16,7 @@ const PageLogo = ({ type }: PageLogoProps) => {
 			) : (
 				<IoStorefrontOutline className='logo-icon' />
 			)}
-			<h1>MiBarrio - Repartidor</h1>
+			<h1>MiBarrio {type === 'delivery-man' ? ' - Repartidor' : ''}</h1>
 		</Link>
 	)
 }

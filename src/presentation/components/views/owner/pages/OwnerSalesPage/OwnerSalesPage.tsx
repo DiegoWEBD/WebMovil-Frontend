@@ -47,12 +47,18 @@ const OwnerSalesPage = () => {
 			refetch()
 		}
 
+		const handleSaleStatusChanged = () => {
+			refetch()
+		}
+
 		saleServiceSocket.on('new-sale', handleNewSale)
 		saleServiceSocket.on('sale-updated', handleSaleUpdated)
+		saleServiceSocket.on('sale-status-changed', handleSaleStatusChanged)
 
 		return () => {
 			saleServiceSocket.off('new-sale', handleNewSale)
 			saleServiceSocket.off('sale-updated', handleSaleUpdated)
+			saleServiceSocket.off('sale-status-changed', handleSaleStatusChanged)
 		}
 	}, [saleServiceSocket, refetch])
 

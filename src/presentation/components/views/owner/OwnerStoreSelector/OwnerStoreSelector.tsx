@@ -13,7 +13,7 @@ const OwnerStoreSelector = () => {
 	const { basicUserInfo } = useAppState()
 	const { ownerService, selectedOwnerStoreSummary, setSelectedStoreSummary } =
 		useOwnerState()
-	const { openModal } = useModalState()
+	const { openModal, closeModal } = useModalState()
 	const [openSelector, setOpenSelector] = useState(false)
 	const selectorRef = useRef<HTMLDivElement>(null)
 
@@ -68,6 +68,7 @@ const OwnerStoreSelector = () => {
 			'owner_selected_store_is_active',
 			String(ownerStoreSummary.isActive)
 		)
+		closeModal()
 	}
 
 	return (

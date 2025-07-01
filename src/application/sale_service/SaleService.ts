@@ -58,6 +58,17 @@ export default class SaleService implements ISaleService {
 	}
 
 	async registerSale(newSale: NewSale): Promise<void> {
+		const dispatchMethod1 = {
+			type: 'delivery',
+			street: 'Río Choapa',
+			number: '1234',
+			customer_instructions: 'Dejar en la puerta',
+		}
+		const dispatchMethod2 = {
+			type: 'pickup',
+			store_direction: 'Avenida Libertador  1234',
+		}
+
 		await apiClient.post('/sales', {
 			user_email: newSale.userEmail,
 			store_id: newSale.shoppingCart.storeId,
@@ -65,12 +76,7 @@ export default class SaleService implements ISaleService {
 				code: productOrder.product.getCode(),
 				quantity: productOrder.quantity,
 			})),
-			dispatch_method: {
-				type: 'delivery',
-				street: 'Río Choapa',
-				number: '1234',
-				customer_instructions: 'Dejar en la puerta',
-			},
+			dispatch_method: Math.random() > 0.5 ? dispatchMethod1 : dispatchMethod2,
 		})
 	}
 

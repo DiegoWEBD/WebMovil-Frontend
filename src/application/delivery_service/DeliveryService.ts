@@ -25,7 +25,7 @@ export default class DeliveryService implements IDeliveryService {
 	}
 
 	async acceptDelivery(saleCode: string): Promise<void> {
-		await apiClient.post(`/sales/${saleCode}/accept-delivery`, {
+		await apiClient.post(`/sales/${saleCode}/dispatch`, {
 			delivery_man_email: localStorage.getItem('user_email'),
 		})
 	}

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SaleSummary } from '../../../../../../application/sale_service/types/SaleSummary'
 import { filterSalesByStatus } from '../../../../../../utils/filterSales'
 import apiClient from '../../../../../../utils/axios_client'
@@ -9,14 +9,16 @@ import SalesFilter, {
 	SaleStatus,
 } from '../../../shared/SalesFilter/SalesFilter'
 import OwnerSaleCard from '../../../owner/pages/OwnerSalesPage/OwnerSalesContainer/SaleCard/SaleCard'
+import useOwnerState from '../../../../../global_states/owner/ownerState'
 
 const OrdersPage = () => {
 	const { basicUserInfo } = useAppState()
+	const { saleServiceSocket } = useOwnerState()
 	const [selectedStatus, setSelectedStatus] = useState<SaleStatus | 'Todas'>(
 		'Todas'
 	)
 
-	const { data, isFetching } = useQuery<SaleSummary[] | undefined>({
+	const { data, isFetching, refetch } = useQuery<SaleSummary[] | undefined>({
 		queryKey: ['customer-purchases', basicUserInfo!.email],
 		queryFn: async () => {
 			const response = await apiClient.get(
@@ -33,6 +35,30 @@ const OrdersPage = () => {
 
 	// Filter sales based on selected status
 	const filteredSales = filterSalesByStatus(data, selectedStatus)
+
+	useEffect(() => {
+		const handleNewSale = () => {
+			refetch()
+		}
+
+		const handleSaleUpdated = () => {
+			refetch()
+		}
+
+		const handleSaleStatusChanged = () => {
+			refetch()
+		}
+
+		saleServiceSocket.on('new-sale', handleNewSale)
+		saleServiceSocket.on('sale-updated', handleSaleUpdated)
+		saleServiceSocket.on('sale-status-changed', handleSaleStatusChanged)
+
+		return () => {
+			saleServiceSocket.off('new-sale', handleNewSale)
+			saleServiceSocket.off('sale-updated', handleSaleUpdated)
+			saleServiceSocket.off('sale-status-changed', handleSaleStatusChanged)
+		}
+	}, [saleServiceSocket, refetch])
 
 	return (
 		<div className='page-padding'>
